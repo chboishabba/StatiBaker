@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StatiBaker Day State",
+  "type": "object",
+  "required": ["date", "day_state", "human_energy", "priorities"],
+  "properties": {
+    "date": {"type": "string", "format": "date"},
+    "day_state": {"type": "string", "enum": ["active", "recovering", "travel", "offline"]},
+    "human_energy": {"type": "string", "enum": ["low", "medium", "high"]},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "alerts": {"type": "array", "items": {"type": "string"}},
+    "priorities": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {"type": "string"}
+    },
+    "open_questions": {"type": "array", "items": {"type": "string"}},
+    "blocked_tasks": {"type": "array", "items": {"type": "string"}},
+    "carryover_threads": {"type": "array", "items": {"type": "string"}},
+    "agent_actions": {"type": "array", "items": {"type": "string"}},
+    "agent_permissions": {
+      "type": "object",
+      "properties": {
+        "autonomous_runs": {"type": "boolean"},
+        "write_actions": {"type": "boolean"}
+      },
+      "required": ["autonomous_runs", "write_actions"],
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "uri"],
+        "properties": {
+          "kind": {"type": "string"},
+          "uri": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "ts", "source", "type", "text"],
+        "properties": {
+          "id": {"type": "string"},
+          "ts": {"type": "string", "format": "date-time"},
+          "source": {"type": "string"},
+          "type": {"type": "string"},
+          "text": {"type": "string"},
+          "thread_id": {"type": "string"},
+          "severity": {"type": "string", "enum": ["info", "warn", "error"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "threads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "status": {"type": "string", "enum": ["active", "blocked", "paused", "done"]},
+          "last_event_ts": {"type": "string", "format": "date-time"},
+          "tags": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "retrospective": {
+      "type": "object",
+      "properties": {
+        "completed": {"type": "array", "items": {"type": "string"}},
+        "partial": {"type": "array", "items": {"type": "string"}},
+        "missed": {"type": "array", "items": {"type": "string"}},
+        "drift_signals": {"type": "array", "items": {"type": "string"}},
+        "tomorrow_setup": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

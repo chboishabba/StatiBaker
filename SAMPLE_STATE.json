@@ -1,0 +1,74 @@
+{
+  "date": "2026-02-03",
+  "day_state": "active",
+  "human_energy": "medium",
+  "constraints": ["low_focus_afternoon"],
+  "alerts": ["none"],
+  "priorities": [
+    "Draft daily brief template",
+    "Define machine state schema",
+    "Specify ingestion formats"
+  ],
+  "open_questions": [
+    "How to score drift signals reliably",
+    "What export bundle is canonical"
+  ],
+  "blocked_tasks": [],
+  "carryover_threads": ["stati_brief_design"],
+  "agent_actions": [
+    "Generate sample brief from synthetic data",
+    "Validate JSON schema"
+  ],
+  "agent_permissions": {
+    "autonomous_runs": true,
+    "write_actions": false
+  },
+  "sources": [
+    {"kind": "journal", "uri": "logs/journal/2026-02-03.md"},
+    {"kind": "todo", "uri": "logs/todo/2026-02-03.md"},
+    {"kind": "agent", "uri": "logs/agents/2026-02-03.jsonl"}
+  ],
+  "events": [
+    {
+      "id": "evt-001",
+      "ts": "2026-02-03T09:10:00Z",
+      "source": "journal",
+      "type": "note",
+      "text": "Morning focus: template and schema",
+      "thread_id": "stati_brief_design",
+      "severity": "info"
+    },
+    {
+      "id": "evt-002",
+      "ts": "2026-02-03T10:15:00Z",
+      "source": "agent",
+      "type": "action",
+      "text": "Drafted schema fields",
+      "thread_id": "stati_schema",
+      "severity": "info"
+    }
+  ],
+  "threads": [
+    {
+      "id": "stati_brief_design",
+      "title": "Daily brief template",
+      "status": "active",
+      "last_event_ts": "2026-02-03T09:10:00Z",
+      "tags": ["docs", "mvp"]
+    },
+    {
+      "id": "stati_schema",
+      "title": "Machine state schema",
+      "status": "active",
+      "last_event_ts": "2026-02-03T10:15:00Z",
+      "tags": ["schema", "mvp"]
+    }
+  ],
+  "retrospective": {
+    "completed": ["Drafted brief template"],
+    "partial": ["Schema drafted, needs review"],
+    "missed": [],
+    "drift_signals": ["context switching after 16:00"],
+    "tomorrow_setup": ["Review schema", "Add ingestion adapters"]
+  }
+}
