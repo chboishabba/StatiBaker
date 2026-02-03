@@ -1,5 +1,13 @@
 # StatiBaker
 
+
+
+
+Just old fashioned organisation.
+We don’t tell you what to do, who to be, or how to optimise.
+We help you remember what actually happened — so you can decide.
+
+
 StatiBaker is a daily state distillation engine. It compiles human and machine state
 into a single, coherent brief with traceability back to raw logs and actions.
 This is not a chatbot. It is a state compiler.
