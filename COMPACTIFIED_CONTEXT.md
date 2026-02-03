@@ -26,6 +26,11 @@ JSON, optional graph).
 - Data portability and interoperability
 - No memory rewriting; append-only logs
 
+## Epistemic invariants
+- Declared state is authoritative; observed state is evidentiary; derived artifacts are provisional.
+- Derived artifacts (e.g., OCR) never become state without explicit promotion.
+- Automatic extraction may occur, but automatic belief may not.
+
 ## MVP staging
 - Week 1: journal/TODO/agent logs -> daily summary + nightly retrospective
 - Week 2: calendar + git, agent task queue, carryover threads

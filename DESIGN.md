@@ -9,6 +9,13 @@ traceable brief for a single human and multiple agents.
 - Threads: related events grouped by topic or goal
 - Trajectories: thread histories over time
 
+## Epistemic layers and promotion
+- Declared state is authoritative (tasks, notes, logs, commits).
+- Observed state is evidentiary (screens, sensors).
+- Derived artifacts are provisional (OCR, transcripts).
+- Derived artifacts never become state without explicit promotion.
+- Screen capture and OCR guardrails live in `SAFETY_OCR.md`.
+
 ## Pipeline
 1. Ingestion (append-only)
    - Capture raw logs and inputs without rewriting history.

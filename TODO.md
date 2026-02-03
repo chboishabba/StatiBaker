@@ -10,11 +10,13 @@
 - Review daily brief template and finalize fields
 - Validate machine state JSON schema with real samples
 - Confirm minimal event/thread/trajectory model
+- Define and document epistemic layers in `STATE_SCHEMA.json`
 
 ## Normalization and compression
 - Define rules for event extraction and thread grouping
 - Draft redundancy and failure-collapse heuristics
 - Define carryover thread detection
+- Specify fold definitions and loss profiles (create `FOLDS.md`)
 
 ## Emission
 - Produce a sample daily brief from real logs
@@ -26,6 +28,11 @@
 - Git log ingestion adapter
 - Agent log adapters
 - Smart home status adapter
+
+## Governance and safety
+- Create ADRs directory and add ADRs for folds and OCR guardrails
+- Define promotion rules and consent UX copy in a canonical policy doc
+- Add tests/fixtures for “no silent promotion” behavior
 
 ## Open questions
 - How to represent and score drift signals
