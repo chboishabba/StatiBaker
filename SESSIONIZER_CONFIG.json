@@ -1,0 +1,9 @@
+{
+  "idle_gap_s": 300,
+  "title_jaccard_min": 0.3,
+  "phash_jump_min": 12,
+  "app_label_map": {
+    "org.gnome.Terminal": "Terminal",
+    "firefox.desktop": "Browsing"
+  }
+}

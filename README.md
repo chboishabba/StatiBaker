@@ -12,6 +12,10 @@ StatiBaker is a **daily state distillation engine**.
 It compiles human and machine state into a single, coherent brief with traceability
 back to raw logs and actions.
 
+StatiBaker is also a **context prosthesis** for ADHD support: a digital corkboard
+that reassembles itself after context collapse so you can recover what happened,
+what stalled, and what is still active.
+
 This is **not** a chatbot.
 It is **not** a planner.
 It is **not** an assistant.
@@ -42,7 +46,7 @@ If it produces state, it can be baked.
 ### Human streams
 
 - Journal entries
-- TODOs / task ledgers
+- TODOs / task ledgers (e.g., Vikunja)
 - Notes and drafts
 - Calendar events
 - Questions-in-progress
@@ -57,7 +61,7 @@ If it produces state, it can be baked.
 
 ### Environment and constraints
 
-- Smart home status and alerts
+- Smart home status and alerts (e.g., HAOS)
 - Deadlines and time locks
 - External dependencies
 - Environmental conditions affecting capacity
@@ -69,7 +73,7 @@ Nothing is rewritten. Nothing is inferred.
 
 ## Outputs (the daily bake)
 
-### Human-readable daily brief (morning)
+### Human-readable daily brief (SITREP / morning)
 
 A compact reconstruction of state:
 
@@ -123,6 +127,7 @@ For OCR and screen capture guardrails, see `SAFETY_OCR.md`.
 - `CONTEXT.md` (context-layering and divergence notes)
 - `COMPACTIFIED_CONTEXT.md` (portable project summary)
 - `TODO.md` (plan and open questions)
+- `ADRs/README.md` (architecture decision record index)
 
 ---
 
@@ -158,10 +163,33 @@ If you want advice or recommendations, those belong in **separate, optional laye
 - **StatiBaker** handles time and state
 - **ITIR** handles meaning and interpretation
 - **TIRC** handles disagreement and plural readings
+- **SL** handles normative structure and constraints
 
 StatiBaker never interprets content.
 ITIR never manages lived context.
 They integrate via **context envelopes**, not shared logic.
+
+SB ingests **references only** (IDs/URIs) from TIRC/SL/ITIR and compiles
+temporal deltas (carryover/new/resolved). It does not read or summarize
+artifact content.
+Agentic systems should query SB via a read-only interface (e.g., MCP) before
+acting.
+
+## Observability sources
+- Prometheus is the primary numeric source (includes Graphite exporter metrics).
+- Grafana is a UI lens, not a data source.
+- InfluxDB (Home Assistant) is optional and only via curated summaries.
+
+## Core differentiation (questions)
+- **StatiBaker:** Where am I and what happened? (lived time, state reconstruction)
+- **SensibLaw:** What does this mean? (normative reasoning)
+- **TIRC:** How else can this be interpreted? (contested narratives, evidentiary integrity)
+
+## SB-only invariants (context prosthesis)
+- No agency: SB never initiates actions, messages, or nudges.
+- Append-only reality: gaps and contradictions are preserved as first-class objects.
+- Explicit compression: summaries declare loss profiles and remain expandable.
+- Deterministic replay: the same event log yields the same bake.
 
 ---
 

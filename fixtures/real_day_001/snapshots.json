@@ -1,0 +1,50 @@
+[
+  {
+    "id": "snap-001",
+    "ts": "2026-02-03T11:00:00Z",
+    "capture_kind": "screen",
+    "payload_ref": "blobs/sha256/aaa.png",
+    "app_id": "firefox.desktop",
+    "window_title": "OpenRecall - GitHub",
+    "display_id": "display-1",
+    "hash": "phash:0f0f0f0f",
+    "policy_flags": ["capture_allowed"],
+    "redacted": false
+  },
+  {
+    "id": "snap-002",
+    "ts": "2026-02-03T11:01:30Z",
+    "capture_kind": "screen",
+    "payload_ref": "blobs/sha256/bbb.png",
+    "app_id": "firefox.desktop",
+    "window_title": "OpenRecall - GitHub",
+    "display_id": "display-1",
+    "hash": "phash:0f0f0f1f",
+    "policy_flags": ["capture_allowed"],
+    "redacted": false
+  },
+  {
+    "id": "snap-003",
+    "ts": "2026-02-03T11:10:00Z",
+    "capture_kind": "screen",
+    "payload_ref": "blobs/sha256/ccc.png",
+    "app_id": "org.gnome.Terminal",
+    "window_title": "bash - session",
+    "display_id": "display-1",
+    "hash": "phash:ff00ff00",
+    "policy_flags": ["capture_allowed"],
+    "redacted": false
+  },
+  {
+    "id": "snap-004",
+    "ts": "2026-02-03T11:11:10Z",
+    "capture_kind": "screen",
+    "payload_ref": "blobs/sha256/ddd.png",
+    "app_id": "org.gnome.Terminal",
+    "window_title": "bash - session",
+    "display_id": "display-1",
+    "hash": "phash:ff00ff10",
+    "policy_flags": ["capture_allowed"],
+    "redacted": false
+  }
+]

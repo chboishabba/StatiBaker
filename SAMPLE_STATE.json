@@ -15,6 +15,9 @@
   ],
   "blocked_tasks": [],
   "carryover_threads": ["stati_brief_design"],
+  "carryover_new_threads": [],
+  "carryover_resolved_threads": [],
+  "carryover_age_days": {"stati_brief_design": 1},
   "agent_actions": [
     "Generate sample brief from synthetic data",
     "Validate JSON schema"
@@ -46,6 +49,47 @@
       "text": "Drafted schema fields",
       "thread_id": "stati_schema",
       "severity": "info"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-001",
+      "ts": "2026-02-03T11:02:10Z",
+      "capture_kind": "screen",
+      "payload_ref": "blobs/sha256/7b0c3b2f...png",
+      "app_id": "org.gnome.TextEditor",
+      "window_title": "STATE_SCHEMA.json — Gedit",
+      "display_id": "display-1",
+      "hash": "phash:8f2a9c1d",
+      "policy_flags": ["capture_allowed"],
+      "redacted": false
+    },
+    {
+      "id": "snap-002",
+      "ts": "2026-02-03T11:05:42Z",
+      "capture_kind": "screen",
+      "payload_ref": "blobs/sha256/13a0a9d1...png",
+      "app_id": "firefox.desktop",
+      "window_title": "openrecall/openrecall · GitHub — Mozilla Firefox",
+      "display_id": "display-1",
+      "hash": "phash:90b27a6e",
+      "policy_flags": ["capture_allowed", "ocr_opt_in"],
+      "redacted": false
+    }
+  ],
+  "activity_events": [
+    {
+      "id": "act-001",
+      "t_start": "2026-02-03T11:02:10Z",
+      "t_end": "2026-02-03T11:05:42Z",
+      "snapshot_ids": ["snap-001", "snap-002"],
+      "primary_app": "firefox.desktop",
+      "title": "Reviewing OpenRecall repo",
+      "key_text": ["openrecall", "privacy-first", "activity timeline"],
+      "thumb_snapshot_id": "snap-002",
+      "confidence": 0.72,
+      "policy_flags": ["sessionized"],
+      "derived_from": ["snap-001", "snap-002"]
     }
   ],
   "threads": [

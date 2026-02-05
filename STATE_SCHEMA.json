@@ -18,6 +18,12 @@
     "open_questions": {"type": "array", "items": {"type": "string"}},
     "blocked_tasks": {"type": "array", "items": {"type": "string"}},
     "carryover_threads": {"type": "array", "items": {"type": "string"}},
+    "carryover_new_threads": {"type": "array", "items": {"type": "string"}},
+    "carryover_resolved_threads": {"type": "array", "items": {"type": "string"}},
+    "carryover_age_days": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
     "agent_actions": {"type": "array", "items": {"type": "string"}},
     "agent_permissions": {
       "type": "object",
@@ -53,6 +59,47 @@
           "text": {"type": "string"},
           "thread_id": {"type": "string"},
           "severity": {"type": "string", "enum": ["info", "warn", "error"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "snapshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "ts", "capture_kind", "payload_ref"],
+        "properties": {
+          "id": {"type": "string"},
+          "ts": {"type": "string", "format": "date-time"},
+          "capture_kind": {"type": "string"},
+          "payload_ref": {"type": "string"},
+          "app_id": {"type": "string"},
+          "window_title": {"type": "string"},
+          "display_id": {"type": "string"},
+          "hash": {"type": "string"},
+          "policy_flags": {"type": "array", "items": {"type": "string"}},
+          "redacted": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "activity_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "t_start", "t_end", "snapshot_ids"],
+        "properties": {
+          "id": {"type": "string"},
+          "t_start": {"type": "string", "format": "date-time"},
+          "t_end": {"type": "string", "format": "date-time"},
+          "snapshot_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "primary_app": {"type": "string"},
+          "title": {"type": "string"},
+          "key_text": {"type": "array", "items": {"type": "string"}},
+          "thumb_snapshot_id": {"type": "string"},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "policy_flags": {"type": "array", "items": {"type": "string"}},
+          "derived_from": {"type": "array", "items": {"type": "string"}}
         },
         "additionalProperties": false
       }

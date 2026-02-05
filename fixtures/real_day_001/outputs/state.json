@@ -1,0 +1,41 @@
+{
+  "agent_actions": [],
+  "agent_permissions": {
+    "autonomous_runs": false,
+    "write_actions": false
+  },
+  "alerts": [],
+  "blocked_tasks": [],
+  "carryover_threads": [],
+  "constraints": [],
+  "date": "2026-02-03",
+  "day_state": "active",
+  "events": [
+    {
+      "id": "git-abc1234",
+      "source": "git",
+      "text": "commit abc1234 (StatiBaker)",
+      "ts": "2026-02-03T10:15:00Z",
+      "type": "commit"
+    },
+    {
+      "id": "git-7890abc",
+      "source": "git",
+      "text": "commit 7890abc (StatiBaker)",
+      "ts": "2026-02-03T14:42:00Z",
+      "type": "commit"
+    }
+  ],
+  "human_energy": "medium",
+  "open_questions": [],
+  "priorities": [
+    "Review git activity",
+    "Update SB outputs"
+  ],
+  "sources": [
+    {
+      "kind": "git",
+      "uri": "fixtures/real_day_001/logs/git/2026-02-03.jsonl"
+    }
+  ]
+}

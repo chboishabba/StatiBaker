@@ -1,0 +1,9 @@
+{
+  "cpu_usage": "avg(cpu_usage)",
+  "cpu_temperature_c": "avg(cpu_temperature)",
+  "memory_available_bytes": "avg(memory_available)",
+  "disk_bytes_used": "sum(disk_bytes_used)",
+  "disk_bytes_avail": "sum(disk_bytes_avail)",
+  "disk_utilization": "avg(disk_utilization)",
+  "disk_temperature_c": "avg(disk_temperature)"
+}

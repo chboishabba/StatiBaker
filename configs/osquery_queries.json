@@ -1,0 +1,30 @@
+[
+  {
+    "name": "uptime",
+    "query": "SELECT total_seconds FROM uptime;"
+  },
+  {
+    "name": "system_info",
+    "query": "SELECT hostname, os_version, os_major, os_minor, os_build FROM system_info;"
+  },
+  {
+    "name": "memory_info",
+    "query": "SELECT memory_total, memory_free, swap_total, swap_used FROM memory_info;"
+  },
+  {
+    "name": "cpu_info",
+    "query": "SELECT model, cores, physical_cores, cpu_type, max_clock_speed FROM cpu_info;"
+  },
+  {
+    "name": "interface_addresses",
+    "query": "SELECT interface, family, address FROM interface_addresses;"
+  },
+  {
+    "name": "mounts",
+    "query": "SELECT path, total, used, available FROM mounts;"
+  },
+  {
+    "name": "usb_devices",
+    "query": "SELECT vendor, model, serial FROM usb_devices;"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "act-000001",
+    "t_start": "2026-02-03T11:00:00Z",
+    "t_end": "2026-02-03T11:01:30Z",
+    "snapshot_ids": ["snap-001", "snap-002"],
+    "primary_app": "firefox.desktop",
+    "title": "openrecall - github",
+    "key_text": [],
+    "thumb_snapshot_id": "snap-002",
+    "confidence": 0.6,
+    "policy_flags": ["capture_allowed"],
+    "derived_from": ["snap-001", "snap-002"]
+  },
+  {
+    "id": "act-000002",
+    "t_start": "2026-02-03T11:10:00Z",
+    "t_end": "2026-02-03T11:11:10Z",
+    "snapshot_ids": ["snap-003", "snap-004"],
+    "primary_app": "org.gnome.Terminal",
+    "title": "bash - session",
+    "key_text": [],
+    "thumb_snapshot_id": "snap-004",
+    "confidence": 0.6,
+    "policy_flags": ["capture_allowed"],
+    "derived_from": ["snap-003", "snap-004"]
+  }
+]

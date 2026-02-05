@@ -1,0 +1,13 @@
+{
+  "systemd-logind.service": "session_lifecycle",
+  "systemd-suspend.service": "suspend",
+  "systemd-hibernate.service": "hibernate",
+  "systemd-hybrid-sleep.service": "hybrid_sleep",
+  "NetworkManager.service": "network_state",
+  "systemd-networkd.service": "network_state",
+  "systemd-resolved.service": "dns_state",
+  "systemd-timesyncd.service": "time_sync",
+  "systemd-udevd.service": "device_event",
+  "systemd-oomd.service": "oom_event",
+  "systemd-coredump.service": "crash_event"
+}

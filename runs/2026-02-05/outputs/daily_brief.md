@@ -1,0 +1,29 @@
+# Daily Brief (Generated)
+Date: 2026-02-05
+
+## Context snapshot
+- Yesterday ended at: unknown
+- Energy: medium
+- Constraints: none
+- Alerts: none
+
+## Top priorities (max 5)
+1. Review git activity
+2. Update SB outputs
+
+## Carryover threads
+- None
+
+## Open questions
+- None
+
+## Agent actions queued
+- None
+
+## Schedule anchors
+- None
+
+## Notes
+- Git repo: unknown
+- Commits captured: 0 (none)
+- System uptime (seconds): 29073

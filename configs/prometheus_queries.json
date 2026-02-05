@@ -1,0 +1,4 @@
+{
+  "cpu_usage": "1 - avg(rate(node_cpu_seconds_total{mode=\"idle\"}[5m]))",
+  "mem_available_ratio": "node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes"
+}

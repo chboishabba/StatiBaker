@@ -248,6 +248,73 @@ That’s the ethical distinction.
 
 ---
 
+## 8. Recall / OpenRecall: the right way to borrow (and where to diverge)
+
+Recall-class systems are **continuous, queryable, time-indexed state recorders**:
+screens + text + app context → local indexing → retrieval.
+That is a *capture-and-recall substrate*, not a conversational memory system.
+
+### The four subsystems (and the guardrails)
+
+1. **Capture (Linux reality)**
+   - Wayland-first via PipeWire + xdg-desktop-portal (consent, per-window).
+   - X11 fallback behind explicit legacy-mode flag.
+   - User-visible capture indicator, always.
+
+2. **Extraction**
+   - Frame thinning (hashing, near-duplicate drops).
+   - OCR is **policy-gated**, never silent.
+   - Redaction for sensitive apps and fields before any embedding.
+
+3. **Storage + indexing**
+   - Append-only event log + content-addressed blobs.
+   - Derived stores (OCR, embeddings, thumbnails) are recomputable.
+   - Never overwrite; always re-derive.
+
+4. **Query + replay**
+   - Time scrubber + app-scoped search + semantic search.
+   - Replay is *context reconstruction*, not chat.
+
+### Authority split (locked)
+
+- **SB owns activity_events** (deterministic segmentation; timeline truth).
+- **ITIR ingests activity_events** (narrative, links, audits; never re-segments time).
+- **OpenRecall provides snapshots** (observed evidence + scrubbing; no semantic authority).
+
+Invariant: **OpenRecall may render events, never decide them.**
+
+### The missing piece in OpenRecall (what SB should add)
+
+OpenRecall’s base unit is a **snapshot**.
+SB needs an **activity event layer**: a deterministic grouping that yields
+“you did this → then this → then this,” not just “here are images over time.”
+
+**`activity_event` (conceptual)**
+- `event_id`, `t_start`, `t_end`
+- `primary_app`, `title`, `key_text`
+- `thumb_snapshot_id`, `snapshots[]`
+- `confidence`, `policy_flags`
+
+**Sessionization rules (deterministic)**
+- Hard breaks: app/window change, idle gap, big visual diff.
+- Soft breaks: title change, OCR token drift, URL change.
+- Merge rule: same app + same-ish title + high text overlap.
+
+### Layering that preserves SB’s invariants
+
+| Layer | Purpose | Status |
+| ----- | ------- | ------ |
+| L0: Raw snapshots | Observed evidence | Immutable |
+| L1: Extracted signals | OCR/embeddings | Provisional |
+| L2: Activity events | Timeline segments | Recomputable |
+| L3: Narratives | Optional overlays | Non-authoritative |
+
+**Key rule:** L2+ never contaminates L0. Expansion always beats summarization.
+
+This keeps SB honest: **local-first, auditable, no silent OCR, no hidden memory.**
+
+---
+
 ## Final synthesis (the takeaway)
 
 Manthan’s blog is a lesson in **engineering pragmatism for conversational systems**.
@@ -275,3 +342,23 @@ Or, in one sentence:
 > StatiBaker’s memory must make reality feel legible — even when it’s messy.**
 
 That’s the difference that keeps SB from becoming the thing your PDF warns about.
+
+---
+
+## Core questions + context prosthesis (suite split)
+
+- **Time vs meaning split:** SB owns temporal segmentation and state reconstruction; ITIR owns interpretation and meaning.
+- **Layer boundaries:** Observers report what was observed; no layer answers another layer's question.
+- **StatiBaker:** Where am I and what happened? (lived time, state reconstruction)
+- **SensibLaw:** What does this mean? (normative reasoning)
+- **TiRCorder:** How else can this be interpreted? (contested narratives, evidentiary integrity)
+
+## Context prosthesis (SB-only invariants)
+
+- Segmentation authority: SB is the only authority on event/session boundaries.
+- ITIR overlay rules: ITIR may annotate or link to SB events but must not re-segment time.
+- No agency: SB never initiates actions, messages, or nudges.
+- Append-only reality: gaps and contradictions remain first-class state objects.
+- Explicit compression: summaries declare loss profiles and remain expandable.
+- Deterministic replay: the same event log yields the same bake.
+- ADHD support focus: SB reconstructs lived state after context collapse without smoothing the gaps.
