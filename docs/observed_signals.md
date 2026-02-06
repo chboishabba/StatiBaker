@@ -89,6 +89,9 @@ Example using pre-exported JSONL files (no live collection):
 
 All inputs are optional; missing files are skipped with warnings.
 
+## Social stub collectors
+See `docs/social_stub_collectors.md` for per-platform stub inputs.
+
 ## Provenance
 Every record must include:
 - `provenance.source` (collector or adapter name)

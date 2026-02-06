@@ -29,6 +29,9 @@
   usage, AV status, cloud audit feeds, and notes metadata.
 - Added meta-only adapters and tests for social feeds plus Windows/macOS
   event log stubs.
+- Added social platform stubs (Bluesky, Twitter/X, Mastodon, Reddit) and
+  red-team guard for content-to-embedding leakage.
+- Added social stub collector guide and social redaction rules.
 
 ## 2026-02-05
 - Added Recall/OpenRecall notes, activity event layer, and sessionization rules to `CONTEXT.md`.

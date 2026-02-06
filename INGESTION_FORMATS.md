@@ -184,6 +184,9 @@ Each line (JSON):
   "provenance": {"source": "bluesky_audit", "collected_at": "2026-02-05T14:30:01Z"}
 }
 
+### Social audit redaction rules
+See `docs/social_audit_redaction.md` for required hashing and forbidden fields.
+
 ## Power and lifecycle signals (machine)
 Path: `logs/power/YYYY-MM-DD.jsonl`
 

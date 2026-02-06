@@ -19,6 +19,7 @@ A successful red-team test may result in SB refusing to operate.
 - Systemic dependency failure (global upstream failure).
 - Side-channel inference risks (counts/timing/bundle size).
 - Query path traversal or arbitrary file reads via CLI.
+- Vector-embedding leakage from hostile content.
 
 ## Out-of-scope (for now)
 - Host OS hardening.
@@ -118,6 +119,15 @@ Goal: document leakage, not fix it.
 - Bundle size, counts, and timing may reveal patterns.
 - Expectation: documented as residual risk, not silently expanded.
 
+### 13) Vector embedding leakage (addendum)
+Goal: prevent content or secrets from being embedded and later leaked via
+nearest-neighbor retrieval.
+- Attempt: feed adapters records containing secrets in fields that must be
+  hashed or dropped, then run any downstream embedding job.
+- Expectation: embeddings are never computed over raw content fields; content
+  fields are absent in normalized outputs; embedding jobs (if present) must
+  refuse records missing explicit consent + policy receipts.
+
 ## Considerations
 - Red-team tests must be deterministic and non-destructive.
 - Any mitigation must be documented before code changes.
@@ -125,3 +135,41 @@ Goal: document leakage, not fix it.
 - Tests must include event injection, command/RCE payloads, credential leakage, and path traversal.
 - Tests should include provenance laundering and systemic dependency failure cases.
 - Resource exhaustion should fail loudly or emit saturation markers, never partial truth.
+
+## Addendum: Platform-wide security concerns
+
+These are cross-cutting risks beyond adapter content leakage. They should be
+modeled in red-team exercises and kept visible in governance docs.
+
+### A) Identity correlation across contexts
+Risk: hashed identifiers can still enable cross-domain linkage (e.g., same hash
+across personal/work contexts). Mitigation: scoped salts per context and
+explicit non-join boundaries.
+
+### B) Consent drift
+Risk: metadata collection expands beyond original consent scope. Mitigation:
+policy receipts and capture scope IDs on all records.
+
+### C) Supply-chain adapter risk
+Risk: third-party adapters smuggle content or execute payloads. Mitigation:
+adapter allowlist + red-team payload fixtures + deterministic JSONL outputs.
+
+### D) Cloud audit privilege escalation
+Risk: audit feeds expose more than intended (e.g., content titles). Mitigation:
+strict field allowlists, hash-only identifiers, reject unknown fields.
+
+### E) UI over-interpretation
+Risk: UI implies judgment (importance, blame). Mitigation: conservation-only
+surfaces, explicit lens naming, and refusal of semantic labels.
+
+### F) Retention misconfiguration
+Risk: infinite retention of meta signals enables long-horizon surveillance.
+Mitigation: user-controlled retention + explicit deletion receipts.
+
+### G) Cross-project exfiltration
+Risk: adapters read files outside allowed roots. Mitigation: base-path guards
+and explicit source registries.
+
+### H) Embedding leakage (global)
+Risk: any embedding on raw content reintroduces semantics. Mitigation: explicit
+no-embed policy for meta-only streams; embed only consented artifacts.

@@ -15,6 +15,7 @@ from adapters import (
     window_focus,
 )
 from adapters import macos_unified_log_stub, windows_event_stub
+from adapters import social_bluesky_stub, social_twitter_stub, social_mastodon_stub, social_reddit_stub
 
 
 FIXTURE_DIR = Path(__file__).parent / "fixtures"
@@ -92,3 +93,31 @@ def test_macos_unified_stub_normalizes():
     assert normalized["signal"] == "system"
     assert normalized["platform"] == "macos"
     assert "provenance" in normalized
+
+
+def test_social_bluesky_stub():
+    record = _load(FIXTURE_DIR / "social_bluesky_sample.jsonl")
+    normalized = social_bluesky_stub.normalize_record(record, "test")
+    assert normalized["signal"] == "social_feed"
+    assert normalized["platform"] == "bluesky"
+
+
+def test_social_twitter_stub():
+    record = _load(FIXTURE_DIR / "social_twitter_sample.jsonl")
+    normalized = social_twitter_stub.normalize_record(record, "test")
+    assert normalized["signal"] == "social_feed"
+    assert normalized["platform"] == "twitter"
+
+
+def test_social_mastodon_stub():
+    record = _load(FIXTURE_DIR / "social_mastodon_sample.jsonl")
+    normalized = social_mastodon_stub.normalize_record(record, "test")
+    assert normalized["signal"] == "social_feed"
+    assert normalized["platform"] == "mastodon"
+
+
+def test_social_reddit_stub():
+    record = _load(FIXTURE_DIR / "social_reddit_sample.jsonl")
+    normalized = social_reddit_stub.normalize_record(record, "test")
+    assert normalized["signal"] == "social_feed"
+    assert normalized["platform"] == "reddit"

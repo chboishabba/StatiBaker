@@ -9,6 +9,10 @@ from adapters import (
     input_activity,
     notes_meta,
     social_feed,
+    social_bluesky_stub,
+    social_mastodon_stub,
+    social_reddit_stub,
+    social_twitter_stub,
     window_focus,
 )
 
@@ -124,3 +128,21 @@ def test_social_feed_hashes_ids():
     }
     normalized = social_feed.normalize_record(record, "test")
     assert not _contains_forbidden(normalized)
+
+
+def test_social_stubs_hash_ids():
+    record = {
+        "ts": "2026-02-06T12:35:00Z",
+        "post_id": "id-1",
+        "author": "user",
+        "content": "leak-this",
+        "collected_at": "2026-02-06T12:35:01Z",
+    }
+    for adapter in (
+        social_bluesky_stub,
+        social_twitter_stub,
+        social_mastodon_stub,
+        social_reddit_stub,
+    ):
+        normalized = adapter.normalize_record(record, "test")
+        assert not _contains_forbidden(normalized)

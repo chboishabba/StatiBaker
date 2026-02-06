@@ -231,6 +231,7 @@ import os
 from sb.compress import apply_phase2_compression
 from sb.drift import compute_drift
 from sb.fold import apply_minimal_fold, previous_date
+from sb.observed_ingest import load_observed_events
 
 date = os.environ["DATE"]
 git_log_path = os.environ["GIT_LOG_PATH"]
@@ -279,6 +280,11 @@ for entry in entries:
             "text": f"commit {short_hash} ({entry['repo']})",
         }
     )
+
+observed_events = load_observed_events(
+    os.path.join(os.environ["ROOT_DIR"], "runs", date, "logs")
+)
+events.extend(observed_events)
 
 state = {
     "date": date,
