@@ -13,6 +13,13 @@ Date: 2026-02-05
 
 ## Carryover threads
 - None
+- New today: none
+- Resolved today: none
+
+## Carryover window counts
+- <= 7 days: 0
+- <= 14 days: 0
+- <= 30 days: 0
 
 ## Open questions
 - None
@@ -24,6 +31,6 @@ Date: 2026-02-05
 - None
 
 ## Notes
-- Git repo: unknown
-- Commits captured: 0 (none)
+- Git repo: StatiBaker
+- Commits captured: 1 (92af3e4)
 - System uptime (seconds): 29073

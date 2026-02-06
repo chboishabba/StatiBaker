@@ -1,0 +1,19 @@
+{
+  "counters": {
+    "event_source_diversity": 0,
+    "low_signal_events": 0,
+    "low_signal_runs": 0,
+    "stale_carryover_threads": 0
+  },
+  "date": "2026-02-15",
+  "flags": [],
+  "provenance": {
+    "algorithm": "sb.drift.v1",
+    "config": {
+      "high_activity_min": 20,
+      "low_diversity_max": 1,
+      "low_signal_run_min": 3,
+      "stale_days": 7
+    }
+  }
+}

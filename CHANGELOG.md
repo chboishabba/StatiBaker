@@ -1,7 +1,20 @@
 # Changelog
 
+## 2026-02-06
+- Expanded red-team plan with path traversal, DoS/resource exhaustion, and
+  blast-radius constraints.
+- Updated failure modes with explicit blast-radius definition and limits.
+- Added optional base-path guard to the CLI query surface.
+- Extended ITIR ingest contract and validation with explicit forbidden fields.
+- Added red-team tests for query path-escape refusal and overlay state-field
+  injection.
+- Added OpenClaw integration doc with execution envelope contract and truth-substrate doctrine.
+- Documented tool execution envelope ingestion format and references in core docs.
+- Added multi-modal system doctrine for epistemic modes and authority boundaries.
+
 ## 2026-02-05
 - Added Recall/OpenRecall notes, activity event layer, and sessionization rules to `CONTEXT.md`.
+- Removed OpenRecall's hard `python-doctr` git pin to avoid dependency conflicts; keep `python-doctr` optional.
 - Locked authority split for activity_events across SB/ITIR/OpenRecall in `CONTEXT.md`.
 - Documented Recall-class capture substrate and policy gates in `DESIGN.md`.
 - Clarified activity_event ownership and ITIR ingest rules in `DESIGN.md`.
@@ -23,6 +36,27 @@
 - Added CLI exit-code test fixture for invalid config.
 - Documented observability sources (Prometheus/Graphite/Grafana, optional InfluxDB) in `README.md`, `DESIGN.md`, and `COMPACTIFIED_CONTEXT.md`.
 - Added observability source notes in `OBSERVED_SIGNALS.md` and `TODO.md`.
+- Added rolling window carryover counts to minimal fold outputs and `STATE_SCHEMA.json`.
+- Added carryover window counts to `SAMPLE_STATE.json`.
+- Included carryover deltas and window counts in generated daily briefs (`scripts/run_day.sh`).
+- Added guard tests to ensure folds do not mutate event content or inject summaries.
+- Ran multi-day replay outputs for deterministic carryover aging (2026-02-06 to 2026-02-08).
+- Added Wazuh lifecycle adapter for structured system events.
+- Added HTTP `/metrics` server over baked state outputs.
+- Added determinism tests for Wazuh adapter and Prometheus summaries.
+- Added OCR/Android/query/ITIR ingest contract docs plus ITIR overlay validation helper.
+- Added drift counters output (`runs/<date>/outputs/drift.json`) with `DRIFT_SIGNALS.md`.
+- Added Phase-2 compression (collapse of repeated `low_signal=true` events).
+- Added read-only query CLI (`scripts/query_state.py`) and query helpers.
+- Added bundle export/verify tooling and bundle spec.
+- Documented time hygiene policy and failure modes.
+- Added red-team boundary tests (re-segmentation rejection).
+- Expanded red-team plan with DoS, provenance laundering, temporal confusion, and systemic dependency failure.
+- Added red-team tests for RCE payload inertness, metric smuggling shape, env leakage, and bundle tamper detection.
+- Added empty-repo handling in git adapter and inactivity run test.
+- Added bundle export + verify replay test.
+- Added compression expansion test, loss profile doc, and agent containment doc.
+- Added Prometheus failure handling + bad-data run tests with missing labels.
 
 ## 2026-02-03
 - Expanded SB docs with context prosthesis/ADHD framing, SITREP naming, explicit loss profiles, and read-only agent query surface.

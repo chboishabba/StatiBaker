@@ -17,12 +17,25 @@
     },
     "open_questions": {"type": "array", "items": {"type": "string"}},
     "blocked_tasks": {"type": "array", "items": {"type": "string"}},
+    "labels": {"type": "array", "items": {"type": "string"}},
     "carryover_threads": {"type": "array", "items": {"type": "string"}},
     "carryover_new_threads": {"type": "array", "items": {"type": "string"}},
     "carryover_resolved_threads": {"type": "array", "items": {"type": "string"}},
     "carryover_age_days": {
       "type": "object",
       "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "carryover_window_counts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["window_days", "count"],
+        "properties": {
+          "window_days": {"type": "integer", "minimum": 1},
+          "count": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
     },
     "agent_actions": {"type": "array", "items": {"type": "string"}},
     "agent_permissions": {
@@ -58,7 +71,10 @@
           "type": {"type": "string"},
           "text": {"type": "string"},
           "thread_id": {"type": "string"},
-          "severity": {"type": "string", "enum": ["info", "warn", "error"]}
+          "severity": {"type": "string", "enum": ["info", "warn", "error"]},
+          "low_signal": {"type": "boolean"},
+          "collapsed_count": {"type": "integer", "minimum": 1},
+          "collapsed_ids": {"type": "array", "items": {"type": "string"}}
         },
         "additionalProperties": false
       }
@@ -127,6 +143,25 @@
         "missed": {"type": "array", "items": {"type": "string"}},
         "drift_signals": {"type": "array", "items": {"type": "string"}},
         "tomorrow_setup": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+    ,
+    "compression": {
+      "type": "object",
+      "properties": {
+        "loss_profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["kind"],
+            "properties": {
+              "kind": {"type": "string"},
+              "details": {"type": "object"}
+            },
+            "additionalProperties": false
+          }
+        }
       },
       "additionalProperties": false
     }

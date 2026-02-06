@@ -1,0 +1,47 @@
+{
+  "agent_actions": [],
+  "agent_permissions": {
+    "autonomous_runs": false,
+    "write_actions": false
+  },
+  "alerts": [],
+  "blocked_tasks": [],
+  "carryover_age_days": {},
+  "carryover_new_threads": [],
+  "carryover_resolved_threads": [],
+  "carryover_threads": [],
+  "carryover_window_counts": [
+    {
+      "count": 0,
+      "window_days": 7
+    },
+    {
+      "count": 0,
+      "window_days": 14
+    },
+    {
+      "count": 0,
+      "window_days": 30
+    }
+  ],
+  "compression": {
+    "loss_profiles": []
+  },
+  "constraints": [],
+  "date": "2026-02-15",
+  "day_state": "active",
+  "events": [],
+  "human_energy": "medium",
+  "labels": [],
+  "open_questions": [],
+  "priorities": [
+    "Review git activity",
+    "Update SB outputs"
+  ],
+  "sources": [
+    {
+      "kind": "git",
+      "uri": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-15/logs/git/2026-02-15.jsonl"
+    }
+  ]
+}

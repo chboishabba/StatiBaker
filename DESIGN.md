@@ -39,6 +39,8 @@ SB consumes curated facts, never raw logs.
 - Grafana is a visualization lens only (dashboard scoped to activity windows).
 - InfluxDB (Home Assistant) may be added when credentials and live data are
   confirmed; SB should consume curated summaries, not raw series.
+- SB may expose a read-only `/metrics` endpoint over baked state (activity_events,
+  carryover counts, sessionizer runtime).
 
 ## Pipeline
 1. Ingestion (append-only)
@@ -56,6 +58,58 @@ SB consumes curated facts, never raw logs.
    - Agent brief (JSON) -> `STATE_SCHEMA.json`
    - Optional task/knowledge graph
 
+## Phase 1 minimal fold (implementation plan)
+1. Load previous day state from `runs/<date-1>/outputs/state.json`.
+2. Compute carryover/new/resolved thread sets.
+3. Update `carryover_age_days` for each active thread.
+4. Compute rolling window counts for carryover threads at 7/14/30 days.
+5. Emit a daily brief from real logs (git log + optional uptime facts).
+6. Store outputs under `runs/<date>/outputs/` via `scripts/run_day.sh`.
+
+## Sprint 1 hardening checks (runtime guardrails)
+- Guard tests:
+  - Fold must not re-tokenize, summarize, or promote artifact content.
+  - Fold may only add carryover metadata; all other fields must remain untouched.
+- Multi-day replay:
+  - Run `scripts/run_day.sh` for 3 consecutive dates.
+  - Verify carryover ages advance deterministically and replays are stable.
+
+## Phase 2 compression (selective)
+- Collapse repeated low-signal events only when `event.low_signal=true`.
+- Record loss profiles in `state.json` under `compression.loss_profiles`.
+- Maintain explicit expansion metadata (`collapsed_count`, `collapsed_ids`).
+- Expansion rules are documented in `LOSS_PROFILES.md`.
+
+## Drift signals (read-only)
+- Drift counters are written to `runs/<date>/outputs/drift.json`.
+- Drift never mutates `state.json` or daily briefs.
+
+## Read-only query surface (CLI)
+- CLI entrypoint: `scripts/query_state.py`.
+- Supported queries: activity_events, carryover summary, provenance.
+
+## Agent containment
+- Agents are read-only and must not mutate SB outputs.
+- See `AGENT_CONTAINMENT.md`.
+
+## Portability & replay integrity
+- Export bundles are self-describing with hashes and policy receipts.
+- `verify-bundle` recomputes drift and validates manifest hashes.
+
+## Time hygiene (documented policy)
+- Aging is visible and explicit; no silent forgetting.
+- Carryover saturation uses labels only (no summaries, no deletions).
+
+## Maximum acceptable blast radius
+- Failures must be contained to the current `runs/<date>/` outputs.
+- Missing or saturated inputs must emit explicit absence/limit markers.
+- Bundles must verify fully or be rejected.
+- External observers may not redefine time boundaries.
+- Deterministic replay is mandatory; refuse if determinism breaks.
+
+## Boundary lock
+- Red-team tests must reject re-segmentation and summary injection attempts.
+
 ## Daily outputs
 A. Morning brief (human)
 - Context snapshot
@@ -68,6 +122,7 @@ B. Machine state (agents)
 - Day state, energy, blockers, carryover threads
 - Agent permissions for autonomous runs
 - Schema: `STATE_SCHEMA.json`
+- Execution envelopes for tool runs (see `docs/openclaw_integration.md`)
 
 C. Evening retrospective
 - Completed, partial, missed tasks

@@ -42,6 +42,18 @@ Notes:
 - Structured events only (service start/stop, suspend/resume, device attach/detach).
 - No raw journal text spam.
 
+### 3b) Wazuh lifecycle events (structured)
+Path: `logs/system/YYYY-MM-DD.jsonl`
+
+Example:
+```json
+{"ts":"2026-02-05T12:04:01Z","signal":"system","event":"wazuh_lifecycle","kind":"network_down","source":"wazuh","agent":"host-01"}
+```
+
+Notes:
+- Lifecycle only (boot, suspend/resume, network up/down, service restarts).
+- Wazuh alert semantics are ignored; only structured lifecycle events are kept.
+
 ### 4) Power and lifecycle signals
 Path: `logs/power/YYYY-MM-DD.jsonl`
 

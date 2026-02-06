@@ -17,6 +17,14 @@ class TestFold(unittest.TestCase):
         self.assertEqual(["thread-c"], actual["carryover_new_threads"])
         self.assertEqual(["thread-a"], actual["carryover_resolved_threads"])
         self.assertEqual({"thread-b": 2, "thread-c": 0}, actual["carryover_age_days"])
+        self.assertEqual(
+            [
+                {"window_days": 7, "count": 2},
+                {"window_days": 14, "count": 2},
+                {"window_days": 30, "count": 2},
+            ],
+            actual["carryover_window_counts"],
+        )
 
     def test_apply_minimal_fold_inherits_previous_if_missing(self):
         prev_state = {
@@ -31,6 +39,14 @@ class TestFold(unittest.TestCase):
         self.assertEqual([], actual["carryover_new_threads"])
         self.assertEqual([], actual["carryover_resolved_threads"])
         self.assertEqual({"thread-a": 5}, actual["carryover_age_days"])
+        self.assertEqual(
+            [
+                {"window_days": 7, "count": 1},
+                {"window_days": 14, "count": 1},
+                {"window_days": 30, "count": 1},
+            ],
+            actual["carryover_window_counts"],
+        )
 
     def test_previous_date(self):
         self.assertEqual("2026-02-04", previous_date("2026-02-05"))

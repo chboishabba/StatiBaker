@@ -10,10 +10,32 @@
   "carryover_new_threads": [],
   "carryover_resolved_threads": [],
   "carryover_threads": [],
+  "carryover_window_counts": [
+    {
+      "count": 0,
+      "window_days": 7
+    },
+    {
+      "count": 0,
+      "window_days": 14
+    },
+    {
+      "count": 0,
+      "window_days": 30
+    }
+  ],
   "constraints": [],
   "date": "2026-02-05",
   "day_state": "active",
-  "events": [],
+  "events": [
+    {
+      "id": "git-92af3e4",
+      "source": "git",
+      "text": "commit 92af3e4 (StatiBaker)",
+      "ts": "2026-02-05T22:15:41+10:00",
+      "type": "commit"
+    }
+  ],
   "human_energy": "medium",
   "open_questions": [],
   "priorities": [

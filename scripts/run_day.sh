@@ -15,6 +15,7 @@ LOG_DIR="$RUN_DIR/logs/git"
 OUT_DIR="$RUN_DIR/outputs"
 
 mkdir -p "$LOG_DIR" "$OUT_DIR"
+export PYTHONPATH="${PYTHONPATH:-$ROOT_DIR}"
 
 GIT_LOG_PATH="$LOG_DIR/$DATE.jsonl"
 python "$ROOT_DIR/adapters/gitlog.py" --repo "$REPO_PATH" --date "$DATE" --output "$GIT_LOG_PATH"
@@ -32,20 +33,30 @@ if [[ -n "$PROM_BASE_URL" ]]; then
   METRICS_LOG_PATH="$METRICS_LOG_DIR/$DATE.jsonl"
   QUERIES_PATH="${PROM_QUERIES:-$ROOT_DIR/configs/prometheus_queries.json}"
   mkdir -p "$METRICS_LOG_DIR"
-  python "$ROOT_DIR/adapters/prometheus_summary.py" \
+  if python "$ROOT_DIR/adapters/prometheus_summary.py" \
     --base-url "$PROM_BASE_URL" \
     --date "$DATE" \
     --queries "$QUERIES_PATH" \
-    --output "$METRICS_LOG_PATH"
+    --output "$METRICS_LOG_PATH"; then
+    PROM_STATUS="ok"
+  else
+    PROM_STATUS="failed"
+    : >"$METRICS_LOG_PATH"
+  fi
 fi
 
 if [[ -n "$OSQUERY_QUERIES" ]]; then
   FACTS_LOG_DIR="$RUN_DIR/logs/system_facts"
   FACTS_LOG_PATH="$FACTS_LOG_DIR/$DATE.jsonl"
   mkdir -p "$FACTS_LOG_DIR"
-  python "$ROOT_DIR/adapters/osquery_poll.py" \
+  if python "$ROOT_DIR/adapters/osquery_poll.py" \
     --queries "$OSQUERY_QUERIES" \
-    --output "$FACTS_LOG_PATH"
+    --output "$FACTS_LOG_PATH"; then
+    OSQUERY_STATUS="ok"
+  else
+    OSQUERY_STATUS="failed"
+    : >"$FACTS_LOG_PATH"
+  fi
 fi
 
 DEFAULT_SNAPSHOTS="$ROOT_DIR/tests/fixtures/snapshots.json"
@@ -81,6 +92,7 @@ fi
 BRIEF_PATH="$OUT_DIR/daily_brief.md"
 RETRO_PATH="$OUT_DIR/retrospective.md"
 STATE_PATH="$OUT_DIR/state.json"
+DRIFT_PATH="$OUT_DIR/drift.json"
 
 ROOT_DIR="$ROOT_DIR" \
 DATE="$DATE" \
@@ -88,10 +100,15 @@ GIT_LOG_PATH="$GIT_LOG_PATH" \
 BRIEF_PATH="$BRIEF_PATH" \
 RETRO_PATH="$RETRO_PATH" \
 STATE_PATH="$STATE_PATH" \
+DRIFT_PATH="$DRIFT_PATH" \
+PROM_STATUS="${PROM_STATUS:-}" \
+OSQUERY_STATUS="${OSQUERY_STATUS:-}" \
 python - <<'PY'
 import json
 import os
 
+from sb.compress import apply_phase2_compression
+from sb.drift import compute_drift
 from sb.fold import apply_minimal_fold, previous_date
 
 date = os.environ["DATE"]
@@ -99,6 +116,9 @@ git_log_path = os.environ["GIT_LOG_PATH"]
 brief_path = os.environ["BRIEF_PATH"]
 retro_path = os.environ["RETRO_PATH"]
 state_path = os.environ["STATE_PATH"]
+drift_path = os.environ["DRIFT_PATH"]
+prom_status = os.environ.get("PROM_STATUS")
+osquery_status = os.environ.get("OSQUERY_STATUS")
 
 entries = []
 with open(git_log_path, "r", encoding="utf-8") as handle:
@@ -126,6 +146,69 @@ if os.path.exists(facts_path):
                     uptime_note = f"- System uptime (seconds): {total_seconds}"
                 break
 
+events = []
+for entry in entries:
+    short_hash = entry["hash"][:7]
+    events.append(
+        {
+            "id": f"git-{short_hash}",
+            "ts": entry["ts"],
+            "source": "git",
+            "type": "commit",
+            "text": f"commit {short_hash} ({entry['repo']})",
+        }
+    )
+
+state = {
+    "date": date,
+    "day_state": "active",
+    "human_energy": "medium",
+    "constraints": [],
+    "alerts": [],
+    "priorities": ["Review git activity", "Update SB outputs"],
+    "open_questions": [],
+    "blocked_tasks": [],
+    "carryover_threads": [],
+    "agent_actions": [],
+    "agent_permissions": {"autonomous_runs": False, "write_actions": False},
+    "sources": [{"kind": "git", "uri": git_log_path}],
+    "events": events,
+}
+
+prev_date = previous_date(date)
+prev_state_path = os.path.join(os.environ["ROOT_DIR"], "runs", prev_date, "outputs", "state.json")
+prev_state = {}
+if os.path.exists(prev_state_path):
+    with open(prev_state_path, "r", encoding="utf-8") as handle:
+        prev_state = json.load(handle)
+
+state = apply_minimal_fold(prev_state, state, date)
+state = apply_phase2_compression(state)
+drift = compute_drift(state)
+drift_payload = {
+    "date": date,
+    **drift,
+}
+labels = list(state.get("labels", []))
+if prom_status == "failed":
+    labels.append("prometheus_missing")
+if osquery_status == "failed":
+    labels.append("osquery_missing")
+state["labels"] = labels
+
+def _bullet_list(items, empty="- None"):
+    if not items:
+        return [empty]
+    return [f"- {item}" for item in items]
+
+carryover_lines = _bullet_list(state.get("carryover_threads", []))
+carryover_new = ", ".join(state.get("carryover_new_threads", [])) or "none"
+carryover_resolved = ", ".join(state.get("carryover_resolved_threads", [])) or "none"
+window_counts = state.get("carryover_window_counts", [])
+window_lines = [
+    f"- <= {entry['window_days']} days: {entry['count']}" for entry in window_counts
+] or ["- None"]
+
 brief = "\n".join(
     [
         "# Daily Brief (Generated)",
@@ -142,7 +225,12 @@ brief = "\n".join(
         "2. Update SB outputs",
         "",
         "## Carryover threads",
-        "- None",
+        *carryover_lines,
+        f"- New today: {carryover_new}",
+        f"- Resolved today: {carryover_resolved}",
+        "",
+        "## Carryover window counts",
+        *window_lines,
         "",
         "## Open questions",
         "- None",
@@ -184,55 +272,20 @@ retro = "\n".join(
     ]
 )
 
-events = []
-for entry in entries:
-    short_hash = entry["hash"][:7]
-    events.append(
-        {
-            "id": f"git-{short_hash}",
-            "ts": entry["ts"],
-            "source": "git",
-            "type": "commit",
-            "text": f"commit {short_hash} ({entry['repo']})",
-        }
-    )
-
-state = {
-    "date": date,
-    "day_state": "active",
-    "human_energy": "medium",
-    "constraints": [],
-    "alerts": [],
-    "priorities": ["Review git activity", "Update SB outputs"],
-    "open_questions": [],
-    "blocked_tasks": [],
-    "carryover_threads": [],
-    "agent_actions": [],
-    "agent_permissions": {"autonomous_runs": False, "write_actions": False},
-    "sources": [{"kind": "git", "uri": git_log_path}],
-    "events": events,
-}
-
-prev_date = previous_date(date)
-prev_state_path = os.path.join(os.environ["ROOT_DIR"], "runs", prev_date, "outputs", "state.json")
-prev_state = {}
-if os.path.exists(prev_state_path):
-    with open(prev_state_path, "r", encoding="utf-8") as handle:
-        prev_state = json.load(handle)
-
-state = apply_minimal_fold(prev_state, state, date)
-
 with open(brief_path, "w", encoding="utf-8") as handle:
     handle.write(brief)
 with open(retro_path, "w", encoding="utf-8") as handle:
     handle.write(retro)
 with open(state_path, "w", encoding="utf-8") as handle:
     json.dump(state, handle, indent=2, sort_keys=True)
+with open(drift_path, "w", encoding="utf-8") as handle:
+    json.dump(drift_payload, handle, indent=2, sort_keys=True)
 PY
 
 echo "Wrote:"
 echo "  $BRIEF_PATH"
 echo "  $RETRO_PATH"
 echo "  $STATE_PATH"
+echo "  $DRIFT_PATH"
 echo "  $LEDGER_PATH"
 echo "  $SESSIONIZER_RUNTIME_PATH"

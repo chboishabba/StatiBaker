@@ -34,6 +34,10 @@ def _date_range(date_str):
 
 def _iter_git_log(repo_path, since, until, use_committer, include_summary):
     repo_name = _repo_name(repo_path)
+    try:
+        _run(["git", "-C", repo_path, "rev-parse", "--verify", "HEAD"])
+    except RuntimeError:
+        return []
     time_field = "%cI" if use_committer else "%aI"
     fields = ["%H", time_field]
     if include_summary:

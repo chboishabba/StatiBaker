@@ -27,13 +27,27 @@ def _age_days(prev_state, carryover_threads, new_threads, date):
     return age_days
 
 
+def _window_counts(age_days, windows=None):
+    windows = windows or [7, 14, 30]
+    counts = []
+    for window in windows:
+        count = sum(1 for age in age_days.values() if age <= window)
+        counts.append({"window_days": window, "count": count})
+    return counts
+
+
 def apply_minimal_fold(prev_state, curr_state, date):
     carryover_threads, new_threads, resolved_threads = _carryover_sets(prev_state, curr_state)
     age_days = _age_days(prev_state or {}, carryover_threads, new_threads, date)
+    labels = list(curr_state.get("labels", []))
+    if len(carryover_threads) >= 20 and "carryover_saturation" not in labels:
+        labels.append("carryover_saturation")
     curr_state["carryover_threads"] = carryover_threads
     curr_state["carryover_new_threads"] = new_threads
     curr_state["carryover_resolved_threads"] = resolved_threads
     curr_state["carryover_age_days"] = age_days
+    curr_state["carryover_window_counts"] = _window_counts(age_days)
+    curr_state["labels"] = labels
     return curr_state
 
 

@@ -18,6 +18,11 @@
   "carryover_new_threads": [],
   "carryover_resolved_threads": [],
   "carryover_age_days": {"stati_brief_design": 1},
+  "carryover_window_counts": [
+    {"window_days": 7, "count": 1},
+    {"window_days": 14, "count": 1},
+    {"window_days": 30, "count": 1}
+  ],
   "agent_actions": [
     "Generate sample brief from synthetic data",
     "Validate JSON schema"

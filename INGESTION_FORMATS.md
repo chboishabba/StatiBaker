@@ -31,6 +31,24 @@ Each line (JSON):
   "severity": "info"
 }
 
+## Tool execution envelopes (machine)
+Path: `logs/tools/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-19T03:12:44Z",
+  "signal": "tool_execution",
+  "tool": "openclaw",
+  "execution_id": "uuid",
+  "started_at": "2026-02-19T03:12:44Z",
+  "ended_at": "2026-02-19T03:13:21Z",
+  "host": {"hostname": "builder-07", "os": "linux", "arch": "x86_64"},
+  "toolchain": {"openclaw_version": "0.4.2", "runtime": "python3.12"},
+  "prompt": {"hash": "sha256:...", "length_chars": 1832},
+  "declared_intent": {"label": "deploy hotfix", "supplied_by": "human"},
+  "scope": {"filesystem": "read-only", "network": "internal-only"}
+}
+
 ## Calendar (machine)
 Path: `logs/calendar/YYYY-MM-DD.jsonl`
 

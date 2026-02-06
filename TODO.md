@@ -16,12 +16,43 @@
 - Added sessionizer config validation and Justfile targets
 - Added config validation tests and CLI error handling
 - Added CLI exit-code test for invalid config
+- Added "core questions + context prosthesis" section to `CONTEXT.md`
+- Added ADR: external signal condensers (Wazuh, osquery) are non-authoritative observers
+- Implemented carryover window counts (7/14/30) in minimal fold + schema
+- Included carryover deltas in generated daily brief
+- Generated a sample daily brief from real logs
+- Added guard tests for fold non-mutation and no content summarization.
+- Ran multi-day replay (2026-02-06 to 2026-02-08) to validate deterministic carryover aging.
+- Added Wazuh lifecycle adapter (structured, lifecycle-only).
+- Added metrics HTTP server for `/metrics` over baked state outputs.
+- Added determinism tests for adapter outputs and Prometheus summary helpers.
+- Drafted OCR/Android/query/ITIR ingest contracts.
+- Added ITIR overlay validation helper and tests.
+- Implemented drift counters (separate `drift.json`) + drift doc.
+- Implemented Phase-2 compression collapse for `low_signal=true` events.
+- Added read-only query CLI (`scripts/query_state.py`).
+- Added bundle export/verify tooling and spec.
+- Documented time hygiene policy and failure modes.
+- Added red-team boundary tests and bundle verification tests.
+- Expanded red-team plan and added injection/RCE/metric-smuggling/env-leak tests.
+- Added inactivity run test for empty git repositories.
+- Added bundle export/replay test (export + verify).
 
-## Immediate next (authority guardrails)
-- Add a "core questions + context prosthesis" section to `CONTEXT.md` (time vs meaning split and SB-only invariants)
-- Add ADR: external signal condensers (Wazuh, osquery) are non-authoritative observers
+## Completed (2026-02-06)
+- Expanded red-team plan to cover DoS/resource exhaustion, path traversal, and
+  blast-radius constraints.
+- Updated failure-mode catalog with explicit blast-radius definition and limits.
+- Added query base-path guard for safe reads with optional CLI enforcement.
+- Extended ITIR ingest contract with explicit forbidden fields.
+
+## Sprint plan references (2026-02-05)
+- Sprint plan: `__CONTEXT/sprints/stati_baker_sprints.md`.
+- Sprint 1 focus: guard tests + multi-day replay (see "Normalization and compression (Phase 1: minimal fold)").
+- Sprint 2 focus: Wazuh lifecycle + Prometheus summaries + `/metrics` (see "Integration roadmap" and "Observability").
+- Sprint 3 focus: OCR/Android/read-only contracts (see "Integration roadmap" and "Governance and safety").
 
 ## Define intent and scope
+- Sprint plan reference: `__CONTEXT/sprints/stati_baker_sprints.md`.
 - Review daily brief template and finalize fields
 - Validate machine state JSON schema with real samples
 - Confirm minimal event/thread/trajectory model
@@ -30,8 +61,6 @@
 ## Normalization and compression (Phase 1: minimal fold)
 - Define carryover thread detection
 - Specify temporal reduction rules (carryover/new/resolved sets, age_days counters) for atoms and threads
-- Define rolling window policy for carryover and unresolved counts (e.g., 7/14/30-day windows)
-- Add guard tests: SB must not re-tokenize, promote phrases, or summarize artifact content
 
 ## Normalization and compression (Phase 2: advanced)
 - Define rules for event extraction and thread grouping
@@ -42,7 +71,6 @@
 - Note: align compression diagnostics with SensibLaw work (entropy proxy + compression ratio guards, deterministic stability tests) to reuse methodology where applicable.
 
 ## Emission (early feedback loop)
-- Produce a sample daily brief from real logs
 - Produce a sample agent JSON state from real logs
 - Define retrospective summary format for real data
 
@@ -53,6 +81,7 @@
 - Prometheus adapter (summaries only; must not create/split activity_events)
 - Android status adapter (ADB/Termux/Wazuh agent)
 - Agent log adapters
+- Tool execution envelope adapter (OpenClaw or similar; evidence-only)
 - Smart home status adapter
 - TIRC event adapter (trajectory/open/closed signals as SB events)
 - SL constraint adapter (rule/constraint IDs with refs only)
@@ -61,8 +90,10 @@
 
 ## Observability (Prometheus / Grafana)
 - Define SB metrics surface (`/metrics`)
+- Add a minimal HTTP metrics server for `sb.metrics.render_metrics`
 - Specify allowed metric ingestion classes (numeric only)
 - Add Prometheus adapter for time-window summaries
+- Add determinism tests for adapter outputs (fixed inputs → stable JSONL)
 - Define Grafana dashboards scoped to activity_event windows
 - Grafana dashboard (current):
 ```
@@ -99,3 +130,17 @@ https://truenas.local:30037/d/truenas-overview4/truenas-scale-overview4
 - How to represent and score drift signals
 - What level of agent autonomy defaults are safe
 - Which export format is the canonical portable bundle
+- How to represent execution envelopes in `STATE_SCHEMA.json` without granting authority
+- How to surface epistemic modes without implying promotion or authority
+
+## Sprint 4–6 (next arc)
+- Sprint 4: run bad-data runs + manual brief review (drift counters done, bad-data tests added; manual review pending).
+- Sprint 5: add expansion tests for Phase-2 compression and document loss profile usage.
+- Sprint 6: add agent containment rules to docs and enforce ITIR overlay rejection on mutation attempts.
+
+## Sprint 7–9 (next arc)
+- Sprint 7: run bundle replay cross-host test (same outputs or explicit reject). (done)
+- Sprint 8: implement carryover saturation label and inactivity stress runs. (done)
+- Sprint 9: add metric-smuggling rejection tests (semantic labels) and document responses. (done)
+- Sprint 9: add red-team tests for event injection, command/RCE payloads, and credential leakage. (done)
+- Sprint 9: add tests for provenance laundering and systemic dependency failure. (done)

@@ -58,6 +58,17 @@ def _summarize(values):
     return {"mean": mean(values), "p95": _percentile(values, 0.95), "samples": len(values)}
 
 
+def _build_record(name, start, end, values):
+    summary = _summarize(values)
+    return {
+        "t_start": start,
+        "t_end": end,
+        "signal": "metric_summary",
+        "metric": name,
+        "summary": summary,
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description="Summarize Prometheus metrics into SB JSONL.")
     parser.add_argument("--base-url", required=True, help="Prometheus base URL")
@@ -106,16 +117,7 @@ def main():
         for name, promql in queries.items():
             series = _fetch_range(args.base_url, promql, start, end, args.step)
             values = _flatten_values(series)
-            summary = _summarize(values)
-            records.append(
-                {
-                    "t_start": start,
-                    "t_end": end,
-                    "signal": "metric_summary",
-                    "metric": name,
-                    "summary": summary,
-                }
-            )
+            records.append(_build_record(name, start, end, values))
 
         if args.output:
             with open(args.output, "w", encoding="utf-8") as handle:

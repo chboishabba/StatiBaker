@@ -104,6 +104,11 @@ A fold over the day that:
 - marks uncertainty
 - records collapse without judgement
 
+### Drift counters (read-only)
+
+Written to `runs/<date>/outputs/drift.json` as observational counters only.
+See `DRIFT_SIGNALS.md`.
+
 ---
 
 ## Epistemic rules (non-negotiable)
@@ -126,6 +131,19 @@ For OCR and screen capture guardrails, see `SAFETY_OCR.md`.
 - `DESIGN.md` (architecture notes and invariants)
 - `CONTEXT.md` (context-layering and divergence notes)
 - `COMPACTIFIED_CONTEXT.md` (portable project summary)
+- `OCR_ADAPTER_CONTRACT.md` (design-only OCR boundary)
+- `ANDROID_STATUS_CONTRACT.md` (design-only mobile status boundary)
+- `QUERY_SURFACE.md` (read-only query surface spec)
+- `ITIR_INGEST_CONTRACT.md` (read-only ITIR ingest boundary)
+- `DRIFT_SIGNALS.md` (read-only drift counters)
+- `FAILURE_MODES.md` (boundary lock + red-team catalog)
+- `TIME_HYGIENE.md` (time-decay policy)
+- `BUNDLE_SPEC.md` (portable bundle layout)
+- `LOSS_PROFILES.md` (explicit compression loss profiles)
+- `AGENT_CONTAINMENT.md` (read-only agent boundaries)
+- `docs/multimodal_system_doctrine.md` (multi-modal doctrine and epistemic modes)
+- `docs/openclaw_integration.md` (agent execution envelope + truth substrate)
+- `docs/red_team.md` (red-team scenarios and considerations)
 - `TODO.md` (plan and open questions)
 - `ADRs/README.md` (architecture decision record index)
 
@@ -172,7 +190,7 @@ They integrate via **context envelopes**, not shared logic.
 SB ingests **references only** (IDs/URIs) from TIRC/SL/ITIR and compiles
 temporal deltas (carryover/new/resolved). It does not read or summarize
 artifact content.
-Agentic systems should query SB via a read-only interface (e.g., MCP) before
+Agentic systems should query SB via a read-only interface (CLI for now) before
 acting.
 
 ## Observability sources
