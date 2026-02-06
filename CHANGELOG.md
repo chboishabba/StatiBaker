@@ -24,6 +24,7 @@
 - Added trauma/authoritarian pressure user story layer.
 - Added access-scope and legal reconstruction user story layer.
 - Added judicial-context user story layer (judges/staff/bailiffs/family).
+- Added public-figure user story (Zohran Mamdani context collapse).
 
 ## 2026-02-05
 - Added Recall/OpenRecall notes, activity event layer, and sessionization rules to `CONTEXT.md`.

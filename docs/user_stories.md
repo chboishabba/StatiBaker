@@ -64,6 +64,12 @@ At home:
 ### Mechanic
 - Tests and parts replaced recorded in sequence; no inferred fixes.
 
+## Public figure (Zohran Mamdani — campaign to office)
+- Context envelopes on interviews/speeches/jokes: framing, audience, and medium recorded; no decontextualized excerpts by default.
+- Role-separated views (personal/campaign/office) with no automatic merge; commitments only when explicit.
+- SB surfaces context drift warnings when clips leave original audience or time window.
+- Failure prevented: identity flattening and misclassification of role-bound statements.
+
 ## Organization-level narratives (admins, teams, regulators)
 
 ### Banker → Bank → Regulators
