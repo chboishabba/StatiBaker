@@ -143,6 +143,8 @@ For OCR and screen capture guardrails, see `SAFETY_OCR.md`.
 - `AGENT_CONTAINMENT.md` (read-only agent boundaries)
 - `docs/multimodal_system_doctrine.md` (multi-modal doctrine and epistemic modes)
 - `docs/openclaw_integration.md` (agent execution envelope + truth substrate)
+- `docs/user_stories.md` (lawyer/psychologist boundary test narratives)
+- `docs/panopticon_refusal.md` (refusal of coercive memory / surveillance defaults)
 - `docs/red_team.md` (red-team scenarios and considerations)
 - `TODO.md` (plan and open questions)
 - `ADRs/README.md` (architecture decision record index)

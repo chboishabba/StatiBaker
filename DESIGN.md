@@ -145,6 +145,12 @@ C. Evening retrospective
 - Explicit compression: folds declare loss profiles and remain expandable.
 - Deterministic replay: the same event log yields the same bake.
 
+## Against Victor's Memory
+SB is a memory substrate, not a historical authority. It preserves sequence,
+provenance, and explicit absence without resolving meaning or disagreement.
+Interpretation remains local, time-scoped, and contestable; memory never closes
+the case.
+
 ## ITIR/TIRC/SL integration contract
 - SB is the time-axis: it compiles daily state deltas from append-only events.
 - SB owns activity_events (deterministic segmentation of observed snapshots).

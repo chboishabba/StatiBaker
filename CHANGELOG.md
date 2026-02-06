@@ -11,6 +11,19 @@
 - Added OpenClaw integration doc with execution envelope contract and truth-substrate doctrine.
 - Documented tool execution envelope ingestion format and references in core docs.
 - Added multi-modal system doctrine for epistemic modes and authority boundaries.
+- Added lawyer/psychologist user story boundary narratives.
+- Extended user stories with additional role stress tests (banker/CEO/manager/etc.).
+- Added organization-level user story layer (teams/admins/regulators).
+- Added public sector user story layer (police/EMS/health/government guardrails).
+- Added modern org stack user story layer (dev/team/CEO/finance).
+- Added air-gapped/battlefield/interop user story layer.
+- Added "Against Victor's Memory" doctrine to `DESIGN.md`.
+- Added panopticon refusal manifesto.
+- Added state power/structural violence note to panopticon refusal.
+- Added activist coordination user story layer.
+- Added trauma/authoritarian pressure user story layer.
+- Added access-scope and legal reconstruction user story layer.
+- Added judicial-context user story layer (judges/staff/bailiffs/family).
 
 ## 2026-02-05
 - Added Recall/OpenRecall notes, activity event layer, and sessionization rules to `CONTEXT.md`.
