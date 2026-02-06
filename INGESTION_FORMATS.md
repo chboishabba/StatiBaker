@@ -86,6 +86,20 @@ Each line (JSON):
   "mouse": {"moves": 140, "clicks": 3, "scroll": 1}
 }
 
+## Window/app focus (machine)
+Path: `logs/windows/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-05T11:35:12Z",
+  "signal": "window_focus",
+  "app_id": "org.gnome.Terminal",
+  "window_title_hash": "sha256:...",
+  "duration_ms": 120000,
+  "workspace": 2,
+  "provenance": {"source": "x11_focus", "collected_at": "2026-02-05T11:35:13Z"}
+}
+
 ## System / journal events (machine)
 Path: `logs/system/YYYY-MM-DD.jsonl`
 
@@ -95,6 +109,79 @@ Each line (JSON):
   "signal": "system",
   "event": "network_down",
   "iface": "wlan0"
+}
+
+### macOS / Windows stubs
+These platforms emit the same `signal: system` records with platform-specific
+`event_id` values and no message content.
+
+## Antivirus / endpoint status (machine)
+Path: `logs/av/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-05T12:04:01Z",
+  "signal": "av_status",
+  "engine": "defender",
+  "status": "ok",
+  "signature_age_days": 1,
+  "threat_count": 0,
+  "provenance": {"source": "osquery", "collected_at": "2026-02-05T12:04:02Z"}
+}
+
+## Browser usage metadata (machine)
+Path: `logs/browser/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-05T12:40:10Z",
+  "signal": "browser_usage",
+  "browser": "firefox",
+  "domain_hash": "sha256:...",
+  "duration_ms": 420000,
+  "provenance": {"source": "browser_history", "collected_at": "2026-02-05T12:41:00Z"}
+}
+
+## Cloud audit feeds (machine)
+Path: `logs/cloud/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-05T13:15:30Z",
+  "signal": "cloud_audit",
+  "provider": "google_drive",
+  "event_type": "file_updated",
+  "resource_id_hash": "sha256:...",
+  "actor_hash": "sha256:...",
+  "provenance": {"source": "google_audit", "collected_at": "2026-02-05T13:15:45Z"}
+}
+
+## Notes app metadata (machine)
+Path: `logs/notes/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-05T14:10:00Z",
+  "signal": "notes_meta",
+  "app": "obsidian",
+  "note_id_hash": "sha256:...",
+  "event": "note_modified",
+  "provenance": {"source": "fs_watcher", "collected_at": "2026-02-05T14:10:02Z"}
+}
+
+## Social feeds (machine)
+Path: `logs/social/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-05T14:30:00Z",
+  "signal": "social_feed",
+  "platform": "bluesky",
+  "event_type": "post_created",
+  "post_id_hash": "sha256:...",
+  "author_hash": "sha256:...",
+  "thread_id_hash": "sha256:...",
+  "provenance": {"source": "bluesky_audit", "collected_at": "2026-02-05T14:30:01Z"}
 }
 
 ## Power and lifecycle signals (machine)

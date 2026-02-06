@@ -28,8 +28,9 @@ with strict policy gates:
 
 ## Observed signal streams
 SB can ingest additional **observed signals** (input activity, system events,
-CLI activity, metric summaries) as append-only JSONL. These streams are
-structural only and never include content. See `OBSERVED_SIGNALS.md`.
+CLI activity, browser/app usage, cloud audit feeds, notes-app metadata, metric
+summaries) as append-only JSONL. These streams are structural only and never
+include content. See `docs/observed_signals.md`.
 
 SB consumes curated facts, never raw logs.
 

@@ -58,6 +58,13 @@ If it produces state, it can be baked.
 - Tool outputs
 - Git commits, diffs, CI results
 - Automation outcomes
+- Input activity (keyboard/mouse counts, focus/app metadata)
+- System event logs (journald / Windows Event Log / macOS Unified Log)
+- Antivirus/endpoint status summaries
+- Browser usage metadata (domain-level, duration only)
+- Cloud audit feeds (Google Drive, MS365)
+- Notes app metadata (Obsidian, Evernote)
+- Social feed metadata (Bluesky and other socials; hashes only)
 
 ### Environment and constraints
 
@@ -128,6 +135,7 @@ For OCR and screen capture guardrails, see `SAFETY_OCR.md`.
 - `STATE_SCHEMA.json` (machine-readable state contract)
 - `SAMPLE_STATE.json` (synthetic example)
 - `INGESTION_FORMATS.md` (append-only event formats)
+- `docs/observed_signals.md` (meta-only signal catalog)
 - `DESIGN.md` (architecture notes and invariants)
 - `CONTEXT.md` (context-layering and divergence notes)
 - `COMPACTIFIED_CONTEXT.md` (portable project summary)

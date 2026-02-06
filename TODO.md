@@ -79,6 +79,13 @@
 - Calendar ingestion adapter
 - Wazuh adapter (system lifecycle only)
 - Prometheus adapter (summaries only; must not create/split activity_events)
+- Input activity adapter (keyboard/mouse counts only)
+- Window/app focus adapter (title hashed, no content)
+- Browser usage adapter (domain hash + duration only)
+- Antivirus/endpoint status adapter (counts only)
+- Cloud audit adapters (Google Drive + MS365; read-only)
+- Notes app metadata adapters (Obsidian + Evernote; file events only)
+- Social feed adapters (Bluesky + other socials; meta-only)
 - Android status adapter (ADB/Termux/Wazuh agent)
 - Agent log adapters
 - Tool execution envelope adapter (OpenClaw or similar; evidence-only)

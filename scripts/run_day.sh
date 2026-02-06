@@ -9,6 +9,57 @@ FS_DIR="${4:-}"
 PROM_BASE_URL="${5:-}"
 OSQUERY_QUERIES="${6:-}"
 PROM_QUERIES="${7:-}"
+WINDOW_FOCUS_INPUT="${8:-}"
+INPUT_ACTIVITY_INPUT="${9:-}"
+CLI_META_INPUT="${10:-}"
+AV_STATUS_INPUT="${11:-}"
+BROWSER_USAGE_INPUT="${12:-}"
+CLOUD_AUDIT_INPUT="${13:-}"
+NOTES_META_INPUT="${14:-}"
+SOCIAL_FEED_INPUT="${15:-}"
+WINDOWS_EVENT_INPUT="${16:-}"
+MACOS_EVENT_INPUT="${17:-}"
+
+if [[ -n "$WINDOW_FOCUS_INPUT" && ! -f "$WINDOW_FOCUS_INPUT" ]]; then
+  echo "warn: WINDOW_FOCUS_INPUT not found: $WINDOW_FOCUS_INPUT" >&2
+  WINDOW_FOCUS_INPUT=""
+fi
+if [[ -n "$INPUT_ACTIVITY_INPUT" && ! -f "$INPUT_ACTIVITY_INPUT" ]]; then
+  echo "warn: INPUT_ACTIVITY_INPUT not found: $INPUT_ACTIVITY_INPUT" >&2
+  INPUT_ACTIVITY_INPUT=""
+fi
+if [[ -n "$CLI_META_INPUT" && ! -f "$CLI_META_INPUT" ]]; then
+  echo "warn: CLI_META_INPUT not found: $CLI_META_INPUT" >&2
+  CLI_META_INPUT=""
+fi
+if [[ -n "$AV_STATUS_INPUT" && ! -f "$AV_STATUS_INPUT" ]]; then
+  echo "warn: AV_STATUS_INPUT not found: $AV_STATUS_INPUT" >&2
+  AV_STATUS_INPUT=""
+fi
+if [[ -n "$BROWSER_USAGE_INPUT" && ! -f "$BROWSER_USAGE_INPUT" ]]; then
+  echo "warn: BROWSER_USAGE_INPUT not found: $BROWSER_USAGE_INPUT" >&2
+  BROWSER_USAGE_INPUT=""
+fi
+if [[ -n "$CLOUD_AUDIT_INPUT" && ! -f "$CLOUD_AUDIT_INPUT" ]]; then
+  echo "warn: CLOUD_AUDIT_INPUT not found: $CLOUD_AUDIT_INPUT" >&2
+  CLOUD_AUDIT_INPUT=""
+fi
+if [[ -n "$NOTES_META_INPUT" && ! -f "$NOTES_META_INPUT" ]]; then
+  echo "warn: NOTES_META_INPUT not found: $NOTES_META_INPUT" >&2
+  NOTES_META_INPUT=""
+fi
+if [[ -n "$SOCIAL_FEED_INPUT" && ! -f "$SOCIAL_FEED_INPUT" ]]; then
+  echo "warn: SOCIAL_FEED_INPUT not found: $SOCIAL_FEED_INPUT" >&2
+  SOCIAL_FEED_INPUT=""
+fi
+if [[ -n "$WINDOWS_EVENT_INPUT" && ! -f "$WINDOWS_EVENT_INPUT" ]]; then
+  echo "warn: WINDOWS_EVENT_INPUT not found: $WINDOWS_EVENT_INPUT" >&2
+  WINDOWS_EVENT_INPUT=""
+fi
+if [[ -n "$MACOS_EVENT_INPUT" && ! -f "$MACOS_EVENT_INPUT" ]]; then
+  echo "warn: MACOS_EVENT_INPUT not found: $MACOS_EVENT_INPUT" >&2
+  MACOS_EVENT_INPUT=""
+fi
 
 RUN_DIR="$ROOT_DIR/runs/$DATE"
 LOG_DIR="$RUN_DIR/logs/git"
@@ -57,6 +108,76 @@ if [[ -n "$OSQUERY_QUERIES" ]]; then
     OSQUERY_STATUS="failed"
     : >"$FACTS_LOG_PATH"
   fi
+fi
+
+if [[ -n "$INPUT_ACTIVITY_INPUT" ]]; then
+  INPUT_LOG_DIR="$RUN_DIR/logs/input"
+  INPUT_LOG_PATH="$INPUT_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$INPUT_LOG_DIR"
+  python "$ROOT_DIR/adapters/input_activity.py" --input "$INPUT_ACTIVITY_INPUT" --output "$INPUT_LOG_PATH"
+fi
+
+if [[ -n "$WINDOW_FOCUS_INPUT" ]]; then
+  WINDOW_LOG_DIR="$RUN_DIR/logs/windows"
+  WINDOW_LOG_PATH="$WINDOW_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$WINDOW_LOG_DIR"
+  python "$ROOT_DIR/adapters/window_focus.py" --input "$WINDOW_FOCUS_INPUT" --output "$WINDOW_LOG_PATH"
+fi
+
+if [[ -n "$CLI_META_INPUT" ]]; then
+  CLI_LOG_DIR="$RUN_DIR/logs/cli"
+  CLI_LOG_PATH="$CLI_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$CLI_LOG_DIR"
+  python "$ROOT_DIR/adapters/cli_meta.py" --input "$CLI_META_INPUT" --output "$CLI_LOG_PATH"
+fi
+
+if [[ -n "$AV_STATUS_INPUT" ]]; then
+  AV_LOG_DIR="$RUN_DIR/logs/av"
+  AV_LOG_PATH="$AV_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$AV_LOG_DIR"
+  python "$ROOT_DIR/adapters/av_status.py" --input "$AV_STATUS_INPUT" --output "$AV_LOG_PATH"
+fi
+
+if [[ -n "$BROWSER_USAGE_INPUT" ]]; then
+  BROWSER_LOG_DIR="$RUN_DIR/logs/browser"
+  BROWSER_LOG_PATH="$BROWSER_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$BROWSER_LOG_DIR"
+  python "$ROOT_DIR/adapters/browser_usage.py" --input "$BROWSER_USAGE_INPUT" --output "$BROWSER_LOG_PATH"
+fi
+
+if [[ -n "$CLOUD_AUDIT_INPUT" ]]; then
+  CLOUD_LOG_DIR="$RUN_DIR/logs/cloud"
+  CLOUD_LOG_PATH="$CLOUD_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$CLOUD_LOG_DIR"
+  python "$ROOT_DIR/adapters/cloud_audit.py" --input "$CLOUD_AUDIT_INPUT" --output "$CLOUD_LOG_PATH"
+fi
+
+if [[ -n "$NOTES_META_INPUT" ]]; then
+  NOTES_LOG_DIR="$RUN_DIR/logs/notes"
+  NOTES_LOG_PATH="$NOTES_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$NOTES_LOG_DIR"
+  python "$ROOT_DIR/adapters/notes_meta.py" --input "$NOTES_META_INPUT" --output "$NOTES_LOG_PATH"
+fi
+
+if [[ -n "$SOCIAL_FEED_INPUT" ]]; then
+  SOCIAL_LOG_DIR="$RUN_DIR/logs/social"
+  SOCIAL_LOG_PATH="$SOCIAL_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$SOCIAL_LOG_DIR"
+  python "$ROOT_DIR/adapters/social_feed.py" --input "$SOCIAL_FEED_INPUT" --output "$SOCIAL_LOG_PATH"
+fi
+
+if [[ -n "$WINDOWS_EVENT_INPUT" ]]; then
+  SYS_LOG_DIR="$RUN_DIR/logs/system"
+  SYS_LOG_PATH="$SYS_LOG_DIR/$DATE.windows.jsonl"
+  mkdir -p "$SYS_LOG_DIR"
+  python "$ROOT_DIR/adapters/windows_event_stub.py" --input "$WINDOWS_EVENT_INPUT" --output "$SYS_LOG_PATH"
+fi
+
+if [[ -n "$MACOS_EVENT_INPUT" ]]; then
+  SYS_LOG_DIR="$RUN_DIR/logs/system"
+  SYS_LOG_PATH="$SYS_LOG_DIR/$DATE.macos.jsonl"
+  mkdir -p "$SYS_LOG_DIR"
+  python "$ROOT_DIR/adapters/macos_unified_log_stub.py" --input "$MACOS_EVENT_INPUT" --output "$SYS_LOG_PATH"
 fi
 
 DEFAULT_SNAPSHOTS="$ROOT_DIR/tests/fixtures/snapshots.json"
