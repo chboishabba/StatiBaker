@@ -97,6 +97,119 @@ def _display_title(value: object) -> str:
     return text if text else "(no title)"
 
 
+def _title_from_first_user_preview(value: object, max_chars: int = 96) -> str:
+    preview = _collapse_ws(value)
+    if not preview:
+        return "(no title)"
+    if len(preview) > max_chars:
+        preview = preview[:max_chars].rstrip() + "..."
+    return f"(untitled) {preview}"
+
+
+def _resolve_thread_title(title: object, first_user_preview: object) -> str:
+    title_text = str(title or "").strip()
+    if title_text:
+        return title_text
+    return _title_from_first_user_preview(first_user_preview)
+
+
+def _origin_from_source_ids(source_ids: dict[str, int], fallback_source: str = "unknown") -> str:
+    if not source_ids:
+        return fallback_source
+    keys = [str(key).strip().lower() for key in source_ids if str(key).strip()]
+    if not keys:
+        return fallback_source
+    if any(key.startswith("codex_") for key in keys):
+        return "codex-ingest"
+    if any("resolver" in key for key in keys):
+        return "resolver-sync"
+    if any("chat_export" in key for key in keys):
+        return "chat-export-json"
+    first = sorted(keys)[0]
+    prefix = first.split("_", 1)[0]
+    return f"source:{prefix}" if prefix else fallback_source
+
+
+def _thread_in_scope(
+    *,
+    thread_id: str,
+    thread_title: str,
+    thread_scope: dict[str, str],
+    thread_ids: set[str],
+    title_filters: list[str],
+) -> bool:
+    if not thread_scope:
+        return True
+    if thread_id in thread_ids:
+        return True
+    lowered = thread_title.lower()
+    if lowered and any(token in lowered for token in title_filters):
+        return True
+    return False
+
+
+def _short_id(value: object, width: int = 8) -> str:
+    text = str(value or "").strip()
+    if len(text) <= width:
+        return text
+    return text[:width]
+
+
+def _collapse_ws(value: object) -> str:
+    text = str(value or "")
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _preview_text(value: object, max_chars: int = 220) -> str:
+    text = _collapse_ws(value)
+    if len(text) <= max_chars:
+        return text
+    return text[:max_chars].rstrip() + "..."
+
+
+def _render_foldable_text(text: object, limit: int = 180) -> str:
+    collapsed = _collapse_ws(text)
+    if not collapsed:
+        return ""
+    if len(collapsed) <= limit:
+        return escape(collapsed)
+    short = escape(collapsed[:limit].rstrip() + "...")
+    full = escape(collapsed)
+    return f"<details><summary>{short}</summary><pre>{full}</pre></details>"
+
+
+def _source_kind(source_path: str) -> str:
+    lowered = source_path.lower()
+    if "chat-export-structurer" in lowered and ".sqlite" in lowered:
+        return "sqlite"
+    if "/chat_exports/" in lowered:
+        return "chat_exports"
+    if "__context/last_sync" in lowered:
+        return "resolver"
+    if "/logs/" in lowered:
+        return "logs"
+    if "activity_ledger.json" in lowered:
+        return "activity"
+    if "/outputs/" in lowered:
+        return "outputs"
+    return "other"
+
+
+def _source_label(source_path: str) -> str:
+    labels = {
+        "sqlite": "sqlite",
+        "chat_exports": "chat exports",
+        "resolver": "resolver",
+        "logs": "run logs",
+        "activity": "activity",
+        "outputs": "outputs",
+        "other": "other",
+    }
+    key = str(source_path or "").strip()
+    kind = key if key in labels else _source_kind(key)
+    return labels.get(kind, kind)
+
+
 def _looks_like_python_executable(token: str) -> bool:
     base = os.path.basename(token).lower()
     return base == "python" or base.startswith("python")
@@ -145,6 +258,67 @@ def _extract_cd_dirs(command: str) -> list[str]:
         if raw:
             paths.append(raw)
     return paths
+
+
+def _rg_mode_and_diff(command: str) -> tuple[str, str]:
+    text = str(command or "").strip()
+    if not text:
+        return "other", "(empty)"
+    try:
+        tokens = shlex.split(text)
+    except ValueError:
+        tokens = text.split()
+    if not tokens:
+        return "other", "(empty)"
+    if os.path.basename(tokens[0]).lower() != "rg":
+        return "other", _preview_text(text, max_chars=120)
+
+    if "--files" in tokens:
+        globs: list[str] = []
+        residual: list[str] = []
+        i = 1
+        while i < len(tokens):
+            token = tokens[i]
+            if token in {"-g", "--glob"}:
+                if i + 1 < len(tokens):
+                    globs.append(tokens[i + 1])
+                    i += 2
+                    continue
+                i += 1
+                continue
+            if token.startswith("--glob="):
+                globs.append(token.split("=", 1)[1])
+                i += 1
+                continue
+            if token.startswith("-g") and token != "-g":
+                globs.append(token[2:])
+                i += 1
+                continue
+            if token == "--files":
+                i += 1
+                continue
+            if token.startswith("-"):
+                i += 1
+                continue
+            residual.append(token)
+            i += 1
+        parts: list[str] = []
+        if globs:
+            parts.append(", ".join(globs[:5]) + (" ..." if len(globs) > 5 else ""))
+        if residual:
+            parts.append(" ".join(residual[:8]) + (" ..." if len(residual) > 8 else ""))
+        return "--files", " | ".join(parts) if parts else "(all files)"
+
+    if "-n" in tokens or "--line-number" in tokens:
+        non_option = [token for token in tokens[1:] if token and not token.startswith("-")]
+        if non_option:
+            detail = " ".join(non_option[:10]) + (" ..." if len(non_option) > 10 else "")
+        else:
+            detail = "(pattern omitted)"
+        return "-n", detail
+
+    detail = _preview_text(" ".join(tokens[1:]), max_chars=120) or "(no args)"
+    return "other", detail
 
 
 def _parse_tool_message(text: str) -> tuple[str, dict[str, Any]] | None:
@@ -219,44 +393,75 @@ def _chat_rows_sqlite(
 
     try:
         cur = conn.cursor()
-        cur.execute(
-            """
-            SELECT canonical_thread_id, title, role, ts, text, source_id
-            FROM messages
-            WHERE substr(ts, 1, 10) = ?
-            ORDER BY ts ASC
-            """,
-            (date_text,),
-        )
-        rows = cur.fetchall()
+        try:
+            cur.execute(
+                """
+                SELECT canonical_thread_id, title, role, ts, text, source_id
+                FROM messages
+                WHERE substr(ts, 1, 10) = ?
+                ORDER BY ts ASC
+                """,
+                (date_text,),
+            )
+            rows = cur.fetchall()
+        except sqlite3.Error:
+            return [], {}, None
     finally:
         conn.close()
+
+    first_user_preview: dict[str, str] = {}
+    for canonical_thread_id, title, role, ts, text, _source_id in rows:
+        thread_id = str(canonical_thread_id or "").lower()
+        thread_title = str(title or "").strip()
+        if not _thread_in_scope(
+            thread_id=thread_id,
+            thread_title=thread_title,
+            thread_scope=thread_scope,
+            thread_ids=thread_ids,
+            title_filters=title_filters,
+        ):
+            continue
+        thread_key = thread_id or "unknown"
+        role_text = str(role or "unknown").strip().lower()
+        if role_text != "user" or thread_key in first_user_preview:
+            continue
+        preview = _preview_text(text, max_chars=120)
+        if preview:
+            first_user_preview[thread_key] = preview
 
     for canonical_thread_id, title, role, ts, text, source_id in rows:
         dt = _parse_ts(ts)
         if dt is None:
             continue
         thread_id = str(canonical_thread_id or "").lower()
+        thread_key = thread_id or "unknown"
         thread_title = str(title or "").strip()
-        in_scope = True
-        if thread_scope:
-            in_scope = thread_id in thread_ids
-            if not in_scope and thread_title:
-                lowered_title = thread_title.lower()
-                in_scope = any(token in lowered_title for token in title_filters)
-        if not in_scope:
+        if not _thread_in_scope(
+            thread_id=thread_id,
+            thread_title=thread_title,
+            thread_scope=thread_scope,
+            thread_ids=thread_ids,
+            title_filters=title_filters,
+        ):
             continue
 
         role_text = str(role or "unknown")
         char_count = len(str(text or ""))
-        label = thread_title or thread_id or "chat-thread"
-        detail = f"chat role={role_text} thread={label} chars={char_count}"
-        source = f"{db_path}#{source_id}" if source_id else str(db_path)
+        scope_title = str(thread_scope.get(thread_id, "")).strip()
+        raw_title = thread_title or scope_title
+        resolved_title = _resolve_thread_title(raw_title, first_user_preview.get(thread_key, ""))
+        source_id_text = str(source_id or "").strip()
+        detail = f"chat role={role_text} chars={char_count}"
+        source = f"{db_path}#{source_id_text}" if source_id_text else str(db_path)
         meta = {
             "thread_id": thread_id,
-            "thread_title": thread_title or thread_scope.get(thread_id, ""),
+            "thread_title": resolved_title,
+            "thread_title_raw": raw_title,
+            "thread_first_user_preview": first_user_preview.get(thread_key, ""),
             "role": role_text,
             "chars": char_count,
+            "preview": _preview_text(text, max_chars=220),
+            "source_id": source_id_text,
         }
         events.append(
             TimelineEvent(
@@ -268,21 +473,50 @@ def _chat_rows_sqlite(
             )
         )
         stat = thread_stats.setdefault(
-            thread_id or "unknown",
+            thread_key,
             {
                 "thread_id": thread_id,
-                "title": thread_title or thread_scope.get(thread_id, ""),
+                "title": raw_title,
+                "title_resolved": resolved_title,
+                "first_user_preview": first_user_preview.get(thread_key, ""),
                 "message_count": 0,
                 "first_ts": _iso_utc(dt),
                 "last_ts": _iso_utc(dt),
                 "roles": {},
+                "source_ids": {},
+                "origin": "unknown",
             },
         )
+        if not stat.get("title"):
+            stat["title"] = raw_title
+        if not stat.get("first_user_preview"):
+            stat["first_user_preview"] = first_user_preview.get(thread_key, "")
         stat["message_count"] += 1
         stat["first_ts"] = min(stat["first_ts"], _iso_utc(dt))
         stat["last_ts"] = max(stat["last_ts"], _iso_utc(dt))
         roles = stat["roles"]
         roles[role_text] = roles.get(role_text, 0) + 1
+        if source_id_text:
+            source_counts = stat["source_ids"]
+            source_counts[source_id_text] = source_counts.get(source_id_text, 0) + 1
+
+    resolved_title_by_thread: dict[str, str] = {}
+    origin_by_thread: dict[str, str] = {}
+    for key, stat in thread_stats.items():
+        resolved = _resolve_thread_title(stat.get("title"), stat.get("first_user_preview"))
+        stat["title_resolved"] = resolved
+        origin = _origin_from_source_ids(stat.get("source_ids") or {}, fallback_source="sqlite")
+        stat["origin"] = origin
+        resolved_title_by_thread[key] = resolved
+        origin_by_thread[key] = origin
+
+    for event in events:
+        if not isinstance(event.meta, dict):
+            continue
+        thread_key = str(event.meta.get("thread_id") or "").lower() or "unknown"
+        if not _collapse_ws(event.meta.get("thread_title")):
+            event.meta["thread_title"] = resolved_title_by_thread.get(thread_key, "(no title)")
+        event.meta["thread_origin"] = origin_by_thread.get(thread_key, "unknown")
 
     return events, thread_stats, "sqlite"
 
@@ -309,16 +543,18 @@ def _iter_export_messages(export_path: Path) -> tuple[str | None, str, list[dict
         role = (message.get("author") or {}).get("role")
         content = message.get("content") or {}
         parts = content.get("parts") if isinstance(content, dict) else None
-        chars = 0
+        text_value = ""
         if isinstance(parts, list):
-            chars = sum(len(str(p)) for p in parts if p is not None)
+            text_value = "\n".join(str(p) for p in parts if p is not None)
         elif isinstance(parts, str):
-            chars = len(parts)
+            text_value = parts
+        chars = len(text_value)
         items.append(
             {
                 "role": str(role or "unknown"),
                 "create_time": message.get("create_time"),
                 "chars": chars,
+                "preview": _preview_text(text_value, max_chars=220),
             }
         )
     return str(conversation_id) if conversation_id else None, title, items
@@ -345,28 +581,39 @@ def _chat_rows_exports(
         if not items:
             continue
         conv_id = (conversation_id or "").lower()
-        in_scope = True
-        if thread_scope:
-            in_scope = conv_id in thread_ids
-            if not in_scope and title:
-                lowered = title.lower()
-                in_scope = any(token in lowered for token in title_filters)
-        if not in_scope:
+        if not _thread_in_scope(
+            thread_id=conv_id,
+            thread_title=title,
+            thread_scope=thread_scope,
+            thread_ids=thread_ids,
+            title_filters=title_filters,
+        ):
             continue
 
-        label = title or conv_id or export_path.stem
+        thread_key = conv_id or export_path.stem
+        first_user_preview = ""
+        for item in items:
+            if str(item.get("role") or "").lower() == "user":
+                first_user_preview = _collapse_ws(item.get("preview"))
+                if first_user_preview:
+                    break
+        resolved_title = _resolve_thread_title(title, first_user_preview)
         for item in items:
             dt = _parse_ts(item.get("create_time"))
             if dt is None or not (day_start <= dt < day_end):
                 continue
             role_text = str(item.get("role") or "unknown")
             char_count = _safe_int(item.get("chars"))
-            detail = f"chat role={role_text} thread={label} chars={char_count}"
+            detail = f"chat role={role_text} chars={char_count}"
             meta = {
                 "thread_id": conv_id,
-                "thread_title": title,
+                "thread_title": resolved_title,
+                "thread_title_raw": title,
+                "thread_first_user_preview": first_user_preview,
                 "role": role_text,
                 "chars": char_count,
+                "preview": _collapse_ws(item.get("preview")),
+                "thread_origin": "chat-export-json",
             }
             events.append(
                 TimelineEvent(
@@ -378,14 +625,18 @@ def _chat_rows_exports(
                 )
             )
             stat = thread_stats.setdefault(
-                conv_id or export_path.stem,
+                thread_key,
                 {
                     "thread_id": conv_id,
                     "title": title,
+                    "title_resolved": resolved_title,
+                    "first_user_preview": first_user_preview,
                     "message_count": 0,
                     "first_ts": _iso_utc(dt),
                     "last_ts": _iso_utc(dt),
                     "roles": {},
+                    "source_ids": {"chat_export_json": 0},
+                    "origin": "chat-export-json",
                 },
             )
             stat["message_count"] += 1
@@ -393,6 +644,11 @@ def _chat_rows_exports(
             stat["last_ts"] = max(stat["last_ts"], _iso_utc(dt))
             roles = stat["roles"]
             roles[role_text] = roles.get(role_text, 0) + 1
+            stat["source_ids"]["chat_export_json"] += 1
+
+    for stat in thread_stats.values():
+        stat["title_resolved"] = _resolve_thread_title(stat.get("title"), stat.get("first_user_preview"))
+        stat["origin"] = _origin_from_source_ids(stat.get("source_ids") or {}, fallback_source="chat_exports")
 
     return events, thread_stats, "chat_exports"
 
@@ -427,6 +683,17 @@ def _chat_rows_resolver(
         if not isinstance(turns, list):
             continue
         title = (payload.get("web_recent_turns_meta") or {}).get("title") or thread_scope.get(thread_id, "")
+        thread_key = thread_id or "unknown"
+        first_user_preview = ""
+        for turn in turns:
+            if not isinstance(turn, dict):
+                continue
+            if str(turn.get("role") or "").strip().lower() != "user":
+                continue
+            first_user_preview = _preview_text(turn.get("text"), max_chars=120)
+            if first_user_preview:
+                break
+        resolved_title = _resolve_thread_title(title, first_user_preview)
         for turn in turns:
             if not isinstance(turn, dict):
                 continue
@@ -435,23 +702,31 @@ def _chat_rows_resolver(
                 continue
             role_text = str(turn.get("role") or "unknown")
             char_count = len(str(turn.get("text") or ""))
-            detail = f"chat role={role_text} thread={title or thread_id} chars={char_count}"
+            detail = f"chat role={role_text} chars={char_count}"
             meta = {
                 "thread_id": thread_id,
-                "thread_title": title,
+                "thread_title": resolved_title,
+                "thread_title_raw": title,
+                "thread_first_user_preview": first_user_preview,
                 "role": role_text,
                 "chars": char_count,
+                "preview": _preview_text(turn.get("text"), max_chars=220),
+                "thread_origin": "resolver-sync",
             }
             events.append(TimelineEvent(dt=dt, kind="chat", detail=detail, source_path=str(path), meta=meta))
             stat = thread_stats.setdefault(
-                thread_id,
+                thread_key,
                 {
                     "thread_id": thread_id,
                     "title": title,
+                    "title_resolved": resolved_title,
+                    "first_user_preview": first_user_preview,
                     "message_count": 0,
                     "first_ts": _iso_utc(dt),
                     "last_ts": _iso_utc(dt),
                     "roles": {},
+                    "source_ids": {"resolver_snapshot": 0},
+                    "origin": "resolver-sync",
                 },
             )
             stat["message_count"] += 1
@@ -459,6 +734,11 @@ def _chat_rows_resolver(
             stat["last_ts"] = max(stat["last_ts"], _iso_utc(dt))
             roles = stat["roles"]
             roles[role_text] = roles.get(role_text, 0) + 1
+            stat["source_ids"]["resolver_snapshot"] += 1
+
+    for stat in thread_stats.values():
+        stat["title_resolved"] = _resolve_thread_title(stat.get("title"), stat.get("first_user_preview"))
+        stat["origin"] = _origin_from_source_ids(stat.get("source_ids") or {}, fallback_source="resolver")
     return events, thread_stats, "resolver"
 
 
@@ -526,19 +806,32 @@ def _load_tool_use_summary_sqlite(
 
     try:
         cur = conn.cursor()
-        cur.execute(
-            """
-            SELECT canonical_thread_id, title, text
-            FROM messages
-            WHERE substr(ts, 1, 10) = ?
-              AND role = 'tool'
-              AND text IS NOT NULL
-              AND TRIM(text) <> ''
-            ORDER BY ts ASC
-            """,
-            (date_text,),
-        )
-        rows = cur.fetchall()
+        try:
+            cur.execute(
+                """
+                SELECT canonical_thread_id, title, text
+                FROM messages
+                WHERE substr(ts, 1, 10) = ?
+                  AND role = 'tool'
+                  AND text IS NOT NULL
+                  AND TRIM(text) <> ''
+                ORDER BY ts ASC
+                """,
+                (date_text,),
+            )
+            rows = cur.fetchall()
+        except sqlite3.Error:
+            return {
+                "source": "none",
+                "total_tool_messages": 0,
+                "exec_command_count": 0,
+                "unique_commands": 0,
+                "families": [],
+                "top_dirs": [],
+                "warnings": [
+                    "Tool-use summary unavailable: sqlite query failed for this date."
+                ],
+            }
     finally:
         conn.close()
 
@@ -612,12 +905,34 @@ def _load_tool_use_summary_sqlite(
                 }
             )
 
+        variant_groups: list[dict[str, Any]] = []
+        if family == "rg":
+            group_totals: Counter[str] = Counter()
+            group_details: dict[str, Counter[str]] = {}
+            for variant_command, variant_count in variants.items():
+                mode, diff = _rg_mode_and_diff(variant_command)
+                group_totals[mode] += int(variant_count)
+                group_details.setdefault(mode, Counter())[diff] += int(variant_count)
+            for mode, mode_count in group_totals.most_common():
+                detail_rows = [
+                    {"detail": detail, "count": int(detail_count)}
+                    for detail, detail_count in group_details.get(mode, Counter()).most_common(top_variants)
+                ]
+                variant_groups.append(
+                    {
+                        "group": mode,
+                        "count": int(mode_count),
+                        "variants": detail_rows,
+                    }
+                )
+
         families.append(
             {
                 "family": family,
                 "count": int(count),
                 "unique_variants": len(variants),
                 "variants": variant_rows,
+                "variant_groups": variant_groups,
                 "top_dirs": [
                     {"path": path, "count": int(path_count)}
                     for path, path_count in family_dir_counter.most_common(5)
@@ -869,10 +1184,18 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     thread_rows = []
     for thread in threads:
         roles = ", ".join(f"{k}:{v}" for k, v in sorted((thread.get("roles") or {}).items()))
+        thread_id_full = str(thread.get("thread_id") or "")
+        thread_id_short = _short_id(thread_id_full, width=12)
+        title_resolved = str(
+            thread.get("title_resolved")
+            or _resolve_thread_title(thread.get("title"), thread.get("first_user_preview"))
+        )
+        origin = str(thread.get("origin") or "unknown")
         thread_rows.append(
             "<tr>"
-            f"<td><code>{escape(str(thread.get('thread_id') or ''))}</code></td>"
-            f"<td>{escape(_display_title(thread.get('title')))}</td>"
+            f"<td><code title='{escape(thread_id_full)}'>{escape(thread_id_short)}</code></td>"
+            f"<td>{escape(title_resolved)}</td>"
+            f"<td><code>{escape(origin)}</code></td>"
             f"<td>{thread.get('message_count', 0)}</td>"
             f"<td><code>{escape(str(thread.get('first_ts') or ''))}</code></td>"
             f"<td><code>{escape(str(thread.get('last_ts') or ''))}</code></td>"
@@ -892,14 +1215,40 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
             if isinstance(item, dict) and item.get("path")
         ) or "none"
         variants = family.get("variants") or []
-        variant_lines = []
-        for item in variants:
-            if not isinstance(item, dict):
-                continue
-            command_text = escape(str(item.get("command") or ""))
-            command_count = _safe_int(item.get("count"))
-            variant_lines.append(f"<li><code>{command_text}</code> ({command_count})</li>")
-        variant_html = "<ul>" + "".join(variant_lines) + "</ul>" if variant_lines else "none"
+        variant_groups = family.get("variant_groups") or []
+        if family.get("family") == "rg" and isinstance(variant_groups, list) and variant_groups:
+            grouped_lines: list[str] = []
+            for group in variant_groups:
+                if not isinstance(group, dict):
+                    continue
+                mode = str(group.get("group") or "other")
+                mode_count = _safe_int(group.get("count"))
+                mode_items = group.get("variants") if isinstance(group.get("variants"), list) else []
+                mode_lines: list[str] = []
+                for mode_item in mode_items:
+                    if not isinstance(mode_item, dict):
+                        continue
+                    detail = str(mode_item.get("detail") or "")
+                    detail_count = _safe_int(mode_item.get("count"))
+                    mode_lines.append(
+                        f"<li><code>{detail_count}</code> {_render_foldable_text(detail, limit=120)}</li>"
+                    )
+                mode_html = "<ul>" + "".join(mode_lines) + "</ul>" if mode_lines else ""
+                grouped_lines.append(
+                    f"<li><code>rg {escape(mode)}</code> <code>{mode_count}</code>{mode_html}</li>"
+                )
+            variant_html = "<ul>" + "".join(grouped_lines) + "</ul>" if grouped_lines else "none"
+        else:
+            variant_lines = []
+            for item in variants:
+                if not isinstance(item, dict):
+                    continue
+                command_text = str(item.get("command") or "")
+                command_count = _safe_int(item.get("count"))
+                variant_lines.append(
+                    f"<li><code>{command_count}</code> {_render_foldable_text(command_text, limit=140)}</li>"
+                )
+            variant_html = "<ul>" + "".join(variant_lines) + "</ul>" if variant_lines else "none"
         tool_family_rows.append(
             "<tr>"
             f"<td><code>{family_name}</code></td>"
@@ -925,14 +1274,104 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         f"<li>{escape(str(warn))}</li>" for warn in (tool_use_summary.get("warnings") or [])
     )
 
+    kind_counts: Counter[str] = Counter()
+    source_counts: Counter[str] = Counter()
+    chat_role_counts: Counter[str] = Counter()
+    for item in timeline:
+        kind_value = str(item.get("kind") or "unknown")
+        source_value = _source_kind(str(item.get("source_path") or ""))
+        kind_counts[kind_value] += 1
+        source_counts[source_value] += 1
+        if kind_value == "chat":
+            meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+            role_value = str(meta.get("role") or "unknown").strip().lower() if isinstance(meta, dict) else "unknown"
+            chat_role_counts[role_value] += 1
+
+    kind_filters = "".join(
+        (
+            "<label>"
+            f"<input type='checkbox' class='flt-kind' value='{escape(kind)}' checked> "
+            f"{escape(kind)} <code>{count}</code>"
+            "</label>"
+        )
+        for kind, count in sorted(kind_counts.items(), key=lambda item: (-item[1], item[0]))
+    )
+    source_filters = "".join(
+        (
+            "<label>"
+            f"<input type='checkbox' class='flt-source' value='{escape(source)}' checked> "
+            f"{escape(_source_label(source))} <code>{count}</code>"
+            "</label>"
+        )
+        for source, count in sorted(source_counts.items(), key=lambda item: (-item[1], item[0]))
+    )
+    role_filters = "".join(
+        (
+            "<label>"
+            f"<input type='checkbox' class='flt-role' value='{escape(role)}' checked> "
+            f"{escape(role)} <code>{count}</code>"
+            "</label>"
+        )
+        for role, count in sorted(chat_role_counts.items(), key=lambda item: (-item[1], item[0]))
+    )
+
     timeline_rows = []
     for item in timeline:
+        kind_value = str(item.get("kind", "") or "unknown")
+        source_path = str(item.get("source_path", ""))
+        source_kind = _source_kind(source_path)
+        source_label = _source_label(source_path)
+        detail_text = str(item.get("detail", ""))
+        meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+        role_value = "n/a"
+        thread_id_value = ""
+        chars = ""
+        detail_display = detail_text
+        if isinstance(meta, dict):
+            chars_value = meta.get("chars")
+            if chars_value is not None:
+                chars = str(_safe_int(chars_value))
+            thread_id_value = str(meta.get("thread_id") or "")
+            if kind_value == "chat":
+                role = str(meta.get("role") or "unknown")
+                role_value = role.strip().lower() or "unknown"
+                thread_title = _resolve_thread_title(
+                    meta.get("thread_title"),
+                    meta.get("thread_first_user_preview"),
+                )
+                thread_origin = str(meta.get("thread_origin") or "")
+                preview = _collapse_ws(meta.get("preview"))
+                detail_display = f"{role} · {thread_title}"
+                if thread_origin and thread_origin != "unknown":
+                    detail_display += f" · {thread_origin}"
+                if preview:
+                    detail_display += f" · {preview}"
+
+        search_blob = _collapse_ws(
+            " ".join(
+                [
+                    str(item.get("ts", "")),
+                    kind_value,
+                    detail_display,
+                    source_label,
+                    source_path,
+                    thread_id_value,
+                    role_value,
+                ]
+            )
+        ).lower()
         timeline_rows.append(
-            "<tr>"
+            "<tr "
+            f"data-kind='{escape(kind_value)}' "
+            f"data-source='{escape(source_kind)}' "
+            f"data-chat-role='{escape(role_value)}' "
+            f"data-thread='{escape(thread_id_value)}' "
+            f"data-search='{escape(search_blob)}'>"
             f"<td><code>{escape(str(item.get('ts', '')))}</code></td>"
-            f"<td>{escape(str(item.get('kind', '')))}</td>"
-            f"<td>{escape(str(item.get('detail', '')))}</td>"
-            f"<td><code>{escape(str(item.get('source_path', '')))}</code></td>"
+            f"<td>{escape(kind_value)}</td>"
+            f"<td>{_render_foldable_text(detail_display, limit=190)}</td>"
+            f"<td><code>{escape(chars)}</code></td>"
+            f"<td><span class='src-badge src-{escape(source_kind)}' title='{escape(source_path)}'>{escape(source_label)}</span></td>"
             "</tr>"
         )
 
@@ -972,7 +1411,25 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     .chat {{ background: var(--chat); }} .shell {{ background: var(--shell); }} .input {{ background: var(--input); }} .window {{ background: var(--window); }} .branch {{ background: var(--branch); }} .pr {{ background: var(--pr); }}
     table {{ width: 100%; border-collapse: collapse; font-size: 0.9rem; }}
     th, td {{ border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }}
+    .filter-grid {{ display: grid; gap: 0.65rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 0.7rem; }}
+    .filter-block {{ border: 1px solid var(--line); border-radius: 8px; padding: 0.45rem; background: #fbfcfb; }}
+    .filter-search {{ display: flex; gap: 0.4rem; margin-top: 0.35rem; }}
+    .filter-search input[type="search"] {{ flex: 1; border: 1px solid var(--line); border-radius: 6px; padding: 0.25rem 0.4rem; font: inherit; }}
+    .filter-search button {{ border: 1px solid var(--line); border-radius: 6px; background: #f5f7f4; padding: 0.25rem 0.5rem; cursor: pointer; }}
+    .filter-options {{ display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.35rem; }}
+    .filter-options label {{ display: inline-flex; align-items: center; gap: 0.2rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.35rem; background: #f7faf7; font-size: 0.82rem; }}
+    .timeline-count {{ margin-top: 0.4rem; font-size: 0.82rem; color: #4b5563; }}
     code {{ background: #eff2ef; border-radius: 4px; padding: 0.05rem 0.2rem; }}
+    pre {{ white-space: pre-wrap; word-break: break-word; margin: 0.45rem 0 0 0; font-family: "IBM Plex Mono", "Consolas", monospace; font-size: 0.82rem; }}
+    details summary {{ cursor: pointer; }}
+    .src-badge {{ display: inline-block; border-radius: 999px; padding: 0.1rem 0.45rem; font-size: 0.76rem; border: 1px solid var(--line); }}
+    .src-sqlite {{ background: #e5f3ec; color: #0b6e4f; border-color: #8ecfb4; }}
+    .src-chat_exports {{ background: #e8eefc; color: #1d4ed8; border-color: #adc3f4; }}
+    .src-resolver {{ background: #f4ebfd; color: #7c3aed; border-color: #ccb7f6; }}
+    .src-logs {{ background: #fff7e6; color: #a16207; border-color: #f1d193; }}
+    .src-activity {{ background: #ffe9f1; color: #9d174d; border-color: #f2b7cf; }}
+    .src-outputs {{ background: #ebf8ff; color: #0f766e; border-color: #9fdcd6; }}
+    .src-other {{ background: #f3f4f6; color: #374151; border-color: #d1d5db; }}
     .links li {{ display: grid; gap: 0.15rem; margin-bottom: 0.45rem; }}
     @media (max-width: 760px) {{ table {{ font-size: 0.82rem; }} }}
   </style>
@@ -1017,8 +1474,8 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     <section class="panel">
       <h2>Chat Threads</h2>
       <table>
-        <thead><tr><th>Thread ID</th><th>Title</th><th>Messages</th><th>First</th><th>Last</th><th>Roles</th></tr></thead>
-        <tbody>{"".join(thread_rows) if thread_rows else "<tr><td colspan='6'>No chat thread activity for this date.</td></tr>"}</tbody>
+        <thead><tr><th>Thread ID</th><th>Title</th><th>Origin</th><th>Messages</th><th>First</th><th>Last</th><th>Roles</th></tr></thead>
+        <tbody>{"".join(thread_rows) if thread_rows else "<tr><td colspan='7'>No chat thread activity for this date.</td></tr>"}</tbody>
       </table>
     </section>
     <section class="panel">
@@ -1040,9 +1497,31 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     </section>
     <section class="panel">
       <h2>Timeline</h2>
-      <table>
-        <thead><tr><th>TS</th><th>Kind</th><th>Detail</th><th>Source</th></tr></thead>
-        <tbody>{"".join(timeline_rows) if timeline_rows else "<tr><td colspan='4'>No timeline events.</td></tr>"}</tbody>
+      <div class="filter-grid">
+        <div class="filter-block">
+          <b>Search</b>
+          <div class="filter-search">
+            <input id="timeline-search" type="search" placeholder="filter timeline rows">
+            <button id="timeline-reset" type="button">Reset</button>
+          </div>
+          <div id="timeline-count" class="timeline-count"></div>
+        </div>
+        <div class="filter-block">
+          <b>Kinds</b>
+          <div class="filter-options">{kind_filters if kind_filters else "<span>None</span>"}</div>
+        </div>
+        <div class="filter-block">
+          <b>Sources</b>
+          <div class="filter-options">{source_filters if source_filters else "<span>None</span>"}</div>
+        </div>
+        <div class="filter-block">
+          <b>Chat Roles</b>
+          <div class="filter-options">{role_filters if role_filters else "<span>None</span>"}</div>
+        </div>
+      </div>
+      <table id="timeline-table">
+        <thead><tr><th>TS</th><th>Kind</th><th>Detail</th><th>Chars</th><th>Source</th></tr></thead>
+        <tbody>{"".join(timeline_rows) if timeline_rows else "<tr><td colspan='5'>No timeline events.</td></tr>"}</tbody>
       </table>
     </section>
     <section class="panel">
@@ -1050,6 +1529,80 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       <ul>{warning_rows if warning_rows else "<li>None</li>"}</ul>
     </section>
   </main>
+  <script>
+    (() => {{
+      const table = document.getElementById("timeline-table");
+      if (!table) return;
+      const bodyRows = Array.from(table.querySelectorAll("tbody tr[data-kind]"));
+      if (!bodyRows.length) return;
+
+      const kindBoxes = Array.from(document.querySelectorAll(".flt-kind"));
+      const sourceBoxes = Array.from(document.querySelectorAll(".flt-source"));
+      const roleBoxes = Array.from(document.querySelectorAll(".flt-role"));
+      const searchInput = document.getElementById("timeline-search");
+      const resetButton = document.getElementById("timeline-reset");
+      const countLabel = document.getElementById("timeline-count");
+
+      const selected = (boxes) =>
+        new Set(boxes.filter((box) => box.checked).map((box) => box.value));
+
+      const applyFilters = () => {{
+        const allowedKinds = selected(kindBoxes);
+        const allowedSources = selected(sourceBoxes);
+        const allowedRoles = selected(roleBoxes);
+        const query = (searchInput?.value || "").trim().toLowerCase();
+        let visible = 0;
+
+        bodyRows.forEach((row) => {{
+          const kind = row.dataset.kind || "";
+          const source = row.dataset.source || "";
+          const chatRole = row.dataset.chatRole || "n/a";
+          const haystack = row.dataset.search || "";
+          let show = true;
+
+          if (allowedKinds.size && !allowedKinds.has(kind)) show = false;
+          if (show && allowedSources.size && !allowedSources.has(source)) show = false;
+          if (show && kind === "chat" && allowedRoles.size && !allowedRoles.has(chatRole)) show = false;
+          if (show && query && !haystack.includes(query)) show = false;
+
+          row.style.display = show ? "" : "none";
+          if (show) visible += 1;
+        }});
+
+        if (countLabel) {{
+          countLabel.textContent = `${{visible}}/${{bodyRows.length}} rows`;
+        }}
+      }};
+
+      const resetFilters = () => {{
+        kindBoxes.forEach((box) => {{
+          box.checked = true;
+        }});
+        sourceBoxes.forEach((box) => {{
+          box.checked = true;
+        }});
+        roleBoxes.forEach((box) => {{
+          box.checked = true;
+        }});
+        if (searchInput) {{
+          searchInput.value = "";
+        }}
+        applyFilters();
+      }};
+
+      [...kindBoxes, ...sourceBoxes, ...roleBoxes].forEach((box) => {{
+        box.addEventListener("change", applyFilters);
+      }});
+      if (searchInput) {{
+        searchInput.addEventListener("input", applyFilters);
+      }}
+      if (resetButton) {{
+        resetButton.addEventListener("click", resetFilters);
+      }}
+
+      applyFilters();
+    }})();
+  </script>
 </body>
 </html>
 """

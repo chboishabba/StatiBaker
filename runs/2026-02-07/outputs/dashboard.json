@@ -69,6 +69,22 @@
       "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
     },
     {
+      "label": "20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
       "label": "mentions_rank_20260203_225730.tsv",
       "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
     }
@@ -79,16 +95,22 @@
   "chat_threads": [
     {
       "first_ts": "2026-02-07T05:13:30.006000Z",
+      "first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
       "last_ts": "2026-02-07T05:31:50.890812Z",
       "message_count": 45,
+      "origin": "chat-export-json",
       "roles": {
         "assistant": 20,
         "system": 6,
         "tool": 8,
         "user": 11
       },
+      "source_ids": {
+        "chat_export_json": 45
+      },
       "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-      "title": "Conductor vs SB/ITIR"
+      "title": "Conductor vs SB/ITIR",
+      "title_resolved": "Conductor vs SB/ITIR"
     }
   ],
   "date": "2026-02-07",
@@ -250,7 +272,7 @@
       0
     ]
   },
-  "generated_at": "2026-02-08T06:57:54.523446Z",
+  "generated_at": "2026-02-08T07:43:14.279517Z",
   "summary": {
     "activity_events": 2,
     "chat_messages": 45,
@@ -284,591 +306,782 @@
       "ts": "2026-02-03T11:10:00Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=9162",
+      "detail": "chat role=user chars=9162",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 9162,
+        "preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:13:30.006000Z"
     },
     {
-      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=system chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "system",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:13:30.340909Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=4592",
+      "detail": "chat role=assistant chars=4592",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 4592,
+        "preview": "Alright, let\u2019s map **Conductor** onto **SB / ITIR** properly \u2014 because philosophically it\u2019s *very* close, but also stops exactly where SB/ITIR begin. --- ## TL;DR positioning **Conductor** = *procedural context orchestra...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:13:30.382921Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:13:30.430427Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=16698",
+      "detail": "chat role=user chars=16698",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 16698,
+        "preview": "Skip to content ryanmac code-conductor Repository navigation Code Issues4 (4) Pull requests Actions Projects Security Insights Owner avatar code-conductor Public ryanmac/code-conductor t Name Last commit message Last com...",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:14:03.499000Z"
     },
     {
-      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=system chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "system",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:14:03.885647Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=5199",
+      "detail": "chat role=assistant chars=5199",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 5199,
+        "preview": "Nice cluster to look at together. These three sit on **adjacent but very different axes**, and putting them side-by-side actually sharpens what SB / ITIR *is not* \u2014 which is just as important. I\u2019ll do this in layers, the...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:14:03.944249Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=106",
+      "detail": "chat role=user chars=106",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 106,
+        "preview": "Where can we learn from these? Where can we avoid re-implementing? Where shouldwe suggest collaboration?",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:14:33.107000Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=5959",
+      "detail": "chat role=assistant chars=5959",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 5959,
+        "preview": "Great questions. This is exactly the *right* way to look at these: not \u201cwho\u2019s better?\u201d, but **where do we steal the good bits, refuse the rest, and collaborate without collapsing our invariants**. I\u2019ll answer in three cl...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:14:34.139168Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=52",
+      "detail": "chat role=user chars=52",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 52,
+        "preview": "Brief comment for each repo to encourage cooperation",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:15:08.982000Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=2703",
+      "detail": "chat role=assistant chars=2703",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 2703,
+        "preview": "Here are **short, friendly, non-threatening comments** you could genuinely drop into each repo\u2019s discussions / issues / Discord without sounding like you\u2019re trying to \u201cown\u201d anything. Tone: *respectful, collaborative, bou...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:15:09.793387Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=31063",
+      "detail": "chat role=user chars=31063",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 31063,
+        "preview": "Consider: Transcript 0:00 I have a confession to make. For the 0:01 past 2 weeks, I've entirely stopped 0:03 using cursor and I've barely used Claude 0:05 Code at all. The reason why is a new app 0:07 that OpenAI just pu...",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:25:20.283000Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=5758",
+      "detail": "chat role=assistant chars=5758",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 5758,
+        "preview": "This transcript is *gold* for SB/ITIR\u2014not because of the hype, but because it accidentally exposes the **new fault lines** in developer work. I\u2019ll answer in SB terms, tightly. --- # What this tells us (structurally) The...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:25:20.750938Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=170",
+      "detail": "chat role=user chars=170",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 170,
+        "preview": "It's Theo.gg The parllelizer... OpenAI just dropped their Cursor killer Theo - t3\u2024gg 503K subscribers 165,302 views Feb 3, 2026",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:26:16.074000Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=3755",
+      "detail": "chat role=assistant chars=3755",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 3755,
+        "preview": "Yep \u2014 **that\u2019s Theo**. And the key word you used, **\u201cthe parallelizer\u201d**, is exactly right. Once you name it that way, a lot snaps into focus. --- ## What Theo is actually pointing at (beneath the hype) Theo isn\u2019t saying...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:26:16.517632Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=39",
+      "detail": "chat role=user chars=39",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 39,
+        "preview": "Can you please check the news re these?",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:26:48.039000Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:26:48.460333Z"
     },
     {
-      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=tool chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "tool",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:26:49.065163Z"
     },
     {
-      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=tool chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "tool",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:26:49.067682Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=2996",
+      "detail": "chat role=assistant chars=2996",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 2996,
+        "preview": "Here\u2019s a **news-level snapshot** of what\u2019s happening right now around the **OpenAI Codex app** and the wider AI coding/agent ecosystem \u2014 including the stories that directly relate to the \u201cCursor killer / parallelizer\u201d na...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:26:51.382020Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=46",
+      "detail": "chat role=user chars=46",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 46,
+        "preview": "Why Mac? how do our ideas compare to agent HQ?",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:27:41.758000Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=4844",
+      "detail": "chat role=assistant chars=4844",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 4844,
+        "preview": "Great questions \u2014 these cut to **platform strategy** and **control-plane philosophy**, not just tools. I\u2019ll take them in order, then put them side-by-side. --- ## Why **Mac** first (and not Windows/Linux) This is not a t...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:27:42.169150Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=131",
+      "detail": "chat role=user chars=131",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 131,
+        "preview": "Because agent orchestration is interactive, managerial, cognitive, not just compute. Mac is where that persona lives today. glaze.",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:29:19.521000Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=1291",
+      "detail": "chat role=assistant chars=1291",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 1291,
+        "preview": "Got it \u2014 you want this **glazed**, not explained. Here are a few tightened versions at different intensities. Pick the one that fits your voice. --- ### Ultra-clean (drop-in line) > **Agent orchestration is interactive,...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:29:19.920707Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=761",
+      "detail": "chat role=user chars=761",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 761,
+        "preview": "No I meant you were glazing mac... which you happily showed. Search the web re github agent HQ etc... What's the cost model here? How your ideas compare to GitHub Agent HQ This is the important part. What Agent HQ actual...",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:30.977000Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:32.830085Z"
     },
     {
-      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=system chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "system",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:34.676006Z"
     },
     {
-      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=system chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "system",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:34.682170Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:34.784253Z"
     },
     {
-      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=tool chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "tool",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:36.249945Z"
     },
     {
-      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=tool chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "tool",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:36.252383Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:39.232935Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:43.046234Z"
     },
     {
-      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=tool chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "tool",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:43.993149Z"
     },
     {
-      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=tool chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "tool",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:43.996406Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:46.107067Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:51.579361Z"
     },
     {
-      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=tool chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "tool",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:51.991412Z"
     },
     {
-      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=tool chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "tool",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:51.994123Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=4918",
+      "detail": "chat role=assistant chars=4918",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 4918,
+        "preview": "You\u2019re right to call it: my \u201cMac-first\u201d framing was **glazing**. The real reason isn\u2019t \u201cMac = managerial persona\u201d \u2014 it\u2019s **distribution + integration economics** (who GitHub targets first, where native UX iteration is fa...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:53.513236Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=assistant chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:30:58.054668Z"
     },
     {
-      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=102",
+      "detail": "chat role=user chars=102",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 102,
+        "preview": "I guess there's also the built-in assumption of cloud providers (considering the funding circle-jerks)",
         "role": "user",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:31:50.407000Z"
     },
     {
-      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=system chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "system",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:31:50.812537Z"
     },
     {
-      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=4615",
+      "detail": "chat role=assistant chars=4615",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 4615,
+        "preview": "Yes \u2014 that\u2019s the **quiet, structural assumption** sitting underneath *all* of this, and you\u2019re right to call it out. This isn\u2019t just \u201cagent orchestration\u201d. It\u2019s **agent orchestration presuming a cloud-native political ec...",
         "role": "assistant",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:31:50.850667Z"
     },
     {
-      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "detail": "chat role=system chars=0",
       "hour": 5,
       "kind": "chat",
       "meta": {
         "chars": 0,
+        "preview": "",
         "role": "system",
+        "thread_first_user_preview": "consider re SB/ITIR suite Skip to content fcoury conductor Repository navigation Code Issues Pull requests Actions Projects Security Insights Owner avatar conductor Public fcoury/conductor t Name Last commit message Last...",
         "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
-        "thread_title": "Conductor vs SB/ITIR"
+        "thread_origin": "chat-export-json",
+        "thread_title": "Conductor vs SB/ITIR",
+        "thread_title_raw": "Conductor vs SB/ITIR"
       },
       "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
       "ts": "2026-02-07T05:31:50.890812Z"
     }
   ],
+  "tool_use_summary": {
+    "exec_command_count": 0,
+    "families": [],
+    "source": "sqlite",
+    "top_dirs": [],
+    "total_tool_messages": 0,
+    "unique_commands": 0,
+    "warnings": [
+      "No tool messages found for this date/scope in sqlite."
+    ]
+  },
   "warnings": [
     "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
   ]

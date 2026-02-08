@@ -63,6 +63,12 @@
   rolling windows ending at a selected date.
 - Added dashboard tool-use summary section that parses chat `tool` messages
   into grouped command variants and directory-touch counts.
+- Tightened timeline UI for dense days with foldable long rows, source badges,
+  and explicit `chars` display for chat events.
+- Added optional timeline filters (kind/source/chat-role/text search) and
+  untitled-thread fallback titles + origin labels (`codex-ingest`, etc).
+- Grouped `rg` tool-use variants by mode (`--files`, `-n`) with only differing
+  arguments shown per subgroup.
 
 ## Sprint plan references (2026-02-05)
 - Sprint plan: `__CONTEXT/sprints/stati_baker_sprints.md`.

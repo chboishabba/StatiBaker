@@ -26,6 +26,15 @@
   `dashboard_weekly_<N>d.json/html`.
 - Added tool-use summary extraction in dashboard output from chat `tool`
   messages (command family grouping, variant counts, and directories touched).
+- Updated timeline rendering to improve signal density:
+  source badges with hover-path metadata, explicit `chars` column, short thread
+  IDs for untitled threads, and foldable long-detail rows.
+- Added optional in-page timeline filters (kind/source/chat-role/text search)
+  and reset controls for dense debug days.
+- Added untitled-thread fallback naming from first user message preview plus
+  thread-origin labeling (including explicit `codex-ingest` for codex source IDs).
+- Updated tool-use `rg` variant rendering to group by mode (`--files`, `-n`)
+  and list only the distinguishing arguments under each mode.
 
 ## 2026-02-07
 - Synced context from ChatGPT conversation `Conductor vs SB/ITIR`

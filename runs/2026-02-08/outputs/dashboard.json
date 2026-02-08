@@ -73,6 +73,22 @@
       "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
     },
     {
+      "label": "20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
       "label": "mentions_rank_20260203_225730.tsv",
       "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
     }
@@ -240,7 +256,7 @@
       0
     ]
   },
-  "generated_at": "2026-02-08T06:58:01.260647Z",
+  "generated_at": "2026-02-08T07:43:15.437562Z",
   "summary": {
     "activity_events": 2,
     "chat_messages": 0,
@@ -295,6 +311,17 @@
       "ts": "2026-02-08T06:14:10Z"
     }
   ],
+  "tool_use_summary": {
+    "exec_command_count": 0,
+    "families": [],
+    "source": "sqlite",
+    "top_dirs": [],
+    "total_tool_messages": 0,
+    "unique_commands": 0,
+    "warnings": [
+      "No tool messages found for this date/scope in sqlite."
+    ]
+  },
   "warnings": [
     "No chat events found for this date in sqlite, chat exports, or resolver files.",
     "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."

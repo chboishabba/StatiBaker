@@ -164,7 +164,10 @@ class TestDashboardBuild(unittest.TestCase):
 
             loaded = json.loads(json_out.read_text(encoding="utf-8"))
             self.assertEqual(date, loaded["date"])
-            self.assertIn("SB Activity Dashboard", html_out.read_text(encoding="utf-8"))
+            html_text = html_out.read_text(encoding="utf-8")
+            self.assertIn("SB Activity Dashboard", html_text)
+            self.assertIn("timeline-search", html_text)
+            self.assertIn("Timeline</h2>", html_text)
 
     def test_build_dashboard_debug_includes_unscoped_chat(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -473,6 +476,207 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertIn("python build_dashboard.py", families)
             self.assertEqual(2, families["python build_dashboard.py"]["count"])
             self.assertIn("git status", families)
+
+    def test_untitled_sqlite_thread_uses_first_user_preview_and_codex_origin(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+            date = "2026-02-08"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+
+            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            thread_id = "dff2e608e358fe5ed5cf1d0376a36ff8a87a6f2d"
+            rows = [
+                (
+                    "m1",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T09:00:00+00:00",
+                    "user",
+                    "this should become fallback title for untitled thread",
+                    "",
+                    "codex_0001",
+                ),
+                (
+                    "m2",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T09:01:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"git status"}',
+                    "",
+                    "codex_0001",
+                ),
+            ]
+            cur.executemany(
+                "INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                rows,
+            )
+            con.commit()
+            con.close()
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=True,
+            )
+
+            self.assertEqual("sqlite", payload["chat_source"])
+            self.assertEqual(2, payload["summary"]["chat_messages"])
+            self.assertEqual(1, payload["summary"]["chat_threads"])
+            thread = payload["chat_threads"][0]
+            self.assertEqual("codex-ingest", thread["origin"])
+            self.assertTrue(str(thread["title_resolved"]).startswith("(untitled) this should become fallback title"))
+
+            out_html = runs_root / date / "outputs" / "dashboard.html"
+            out_json = runs_root / date / "outputs" / "dashboard.json"
+            write_dashboard_outputs(payload, json_path=out_json, html_path=out_html)
+            html_text = out_html.read_text(encoding="utf-8")
+            self.assertIn("codex-ingest", html_text)
+            self.assertIn("timeline-reset", html_text)
+
+    def test_tool_use_summary_groups_rg_by_mode_and_diff(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+            date = "2026-02-08"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+
+            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            thread_id = "0123456789abcdef0123456789abcdef01234567"
+            rows = [
+                (
+                    "m1",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T10:00:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"rg --files -g \'*CONTEXT.md\'","workdir":"/repo"}',
+                    "",
+                    "codex_0001",
+                ),
+                (
+                    "m2",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T10:01:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"rg --files -g \'context-sources.md\'","workdir":"/repo"}',
+                    "",
+                    "codex_0001",
+                ),
+                (
+                    "m3",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T10:02:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"rg -n \\"crossdoc.v1\\" SensibLaw","workdir":"/repo"}',
+                    "",
+                    "codex_0001",
+                ),
+            ]
+            cur.executemany(
+                "INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                rows,
+            )
+            con.commit()
+            con.close()
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=True,
+            )
+
+            summary = payload.get("tool_use_summary") or {}
+            families = {item["family"]: item for item in summary.get("families") or []}
+            self.assertIn("rg", families)
+            rg_family = families["rg"]
+            groups = {item["group"]: item for item in rg_family.get("variant_groups") or []}
+            self.assertIn("--files", groups)
+            self.assertIn("-n", groups)
+            files_variants = " ".join(
+                str(item.get("detail") or "")
+                for item in groups["--files"].get("variants") or []
+            )
+            self.assertIn("*CONTEXT.md", files_variants)
+            self.assertIn("context-sources.md", files_variants)
 
 
 if __name__ == "__main__":

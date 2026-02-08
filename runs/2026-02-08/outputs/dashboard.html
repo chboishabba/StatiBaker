@@ -33,7 +33,25 @@
     .chat { background: var(--chat); } .shell { background: var(--shell); } .input { background: var(--input); } .window { background: var(--window); } .branch { background: var(--branch); } .pr { background: var(--pr); }
     table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
     th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }
+    .filter-grid { display: grid; gap: 0.65rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 0.7rem; }
+    .filter-block { border: 1px solid var(--line); border-radius: 8px; padding: 0.45rem; background: #fbfcfb; }
+    .filter-search { display: flex; gap: 0.4rem; margin-top: 0.35rem; }
+    .filter-search input[type="search"] { flex: 1; border: 1px solid var(--line); border-radius: 6px; padding: 0.25rem 0.4rem; font: inherit; }
+    .filter-search button { border: 1px solid var(--line); border-radius: 6px; background: #f5f7f4; padding: 0.25rem 0.5rem; cursor: pointer; }
+    .filter-options { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.35rem; }
+    .filter-options label { display: inline-flex; align-items: center; gap: 0.2rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.35rem; background: #f7faf7; font-size: 0.82rem; }
+    .timeline-count { margin-top: 0.4rem; font-size: 0.82rem; color: #4b5563; }
     code { background: #eff2ef; border-radius: 4px; padding: 0.05rem 0.2rem; }
+    pre { white-space: pre-wrap; word-break: break-word; margin: 0.45rem 0 0 0; font-family: "IBM Plex Mono", "Consolas", monospace; font-size: 0.82rem; }
+    details summary { cursor: pointer; }
+    .src-badge { display: inline-block; border-radius: 999px; padding: 0.1rem 0.45rem; font-size: 0.76rem; border: 1px solid var(--line); }
+    .src-sqlite { background: #e5f3ec; color: #0b6e4f; border-color: #8ecfb4; }
+    .src-chat_exports { background: #e8eefc; color: #1d4ed8; border-color: #adc3f4; }
+    .src-resolver { background: #f4ebfd; color: #7c3aed; border-color: #ccb7f6; }
+    .src-logs { background: #fff7e6; color: #a16207; border-color: #f1d193; }
+    .src-activity { background: #ffe9f1; color: #9d174d; border-color: #f2b7cf; }
+    .src-outputs { background: #ebf8ff; color: #0f766e; border-color: #9fdcd6; }
+    .src-other { background: #f3f4f6; color: #374151; border-color: #d1d5db; }
     .links li { display: grid; gap: 0.15rem; margin-bottom: 0.45rem; }
     @media (max-width: 760px) { table { font-size: 0.82rem; } }
   </style>
@@ -44,7 +62,7 @@
       <h1>SB Activity Dashboard</h1>
       <div class="meta">
         <div><b>Date:</b> <code>2026-02-08</code></div>
-        <div><b>Generated:</b> <code>2026-02-08T06:58:01.260647Z</code></div>
+        <div><b>Generated:</b> <code>2026-02-08T07:43:15.437562Z</code></div>
         <div><b>Chat source:</b> <code>none</code></div>
         <div><b>Chat scope:</b> <code>all</code></div>
       </div>
@@ -211,20 +229,59 @@
     </section>
     <section class="panel">
       <h2>Process Artifacts</h2>
-      <ul class="links"><li><a href='daily_brief.md'>daily_brief.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/daily_brief.md</code></li><li><a href='retrospective.md'>retrospective.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/retrospective.md</code></li><li><a href='state.json'>state.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/state.json</code></li><li><a href='drift.json'>drift.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/drift.json</code></li><li><a href='activity_ledger.json'>activity_ledger.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json</code></li><li><a href='../../../COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/CONTEXT.md'>CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md'>20260208T053748Z_context_refresh_6986d38e.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json'>20260208T054246Z_resolver_6986c9f5.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json'>20260208T054330Z_resolver_6986c16d.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json'>20260208T054330Z_resolver_6986ccc6.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt'>20260208T054344Z_latest_6986c16d.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt'>20260208T054344Z_latest_6986c9f5.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt'>20260208T054344Z_latest_6986ccc6.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md'>20260208T054446Z_context_refresh_triplet.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv'>20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json'>20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</code></li><li><a href='../../../../__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv'>mentions_rank_20260203_225730.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv</code></li></ul>
+      <ul class="links"><li><a href='daily_brief.md'>daily_brief.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/daily_brief.md</code></li><li><a href='retrospective.md'>retrospective.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/retrospective.md</code></li><li><a href='state.json'>state.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/state.json</code></li><li><a href='drift.json'>drift.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/drift.json</code></li><li><a href='activity_ledger.json'>activity_ledger.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json</code></li><li><a href='../../../COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/CONTEXT.md'>CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md'>20260208T053748Z_context_refresh_6986d38e.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json'>20260208T054246Z_resolver_6986c9f5.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json'>20260208T054330Z_resolver_6986c16d.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json'>20260208T054330Z_resolver_6986ccc6.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt'>20260208T054344Z_latest_6986c16d.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt'>20260208T054344Z_latest_6986c9f5.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt'>20260208T054344Z_latest_6986ccc6.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md'>20260208T054446Z_context_refresh_triplet.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv'>20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json'>20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv'>mentions_rank_20260203_225730.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv</code></li></ul>
     </section>
     <section class="panel">
       <h2>Chat Threads</h2>
       <table>
-        <thead><tr><th>Thread ID</th><th>Title</th><th>Messages</th><th>First</th><th>Last</th><th>Roles</th></tr></thead>
-        <tbody><tr><td colspan='6'>No chat thread activity for this date.</td></tr></tbody>
+        <thead><tr><th>Thread ID</th><th>Title</th><th>Origin</th><th>Messages</th><th>First</th><th>Last</th><th>Roles</th></tr></thead>
+        <tbody><tr><td colspan='7'>No chat thread activity for this date.</td></tr></tbody>
       </table>
     </section>
     <section class="panel">
-      <h2>Timeline</h2>
+      <h2>Tool Use Summary</h2>
+      <p>
+        source=<code>sqlite</code>,
+        tool_messages=<code>0</code>,
+        exec_command=<code>0</code>,
+        unique_commands=<code>0</code>
+      </p>
+      <p><b>Top directories touched:</b></p>
+      <ul><li>None</li></ul>
       <table>
-        <thead><tr><th>TS</th><th>Kind</th><th>Detail</th><th>Source</th></tr></thead>
-        <tbody><tr><td><code>2026-02-03T11:00:00Z</code></td><td>activity</td><td>activity app=firefox.desktop duration_s=90</td><td><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json</code></td></tr><tr><td><code>2026-02-03T11:10:00Z</code></td><td>activity</td><td>activity app=org.gnome.Terminal duration_s=70</td><td><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json</code></td></tr><tr><td><code>2026-02-08T06:12:10Z</code></td><td>pr</td><td>pr event_type=pr_received repo=ITIR-suite pr=#42</td><td><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl</code></td></tr><tr><td><code>2026-02-08T06:13:10Z</code></td><td>pr</td><td>pr event_type=pr_commented repo=ITIR-suite pr=#42</td><td><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl</code></td></tr><tr><td><code>2026-02-08T06:14:10Z</code></td><td>pr</td><td>pr event_type=pr_merged repo=ITIR-suite pr=#42</td><td><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl</code></td></tr></tbody>
+        <thead><tr><th>Command Family</th><th>Count</th><th>Unique Variants</th><th>Top Dirs</th><th>Variants</th></tr></thead>
+        <tbody><tr><td colspan='5'>No tool command activity parsed.</td></tr></tbody>
+      </table>
+      <p><b>Tool summary warnings:</b></p>
+      <ul><li>No tool messages found for this date/scope in sqlite.</li></ul>
+    </section>
+    <section class="panel">
+      <h2>Timeline</h2>
+      <div class="filter-grid">
+        <div class="filter-block">
+          <b>Search</b>
+          <div class="filter-search">
+            <input id="timeline-search" type="search" placeholder="filter timeline rows">
+            <button id="timeline-reset" type="button">Reset</button>
+          </div>
+          <div id="timeline-count" class="timeline-count"></div>
+        </div>
+        <div class="filter-block">
+          <b>Kinds</b>
+          <div class="filter-options"><label><input type='checkbox' class='flt-kind' value='pr' checked> pr <code>3</code></label><label><input type='checkbox' class='flt-kind' value='activity' checked> activity <code>2</code></label></div>
+        </div>
+        <div class="filter-block">
+          <b>Sources</b>
+          <div class="filter-options"><label><input type='checkbox' class='flt-source' value='logs' checked> run logs <code>3</code></label><label><input type='checkbox' class='flt-source' value='activity' checked> activity <code>2</code></label></div>
+        </div>
+        <div class="filter-block">
+          <b>Chat Roles</b>
+          <div class="filter-options"><span>None</span></div>
+        </div>
+      </div>
+      <table id="timeline-table">
+        <thead><tr><th>TS</th><th>Kind</th><th>Detail</th><th>Chars</th><th>Source</th></tr></thead>
+        <tbody><tr data-kind='activity' data-source='activity' data-chat-role='n/a' data-thread='' data-search='2026-02-03t11:00:00z activity activity app=firefox.desktop duration_s=90 activity /home/c/documents/code/itir-suite/statibaker/runs/2026-02-08/outputs/activity_ledger.json n/a'><td><code>2026-02-03T11:00:00Z</code></td><td>activity</td><td>activity app=firefox.desktop duration_s=90</td><td><code></code></td><td><span class='src-badge src-activity' title='/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json'>activity</span></td></tr><tr data-kind='activity' data-source='activity' data-chat-role='n/a' data-thread='' data-search='2026-02-03t11:10:00z activity activity app=org.gnome.terminal duration_s=70 activity /home/c/documents/code/itir-suite/statibaker/runs/2026-02-08/outputs/activity_ledger.json n/a'><td><code>2026-02-03T11:10:00Z</code></td><td>activity</td><td>activity app=org.gnome.Terminal duration_s=70</td><td><code></code></td><td><span class='src-badge src-activity' title='/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json'>activity</span></td></tr><tr data-kind='pr' data-source='logs' data-chat-role='n/a' data-thread='' data-search='2026-02-08t06:12:10z pr pr event_type=pr_received repo=itir-suite pr=#42 run logs /home/c/documents/code/itir-suite/statibaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl n/a'><td><code>2026-02-08T06:12:10Z</code></td><td>pr</td><td>pr event_type=pr_received repo=ITIR-suite pr=#42</td><td><code></code></td><td><span class='src-badge src-logs' title='/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl'>run logs</span></td></tr><tr data-kind='pr' data-source='logs' data-chat-role='n/a' data-thread='' data-search='2026-02-08t06:13:10z pr pr event_type=pr_commented repo=itir-suite pr=#42 run logs /home/c/documents/code/itir-suite/statibaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl n/a'><td><code>2026-02-08T06:13:10Z</code></td><td>pr</td><td>pr event_type=pr_commented repo=ITIR-suite pr=#42</td><td><code></code></td><td><span class='src-badge src-logs' title='/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl'>run logs</span></td></tr><tr data-kind='pr' data-source='logs' data-chat-role='n/a' data-thread='' data-search='2026-02-08t06:14:10z pr pr event_type=pr_merged repo=itir-suite pr=#42 run logs /home/c/documents/code/itir-suite/statibaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl n/a'><td><code>2026-02-08T06:14:10Z</code></td><td>pr</td><td>pr event_type=pr_merged repo=ITIR-suite pr=#42</td><td><code></code></td><td><span class='src-badge src-logs' title='/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl'>run logs</span></td></tr></tbody>
       </table>
     </section>
     <section class="panel">
@@ -233,5 +290,79 @@
 <li>Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date).</li></ul>
     </section>
   </main>
+  <script>
+    (() => {
+      const table = document.getElementById("timeline-table");
+      if (!table) return;
+      const bodyRows = Array.from(table.querySelectorAll("tbody tr[data-kind]"));
+      if (!bodyRows.length) return;
+
+      const kindBoxes = Array.from(document.querySelectorAll(".flt-kind"));
+      const sourceBoxes = Array.from(document.querySelectorAll(".flt-source"));
+      const roleBoxes = Array.from(document.querySelectorAll(".flt-role"));
+      const searchInput = document.getElementById("timeline-search");
+      const resetButton = document.getElementById("timeline-reset");
+      const countLabel = document.getElementById("timeline-count");
+
+      const selected = (boxes) =>
+        new Set(boxes.filter((box) => box.checked).map((box) => box.value));
+
+      const applyFilters = () => {
+        const allowedKinds = selected(kindBoxes);
+        const allowedSources = selected(sourceBoxes);
+        const allowedRoles = selected(roleBoxes);
+        const query = (searchInput?.value || "").trim().toLowerCase();
+        let visible = 0;
+
+        bodyRows.forEach((row) => {
+          const kind = row.dataset.kind || "";
+          const source = row.dataset.source || "";
+          const chatRole = row.dataset.chatRole || "n/a";
+          const haystack = row.dataset.search || "";
+          let show = true;
+
+          if (allowedKinds.size && !allowedKinds.has(kind)) show = false;
+          if (show && allowedSources.size && !allowedSources.has(source)) show = false;
+          if (show && kind === "chat" && allowedRoles.size && !allowedRoles.has(chatRole)) show = false;
+          if (show && query && !haystack.includes(query)) show = false;
+
+          row.style.display = show ? "" : "none";
+          if (show) visible += 1;
+        });
+
+        if (countLabel) {
+          countLabel.textContent = `${visible}/${bodyRows.length} rows`;
+        }
+      };
+
+      const resetFilters = () => {
+        kindBoxes.forEach((box) => {
+          box.checked = true;
+        });
+        sourceBoxes.forEach((box) => {
+          box.checked = true;
+        });
+        roleBoxes.forEach((box) => {
+          box.checked = true;
+        });
+        if (searchInput) {
+          searchInput.value = "";
+        }
+        applyFilters();
+      };
+
+      [...kindBoxes, ...sourceBoxes, ...roleBoxes].forEach((box) => {
+        box.addEventListener("change", applyFilters);
+      });
+      if (searchInput) {
+        searchInput.addEventListener("input", applyFilters);
+      }
+      if (resetButton) {
+        resetButton.addEventListener("click", resetFilters);
+      }
+
+      applyFilters();
+    })();
+  </script>
 </body>
 </html>
