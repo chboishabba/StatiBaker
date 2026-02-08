@@ -71,6 +71,8 @@ If it produces state, it can be baked.
 - Browser usage metadata (domain-level, duration only)
 - Cloud audit feeds (Google Drive, MS365)
 - Notes app metadata (Obsidian, Evernote)
+- NotebookLM metadata (notebook/source/context IDs only)
+- Media consumption metadata (YouTube/Spotify/VLC/Last.fm)
 - Social feed metadata (Bluesky and other socials; hashes only)
 
 ### Environment and constraints
@@ -120,7 +122,7 @@ A fold over the day that:
 
 ### Drift counters (read-only)
 
-Written to `runs/<date>/outputs/drift.json` as observational counters only.
+Written to `<runs-root>/<date>/outputs/drift.json` as observational counters only. Default runs root is `runs_local/` (override with `SB_RUNS_ROOT`).
 See `DRIFT_SIGNALS.md`.
 
 ---
@@ -144,10 +146,19 @@ For OCR and screen capture guardrails, see `SAFETY_OCR.md`.
 - `INGESTION_FORMATS.md` (append-only event formats)
 - `docs/social_audit_redaction.md` (social feed redaction rules)
 - `docs/social_stub_collectors.md` (per-platform stub inputs)
+- `docs/notebooklm_connector.md` (NotebookLM connector setup + ingest flow)
+- `docs/daemon_web_control_plane.md` (cross-platform daemon + web-managed control plane spec)
+- `docs/media_connectors.md` (media connector mappings + churn heuristic)
+- `docs/inaturalist_connector.md` (iNaturalist meta-only biodiversity connector + trend phases)
+- `docs/mood_self_report.md` (explicit mood self-report lane; non-inferential)
+- `docs/pet_wearables_stub.md` (pet wearables/smart collar meta-only stub)
+- `docs/maps_timeline_stub.md` (Google/Apple maps timeline meta-only stub)
 - `docs/collectors_index.md` (collector/adapters index)
 - `docs/INDEX.md` (doc index)
 - `docs/observed_signals.md` (meta-only signal catalog)
 - `docs/activity_dashboard.md` (read-only process-lens dashboard contract)
+- `docs/api_costing_model.md` (context usage + indicative API costing model)
+- `docs/chat_flow_lane_mode.md` (planned true lane chart mode for chat flow)
 - `DESIGN.md` (architecture notes and invariants)
 - `CONTEXT.md` (context-layering and divergence notes)
 - `COMPACTIFIED_CONTEXT.md` (portable project summary)

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SB Weekly Dashboard 2026-01-10 to 2026-02-08</title>
+  <style>
+    :root {
+      --bg: #f4f8f7;
+      --ink: #17222a;
+      --panel: #ffffff;
+      --line: #d7e1e7;
+    }
+    body { margin: 0; background: linear-gradient(170deg, #eaf2f6, var(--bg)); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", sans-serif; }
+    main { max-width: 1200px; margin: 0 auto; padding: 1.2rem; display: grid; gap: 1rem; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem; }
+    .grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    .metric { border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; }
+    .metric b { display:block; font-size: 1.25rem; margin-top: 0.2rem; }
+    h1,h2 { margin: 0 0 0.6rem 0; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }
+    code { background: #edf2f4; border-radius: 4px; padding: 0.05rem 0.2rem; }
+    .filter-grid { display: grid; gap: 0.65rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 0.45rem; }
+    .filter-block { border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; background: #fbfcfb; }
+    .filter-options { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.35rem; }
+    .filter-options label { display: inline-flex; align-items: center; gap: 0.2rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.45rem; background: #f7faf7; font-size: 0.86rem; }
+    .wf-controls { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+    .wf-controls label { font-size: 0.9rem; color: #334155; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .wf-controls button { border: 1px solid var(--line); border-radius: 6px; background: #f5f7f4; padding: 0.28rem 0.55rem; cursor: pointer; }
+    .rollup-grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .rollup ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.3rem; }
+    .rollup li { display: grid; grid-template-columns: 3.1rem 1fr 5.6rem; align-items: center; gap: 0.4rem; }
+    .bar-wrap { border: 1px solid var(--line); border-radius: 7px; overflow: hidden; height: 0.7rem; }
+    .bar { height: 100%; background: #216e39; }
+    .bar.work { background: #216e39; }
+    .bar.git { background: #2f6f3e; }
+    .hm-wrap { overflow-x: auto; padding-bottom: 0.2rem; }
+    .hm-grid { display: grid; grid-template-columns: 2.6rem repeat(24, 0.62rem); gap: 0.2rem; align-items: center; width: max-content; }
+    .hm-corner { width: 2.6rem; height: 0.9rem; }
+    .hm-hour { font-size: 0.62rem; color: #475569; text-align: center; height: 0.9rem; line-height: 0.9rem; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .hm-hour-muted { color: transparent; }
+    .hm-dow { font-size: 0.72rem; color: #334155; text-align: right; padding-right: 0.15rem; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .hm-cell { width: 0.62rem; height: 0.62rem; border-radius: 2px; border: 1px solid rgba(15, 23, 42, 0.10); background: #ebedf0; }
+    .hm-cell.l0 { background: #ebedf0; }
+    .hm-cell.l1 { background: #9be9a8; }
+    .hm-cell.l2 { background: #40c463; }
+    .hm-cell.l3 { background: #30a14e; }
+    .hm-cell.l4 { background: #216e39; }
+    .hm-legend { display: flex; align-items: center; gap: 0.25rem; justify-content: flex-end; margin-top: 0.45rem; color: #475569; font-size: 0.78rem; }
+    .hm-sq { width: 0.62rem; height: 0.62rem; border-radius: 2px; border: 1px solid rgba(15, 23, 42, 0.10); display: inline-block; }
+    .hm-sq.l0 { background: #ebedf0; }
+    .hm-sq.l1 { background: #9be9a8; }
+    .hm-sq.l2 { background: #40c463; }
+    .hm-sq.l3 { background: #30a14e; }
+    .hm-sq.l4 { background: #216e39; }
+    .hm-note { margin-top: 0.35rem; }
+    @media (max-width: 760px) { table { font-size: 0.82rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <h1>SB Weekly Dashboard</h1>
+      <p>
+        <b>Window:</b> <code>2026-01-10</code> to
+        <code>2026-02-08</code> |
+        <b>Days:</b> <code>30</code> |
+        <b>Chat scope:</b> <code>scoped</code>
+      </p>
+    </section>
+    
+<section class="panel">
+  <h2>When You Work (Weekday x Hour)</h2>
+  <p><small>Design cue: GitHub’s contribution calendar. This view answers "when" across the window. Default is a normalized score across selected signals; toggle signals to filter.</small></p>
+  <div class="filter-grid">
+    <div class="filter-block">
+      <div><b>Signals</b></div>
+      <div class="filter-options" id="weekly-heatmap-controls"></div>
+      <div class="wf-controls" style="margin-top:0.45rem;">
+        <label><input type="checkbox" id="weekly-normalize" checked> Normalize (score)</label>
+        <button type="button" id="weekly-select-all">All</button>
+        <button type="button" id="weekly-select-none">None</button>
+        <button type="button" id="weekly-select-intent">Intent set</button>
+      </div>
+    </div>
+  </div>
+  <div class="hm-wrap">
+    <div class="hm-grid" id="weekly-heatmap-grid"></div>
+    <div class="hm-legend">
+      <span>Less</span>
+      <span class="hm-sq l0"></span><span class="hm-sq l1"></span><span class="hm-sq l2"></span><span class="hm-sq l3"></span><span class="hm-sq l4"></span>
+      <span>More</span>
+    </div>
+  </div>
+  <p class="hm-note"><small>Hover cells for per-signal breakdown. Intensity is normalized per lane when "Normalize" is on, so input volume doesn't swamp other signals.</small></p>
+</section>
+
+<section class="panel">
+  <h2>Above / Below (Rollups)</h2>
+  <p><small>Which days/hours are above baseline, using the selected signals.</small></p>
+  <div class="rollup-grid">
+    <div class="metric rollup">
+      <div><b>By weekday (avg/day)</b></div>
+      <ul id="weekly-rollup-weekday"></ul>
+    </div>
+    <div class="metric rollup">
+      <div><b>By hour (avg/day)</b></div>
+      <ul id="weekly-rollup-hour"></ul>
+    </div>
+    <div class="metric rollup">
+      <div><b>Top weekday-hours</b></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Rank</th><th>When</th><th>Value</th><th>Notes</th></tr></thead>
+          <tbody id="weekly-rollup-top"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script id="weekly-heatmap-data" type="application/json">{"default_selected": ["chat", "git", "pr", "git_branch", "activity"], "lane_labels": {"activity": "Activity sessions", "calendar": "Calendar", "chat": "Chat", "git": "Git commits", "git_branch": "Git branch events", "input": "Input", "media": "Media", "pr": "PR events", "shell": "Shell", "window": "Window focus"}, "lane_totals": {"activity": 8, "calendar": 0, "chat": 130, "git": 4, "git_branch": 9, "input": 0, "media": 0, "pr": 3, "shell": 0, "window": 0}, "lanes": ["chat", "shell", "git", "pr", "git_branch", "input", "window", "activity", "media", "calendar"], "series": {"activity": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "calendar": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "chat": [[0, 0, 0, 0, 0, 10, 0, 15, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 8, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "git": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "git_branch": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "input": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "media": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "pr": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "shell": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "window": [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]}, "weekday_day_counts": [4, 4, 4, 4, 4, 5, 5], "weekday_names": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}</script>
+<script>
+(() => {
+  const dataEl = document.getElementById("weekly-heatmap-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent || "{}");
+  const lanes = Array.isArray(data.lanes) ? data.lanes.slice() : [];
+  const laneLabels = (data.lane_labels && typeof data.lane_labels === "object") ? data.lane_labels : {};
+  const laneTotals = (data.lane_totals && typeof data.lane_totals === "object") ? data.lane_totals : {};
+  const series = (data.series && typeof data.series === "object") ? data.series : {};
+  const weekdayNames = Array.isArray(data.weekday_names) ? data.weekday_names : ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  const weekdayDayCounts = Array.isArray(data.weekday_day_counts) ? data.weekday_day_counts.map(x => Math.max(0, Number(x)||0)) : [0,0,0,0,0,0,0];
+  const totalDays = Math.max(1, weekdayDayCounts.reduce((a,b) => a + b, 0));
+  const defaultSelected = Array.isArray(data.default_selected) ? data.default_selected : [];
+
+  const controls = document.getElementById("weekly-heatmap-controls");
+  const grid = document.getElementById("weekly-heatmap-grid");
+  const weekdayList = document.getElementById("weekly-rollup-weekday");
+  const hourList = document.getElementById("weekly-rollup-hour");
+  const topBody = document.getElementById("weekly-rollup-top");
+  const normalizeToggle = document.getElementById("weekly-normalize");
+  const btnAll = document.getElementById("weekly-select-all");
+  const btnNone = document.getElementById("weekly-select-none");
+  const btnIntent = document.getElementById("weekly-select-intent");
+  if (!controls || !grid || !weekdayList || !hourList || !topBody || !normalizeToggle) return;
+
+  const INTENT_SET = ["git","shell","chat","pr","git_branch","input","calendar","activity"];
+
+  function laneAvailable(lane) {
+    return (Number(laneTotals[lane]) || 0) > 0;
+  }
+
+  function buildControls() {
+    const items = [];
+    for (const lane of lanes) {
+      const label = laneLabels[lane] || lane;
+      const available = laneAvailable(lane);
+      const checked = defaultSelected.includes(lane) && available;
+      items.push(
+        `<label title="${available ? "" : "no data in this window"}">` +
+          `<input type="checkbox" data-lane="${lane}" ${checked ? "checked" : ""} ${available ? "" : "disabled"}>` +
+          `${label}` +
+        `</label>`
+      );
+    }
+    controls.innerHTML = items.join("");
+  }
+
+  function selectedLanes() {
+    const out = [];
+    for (const box of controls.querySelectorAll("input[type=checkbox][data-lane]")) {
+      if (box.checked && !box.disabled) out.push(box.getAttribute("data-lane"));
+    }
+    return out;
+  }
+
+  function cellAvg(lane, dow, hour) {
+    const denom = Math.max(1, Number(weekdayDayCounts[dow]) || 0);
+    const m = series[lane];
+    if (!Array.isArray(m) || !Array.isArray(m[dow])) return 0;
+    return (Number(m[dow][hour]) || 0) / denom;
+  }
+
+  function computeLaneMaxAvg(lane) {
+    let max = 0;
+    for (let dow = 0; dow < 7; dow++) {
+      for (let hour = 0; hour < 24; hour++) {
+        max = Math.max(max, cellAvg(lane, dow, hour));
+      }
+    }
+    return max;
+  }
+
+  function heatLevel(value, maxValue) {
+    if (!(value > 0) || !(maxValue > 0)) return 0;
+    const ratio = Math.max(0, Math.min(1, value / maxValue));
+    if (ratio <= 0.20) return 1;
+    if (ratio <= 0.40) return 2;
+    if (ratio <= 0.65) return 3;
+    return 4;
+  }
+
+  function formatDeltaPct(delta) {
+    if (!isFinite(delta) || Math.abs(delta) < 1) return "";
+    const sign = delta >= 0 ? "+" : "";
+    return `${sign}${delta.toFixed(0)}%`;
+  }
+
+  function render() {
+    const selected = selectedLanes();
+    const normalize = !!normalizeToggle.checked;
+    const laneMax = {};
+    if (normalize) {
+      for (const lane of selected) laneMax[lane] = computeLaneMaxAvg(lane);
+    }
+
+    const values = Array.from({length: 7}, () => Array.from({length: 24}, () => 0));
+    let maxVal = 0;
+    for (let dow = 0; dow < 7; dow++) {
+      for (let hour = 0; hour < 24; hour++) {
+        if (!selected.length) {
+          values[dow][hour] = 0;
+          continue;
+        }
+        if (normalize) {
+          let sum = 0;
+          let n = 0;
+          for (const lane of selected) {
+            const m = laneMax[lane] || 0;
+            if (!(m > 0)) continue;
+            sum += (cellAvg(lane, dow, hour) / m);
+            n += 1;
+          }
+          values[dow][hour] = n ? (sum / n) : 0;
+        } else {
+          let sum = 0;
+          for (const lane of selected) sum += cellAvg(lane, dow, hour);
+          values[dow][hour] = sum;
+        }
+        maxVal = Math.max(maxVal, values[dow][hour]);
+      }
+    }
+
+    // Build heatmap grid.
+    const hourLabels = [];
+    for (let hour = 0; hour < 24; hour++) {
+      if (hour % 3 === 0) hourLabels.push(`<div class="hm-hour">${String(hour).padStart(2,"0")}</div>`);
+      else hourLabels.push(`<div class="hm-hour hm-hour-muted"></div>`);
+    }
+    const cells = [];
+    for (let dow = 0; dow < 7; dow++) {
+      const dowName = String(weekdayNames[dow] || dow);
+      const days = Number(weekdayDayCounts[dow]) || 0;
+      cells.push(`<div class="hm-dow">${dowName}</div>`);
+      for (let hour = 0; hour < 24; hour++) {
+        const val = values[dow][hour];
+        const level = heatLevel(val, maxVal);
+        const laneLines = selected.slice(0, 8).map(l => {
+          const avg = cellAvg(l, dow, hour);
+          return `${laneLabels[l] || l}: ${avg.toFixed(2)} avg/day`;
+        });
+        const mode = normalize ? "score" : "avg/day";
+        const header = `${dowName} ${String(hour).padStart(2,"0")}:00 | ${mode}=${val.toFixed(2)} | days=${days}`;
+        const more = selected.length > 8 ? ` (+${selected.length - 8} more)` : "";
+        const tooltip = [header].concat(laneLines).concat([more]).filter(Boolean).join("\n");
+        cells.push(`<div class="hm-cell l${level}" title="${tooltip.replace(/"/g, "&quot;")}"></div>`);
+      }
+    }
+    grid.innerHTML = `<div class="hm-corner"></div>${hourLabels.join("")}${cells.join("")}`;
+
+    // Rollups.
+    const weekdayScore = Array.from({length: 7}, () => 0);
+    for (let dow = 0; dow < 7; dow++) {
+      let sum = 0;
+      for (let hour = 0; hour < 24; hour++) sum += values[dow][hour];
+      weekdayScore[dow] = sum;
+    }
+    const baselinePerDay = weekdayScore.reduce((acc, v, i) => acc + (v * (Number(weekdayDayCounts[i]) || 0)), 0) / totalDays;
+    const weekdayDelta = weekdayScore.map((v, i) => (baselinePerDay > 0 ? ((v / baselinePerDay) - 1) * 100 : 0));
+
+    const hourScore = Array.from({length: 24}, () => 0);
+    for (let hour = 0; hour < 24; hour++) {
+      let sum = 0;
+      for (let dow = 0; dow < 7; dow++) sum += values[dow][hour] * (Number(weekdayDayCounts[dow]) || 0);
+      hourScore[hour] = sum / totalDays;
+    }
+    const baselinePerHour = (baselinePerDay > 0) ? (baselinePerDay / 24.0) : 0;
+    const hourDelta = hourScore.map(v => (baselinePerHour > 0 ? ((v / baselinePerHour) - 1) * 100 : 0));
+
+    function renderBars(labels, vals, deltas, cssClass, precision) {
+      const max = Math.max(0.000001, ...vals);
+      return labels.map((label, idx) => {
+        const v = vals[idx] || 0;
+        const w = v ? Math.round((v / max) * 100) : 0;
+        const d = deltas[idx] || 0;
+        const dText = formatDeltaPct(d);
+        const tip = `${label}: ${v.toFixed(precision)} avg/day ${dText}`;
+        return (
+          `<li>` +
+            `<code>${label}</code>` +
+            `<div class="bar-wrap" title="${tip.replace(/"/g, "&quot;")}"><div class="bar ${cssClass}" style="width:${w}%;"></div></div>` +
+            `<span>${v.toFixed(precision)}${dText ? " " + dText : ""}</span>` +
+          `</li>`
+        );
+      }).join("");
+    }
+
+    weekdayList.innerHTML = renderBars(weekdayNames.slice(0,7), weekdayScore, weekdayDelta, "work", 2);
+    hourList.innerHTML = renderBars(Array.from({length:24}, (_,h) => String(h).padStart(2,"0")), hourScore, hourDelta, "work", 2);
+
+    // Top weekday-hours.
+    const flat = [];
+    for (let dow = 0; dow < 7; dow++) {
+      for (let hour = 0; hour < 24; hour++) {
+        flat.push({
+          dow: String(weekdayNames[dow] || dow),
+          hour,
+          value: values[dow][hour],
+          days: Number(weekdayDayCounts[dow]) || 0
+        });
+      }
+    }
+    flat.sort((a,b) => (b.value - a.value));
+    const top = flat.slice(0, 12);
+    topBody.innerHTML = top.map((row, idx) => {
+      const when = `${row.dow} ${String(row.hour).padStart(2,"0")}:00`;
+      const note = normalize ? "score (normalized)" : "avg/day (raw)";
+      return (
+        `<tr>` +
+          `<td>${idx+1}</td>` +
+          `<td><code>${when}</code></td>` +
+          `<td>${row.value.toFixed(2)}</td>` +
+          `<td>${note}</td>` +
+        `</tr>`
+      );
+    }).join("") || `<tr><td colspan="4">No data.</td></tr>`;
+  }
+
+  buildControls();
+  controls.addEventListener("change", render);
+  normalizeToggle.addEventListener("change", render);
+  if (btnAll) btnAll.addEventListener("click", () => {
+    for (const box of controls.querySelectorAll("input[type=checkbox][data-lane]")) {
+      if (!box.disabled) box.checked = true;
+    }
+    render();
+  });
+  if (btnNone) btnNone.addEventListener("click", () => {
+    for (const box of controls.querySelectorAll("input[type=checkbox][data-lane]")) {
+      box.checked = false;
+    }
+    render();
+  });
+  if (btnIntent) btnIntent.addEventListener("click", () => {
+    for (const box of controls.querySelectorAll("input[type=checkbox][data-lane]")) {
+      const lane = box.getAttribute("data-lane");
+      box.checked = !box.disabled && INTENT_SET.includes(lane);
+    }
+    render();
+  });
+  render();
+})();
+</script>
+
+    <section class="panel">
+      <h2>Totals</h2>
+      <div class="grid">
+        <div class="metric">Chat messages<b>130</b></div>
+        <div class="metric">Chat threads<b>5</b></div>
+        <div class="metric">Chat switches<b>0</b></div>
+        <div class="metric">Shell commands<b>0</b></div>
+        <div class="metric">Agent edit blocks<b>0</b></div>
+        <div class="metric">Agent files touched<b>0</b></div>
+        <div class="metric">Agent line deltas<b>+0 / -0</b></div>
+        <div class="metric">Media events<b>0</b></div>
+        <div class="metric">Media items observed<b>0</b></div>
+        <div class="metric">Media consumed<b>0.00 h</b></div>
+        <div class="metric">Media completion/churn<b>0.0% / 0.0%</b></div>
+        <div class="metric">iNaturalist events<b>0</b></div>
+        <div class="metric">iNaturalist insects<b>0</b></div>
+        <div class="metric">Mood reports<b>0</b></div>
+        <div class="metric">Input events<b>0</b></div>
+        <div class="metric">Window focus events<b>0</b></div>
+        <div class="metric">Activity events<b>8</b></div>
+        <div class="metric">Git commits<b>4</b></div>
+        <div class="metric">Git branch events<b>9</b></div>
+        <div class="metric">PR events<b>3</b></div>
+      </div>
+      <p>
+        <b>Daily averages:</b>
+        chat=<code>4.33</code>,
+        switches=<code>0.0</code>,
+        switch_rate=<code>0.0%</code>,
+        switches/hour=<code>0.00</code>,
+        messages/chat=<code>4.33</code>,
+        top-thread-share=<code>16.7%</code>,
+        agent-top-file-share=<code>0.0%</code>,
+        agent-edits/file=<code>0.00</code>,
+        media-completion=<code>0.0%</code>,
+        media-churn=<code>0.0%</code>,
+        shell=<code>0.0</code>,
+        commits=<code>0.13</code>,
+        prs=<code>0.1</code>
+      </p>
+    </section>
+    <section class="panel">
+      <h2>NotebookLM Lifecycle (Metadata)</h2>
+      <div class="grid">
+        <div class="metric">Notes meta events<b>557</b></div>
+        <div class="metric">NotebookLM meta events<b>557</b></div>
+        <div class="metric">Notebooks created/modified/moved/deleted/seen<b>0/0/0/0/22</b></div>
+        <div class="metric">Files created/modified/moved/deleted/seen<b>0/0/0/0/534</b></div>
+      </div>
+      <p>
+        <b>Daily averages:</b>
+        notes_meta=<code>18.57</code>,
+        notebooklm=<code>18.57</code>
+      </p>
+    </section>
+    <section class="panel">
+      <h2>Per-Day Summary</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Date</th><th>Chat Source</th><th>Scope</th><th>Chat Msg</th><th>Chat Threads</th><th>Switches</th><th>Switch Rate</th><th>Switch/hr</th><th>Msg/chat</th><th>Top Thread</th><th>Shell</th><th>Agent blocks</th><th>Agent files</th><th>Agent delta</th><th>Agent top file</th><th>Media evt</th><th>Media items</th><th>Media h</th><th>Media churn</th><th>Commits</th><th>Branch</th><th>PR</th><th>Warnings</th><th>Daily</th></tr></thead>
+          <tbody><tr><td><code>2026-01-10</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-10/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-11</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-11/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-12</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-12/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-13</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-13/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-14</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-14/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-15</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-15/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-16</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-16/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-17</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-17/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-18</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-18/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-19</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-19/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-20</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-20/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-21</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-21/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-22</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-22/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-23</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-23/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-24</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-24/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-25</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-25/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-26</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-26/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-27</code></td><td>sqlite</td><td>scoped</td><td>6</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>6.00</td><td>100.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td><a href='../../2026-01-27/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-28</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-28/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-29</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-29/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-30</code></td><td>sqlite</td><td>scoped</td><td>6</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>6.00</td><td>100.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td><a href='../../2026-01-30/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-31</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-01-31/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-01</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-02-01/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-02</code></td><td>sqlite</td><td>scoped</td><td>52</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>52.00</td><td>100.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td><a href='../../2026-02-02/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-03</code></td><td>sqlite</td><td>scoped</td><td>21</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>21.00</td><td>100.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td><a href='../../2026-02-03/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-04</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-02-04/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-05</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>1</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-02-05/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-06</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-02-06/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-07</code></td><td>chat_exports</td><td>scoped</td><td>45</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>45.00</td><td>100.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td><a href='../../2026-02-07/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-08</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>3</td><td>9</td><td>3</td><td>3</td><td><a href='dashboard.html'>daily</a></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Warnings</h2>
+      <ul><li>30 day(s) reported one or more warnings.</li></ul>
+    </section>
+  </main>
+</body>
+</html>

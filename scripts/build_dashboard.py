@@ -2,13 +2,14 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Build SB daily dashboard and optional weekly summary views."
+        description="Build SB daily dashboard with optional weekly/lifetime summary views."
     )
     parser.add_argument("--date", required=True, help="Date in YYYY-MM-DD.")
     parser.add_argument(
@@ -21,7 +22,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--runs-root",
-        help="Path to SB runs root (default: <sb-root>/runs).",
+        help="Path to SB runs root (default: $SB_RUNS_ROOT or <sb-root>/runs_local).",
     )
     parser.add_argument(
         "--context-root",
@@ -88,6 +89,29 @@ def main() -> None:
             "(default: runs/<date>/outputs/dashboard_weekly_<N>d.html)."
         ),
     )
+    parser.add_argument(
+        "--lifetime",
+        action="store_true",
+        help="Also build a lifetime/global summary view up to --date.",
+    )
+    parser.add_argument(
+        "--lifetime-start-date",
+        help="Optional lifetime start date (YYYY-MM-DD). Default: earliest runs/<date> directory.",
+    )
+    parser.add_argument(
+        "--lifetime-json-out",
+        help=(
+            "Output path for lifetime dashboard JSON "
+            "(default: runs/<date>/outputs/dashboard_lifetime.json)."
+        ),
+    )
+    parser.add_argument(
+        "--lifetime-html-out",
+        help=(
+            "Output path for lifetime dashboard HTML "
+            "(default: runs/<date>/outputs/dashboard_lifetime.html)."
+        ),
+    )
     args = parser.parse_args()
 
     script_path = Path(__file__).resolve()
@@ -95,10 +119,16 @@ def main() -> None:
     if str(sb_root) not in sys.path:
         sys.path.insert(0, str(sb_root))
 
+    runs_root_default = Path(os.environ.get("SB_RUNS_ROOT", "")).expanduser().resolve() if os.environ.get("SB_RUNS_ROOT") else (sb_root / "runs_local")
+
     from sb.dashboard import (
         build_dashboard,
+        build_lifetime_costing_payload,
+        build_lifetime_dashboard,
         build_weekly_dashboard,
+        write_costing_outputs,
         write_dashboard_outputs,
+        write_lifetime_outputs,
         write_weekly_outputs,
     )
 
@@ -106,7 +136,7 @@ def main() -> None:
         Path(args.repo_root).expanduser().resolve() if args.repo_root else sb_root.parent
     )
     runs_root = (
-        Path(args.runs_root).expanduser().resolve() if args.runs_root else sb_root / "runs"
+        Path(args.runs_root).expanduser().resolve() if args.runs_root else runs_root_default
     )
     context_root = (
         Path(args.context_root).expanduser().resolve()
@@ -186,6 +216,49 @@ def main() -> None:
         )
         print(weekly_json_out)
         print(weekly_html_out)
+
+    if args.lifetime:
+        lifetime_json_out = (
+            Path(args.lifetime_json_out).expanduser().resolve()
+            if args.lifetime_json_out
+            else default_out_dir / "dashboard_lifetime.json"
+        )
+        lifetime_html_out = (
+            Path(args.lifetime_html_out).expanduser().resolve()
+            if args.lifetime_html_out
+            else default_out_dir / "dashboard_lifetime.html"
+        )
+        lifetime_payload = build_lifetime_dashboard(
+            end_date_text=args.date,
+            repo_root=repo_root,
+            runs_root=runs_root,
+            context_root=context_root,
+            convo_ids_path=convo_ids,
+            chat_db_path=chat_db,
+            chat_exports_dir=chat_exports,
+            max_timeline_events=max(1, args.max_timeline_events),
+            include_all_chat=bool(args.debug or args.debug_include_all_chat),
+            start_date_text=args.lifetime_start_date,
+        )
+        write_lifetime_outputs(
+            lifetime_payload,
+            json_path=lifetime_json_out,
+            html_path=lifetime_html_out,
+        )
+        print(lifetime_json_out)
+        print(lifetime_html_out)
+
+        suffix = "_all" if bool(args.debug or args.debug_include_all_chat) else ""
+        costing_json_out = default_out_dir / f"dashboard_costing{suffix}.json"
+        costing_html_out = default_out_dir / f"dashboard_costing{suffix}.html"
+        costing_payload = build_lifetime_costing_payload(lifetime_payload=lifetime_payload)
+        write_costing_outputs(
+            costing_payload,
+            json_path=costing_json_out,
+            html_path=costing_html_out,
+        )
+        print(costing_json_out)
+        print(costing_html_out)
 
 
 if __name__ == "__main__":

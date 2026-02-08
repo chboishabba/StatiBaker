@@ -32,6 +32,6178 @@
   "day_state": "active",
   "events": [
     {
+      "id": "git-6ec5ff8",
+      "source": "git",
+      "text": "commit 6ec5ff8 (ITIR-suite)",
+      "ts": "2026-02-08T17:24:43+10:00",
+      "type": "commit"
+    },
+    {
+      "id": "git-5f6f24e",
+      "source": "git",
+      "text": "commit 5f6f24e (ITIR-suite)",
+      "ts": "2026-02-08T18:32:31+10:00",
+      "type": "commit"
+    },
+    {
+      "id": "git-4bbf81b",
+      "source": "git",
+      "text": "commit 4bbf81b (ITIR-suite)",
+      "ts": "2026-02-08T19:38:14+10:00",
+      "type": "commit"
+    },
+    {
+      "id": "signal-53acc9b437b7",
+      "meta": {},
+      "source": "observed",
+      "text": "observed_signal",
+      "ts": "2026-02-08T17:24:43+10:00",
+      "type": "signal"
+    },
+    {
+      "id": "signal-4ef312a5dadc",
+      "meta": {},
+      "source": "observed",
+      "text": "observed_signal",
+      "ts": "2026-02-08T18:32:31+10:00",
+      "type": "signal"
+    },
+    {
+      "id": "signal-befd3279d0e2",
+      "meta": {},
+      "source": "observed",
+      "text": "observed_signal",
+      "ts": "2026-02-08T19:38:14+10:00",
+      "type": "signal"
+    },
+    {
+      "id": "signal-6c6aa4bfdd20",
+      "meta": {
+        "event": "context_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=context_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-e9a4ee81eefe",
+      "meta": {
+        "event": "notebook_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=notebook_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-09adf0a03d4b",
+      "meta": {
+        "event": "source_observed",
+        "signal": "notes_meta"
+      },
+      "source": "observed",
+      "text": "signal=notes_meta, event=source_observed",
+      "ts": "2026-02-08T11:41:41.278584Z",
+      "type": "signal"
+    },
+    {
       "id": "signal-4c077625fabc",
       "meta": {
         "event_type": "pr_received",
@@ -62,6 +6234,105 @@
       "source": "observed",
       "text": "signal=pr_event, event_type=pr_merged",
       "ts": "2026-02-08T06:14:10Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-76ccfd88ee53",
+      "meta": {
+        "event_type": "branch_tip_update",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_tip_update",
+      "ts": "2026-02-08T09:38:15Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-26bdafcbecf5",
+      "meta": {
+        "event_type": "branch_commit",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_commit",
+      "ts": "2026-02-08T09:38:14Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-26bdafcbecf5",
+      "meta": {
+        "event_type": "branch_commit",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_commit",
+      "ts": "2026-02-08T09:38:14Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-4dbfe0180dc8",
+      "meta": {
+        "event_type": "branch_tip_update",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_tip_update",
+      "ts": "2026-02-08T08:32:33Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-db1f6567f8ba",
+      "meta": {
+        "event_type": "branch_commit",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_commit",
+      "ts": "2026-02-08T08:32:31Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-db1f6567f8ba",
+      "meta": {
+        "event_type": "branch_commit",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_commit",
+      "ts": "2026-02-08T08:32:31Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-253aa07c8943",
+      "meta": {
+        "event_type": "branch_tip_update",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_tip_update",
+      "ts": "2026-02-08T07:24:45Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-9ba9cd798c40",
+      "meta": {
+        "event_type": "branch_commit",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_commit",
+      "ts": "2026-02-08T07:24:43Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-9ba9cd798c40",
+      "meta": {
+        "event_type": "branch_commit",
+        "signal": "git_branch"
+      },
+      "source": "observed",
+      "text": "signal=git_branch, event_type=branch_commit",
+      "ts": "2026-02-08T07:24:43Z",
       "type": "signal"
     }
   ],

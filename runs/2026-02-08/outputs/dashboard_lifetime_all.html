@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SB Lifetime Dashboard 2026-01-01 to 2026-02-08</title>
+  <style>
+    :root {
+      --bg: #f4f8f7;
+      --ink: #17222a;
+      --panel: #ffffff;
+      --line: #d7e1e7;
+    }
+    body { margin: 0; background: linear-gradient(170deg, #eaf2f6, var(--bg)); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", sans-serif; }
+    main { max-width: 1280px; margin: 0 auto; padding: 1.2rem; display: grid; gap: 1rem; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem; }
+    .grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    .metric { border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; }
+    .metric b { display:block; font-size: 1.25rem; margin-top: 0.2rem; }
+    h1,h2 { margin: 0 0 0.6rem 0; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .table-scroll table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }
+    code { background: #edf2f4; border-radius: 4px; padding: 0.05rem 0.2rem; }
+    .table-scroll { overflow-x: auto; }
+    @media (max-width: 760px) { table { font-size: 0.82rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <h1>SB Lifetime Dashboard</h1>
+      <p>
+        <b>Window:</b> <code>2026-01-01</code> to
+        <code>2026-02-08</code> |
+        <b>Days:</b> <code>39</code> |
+        <b>State days:</b> <code>4</code> |
+        <b>Chat scope:</b> <code>all</code>
+      </p>
+      <p><small>Indicative API costing companion: <a href='dashboard_costing_all.html'>dashboard_costing_all.html</a></small></p>
+    </section>
+    <section class="panel">
+      <h2>State Volume</h2>
+      <div class="grid">
+        <div class="metric">Ingested events (raw est)<b>576</b></div>
+        <div class="metric">Junk events (raw est)<b>0</b><small>0.0% raw</small></div>
+        <div class="metric">Stored events (compressed)<b>576</b></div>
+        <div class="metric">Junk events (compressed)<b>0</b><small>0.0% compressed</small></div>
+        <div class="metric">Compression ratio<b>100.0%</b><small>compressed/raw</small></div>
+        <div class="metric">Expansion ratio<b>1.00x</b><small>raw/compressed</small></div>
+        <div class="metric">state.json size<b>0.16 MiB</b></div>
+      </div>
+      <p>
+        <b>Per-state-day averages:</b>
+        raw=<code>144.0</code>,
+        junk(raw)=<code>0.0</code>,
+        compressed=<code>144.0</code>,
+        state bytes=<code>42727.25</code>
+      </p>
+    </section>
+    <section class="panel">
+      <h2>Activity Totals</h2>
+      <div class="grid">
+        <div class="metric">Chat messages<b>15781</b></div>
+        <div class="metric">Chat threads<b>398</b></div>
+        <div class="metric">Chat switches<b>4065</b></div>
+        <div class="metric">Shell commands<b>10126</b></div>
+        <div class="metric">Agent edit blocks<b>0</b></div>
+        <div class="metric">Agent files touched<b>0</b></div>
+        <div class="metric">Agent line deltas<b>+0 / -0</b></div>
+        <div class="metric">Media events<b>0</b></div>
+        <div class="metric">Media items observed<b>0</b></div>
+        <div class="metric">Media consumed<b>0.00 h</b></div>
+        <div class="metric">Media completion/churn<b>0.0% / 0.0%</b></div>
+        <div class="metric">Input events<b>0</b></div>
+        <div class="metric">Window focus events<b>0</b></div>
+        <div class="metric">Activity events<b>8</b></div>
+        <div class="metric">Git commits<b>4</b></div>
+        <div class="metric">Git branch events<b>9</b></div>
+        <div class="metric">PR events<b>3</b></div>
+      </div>
+      <p>
+        <b>Daily averages:</b>
+        chat=<code>404.64</code>,
+        switches=<code>104.23</code>,
+        switch_rate=<code>14.8%</code>,
+        switches/hour=<code>11.34</code>,
+        messages/chat=<code>27.58</code>,
+        top-thread-share=<code>35.9%</code>,
+        agent-top-file-share=<code>0.0%</code>,
+        agent-edits/file=<code>0.00</code>,
+        media-completion=<code>0.0%</code>,
+        media-churn=<code>0.0%</code>
+      </p>
+    </section>
+    <section class="panel">
+      <h2>NotebookLM Lifecycle (Metadata)</h2>
+      <div class="grid">
+        <div class="metric">Notes meta events<b>557</b></div>
+        <div class="metric">NotebookLM meta events<b>557</b></div>
+        <div class="metric">Notebooks created/modified/moved/deleted/seen<b>0/0/0/0/22</b></div>
+        <div class="metric">Files created/modified/moved/deleted/seen<b>0/0/0/0/534</b></div>
+      </div>
+      <p>
+        <b>Daily averages:</b>
+        notes_meta=<code>14.28</code>,
+        notebooklm=<code>14.28</code>
+      </p>
+    </section>
+    <section class="panel">
+      <h2>Per-Day Summary</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Date</th><th>Chat Source</th><th>Scope</th><th>Chat Msg</th><th>Chat Threads</th><th>Switches</th><th>Switch Rate</th><th>Switch/hr</th><th>Msg/chat</th><th>Top Thread</th><th>Agent blocks</th><th>Agent files</th><th>Agent delta</th><th>Agent top file</th><th>Media evt</th><th>Media items</th><th>Media h</th><th>Media churn</th><th>Raw events</th><th>Junk(raw)</th><th>Compressed</th><th>Compr ratio</th><th>State KiB</th><th>Warnings</th><th>Daily</th></tr></thead>
+          <tbody><tr><td><code>2026-01-01</code></td><td>sqlite</td><td>all</td><td>36</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>36.00</td><td>100.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-01/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-02</code></td><td>sqlite</td><td>all</td><td>198</td><td>4</td><td>37</td><td>18.8%</td><td>6.17</td><td>49.50</td><td>50.5%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-02/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-03</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-03/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-04</code></td><td>sqlite</td><td>all</td><td>159</td><td>9</td><td>13</td><td>8.2%</td><td>1.62</td><td>17.67</td><td>35.2%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-04/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-05</code></td><td>sqlite</td><td>all</td><td>745</td><td>25</td><td>105</td><td>14.1%</td><td>7.00</td><td>29.80</td><td>37.7%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-05/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-06</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-06/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-07</code></td><td>sqlite</td><td>all</td><td>394</td><td>18</td><td>92</td><td>23.4%</td><td>13.14</td><td>21.89</td><td>40.4%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-07/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-08</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-08/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-09</code></td><td>sqlite</td><td>all</td><td>263</td><td>6</td><td>14</td><td>5.3%</td><td>2.00</td><td>43.83</td><td>51.7%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-09/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-10</code></td><td>sqlite</td><td>all</td><td>21</td><td>2</td><td>1</td><td>5.0%</td><td>0.50</td><td>10.50</td><td>57.1%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-10/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-11</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-11/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-12</code></td><td>sqlite</td><td>all</td><td>633</td><td>20</td><td>160</td><td>25.3%</td><td>17.78</td><td>31.65</td><td>25.4%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-12/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-13</code></td><td>sqlite</td><td>all</td><td>1201</td><td>32</td><td>295</td><td>24.6%</td><td>19.67</td><td>37.53</td><td>45.4%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-13/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-14</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-14/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-15</code></td><td>sqlite</td><td>all</td><td>801</td><td>19</td><td>247</td><td>30.9%</td><td>19.00</td><td>42.16</td><td>55.8%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-15/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-16</code></td><td>sqlite</td><td>all</td><td>475</td><td>13</td><td>219</td><td>46.2%</td><td>24.33</td><td>36.54</td><td>26.3%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-16/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-17</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-17/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-18</code></td><td>sqlite</td><td>all</td><td>482</td><td>12</td><td>40</td><td>8.3%</td><td>5.71</td><td>40.17</td><td>52.5%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-18/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-19</code></td><td>sqlite</td><td>all</td><td>764</td><td>12</td><td>406</td><td>53.2%</td><td>45.11</td><td>63.67</td><td>22.1%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-19/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-20</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-20/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-21</code></td><td>sqlite</td><td>all</td><td>1178</td><td>14</td><td>230</td><td>19.5%</td><td>25.56</td><td>84.14</td><td>74.5%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-21/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-22</code></td><td>sqlite</td><td>all</td><td>720</td><td>13</td><td>189</td><td>26.3%</td><td>23.62</td><td>55.38</td><td>52.1%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-22/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-23</code></td><td>sqlite</td><td>all</td><td>213</td><td>8</td><td>85</td><td>40.1%</td><td>14.17</td><td>26.62</td><td>46.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-23/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-24</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-24/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-25</code></td><td>sqlite</td><td>all</td><td>326</td><td>10</td><td>32</td><td>9.8%</td><td>3.20</td><td>32.60</td><td>45.7%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-25/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-26</code></td><td>sqlite</td><td>all</td><td>44</td><td>3</td><td>2</td><td>4.7%</td><td>0.50</td><td>14.67</td><td>68.2%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-26/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-27</code></td><td>sqlite</td><td>all</td><td>523</td><td>18</td><td>144</td><td>27.6%</td><td>13.09</td><td>29.06</td><td>29.4%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-27/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-28</code></td><td>sqlite</td><td>all</td><td>33</td><td>3</td><td>2</td><td>6.2%</td><td>1.00</td><td>11.00</td><td>42.4%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-28/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-29</code></td><td>sqlite</td><td>all</td><td>391</td><td>12</td><td>110</td><td>28.2%</td><td>18.33</td><td>32.58</td><td>28.6%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-01-29/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-30</code></td><td>sqlite</td><td>all</td><td>880</td><td>18</td><td>258</td><td>29.4%</td><td>51.60</td><td>48.89</td><td>59.8%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-30/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-01-31</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-01-31/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-02-01</code></td><td>sqlite</td><td>all</td><td>35</td><td>3</td><td>2</td><td>5.9%</td><td>0.50</td><td>11.67</td><td>45.7%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>1</td><td><a href='../../2026-02-01/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-02-02</code></td><td>sqlite</td><td>all</td><td>503</td><td>13</td><td>127</td><td>25.3%</td><td>18.14</td><td>38.69</td><td>41.4%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-02-02/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-02-03</code></td><td>sqlite</td><td>all</td><td>805</td><td>32</td><td>185</td><td>23.0%</td><td>14.23</td><td>25.16</td><td>45.7%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>3</td><td><a href='../../2026-02-03/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-02-04</code></td><td>sqlite</td><td>all</td><td>167</td><td>19</td><td>23</td><td>13.9%</td><td>2.88</td><td>8.79</td><td>28.1%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0</td><td>2</td><td><a href='../../2026-02-04/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-02-05</code></td><td>sqlite</td><td>all</td><td>1552</td><td>38</td><td>339</td><td>21.9%</td><td>22.60</td><td>40.84</td><td>29.6%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>1</td><td>0</td><td>1</td><td>100.0%</td><td>1.0</td><td>3</td><td><a href='../../2026-02-05/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-02-06</code></td><td>sqlite</td><td>all</td><td>2194</td><td>20</td><td>708</td><td>32.3%</td><td>70.80</td><td>109.70</td><td>61.5%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.8</td><td>4</td><td><a href='../../2026-02-06/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-02-07</code></td><td>chat_exports</td><td>all</td><td>45</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>45.00</td><td>100.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.8</td><td>2</td><td><a href='../../2026-02-07/outputs/dashboard_all.html'>daily</a></td></tr><tr><td><code>2026-02-08</code></td><td>none</td><td>all</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>575</td><td>0</td><td>575</td><td>100.0%</td><td>164.3</td><td>4</td><td><a href='dashboard_all.html'>daily</a></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Definitions</h2>
+      <ul><li><b>raw_events</b>: estimated pre-compression count from event collapsed_count/collapsed_ids</li>
+<li><b>compressed_events</b>: post-compression events stored in state.json events[]</li>
+<li><b>junk_events</b>: events where low_signal=true</li>
+<li><b>compression_ratio</b>: compressed_events/raw_events (lower is more compressed)</li></ul>
+    </section>
+    <section class="panel">
+      <h2>Warnings</h2>
+      <ul><li>39 day(s) reported one or more warnings.</li>
+<li>Debug mode enabled: chat scope filter disabled (all chat threads scanned for each day).</li>
+<li>State metrics available for 4/39 day(s); missing days treated as zero.</li></ul>
+    </section>
+  </main>
+</body>
+</html>

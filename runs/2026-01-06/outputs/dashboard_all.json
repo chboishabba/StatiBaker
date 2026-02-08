@@ -1,0 +1,354 @@
+{
+  "artifact_links": [
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md"
+    },
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "20260208T053748Z_context_refresh_6986d38e.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md"
+    },
+    {
+      "label": "20260208T054246Z_resolver_6986c9f5.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986c16d.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986ccc6.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c16d.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c9f5.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986ccc6.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt"
+    },
+    {
+      "label": "20260208T054446Z_context_refresh_triplet.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md"
+    },
+    {
+      "label": "20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv"
+    },
+    {
+      "label": "20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
+    },
+    {
+      "label": "20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "mentions_rank_20260203_225730.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
+    }
+  ],
+  "chat_context_trailing": {
+    "available_days": 5,
+    "baseline_avg": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "current": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "delta": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "has_baseline": true,
+    "window_days": 7
+  },
+  "chat_flow": {
+    "active_hours": 0,
+    "dominant_thread_share": 0.0,
+    "first_ts": "",
+    "hour_bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "last_ts": "",
+    "message_count": 0,
+    "messages_per_chat": 0.0,
+    "messages_per_hour_active": 0.0,
+    "messages_per_hour_day": 0.0,
+    "switch_count": 0,
+    "switch_opportunities": 0,
+    "switch_rate": 0.0,
+    "switches_per_active_hour": 0.0,
+    "thread_count": 0,
+    "threads": [],
+    "waterfall": [],
+    "waterfall_render_limit": 480,
+    "waterfall_truncated": false
+  },
+  "chat_scope_mode": "all",
+  "chat_scope_thread_count": 8,
+  "chat_source": "none",
+  "chat_threads": [],
+  "date": "2026-01-06",
+  "frequency_by_hour": {
+    "chat": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "git_branch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "input": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pr": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "shell": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "generated_at": "2026-02-08T11:07:18.612829Z",
+  "summary": {
+    "activity_events": 0,
+    "chat_active_hours": 0,
+    "chat_messages": 0,
+    "chat_switch_rate": 0.0,
+    "chat_switches": 0,
+    "chat_threads": 0,
+    "context_switch_rate": 0.0,
+    "git_branch_events": 0,
+    "git_commits": 0,
+    "input_events": 0,
+    "input_keys_total": 0,
+    "input_mouse_total": 0,
+    "messages_per_chat": 0.0,
+    "messages_per_hour_active": 0.0,
+    "messages_per_hour_day": 0.0,
+    "pr_commented": 0,
+    "pr_events": 0,
+    "pr_merged": 0,
+    "pr_received": 0,
+    "shell_commands": 0,
+    "shell_commands_agent_exec": 0,
+    "shell_commands_host": 0,
+    "switches_per_active_hour": 0.0,
+    "timeline_events": 0,
+    "top_thread_share": 0.0,
+    "window_focus_events": 0
+  },
+  "timeline": [],
+  "tool_use_summary": {
+    "exec_command_count": 0,
+    "exec_with_workdir_count": 0,
+    "exec_without_workdir_count": 0,
+    "families": [],
+    "source": "sqlite",
+    "top_dirs": [],
+    "total_tool_messages": 902,
+    "unique_commands": 0,
+    "warnings": [
+      "515 tool messages were not parseable as structured tool payloads."
+    ]
+  },
+  "warnings": [
+    "No chat events found for this date in sqlite, chat exports, or resolver files.",
+    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+  ]
+}

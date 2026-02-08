@@ -1,508 +1,1135 @@
 {
+  "agent_edit_averages": {
+    "edits_per_file": 0.0,
+    "top_file_share": 0.0
+  },
   "averages_per_day": {
     "activity_events": 0.57,
-    "chat_messages": 512.29,
-    "chat_threads": 12.86,
-    "git_branch_events": 0.0,
-    "git_commits": 0.07,
+    "agent_edit_blocks": 0.0,
+    "agent_edit_files": 0.0,
+    "agent_edit_lines_added": 0.0,
+    "agent_edit_lines_removed": 0.0,
+    "chat_messages": 9.29,
+    "chat_switches": 0.0,
+    "chat_threads": 0.36,
+    "git_branch_events": 0.64,
+    "git_commits": 0.29,
     "input_events": 0.0,
     "input_keys_total": 0.0,
     "input_mouse_total": 0.0,
+    "media_churn_events": 0.0,
+    "media_consumed_seconds": 0.0,
+    "media_content_seconds": 0.0,
+    "media_events": 0.0,
+    "media_items_observed": 0.0,
     "pr_commented": 0.07,
     "pr_events": 0.21,
     "pr_merged": 0.07,
     "pr_received": 0.07,
     "shell_commands": 0.0,
-    "timeline_events": 296.29,
+    "timeline_events": 11.0,
     "window_focus_events": 0.0
   },
-  "chat_scope_mode": "all",
+  "chat_context_averages": {
+    "context_switch_rate": 0.0,
+    "messages_per_chat": 9.29,
+    "switches_per_active_hour": 0.0,
+    "top_thread_share": 0.357
+  },
+  "chat_scope_mode": "scoped",
   "chat_source_counts": {
     "chat_exports": 1,
-    "none": 2,
-    "sqlite": 11
+    "none": 9,
+    "sqlite": 4
   },
   "daily": [
     {
-      "chat_scope_mode": "all",
-      "chat_source": "sqlite",
+      "chat_scope_mode": "scoped",
+      "chat_source": "none",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-26/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-26/outputs/dashboard.json",
       "date": "2026-01-26",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
-        "chat_messages": 44,
-        "chat_threads": 3,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 0,
+        "chat_switches": 0,
+        "chat_threads": 0,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 44,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 0,
+        "top_thread_share": 0.0,
         "window_focus_events": 0
       },
-      "warning_count": 1,
-      "warning_preview": "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+      "warning_count": 3,
+      "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
     },
     {
-      "chat_scope_mode": "all",
+      "chat_scope_mode": "scoped",
       "chat_source": "sqlite",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-27/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-27/outputs/dashboard.json",
       "date": "2026-01-27",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
-        "chat_messages": 523,
-        "chat_threads": 18,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 6,
+        "chat_switches": 0,
+        "chat_threads": 1,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 6.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 523,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 6,
+        "top_thread_share": 1.0,
         "window_focus_events": 0
       },
       "warning_count": 1,
-      "warning_preview": "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+      "warning_preview": "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
     },
     {
-      "chat_scope_mode": "all",
-      "chat_source": "sqlite",
+      "chat_scope_mode": "scoped",
+      "chat_source": "none",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-28/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-28/outputs/dashboard.json",
       "date": "2026-01-28",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
-        "chat_messages": 33,
-        "chat_threads": 3,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 0,
+        "chat_switches": 0,
+        "chat_threads": 0,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 33,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 0,
+        "top_thread_share": 0.0,
         "window_focus_events": 0
       },
-      "warning_count": 1,
-      "warning_preview": "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+      "warning_count": 3,
+      "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
     },
     {
-      "chat_scope_mode": "all",
-      "chat_source": "sqlite",
+      "chat_scope_mode": "scoped",
+      "chat_source": "none",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-29/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-29/outputs/dashboard.json",
       "date": "2026-01-29",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
-        "chat_messages": 391,
-        "chat_threads": 12,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 0,
+        "chat_switches": 0,
+        "chat_threads": 0,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 391,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 0,
+        "top_thread_share": 0.0,
         "window_focus_events": 0
       },
-      "warning_count": 1,
-      "warning_preview": "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+      "warning_count": 3,
+      "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
     },
     {
-      "chat_scope_mode": "all",
+      "chat_scope_mode": "scoped",
       "chat_source": "sqlite",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-30/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-30/outputs/dashboard.json",
       "date": "2026-01-30",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
-        "chat_messages": 880,
-        "chat_threads": 18,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 6,
+        "chat_switches": 0,
+        "chat_threads": 1,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 6.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 600,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 6,
+        "top_thread_share": 1.0,
         "window_focus_events": 0
       },
-      "warning_count": 2,
-      "warning_preview": "Timeline truncated to 600 events (newest retained)."
+      "warning_count": 1,
+      "warning_preview": "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
     },
     {
-      "chat_scope_mode": "all",
+      "chat_scope_mode": "scoped",
       "chat_source": "none",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-31/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-31/outputs/dashboard.json",
       "date": "2026-01-31",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
         "chat_messages": 0,
+        "chat_switches": 0,
         "chat_threads": 0,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
+        "switches_per_active_hour": 0.0,
         "timeline_events": 0,
+        "top_thread_share": 0.0,
         "window_focus_events": 0
       },
-      "warning_count": 2,
+      "warning_count": 3,
       "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
     },
     {
-      "chat_scope_mode": "all",
-      "chat_source": "sqlite",
+      "chat_scope_mode": "scoped",
+      "chat_source": "none",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-01/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-01/outputs/dashboard.json",
       "date": "2026-02-01",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
-        "chat_messages": 35,
-        "chat_threads": 3,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 0,
+        "chat_switches": 0,
+        "chat_threads": 0,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 35,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 0,
+        "top_thread_share": 0.0,
         "window_focus_events": 0
       },
-      "warning_count": 1,
-      "warning_preview": "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+      "warning_count": 3,
+      "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
     },
     {
-      "chat_scope_mode": "all",
+      "chat_scope_mode": "scoped",
       "chat_source": "sqlite",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-02/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-02/outputs/dashboard.json",
       "date": "2026-02-02",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
-        "chat_messages": 503,
-        "chat_threads": 13,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 52,
+        "chat_switches": 0,
+        "chat_threads": 1,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 52.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 503,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 52,
+        "top_thread_share": 1.0,
         "window_focus_events": 0
       },
       "warning_count": 1,
-      "warning_preview": "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+      "warning_preview": "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
     },
     {
-      "chat_scope_mode": "all",
+      "chat_scope_mode": "scoped",
       "chat_source": "sqlite",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-03/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-03/outputs/dashboard.json",
       "date": "2026-02-03",
-      "summary": {
-        "activity_events": 0,
-        "chat_messages": 805,
-        "chat_threads": 32,
-        "git_branch_events": 0,
-        "git_commits": 0,
-        "input_events": 0,
-        "input_keys_total": 0,
-        "input_mouse_total": 0,
-        "pr_commented": 0,
-        "pr_events": 0,
-        "pr_merged": 0,
-        "pr_received": 0,
-        "shell_commands": 0,
-        "timeline_events": 600,
-        "window_focus_events": 0
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
       },
-      "warning_count": 2,
-      "warning_preview": "Timeline truncated to 600 events (newest retained)."
-    },
-    {
-      "chat_scope_mode": "all",
-      "chat_source": "sqlite",
-      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-04/outputs/dashboard.html",
-      "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-04/outputs/dashboard.json",
-      "date": "2026-02-04",
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 0,
-        "chat_messages": 167,
-        "chat_threads": 19,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 21,
+        "chat_switches": 0,
+        "chat_threads": 1,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 21.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 167,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 21,
+        "top_thread_share": 1.0,
         "window_focus_events": 0
       },
       "warning_count": 1,
-      "warning_preview": "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+      "warning_preview": "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
     },
     {
-      "chat_scope_mode": "all",
-      "chat_source": "sqlite",
+      "chat_scope_mode": "scoped",
+      "chat_source": "none",
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-04/outputs/dashboard.html",
+      "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-04/outputs/dashboard.json",
+      "date": "2026-02-04",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
+      "summary": {
+        "activity_events": 0,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 0,
+        "chat_switches": 0,
+        "chat_threads": 0,
+        "context_switch_rate": 0.0,
+        "git_branch_events": 0,
+        "git_commits": 0,
+        "input_events": 0,
+        "input_keys_total": 0,
+        "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
+        "pr_commented": 0,
+        "pr_events": 0,
+        "pr_merged": 0,
+        "pr_received": 0,
+        "shell_commands": 0,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 0,
+        "top_thread_share": 0.0,
+        "window_focus_events": 0
+      },
+      "warning_count": 3,
+      "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
+    },
+    {
+      "chat_scope_mode": "scoped",
+      "chat_source": "none",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-05/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-05/outputs/dashboard.json",
       "date": "2026-02-05",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 2,
-        "chat_messages": 1552,
-        "chat_threads": 38,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 0,
+        "chat_switches": 0,
+        "chat_threads": 0,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 1,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 600,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 3,
+        "top_thread_share": 0.0,
         "window_focus_events": 0
       },
-      "warning_count": 2,
-      "warning_preview": "Timeline truncated to 600 events (newest retained)."
+      "warning_count": 3,
+      "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
     },
     {
-      "chat_scope_mode": "all",
-      "chat_source": "sqlite",
+      "chat_scope_mode": "scoped",
+      "chat_source": "none",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-06/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-06/outputs/dashboard.json",
       "date": "2026-02-06",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 2,
-        "chat_messages": 2194,
-        "chat_threads": 20,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
+        "chat_messages": 0,
+        "chat_switches": 0,
+        "chat_threads": 0,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
-        "timeline_events": 600,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 2,
+        "top_thread_share": 0.0,
         "window_focus_events": 0
       },
-      "warning_count": 2,
-      "warning_preview": "Timeline truncated to 600 events (newest retained)."
+      "warning_count": 3,
+      "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
     },
     {
-      "chat_scope_mode": "all",
+      "chat_scope_mode": "scoped",
       "chat_source": "chat_exports",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/dashboard.json",
       "date": "2026-02-07",
+      "notebooklm_events": 0,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 0
+        }
+      },
+      "notes_meta_events": 0,
       "summary": {
         "activity_events": 2,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
         "chat_messages": 45,
+        "chat_switches": 0,
         "chat_threads": 1,
+        "context_switch_rate": 0.0,
         "git_branch_events": 0,
         "git_commits": 0,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 45.0,
         "pr_commented": 0,
         "pr_events": 0,
         "pr_merged": 0,
         "pr_received": 0,
         "shell_commands": 0,
+        "switches_per_active_hour": 0.0,
         "timeline_events": 47,
+        "top_thread_share": 1.0,
         "window_focus_events": 0
       },
       "warning_count": 1,
-      "warning_preview": "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+      "warning_preview": "No in-scope assistant/tool messages found for agent edit parsing."
     },
     {
-      "chat_scope_mode": "all",
+      "chat_scope_mode": "scoped",
       "chat_source": "none",
       "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/dashboard.html",
       "daily_json_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/dashboard.json",
       "date": "2026-02-08",
+      "notebooklm_events": 557,
+      "notebooklm_lifecycle": {
+        "file": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 534
+        },
+        "notebook": {
+          "created": 0,
+          "deleted": 0,
+          "modified": 0,
+          "moved": 0,
+          "other": 0,
+          "seen": 22
+        }
+      },
+      "notes_meta_events": 557,
       "summary": {
         "activity_events": 2,
+        "agent_edit_blocks": 0,
+        "agent_edit_files": 0,
+        "agent_edit_lines_added": 0,
+        "agent_edit_lines_removed": 0,
+        "agent_edit_top_file_share": 0.0,
         "chat_messages": 0,
+        "chat_switches": 0,
         "chat_threads": 0,
-        "git_branch_events": 0,
-        "git_commits": 0,
+        "context_switch_rate": 0.0,
+        "git_branch_events": 9,
+        "git_commits": 3,
         "input_events": 0,
         "input_keys_total": 0,
         "input_mouse_total": 0,
+        "media_churn_events": 0,
+        "media_churn_rate": 0.0,
+        "media_completion_ratio": 0.0,
+        "media_consumed_seconds": 0,
+        "media_content_seconds": 0,
+        "media_events": 0,
+        "media_items_observed": 0,
+        "messages_per_chat": 0.0,
         "pr_commented": 1,
         "pr_events": 3,
         "pr_merged": 1,
         "pr_received": 1,
         "shell_commands": 0,
-        "timeline_events": 5,
+        "switches_per_active_hour": 0.0,
+        "timeline_events": 17,
+        "top_thread_share": 0.0,
         "window_focus_events": 0
       },
-      "warning_count": 2,
+      "warning_count": 3,
       "warning_preview": "No chat events found for this date in sqlite, chat exports, or resolver files."
     }
   ],
   "days": 14,
-  "generated_at": "2026-02-08T07:43:23.713262Z",
+  "generated_at": "2026-02-08T12:11:57.417052Z",
+  "media_averages": {
+    "churn_rate": 0.0,
+    "completion_ratio": 0.0
+  },
+  "notebooklm_lifecycle_totals": {
+    "file": {
+      "created": 0,
+      "deleted": 0,
+      "modified": 0,
+      "moved": 0,
+      "other": 0,
+      "seen": 534
+    },
+    "notebook": {
+      "created": 0,
+      "deleted": 0,
+      "modified": 0,
+      "moved": 0,
+      "other": 0,
+      "seen": 22
+    }
+  },
+  "notes_meta_averages_per_day": {
+    "notebooklm_events": 39.79,
+    "total_events": 39.79
+  },
+  "notes_meta_totals": {
+    "app_counts": {
+      "notebooklm": 557
+    },
+    "lifecycle": {
+      "context": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 1
+      },
+      "file": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 534
+      },
+      "notebook": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 22
+      },
+      "unknown": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      }
+    },
+    "notebooklm_events": 557,
+    "total_events": 557,
+    "warnings": []
+  },
   "period_end": "2026-02-08",
   "period_start": "2026-01-26",
   "totals": {
     "activity_events": 8,
-    "chat_messages": 7172,
-    "chat_threads": 180,
-    "git_branch_events": 0,
-    "git_commits": 1,
+    "agent_edit_blocks": 0,
+    "agent_edit_files": 0,
+    "agent_edit_lines_added": 0,
+    "agent_edit_lines_removed": 0,
+    "chat_messages": 130,
+    "chat_switches": 0,
+    "chat_threads": 5,
+    "git_branch_events": 9,
+    "git_commits": 4,
     "input_events": 0,
     "input_keys_total": 0,
     "input_mouse_total": 0,
+    "media_churn_events": 0,
+    "media_consumed_seconds": 0,
+    "media_content_seconds": 0,
+    "media_events": 0,
+    "media_items_observed": 0,
     "pr_commented": 1,
     "pr_events": 3,
     "pr_merged": 1,
     "pr_received": 1,
     "shell_commands": 0,
-    "timeline_events": 4148,
+    "timeline_events": 154,
     "window_focus_events": 0
   },
   "warning_days": [
     {
       "date": "2026-01-26",
       "warnings": [
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No chat events found for this date in sqlite, chat exports, or resolver files.",
+        "Chat archive has 44 message(s) on 2026-01-26 but none matched current convo scope; refresh convo_ids or run --debug-include-all-chat.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-01-27",
       "warnings": [
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
       ]
     },
     {
       "date": "2026-01-28",
       "warnings": [
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No chat events found for this date in sqlite, chat exports, or resolver files.",
+        "Chat archive has 33 message(s) on 2026-01-28 but none matched current convo scope; refresh convo_ids or run --debug-include-all-chat.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-01-29",
       "warnings": [
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No chat events found for this date in sqlite, chat exports, or resolver files.",
+        "Chat archive has 391 message(s) on 2026-01-29 but none matched current convo scope; refresh convo_ids or run --debug-include-all-chat.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-01-30",
       "warnings": [
-        "Timeline truncated to 600 events (newest retained).",
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
       ]
     },
     {
       "date": "2026-01-31",
       "warnings": [
         "No chat events found for this date in sqlite, chat exports, or resolver files.",
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "Chat archive has 0 messages on 2026-01-31; latest archived message is 2026-02-06T11:56:25+00:00. Sync/import newer chats.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-02-01",
       "warnings": [
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No chat events found for this date in sqlite, chat exports, or resolver files.",
+        "Chat archive has 35 message(s) on 2026-02-01 but none matched current convo scope; refresh convo_ids or run --debug-include-all-chat.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-02-02",
       "warnings": [
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
       ]
     },
     {
       "date": "2026-02-03",
       "warnings": [
-        "Timeline truncated to 600 events (newest retained).",
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
       ]
     },
     {
       "date": "2026-02-04",
       "warnings": [
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No chat events found for this date in sqlite, chat exports, or resolver files.",
+        "Chat archive has 167 message(s) on 2026-02-04 but none matched current convo scope; refresh convo_ids or run --debug-include-all-chat.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-02-05",
       "warnings": [
-        "Timeline truncated to 600 events (newest retained).",
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No chat events found for this date in sqlite, chat exports, or resolver files.",
+        "Chat archive has 1552 message(s) on 2026-02-05 but none matched current convo scope; refresh convo_ids or run --debug-include-all-chat.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-02-06",
       "warnings": [
-        "Timeline truncated to 600 events (newest retained).",
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No chat events found for this date in sqlite, chat exports, or resolver files.",
+        "Chat archive has 2194 message(s) on 2026-02-06 but none matched current convo scope; refresh convo_ids or run --debug-include-all-chat.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-02-07",
       "warnings": [
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     },
     {
       "date": "2026-02-08",
       "warnings": [
         "No chat events found for this date in sqlite, chat exports, or resolver files.",
-        "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+        "Chat archive has 0 messages on 2026-02-08; latest archived message is 2026-02-06T11:56:25+00:00. Sync/import newer chats.",
+        "No in-scope assistant/tool messages found for agent edit parsing."
       ]
     }
   ],
   "warnings": [
-    "14 day(s) reported one or more warnings.",
-    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for each day)."
+    "14 day(s) reported one or more warnings."
   ]
 }

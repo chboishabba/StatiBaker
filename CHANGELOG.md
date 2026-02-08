@@ -1,6 +1,23 @@
 # Changelog
 
 ## 2026-02-08
+- Documented chat-flow visual semantics split:
+  - current `Timeline Strip` mode (linear sequence),
+  - planned true `Thread Lanes` alternate mode with connectors and dense-day fallback policy.
+- Added lane-mode design spec in `docs/chat_flow_lane_mode.md`.
+- Updated dashboard docs and references to use timeline-strip wording and link
+  lane-mode spec (`docs/activity_dashboard.md`, `docs/dashboard_implementation_notes.md`,
+  `docs/INDEX.md`, `README.md`).
+- Added TODO execution track for lane-mode implementation milestones (`TODO.md`).
+- Added cross-platform daemon/web control plane design spec in
+  `docs/daemon_web_control_plane.md` (Linux/macOS/Windows service model,
+  localhost control API, connector/job orchestration, and local SQLite state).
+- Updated NotebookLM connector docs to position daemon-managed scheduling as the
+  recommended target mode (`docs/notebooklm_connector.md`).
+- Updated docs index/references to include daemon control plane design
+  (`README.md`, `docs/INDEX.md`, `docs/collectors_index.md`).
+- Added TODO execution track for `sb-supervisor` implementation and web-managed
+  connector/job controls (`TODO.md`).
 - Added process-lens dashboard contract in `docs/activity_dashboard.md` and
   linked it from `README.md` and `docs/INDEX.md`.
 - Added `sb.dashboard` builder to compile day-scoped timeline/frequency views
@@ -35,6 +52,62 @@
   thread-origin labeling (including explicit `codex-ingest` for codex source IDs).
 - Updated tool-use `rg` variant rendering to group by mode (`--files`, `-n`)
   and list only the distinguishing arguments under each mode.
+- Added dashboard implementation reproducibility guide in
+  `docs/dashboard_implementation_notes.md` and linked it from docs index.
+- Updated daily dashboard renderer for viewport safety: horizontal table
+  containers plus dynamic waterfall segment scaling for dense message days.
+- Added waterfall palette controls (`viridis`, `turbo`, `plasma`, `rdylgn`,
+  and custom comma-separated CSS colors persisted in local storage).
+- Added waterfall color-algorithm controls (`thread`, `hour`, `role`,
+  `switch`) so palettes can be applied by thread identity, time-of-day, role,
+  or switch-state.
+- Updated waterfall rendering to scale block width by elapsed time to the next
+  message (instead of fixed-width blocks), and clarified legend percentages as
+  explicit share of total chat messages.
+- Updated `Time of Day` coloring to use each thread's start hour so repeated
+  messages in the same thread keep a stable color.
+- Added NotebookLM metadata connector:
+  - `scripts/capture_notebooklm_meta.py` to snapshot NotebookLM context,
+    notebooks, and source metadata via `notebooklm --json`
+  - `adapters/notebooklm_meta.py` to normalize snapshots into `notes_meta`
+    records (`app: notebooklm`, hashed IDs only)
+  - `scripts/run_day.sh` arg 20 (`NOTEBOOKLM_META_INPUT`) to ingest NotebookLM
+    metadata alongside arg 14 notes metadata into one `logs/notes` stream.
+- Added NotebookLM connector documentation in
+  `docs/notebooklm_connector.md` and linked it from docs indexes.
+- Added lifetime/global dashboard output via
+  `scripts/build_dashboard.py --lifetime` producing
+  `dashboard_lifetime.json/html` up to `--date`.
+- Added lifetime state-volume metrics:
+  estimated raw ingested events, junk (`low_signal`) counts, compressed event
+  totals, `state.json` byte size, and compression/expansion ratios.
+- Added per-thread chat context-usage estimates to daily dashboards:
+  chars/tokens estimates, role-bucket token splits, default-context-window
+  overflow counts/tokens, and explicit overflow summary cards.
+- Added indicative API costing outputs for lifetime dashboards:
+  `dashboard_costing.json/html` and `_all` variants with scenario presets and
+  explicit non-authoritative caveats.
+- Added costing/context methodology docs and references
+  (`docs/api_costing_model.md`, updated dashboard docs/README/index) plus TODO
+  follow-ups for future provider billing-log calibration.
+- Added metadata-only context overlay adapters:
+  - `adapters/inaturalist_stub.py` (iNaturalist biodiversity observations)
+  - `adapters/mood_self_report_stub.py` (explicit mood self-report)
+  - `adapters/pet_wearable_stub.py` (pet wearables / smart collar telemetry stub)
+- Updated daily/weekly/lifetime dashboards to surface:
+  - daily iNaturalist insect observation count + deterministic trend phase
+    (`upward_knee|rising|peak|declining|stable`)
+  - daily mood self-report count + latest mood code (self-report only)
+- Added docs for these new lanes:
+  - `docs/inaturalist_connector.md`
+  - `docs/mood_self_report.md`
+  - `docs/pet_wearables_stub.md`
+- Added maps timeline overlay stub (Google Maps / Apple Maps):
+  - `adapters/maps_timeline_stub.py` -> `context_type=location_timeline`
+  - `docs/maps_timeline_stub.md`
+- Updated `scripts/run_day.sh` to support context overlays:
+  - arg 22 `CONTEXT_FIELD_APPEND_INPUT` (append pre-normalized `context_field` JSONL)
+  - arg 23 `MEDICATION_TRACKER_INPUT` (normalize medication raw JSONL then append)
 
 ## 2026-02-07
 - Synced context from ChatGPT conversation `Conductor vs SB/ITIR`

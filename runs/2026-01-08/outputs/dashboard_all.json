@@ -1,0 +1,924 @@
+{
+  "artifact_links": [
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md"
+    },
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "20260208T053748Z_context_refresh_6986d38e.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md"
+    },
+    {
+      "label": "20260208T054246Z_resolver_6986c9f5.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986c16d.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986ccc6.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c16d.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c9f5.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986ccc6.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt"
+    },
+    {
+      "label": "20260208T054446Z_context_refresh_triplet.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md"
+    },
+    {
+      "label": "20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv"
+    },
+    {
+      "label": "20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
+    },
+    {
+      "label": "20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "mentions_rank_20260203_225730.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
+    }
+  ],
+  "chat_context_trailing": {
+    "available_days": 7,
+    "baseline_avg": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "current": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "delta": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "has_baseline": true,
+    "window_days": 7
+  },
+  "chat_flow": {
+    "active_hours": 0,
+    "dominant_thread_share": 0.0,
+    "first_ts": "",
+    "hour_bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "last_ts": "",
+    "message_count": 0,
+    "messages_per_chat": 0.0,
+    "messages_per_hour_active": 0.0,
+    "messages_per_hour_day": 0.0,
+    "switch_count": 0,
+    "switch_opportunities": 0,
+    "switch_rate": 0.0,
+    "switches_per_active_hour": 0.0,
+    "thread_count": 0,
+    "threads": [],
+    "waterfall": [],
+    "waterfall_render_limit": 480,
+    "waterfall_truncated": false
+  },
+  "chat_scope_mode": "all",
+  "chat_scope_thread_count": 8,
+  "chat_source": "none",
+  "chat_threads": [],
+  "date": "2026-01-08",
+  "frequency_by_hour": {
+    "chat": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "git_branch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "input": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pr": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "shell": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "generated_at": "2026-02-08T11:07:19.684081Z",
+  "summary": {
+    "activity_events": 0,
+    "chat_active_hours": 0,
+    "chat_messages": 0,
+    "chat_switch_rate": 0.0,
+    "chat_switches": 0,
+    "chat_threads": 0,
+    "context_switch_rate": 0.0,
+    "git_branch_events": 0,
+    "git_commits": 0,
+    "input_events": 0,
+    "input_keys_total": 0,
+    "input_mouse_total": 0,
+    "messages_per_chat": 0.0,
+    "messages_per_hour_active": 0.0,
+    "messages_per_hour_day": 0.0,
+    "pr_commented": 0,
+    "pr_events": 0,
+    "pr_merged": 0,
+    "pr_received": 0,
+    "shell_commands": 336,
+    "shell_commands_agent_exec": 336,
+    "shell_commands_host": 0,
+    "switches_per_active_hour": 0.0,
+    "timeline_events": 0,
+    "top_thread_share": 0.0,
+    "window_focus_events": 0
+  },
+  "timeline": [],
+  "tool_use_summary": {
+    "exec_command_count": 336,
+    "exec_with_workdir_count": 0,
+    "exec_without_workdir_count": 336,
+    "families": [
+      {
+        "count": 107,
+        "family": "cd",
+        "top_dirs": [
+          {
+            "count": 87,
+            "path": "/home/c/Documents/code/reverse-engineered-chatgpt"
+          },
+          {
+            "count": 13,
+            "path": "/home/c/.codex/skills"
+          },
+          {
+            "count": 3,
+            "path": "/home/c/.codex/skills/chat-context-sync"
+          },
+          {
+            "count": 2,
+            "path": "/home/c"
+          },
+          {
+            "count": 2,
+            "path": "/home/c/.codex/skills/chat-context-sync/references"
+          }
+        ],
+        "unique_variants": 86,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "cd /home/c/Documents/code/reverse-engineered-chatgpt && git status -sb",
+            "count": 6,
+            "dirs_hint": [
+              "/home/c/Documents/code/reverse-engineered-chatgpt"
+            ]
+          },
+          {
+            "command": "cd /home/c/Documents/code/reverse-engineered-chatgpt && python -m pytest tests/test_cli.py",
+            "count": 5,
+            "dirs_hint": [
+              "/home/c/Documents/code/reverse-engineered-chatgpt"
+            ]
+          },
+          {
+            "command": "cd /home/c/Documents/code/reverse-engineered-chatgpt && rg --files -g '*CONTEXT.md'",
+            "count": 4,
+            "dirs_hint": [
+              "/home/c/Documents/code/reverse-engineered-chatgpt"
+            ]
+          },
+          {
+            "command": "cd /home/c/Documents/code/reverse-engineered-chatgpt && python -m pytest tests/test_cli.py tests/test_view_conversation.py",
+            "count": 3,
+            "dirs_hint": [
+              "/home/c/Documents/code/reverse-engineered-chatgpt"
+            ]
+          },
+          {
+            "command": "cd /home/c/.codex/skills && ls",
+            "count": 2,
+            "dirs_hint": [
+              "/home/c/.codex/skills"
+            ]
+          },
+          {
+            "command": "cd /home/c/.codex/skills && nl -ba get-shit-done/SKILL.md",
+            "count": 2,
+            "dirs_hint": [
+              "/home/c/.codex/skills"
+            ]
+          }
+        ]
+      },
+      {
+        "count": 62,
+        "family": "sed",
+        "top_dirs": [],
+        "unique_variants": 56,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "sed -n '1,200p' re_gpt/cli.py",
+            "count": 3,
+            "dirs_hint": []
+          },
+          {
+            "command": "sed -n '200,400p' re_gpt/cli.py",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "sed -n '1,200p' re_gpt/storage.py",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "sed -n '1,200p' tests/test_cli.py",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "sed -n '1,200p' re_gpt/utils.py",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "sed -n '400,520p' re_gpt/cli.py",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 58,
+        "family": "rg",
+        "top_dirs": [],
+        "unique_variants": 56,
+        "variant_groups": [
+          {
+            "count": 50,
+            "group": "-n",
+            "variants": [
+              {
+                "count": 2,
+                "detail": "re_gpt/cli.py"
+              },
+              {
+                "count": 1,
+                "detail": "Fish Spine /home/c"
+              },
+              {
+                "count": 1,
+                "detail": "fish spine /home/c 2>/dev/null"
+              },
+              {
+                "count": 1,
+                "detail": "Fish Spine ~/.codex/history.jsonl"
+              },
+              {
+                "count": 1,
+                "detail": "695f8c92 ~/.codex/history.jsonl"
+              },
+              {
+                "count": 1,
+                "detail": "695f8c92 /home/c/Documents 2>/dev/null"
+              }
+            ]
+          },
+          {
+            "count": 7,
+            "group": "--files",
+            "variants": [
+              {
+                "count": 2,
+                "detail": "*CONTEXT.md"
+              },
+              {
+                "count": 2,
+                "detail": "AGENTS.md"
+              },
+              {
+                "count": 1,
+                "detail": "*CONTEXT.md | /home/c"
+              },
+              {
+                "count": 1,
+                "detail": "context-sources.md | /home/c/Documents/code/reverse-engineered-chatgpt"
+              },
+              {
+                "count": 1,
+                "detail": "conversation_6825e290-f1bc-8002-9e5a-73b675157c0c.json"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "group": "other",
+            "variants": [
+              {
+                "count": 1,
+                "detail": "-l 695f8c92 -g *.json /home/c 2>/dev/null"
+              }
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "command": "rg --files -g '*CONTEXT.md'",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "rg --files -g 'AGENTS.md'",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "rg --files -g '*CONTEXT.md' /home/c",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "rg --files -g 'context-sources.md' /home/c/Documents/code/reverse-engineered-chatgpt",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "rg -n \"Fish Spine\" /home/c",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "rg -n -i \"fish spine\" /home/c 2>/dev/null",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 41,
+        "family": "ls",
+        "top_dirs": [],
+        "unique_variants": 27,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "ls",
+            "count": 7,
+            "dirs_hint": []
+          },
+          {
+            "command": "ls /home/c/.codex/skills/get-shit-done",
+            "count": 3,
+            "dirs_hint": []
+          },
+          {
+            "command": "ls /home/c/.codex/skills/get-shit-done/references",
+            "count": 3,
+            "dirs_hint": []
+          },
+          {
+            "command": "ls chat_exports",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "ls scripts",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "ls /home/c/.codex/skills/get-shit-done/templates",
+            "count": 2,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 25,
+        "family": "cat",
+        "top_dirs": [],
+        "unique_variants": 21,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "cat /home/c/.codex/skills/chat-context-sync/SKILL.md",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "cat TODO.md",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "cat scripts/run_app.sh",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "cat ~/.chatgpt_session",
+            "count": 2,
+            "dirs_hint": []
+          },
+          {
+            "command": "cat /home/c/Documents/code/reverse-engineered-chatgpt/PROJECT_CONTEXT.md",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "cat /home/c/.codex/skills/get-shit-done/SKILL.md",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 12,
+        "family": "sqlite3",
+        "top_dirs": [],
+        "unique_variants": 12,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "sqlite3 ~/.chatgpt_history.sqlite3 \".tables\"",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "sqlite3 -readonly ~/.chatgpt_history.sqlite3 \".tables\"",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "sqlite3 /tmp/chat_history.sqlite3 \".tables\"",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "sqlite3 /tmp/chat_history.sqlite3 \".schema conversations\"",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "sqlite3 /tmp/chat_history.sqlite3 \".schema messages\"",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "sqlite3 /tmp/chat_history.sqlite3 \"SELECT conversation_id, title, remote_update_time, last_seen_at FROM conversations ORDER BY COALESCE(remote_update_time, last_seen_at) DESC LIMIT 5;\"",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 10,
+        "family": "nl",
+        "top_dirs": [],
+        "unique_variants": 10,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "nl -ba re_gpt/cli.py | sed -n '640,720p'",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "nl -ba README.md | sed -n '210,230p'",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "nl -ba scripts/context_sync.sh | sed -n '1,80p'",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "nl -ba TODO.md | tail",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "nl -ba vulkan_compute/README.md | sed -n '1,200p'",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "nl -ba vulkan_compute/compute_buffer.py | sed -n '1,200p'",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "family": "find",
+        "top_dirs": [],
+        "unique_variants": 6,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "find /home/c -name 'conversation_*.json' -print",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "find /home/c -name 'conversation_*.json' 2>/dev/null",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "find /home/c -name 'conversation_695f8c92*' 2>/dev/null",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "find .. -name AGENTS.md -print",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "find /home/c -maxdepth 4 -type d -name '.planning' 2>/dev/null",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "find . -name '*sqlite*' -type f",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 5,
+        "family": "pwd",
+        "top_dirs": [],
+        "unique_variants": 1,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "pwd",
+            "count": 5,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 2,
+        "family": "head",
+        "top_dirs": [],
+        "unique_variants": 2,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "head -n 40 README.md",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "head -n 40 /home/c/.local/share/Trash/files/conversation_6825e290-f1bc-8002-9e5a-73b675157c0c.json",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 2,
+        "family": "timeout",
+        "top_dirs": [],
+        "unique_variants": 2,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "timeout 5s python -m re_gpt.cli > /tmp/re_gpt_cli.log",
+            "count": 1,
+            "dirs_hint": []
+          },
+          {
+            "command": "timeout 5s python -m re_gpt.cli --list > /tmp/re_gpt_list.log",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 1,
+        "family": "cp",
+        "top_dirs": [],
+        "unique_variants": 1,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "cp ~/.chatgpt_history.sqlite3 /tmp/chat_history.sqlite3",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 1,
+        "family": "tail",
+        "top_dirs": [],
+        "unique_variants": 1,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "tail -n 200 re_gpt/storage.py",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 1,
+        "family": "mkdir",
+        "top_dirs": [],
+        "unique_variants": 1,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "mkdir -p .planning/phases/01-remote-fetch",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 1,
+        "family": "git status",
+        "top_dirs": [],
+        "unique_variants": 1,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "git status -sb",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 1,
+        "family": "bash run_app.sh",
+        "top_dirs": [],
+        "unique_variants": 1,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "bash ./scripts/run_app.sh --list",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      },
+      {
+        "count": 1,
+        "family": "ps",
+        "top_dirs": [],
+        "unique_variants": 1,
+        "variant_groups": [],
+        "variants": [
+          {
+            "command": "ps -p 79946",
+            "count": 1,
+            "dirs_hint": []
+          }
+        ]
+      }
+    ],
+    "source": "sqlite",
+    "top_dirs": [
+      {
+        "count": 87,
+        "path": "/home/c/Documents/code/reverse-engineered-chatgpt"
+      },
+      {
+        "count": 13,
+        "path": "/home/c/.codex/skills"
+      },
+      {
+        "count": 3,
+        "path": "/home/c/.codex/skills/chat-context-sync"
+      },
+      {
+        "count": 2,
+        "path": "/home/c"
+      },
+      {
+        "count": 2,
+        "path": "/home/c/.codex/skills/chat-context-sync/references"
+      }
+    ],
+    "total_tool_messages": 1240,
+    "unique_commands": 285,
+    "warnings": [
+      "456 tool messages were not parseable as structured tool payloads."
+    ]
+  },
+  "warnings": [
+    "No chat events found for this date in sqlite, chat exports, or resolver files.",
+    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+  ]
+}

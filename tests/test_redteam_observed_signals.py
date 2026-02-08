@@ -2,17 +2,28 @@ import json
 from pathlib import Path
 
 from adapters import (
+    aquaponics_calculator_stub,
     av_status,
     browser_usage,
     cli_meta,
     cloud_audit,
+    crops_stub,
     input_activity,
+    inaturalist_stub,
+    living_environment_simulator_stub,
+    maps_timeline_stub,
+    mood_self_report_stub,
+    pet_wearable_stub,
+    medication_tracker_stub,
     notes_meta,
     social_feed,
     social_bluesky_stub,
+    social_facebook_messenger_stub,
     social_mastodon_stub,
     social_reddit_stub,
+    social_telegram_stub,
     social_twitter_stub,
+    social_whatsapp_stub,
     window_focus,
 )
 
@@ -143,6 +154,45 @@ def test_social_stubs_hash_ids():
         social_twitter_stub,
         social_mastodon_stub,
         social_reddit_stub,
+        social_facebook_messenger_stub,
+        social_telegram_stub,
+        social_whatsapp_stub,
     ):
         normalized = adapter.normalize_record(record, "test")
         assert not _contains_forbidden(normalized)
+
+
+def test_environment_and_agro_stubs_strip_content_fields():
+    record = {
+        "ts": "2026-02-06T12:40:00Z",
+        "scenario_id": "sim-1",
+        "system_id": "aq-1",
+        "plot_id": "plot-1",
+        "body": "should-not-pass",
+        "message": "should-not-pass",
+        "collected_at": "2026-02-06T12:40:01Z",
+    }
+    normalized = living_environment_simulator_stub.normalize_record(record, "test")
+    assert not _contains_forbidden(normalized)
+    normalized = aquaponics_calculator_stub.normalize_record(record, "test")
+    assert not _contains_forbidden(normalized)
+    normalized = crops_stub.normalize_record(record, "test")
+    assert not _contains_forbidden(normalized)
+    normalized = medication_tracker_stub.normalize_record(record, "test")
+    assert not _contains_forbidden(normalized)
+    normalized = mood_self_report_stub.normalize_record({**record, "mood_code": "neutral"}, "test")
+    assert not _contains_forbidden(normalized)
+    normalized = inaturalist_stub.normalize_record(
+        {**record, "taxon_id": "taxon-1", "iconic_taxon_name": "Insecta"},
+        "test",
+    )
+    assert not _contains_forbidden(normalized)
+    normalized = pet_wearable_stub.normalize_record({**record, "device_id": "d1", "pet_id": "p1"}, "test")
+    assert not _contains_forbidden(normalized)
+    normalized = maps_timeline_stub.normalize_record(
+        {**record, "device_id": "d1", "place_id": "p-1", "lat": 1.0, "lon": 2.0},
+        "test",
+        provider="apple_maps",
+        grid_deg=0.01,
+    )
+    assert not _contains_forbidden(normalized)

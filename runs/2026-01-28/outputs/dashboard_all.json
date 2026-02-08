@@ -1,0 +1,2062 @@
+{
+  "agent_edit_summary": {
+    "avg_edits_per_file": 0.0,
+    "edit_blocks": 0,
+    "files": [],
+    "files_touched": 0,
+    "focus_mode": "none",
+    "lines_added": 0,
+    "lines_removed": 0,
+    "messages_scanned": 7,
+    "messages_with_edits": 0,
+    "source": "sqlite",
+    "top_file_share": 0.0,
+    "warnings": [
+      "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
+    ]
+  },
+  "artifact_links": [
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md"
+    },
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "20260208T053748Z_context_refresh_6986d38e.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md"
+    },
+    {
+      "label": "20260208T054246Z_resolver_6986c9f5.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986c16d.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986ccc6.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c16d.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c9f5.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986ccc6.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt"
+    },
+    {
+      "label": "20260208T054446Z_context_refresh_triplet.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md"
+    },
+    {
+      "label": "20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv"
+    },
+    {
+      "label": "20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
+    },
+    {
+      "label": "20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "mentions_rank_20260203_225730.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
+    }
+  ],
+  "chat_context_trailing": {
+    "available_days": 7,
+    "baseline_avg": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.86,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.143
+    },
+    "current": {
+      "context_switch_rate": 0.062,
+      "messages_per_chat": 11.0,
+      "switches_per_active_hour": 1.0,
+      "top_thread_share": 0.424
+    },
+    "delta": {
+      "context_switch_rate": 0.062,
+      "messages_per_chat": 10.14,
+      "switches_per_active_hour": 1.0,
+      "top_thread_share": 0.281
+    },
+    "has_baseline": true,
+    "window_days": 7
+  },
+  "chat_context_usage": {
+    "chars_est": 16731,
+    "default_context_window_tokens": 128000,
+    "input_tokens_est": 80,
+    "max_thread_usage_pct": 0.013,
+    "messages": 33,
+    "other_tokens_est": 0,
+    "output_tokens_est": 4103,
+    "overflow_threads": 0,
+    "overflow_tokens": 0,
+    "reference_context_windows": [
+      32000,
+      128000,
+      200000
+    ],
+    "threads": 3,
+    "threads_usage": [
+      {
+        "chars_est": 6895,
+        "first_ts": "2026-01-28T00:48:10Z",
+        "input_tokens_est": 52,
+        "last_ts": "2026-01-28T00:49:50Z",
+        "message_count": 14,
+        "other_tokens_est": 0,
+        "output_tokens_est": 1672,
+        "overflow_pct": 0.0,
+        "overflow_tokens": 0,
+        "share_tokens_pct": 0.412,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones",
+        "tokens_est": 1724,
+        "window_usage_pct": 0.013
+      },
+      {
+        "chars_est": 5218,
+        "first_ts": "2026-01-28T00:46:53Z",
+        "input_tokens_est": 6,
+        "last_ts": "2026-01-28T00:47:25Z",
+        "message_count": 9,
+        "other_tokens_est": 0,
+        "output_tokens_est": 1299,
+        "overflow_pct": 0.0,
+        "overflow_tokens": 0,
+        "share_tokens_pct": 0.312,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China",
+        "tokens_est": 1305,
+        "window_usage_pct": 0.01
+      },
+      {
+        "chars_est": 4618,
+        "first_ts": "2026-01-28T02:23:31Z",
+        "input_tokens_est": 22,
+        "last_ts": "2026-01-28T02:24:00Z",
+        "message_count": 10,
+        "other_tokens_est": 0,
+        "output_tokens_est": 1132,
+        "overflow_pct": 0.0,
+        "overflow_tokens": 0,
+        "share_tokens_pct": 0.276,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection",
+        "tokens_est": 1154,
+        "window_usage_pct": 0.009
+      }
+    ],
+    "token_estimation": {
+      "chars_per_token": 4.0,
+      "method": "max(1, round(chars/4.0)) when chars > 0"
+    },
+    "tokens_est": 4183,
+    "window_summary": [
+      {
+        "context_window_tokens": 32000,
+        "max_thread_usage_pct": 0.054,
+        "overflow_threads": 0,
+        "overflow_tokens": 0
+      },
+      {
+        "context_window_tokens": 128000,
+        "max_thread_usage_pct": 0.013,
+        "overflow_threads": 0,
+        "overflow_tokens": 0
+      },
+      {
+        "context_window_tokens": 200000,
+        "max_thread_usage_pct": 0.009,
+        "overflow_threads": 0,
+        "overflow_tokens": 0
+      }
+    ]
+  },
+  "chat_flow": {
+    "active_hours": 2,
+    "dominant_thread_share": 0.424,
+    "first_ts": "2026-01-28T00:46:53Z",
+    "hour_bins": [
+      23,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "last_ts": "2026-01-28T02:24:00Z",
+    "message_count": 33,
+    "messages_per_chat": 11.0,
+    "messages_per_hour_active": 16.5,
+    "messages_per_hour_day": 1.38,
+    "switch_count": 2,
+    "switch_opportunities": 32,
+    "switch_rate": 0.062,
+    "switches_per_active_hour": 1.0,
+    "thread_count": 3,
+    "threads": [
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "message_count": 14,
+        "share": 0.424,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_order": 1,
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "message_count": 10,
+        "share": 0.303,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_order": 2,
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "message_count": 9,
+        "share": 0.273,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_order": 0,
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China"
+      }
+    ],
+    "waterfall": [
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "user",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:46:53Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "system",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:46:53Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:46:53Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 26,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:46:54Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "user",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:47:20Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "system",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:47:20Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 2,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:47:20Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 3,
+        "hour": 0,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:47:22Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 45,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_key": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:46:53Z",
+        "thread_title": "US coup in China",
+        "ts": "2026-01-28T00:47:25Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "user",
+        "switch": true,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:48:10Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "system",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:48:10Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 3,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:48:10Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 2,
+        "hour": 0,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:48:13Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 47,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:48:15Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "user",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:02Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "system",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:02Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 2,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:02Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 2,
+        "hour": 0,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:04Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 38,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:06Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 0,
+        "role": "user",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:44Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 2,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:44Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 4,
+        "hour": 0,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:46Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 5621,
+        "hour": 0,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_key": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_start_hour": 0,
+        "thread_start_ts": "2026-01-28T00:48:10Z",
+        "thread_title": "O&M Shampoo Silicones",
+        "ts": "2026-01-28T00:49:50Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 1,
+        "hour": 2,
+        "role": "user",
+        "switch": true,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:31Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 1,
+        "hour": 2,
+        "role": "system",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:32Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 1,
+        "hour": 2,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:32Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 4,
+        "hour": 2,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:32Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 2,
+        "hour": 2,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:36Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 18,
+        "hour": 2,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:38Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 1,
+        "hour": 2,
+        "role": "user",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:56Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 1,
+        "hour": 2,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:56Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 3,
+        "hour": 2,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:23:57Z"
+      },
+      {
+        "color_hex": "#2a788e",
+        "color_index": 2,
+        "gap_to_next_seconds": 3,
+        "hour": 2,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_key": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_start_hour": 2,
+        "thread_start_ts": "2026-01-28T02:23:31Z",
+        "thread_title": "VIGI Offline Detection",
+        "ts": "2026-01-28T02:24:00Z"
+      }
+    ],
+    "waterfall_render_limit": 480,
+    "waterfall_truncated": false
+  },
+  "chat_scope_mode": "all",
+  "chat_scope_thread_count": 8,
+  "chat_source": "sqlite",
+  "chat_threads": [
+    {
+      "first_ts": "2026-01-28T00:48:10Z",
+      "first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+      "last_ts": "2026-01-28T00:49:50Z",
+      "message_count": 14,
+      "origin": "source:re",
+      "roles": {
+        "assistant": 6,
+        "system": 2,
+        "tool": 3,
+        "user": 3
+      },
+      "source_ids": {
+        "re_gpt_phase4_live_2026_02_05": 14
+      },
+      "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+      "title": "O&M Shampoo Silicones",
+      "title_resolved": "O&M Shampoo Silicones"
+    },
+    {
+      "first_ts": "2026-01-28T02:23:31Z",
+      "first_user_preview": "Is tp link vigi offline detection?",
+      "last_ts": "2026-01-28T02:24:00Z",
+      "message_count": 10,
+      "origin": "source:re",
+      "roles": {
+        "assistant": 4,
+        "system": 1,
+        "tool": 3,
+        "user": 2
+      },
+      "source_ids": {
+        "re_gpt_phase4_live_2026_02_05": 10
+      },
+      "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+      "title": "VIGI Offline Detection",
+      "title_resolved": "VIGI Offline Detection"
+    },
+    {
+      "first_ts": "2026-01-28T00:46:53Z",
+      "first_user_preview": "US coup China",
+      "last_ts": "2026-01-28T00:47:25Z",
+      "message_count": 9,
+      "origin": "source:re",
+      "roles": {
+        "assistant": 4,
+        "system": 2,
+        "tool": 1,
+        "user": 2
+      },
+      "source_ids": {
+        "re_gpt_phase4_live_2026_02_05": 9
+      },
+      "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+      "title": "US coup in China",
+      "title_resolved": "US coup in China"
+    }
+  ],
+  "concurrency_summary": {
+    "chat_active_hours": 2,
+    "chat_activity_overlap_hours": 0,
+    "chat_activity_overlap_rate": 0.0,
+    "chat_input_overlap_hours": 0,
+    "chat_input_overlap_rate": 0.0,
+    "chat_media_overlap_hours": 0,
+    "chat_media_overlap_rate": 0.0,
+    "chat_messages_with_input_nearby": 0,
+    "chat_messages_with_input_nearby_rate": 0.0,
+    "chat_messages_with_media_nearby": 0,
+    "chat_messages_with_media_nearby_rate": 0.0,
+    "chat_messages_with_voice_activity_nearby": 0,
+    "chat_messages_with_voice_activity_nearby_rate": 0.0,
+    "voice_activity_events": 0,
+    "voice_activity_overlap_hours": 0,
+    "voice_activity_overlap_rate": 0.0,
+    "window_seconds": 300
+  },
+  "context_field_counts": {
+    "inaturalist_events": 0,
+    "mood_reports": 0,
+    "total_rows": 0
+  },
+  "date": "2026-01-28",
+  "frequency_by_hour": {
+    "activity": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "calendar": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "chat": [
+      23,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "git": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "git_branch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "input": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "media": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pr": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "shell": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "generated_at": "2026-02-08T14:55:14.543991Z",
+  "inaturalist_trend": {
+    "available_days": 0,
+    "daily": [
+      {
+        "date": "2025-12-18",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-19",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-20",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-21",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-22",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-23",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-24",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-25",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-26",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-27",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-28",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-29",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-30",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-31",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-01",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-02",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-03",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-04",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-05",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-06",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-07",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-08",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-09",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-10",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-11",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-12",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-13",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-14",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-15",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-16",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-17",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-18",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-19",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-20",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-21",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-22",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-23",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-24",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-25",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-26",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-27",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-28",
+        "events": 0,
+        "insect_observations": 0
+      }
+    ],
+    "diagnostics": {
+      "max": 0
+    },
+    "expectation_code": "stable_or_unclear",
+    "phase_code": "no_activity",
+    "window_days": 42
+  },
+  "media_summary": {
+    "by_platform": {},
+    "churn_events": 0,
+    "churn_rate": 0.0,
+    "completion_ratio": 0.0,
+    "consumed_seconds": 0,
+    "content_duration_seconds": 0,
+    "events": 0,
+    "items_observed": 0,
+    "warnings": []
+  },
+  "mood_latest": {},
+  "notes_meta_summary": {
+    "app_counts": {},
+    "lifecycle": {
+      "context": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "file": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "notebook": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "unknown": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      }
+    },
+    "notebooklm_events": 0,
+    "total_events": 0,
+    "warnings": []
+  },
+  "summary": {
+    "activity_events": 0,
+    "agent_edit_blocks": 0,
+    "agent_edit_files": 0,
+    "agent_edit_lines_added": 0,
+    "agent_edit_lines_removed": 0,
+    "agent_edit_top_file_share": 0.0,
+    "calendar_events": 0,
+    "chat_active_hours": 2,
+    "chat_activity_overlap_hours": 0,
+    "chat_activity_overlap_rate": 0.0,
+    "chat_chars_est": 16731,
+    "chat_context_default_window_tokens": 128000,
+    "chat_context_max_thread_usage_pct": 0.013,
+    "chat_context_overflow_threads": 0,
+    "chat_context_overflow_tokens": 0,
+    "chat_input_overlap_hours": 0,
+    "chat_input_overlap_rate": 0.0,
+    "chat_input_tokens_est": 80,
+    "chat_media_overlap_hours": 0,
+    "chat_media_overlap_rate": 0.0,
+    "chat_messages": 33,
+    "chat_messages_with_input_nearby": 0,
+    "chat_messages_with_input_nearby_rate": 0.0,
+    "chat_messages_with_media_nearby": 0,
+    "chat_messages_with_media_nearby_rate": 0.0,
+    "chat_messages_with_voice_activity_nearby": 0,
+    "chat_messages_with_voice_activity_nearby_rate": 0.0,
+    "chat_other_tokens_est": 0,
+    "chat_output_tokens_est": 4103,
+    "chat_switch_rate": 0.062,
+    "chat_switches": 2,
+    "chat_threads": 3,
+    "chat_tokens_est": 4183,
+    "concurrency_window_seconds": 300,
+    "context_switch_rate": 0.062,
+    "git_branch_events": 0,
+    "git_commits": 0,
+    "inaturalist_events": 0,
+    "inaturalist_insect_observations": 0,
+    "input_events": 0,
+    "input_keys_total": 0,
+    "input_mouse_total": 0,
+    "media_churn_events": 0,
+    "media_churn_rate": 0.0,
+    "media_completion_ratio": 0.0,
+    "media_consumed_seconds": 0,
+    "media_content_seconds": 0,
+    "media_events": 0,
+    "media_items_observed": 0,
+    "messages_per_chat": 11.0,
+    "messages_per_hour_active": 16.5,
+    "messages_per_hour_day": 1.38,
+    "mood_reports": 0,
+    "notebooklm_events": 0,
+    "notes_meta_events": 0,
+    "pr_commented": 0,
+    "pr_events": 0,
+    "pr_merged": 0,
+    "pr_received": 0,
+    "shell_commands": 0,
+    "shell_commands_agent_exec": 0,
+    "shell_commands_host": 0,
+    "switches_per_active_hour": 1.0,
+    "timeline_events": 33,
+    "top_thread_share": 0.424,
+    "voice_activity_events": 0,
+    "voice_activity_overlap_hours": 0,
+    "voice_activity_overlap_rate": 0.0,
+    "window_focus_events": 0
+  },
+  "timeline": [
+    {
+      "detail": "chat role=user chars=14",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 14,
+        "preview": "US coup China",
+        "role": "user",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:46:53Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:46:53Z"
+    },
+    {
+      "detail": "chat role=assistant chars=2684",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 2684,
+        "preview": "Do you mean **\u201cDid the U.S. ever try to stage a coup in China?\u201d**, or are you asking about **claims/fears of a U.S.-backed coup in China today**? Here\u2019s the clean, high-signal overview either way: --- ## Short answer The...",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:46:53Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:46:54Z"
+    },
+    {
+      "detail": "chat role=user chars=8",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 8,
+        "preview": "J26 2026",
+        "role": "user",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:20Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:20Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:20Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:22Z"
+    },
+    {
+      "detail": "chat role=assistant chars=2512",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 2512,
+        "preview": "Here\u2019s the **latest situation around Jan 26 2026** regarding China and **rumours of a coup or internal power struggle** \u2014 often referred to in shorthand online as *\u201cJ26\u201d* in political chatter: --- \ue200navlist\ue202Recent develop...",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "US coup China",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_origin": "source:re",
+        "thread_title": "US coup in China",
+        "thread_title_raw": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:25Z"
+    },
+    {
+      "detail": "chat role=user chars=154",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 154,
+        "preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that the other regular ones don't have?",
+        "role": "user",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:10Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:10Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:10Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:13Z"
+    },
+    {
+      "detail": "chat role=assistant chars=2233",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 2233,
+        "preview": "Here\u2019s the breakdown of **silicones** in O&M shampoos and how that compares across different products: ### \ud83e\uddf4 Silicone Content in O&M Colour/Shampoos - Products like **\ue200entity\ue202[\"turn0product1\",\"O&M Original Detox Shampoo\"...",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:15Z"
+    },
+    {
+      "detail": "chat role=user chars=14",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 14,
+        "preview": "The curly ones",
+        "role": "user",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:02Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:02Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:02Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:04Z"
+    },
+    {
+      "detail": "chat role=assistant chars=1902",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 1902,
+        "preview": "Here\u2019s what I found specifically about the **O&M \u201cCurly\u201d line** and whether it contains **silicones**: ### \ud83c\udf00 Silicone Content in O&M *Curl Curl* Products - **\ue200entity\ue202[\"turn0product0\",\"O&M Curl Curl Conditioner\",0]\ue201** \u2014 a...",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:06Z"
+    },
+    {
+      "detail": "chat role=user chars=42",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 42,
+        "preview": "I thought I'd seen a water soluble polymer",
+        "role": "user",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:44Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:44Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:46Z"
+    },
+    {
+      "detail": "chat role=assistant chars=2550",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 2550,
+        "preview": "Yes \u2014 you\u2019re right that even though **\ue200entity\ue202[\"turn0product3\",\"O&M Curl Curl Shampoo\",0]\ue201** and **\ue200entity\ue202[\"turn0product4\",\"O&M Curl Curl Conditioner\",0]\ue201** are marketed as *silicone-free* (they\u2019re listed in the *Clean...",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Does O&M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that...",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_origin": "source:re",
+        "thread_title": "O&M Shampoo Silicones",
+        "thread_title_raw": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:50Z"
+    },
+    {
+      "detail": "chat role=user chars=34",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 34,
+        "preview": "Is tp link vigi offline detection?",
+        "role": "user",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:31Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:32Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:32Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:32Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:36Z"
+    },
+    {
+      "detail": "chat role=assistant chars=2006",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 2006,
+        "preview": "Yes \u2014 **TP-Link\u2019s VIGI security system does include offline detection/alerting** as part of its device health monitoring and alarm features. Here\u2019s how it generally works: \ue200cite\ue202turn1search6\ue201 ### \ud83d\udccc Offline Detection in V...",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:38Z"
+    },
+    {
+      "detail": "chat role=user chars=57",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 57,
+        "preview": "No I mean object/vehicle detection, does it require cloud",
+        "role": "user",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:56Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:56Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:57Z"
+    },
+    {
+      "detail": "chat role=assistant chars=2521",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 2521,
+        "preview": "**Short answer:** \u2705 Many **TP-Link VIGI cameras with \u201cAI detection\u201d (human/vehicle classification)** perform **the object/vehicle detection locally on the camera itself** and **do not require a cloud subscription** for t...",
+        "role": "assistant",
+        "source_id": "re_gpt_phase4_live_2026_02_05",
+        "thread_first_user_preview": "Is tp link vigi offline detection?",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_origin": "source:re",
+        "thread_title": "VIGI Offline Detection",
+        "thread_title_raw": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:24:00Z"
+    }
+  ],
+  "tool_use_summary": {
+    "exec_command_count": 0,
+    "exec_with_workdir_count": 0,
+    "exec_without_workdir_count": 0,
+    "families": [],
+    "source": "sqlite",
+    "top_dirs": [],
+    "total_tool_messages": 0,
+    "unique_commands": 0,
+    "warnings": [
+      "No tool messages found for this date/scope in sqlite."
+    ]
+  },
+  "warnings": [
+    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date).",
+    "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
+  ]
+}

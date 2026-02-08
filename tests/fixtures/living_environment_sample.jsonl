@@ -1,0 +1,1 @@
+{"ts":"2026-02-08T09:00:00Z","simulator":"living-environment-simulator","scenario_id":"scenario-42","zone_id":"bedroom-east","occupancy_state":"occupied","temp_c":23.7,"humidity_pct":51.2,"co2_ppm":612,"pm25_ug_m3":6.1,"voc_index":42,"noise_db":33.4,"light_lux":120,"collected_at":"2026-02-08T09:00:01Z"}

@@ -23,6 +23,21 @@ All collectors are **meta-only** and must not emit content.
 ## Browser / apps
 - `adapters/browser_usage.py` (domain hash + duration)
 - `adapters/notes_meta.py` (Obsidian/Evernote metadata)
+- `adapters/notebooklm_meta.py` (NotebookLM notebook/source metadata snapshots)
+- `scripts/capture_notebooklm_meta.py` (NotebookLM CLI snapshot collector)
+- `adapters/media_consumption.py` (unified media watch/listen metadata)
+- `adapters/youtube_watch_stub.py` (YouTube export stub -> media_consumption)
+- `adapters/spotify_history_stub.py` (Spotify export stub -> media_consumption)
+- `adapters/vlc_history_stub.py` (VLC export stub -> media_consumption)
+- `adapters/lastfm_scrobble_stub.py` (Last.fm export stub -> media_consumption)
+- `adapters/living_environment_simulator_stub.py` (living-environment snapshots -> context_field)
+- `adapters/aquaponics_calculator_stub.py` (aquaponics telemetry -> context_field)
+- `adapters/crops_stub.py` (crop-cycle telemetry -> context_field)
+- `adapters/medication_tracker_stub.py` (medication adherence telemetry -> context_field)
+- `adapters/mood_self_report_stub.py` (mood self-report -> context_field)
+- `adapters/inaturalist_stub.py` (iNaturalist observations -> context_field)
+- `adapters/pet_wearable_stub.py` (pet wearable / smart collar telemetry -> context_field)
+- `adapters/maps_timeline_stub.py` (Google/Apple maps timeline exports -> context_field)
 
 ## Cloud audit feeds
 - `adapters/cloud_audit.py` (Google Drive / MS365 audit logs)
@@ -35,6 +50,9 @@ All collectors are **meta-only** and must not emit content.
 - `adapters/social_twitter_stub.py`
 - `adapters/social_mastodon_stub.py`
 - `adapters/social_reddit_stub.py`
+- `adapters/social_facebook_messenger_stub.py`
+- `adapters/social_telegram_stub.py`
+- `adapters/social_whatsapp_stub.py`
 
 ## OS stubs
 - `adapters/windows_event_stub.py`
@@ -45,3 +63,6 @@ All collectors are **meta-only** and must not emit content.
 - `docs/observed_signals.md`
 - `docs/social_audit_redaction.md`
 - `docs/social_stub_collectors.md`
+- `docs/notebooklm_connector.md`
+- `docs/daemon_web_control_plane.md`
+- `docs/media_connectors.md`

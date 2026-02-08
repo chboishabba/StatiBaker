@@ -2,6 +2,9 @@
 
 This dashboard is a read-only process lens over SB artifacts.
 
+Implementation/reproduction detail is documented in
+`docs/dashboard_implementation_notes.md`.
+
 It exists to answer:
 - What activity was observed and synchronized for the day?
 - How often did chat, shell, and interaction signals occur?
@@ -21,6 +24,10 @@ The dashboard integrates:
 - input activity (key/mouse counts only)
 - window focus metadata (app id, title hash, duration)
 - SB activity events (`activity_ledger.json`)
+- notes metadata lifecycle (`logs/notes/<date>.jsonl`)
+  - NotebookLM lifecycle counters: notebook/file created, modified, moved/renamed, deleted, seen
+- media consumption metadata (`logs/media/<date>.jsonl`)
+  - watch/listen seconds, completion ratio, churn events/rate
 - generated SB summaries (`daily_brief.md`, `retrospective.md`, `state.json`, `drift.json`)
 
 ## Data sources (default)
@@ -66,6 +73,46 @@ Timeline filters are optional and client-side:
 Untitled chat threads are automatically labeled from first user-message preview
 and tagged with an origin class (for example `codex-ingest` when sqlite
 `source_id` starts with `codex_`).
+
+Timeline strip palette controls are client-side and include:
+- `Viridis` (default)
+- `Turbo (Rainbow)`
+- `Plasma (Blue-Pink-Yellow)`
+- `RdYlGn (Red-Yellow-Green)`
+- `Custom` comma-separated CSS colors (persisted in browser local storage)
+
+Timeline strip color algorithm controls are also client-side:
+- `Thread`
+- `Time of Day`
+- `Chat Role`
+- `Switch vs Stay`
+
+## Chat flow view modes
+
+Current default:
+- `Chat Flow Timeline Strip` (linear, time-scaled sequence).
+
+Planned alternate:
+- `Thread Lanes` (true lane chart with cross-lane connectors).
+
+Design and rollout details:
+- `docs/chat_flow_lane_mode.md`
+
+Dense-day behavior target:
+- keep strip mode as fallback for high message/thread counts,
+- use lane mode when visual complexity remains manageable.
+
+NotebookLM metadata section:
+- Daily dashboard includes a `NotebookLM Lifecycle (Metadata)` panel.
+- Weekly and lifetime dashboards include aggregated notebook/file lifecycle totals.
+- `seen` reflects snapshot/observed rows (for example `notebook_observed`, `source_observed`).
+
+Context/cost estimate section:
+- Daily dashboard includes per-thread context usage approximation
+  (`chars -> tokens` heuristic) and overflow indicators.
+- Lifetime mode emits a dedicated indicative costing page
+  (`dashboard_costing(.html|.json)`).
+- Costing output is scenario-based and non-authoritative; it is not invoice truth.
 
 ## Build command
 
@@ -122,7 +169,11 @@ SB=/home/c/Documents/code/ITIR-suite/StatiBaker
   "/abs/path/windows_events.jsonl" \
   "/abs/path/macos_events.jsonl" \
   "" \
-  "auto"
+  "auto" \
+  "/abs/path/notebooklm_meta.jsonl" \
+  "/abs/path/media_consumption.jsonl" \
+  "/abs/path/context_fields.jsonl" \
+  "/abs/path/medication_raw.jsonl"
 
 python "$SB/scripts/build_dashboard.py" --date "$DATE"
 ```

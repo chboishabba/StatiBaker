@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SB Activity Dashboard 2026-01-28</title>
+  <style>
+    :root {
+      --bg: #f3f6f0;
+      --ink: #1c2321;
+      --panel: #ffffff;
+      --chat: #0b6e4f;
+      --shell: #1d4ed8;
+      --git: #2f6f3e;
+      --activity: #9333ea;
+      --media: #0f766e;
+      --input: #a16207;
+      --window: #9d174d;
+      --branch: #0f766e;
+      --pr: #7c3aed;
+      --line: #d9e1d9;
+    }
+    body { margin: 0; background: radial-gradient(circle at top left, #e7f2ea, var(--bg)); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", sans-serif; }
+    main { width: min(1200px, calc(100vw - 0.6rem)); margin: 0 auto; padding: 1.2rem; box-sizing: border-box; display: grid; gap: 1rem; overflow-x: hidden; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem; min-width: 0; }
+    h1,h2 { margin: 0 0 0.6rem 0; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .meta { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.92rem; }
+    .grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); min-width: 0; }
+    .metric { border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; }
+    .metric b { display:block; font-size: 1.3rem; margin-top: 0.2rem; }
+    .metric small { display:block; margin-top: 0.2rem; color: #4b5563; font-size: 0.78rem; }
+    .bars { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); min-width: 0; }
+    .bars ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+    .bars li { display: grid; grid-template-columns: 2.2rem 1fr 2rem; align-items: center; gap: 0.4rem; }
+    .bar-wrap { border: 1px solid var(--line); border-radius: 7px; overflow: hidden; height: 0.7rem; }
+    .bar { height: 100%; }
+    .chat { background: var(--chat); } .shell { background: var(--shell); } .git { background: var(--git); } .activity { background: var(--activity); } .media { background: var(--media); } .input { background: var(--input); } .window { background: var(--window); } .branch { background: var(--branch); } .pr { background: var(--pr); }
+    .table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }
+    .filter-grid { display: grid; gap: 0.65rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 0.7rem; min-width: 0; }
+    .filter-block { border: 1px solid var(--line); border-radius: 8px; padding: 0.45rem; background: #fbfcfb; }
+    .filter-search { display: flex; gap: 0.4rem; margin-top: 0.35rem; }
+    .filter-search input[type="search"] { flex: 1; border: 1px solid var(--line); border-radius: 6px; padding: 0.25rem 0.4rem; font: inherit; }
+    .filter-search button { border: 1px solid var(--line); border-radius: 6px; background: #f5f7f4; padding: 0.25rem 0.5rem; cursor: pointer; }
+    .filter-options { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.35rem; }
+    .filter-options label { display: inline-flex; align-items: center; gap: 0.2rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.35rem; background: #f7faf7; font-size: 0.82rem; }
+    .timeline-count { margin-top: 0.4rem; font-size: 0.82rem; color: #4b5563; }
+    code { background: #eff2ef; border-radius: 4px; padding: 0.05rem 0.2rem; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
+    pre { white-space: pre-wrap; word-break: break-word; margin: 0.45rem 0 0 0; font-family: "IBM Plex Mono", "Consolas", monospace; font-size: 0.82rem; }
+    th, td { overflow-wrap: anywhere; word-break: break-word; }
+    details summary { cursor: pointer; }
+    .src-badge { display: inline-block; border-radius: 999px; padding: 0.1rem 0.45rem; font-size: 0.76rem; border: 1px solid var(--line); }
+    .src-sqlite { background: #e5f3ec; color: #0b6e4f; border-color: #8ecfb4; }
+    .src-chat_exports { background: #e8eefc; color: #1d4ed8; border-color: #adc3f4; }
+    .src-resolver { background: #f4ebfd; color: #7c3aed; border-color: #ccb7f6; }
+    .src-logs { background: #fff7e6; color: #a16207; border-color: #f1d193; }
+    .src-activity { background: #ffe9f1; color: #9d174d; border-color: #f2b7cf; }
+    .src-outputs { background: #ebf8ff; color: #0f766e; border-color: #9fdcd6; }
+    .src-other { background: #f3f4f6; color: #374151; border-color: #d1d5db; }
+    .links li { display: grid; gap: 0.15rem; margin-bottom: 0.45rem; }
+    .wf-strip { display: flex; gap: var(--wf-gap, 0.1rem); overflow-x: auto; padding: 0.25rem 0 0.35rem 0; }
+    .wf-seg { width: 0.24rem; height: var(--wf-seg-h, 0.95rem); border-radius: 2px; border: 1px solid rgba(0, 0, 0, 0.15); flex: 0 0 auto; }
+    .wf-seg.switch { outline: 2px solid rgba(17, 24, 39, 0.65); outline-offset: 1px; }
+    .wf-controls { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-top: 0.45rem; }
+    .wf-controls label { font-size: 0.84rem; color: #374151; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .wf-controls select, .wf-controls input { border: 1px solid var(--line); border-radius: 6px; padding: 0.25rem 0.4rem; font: inherit; max-width: 28rem; }
+    .wf-controls button { border: 1px solid var(--line); border-radius: 6px; background: #f5f7f4; padding: 0.28rem 0.55rem; cursor: pointer; }
+    .wf-controls code { font-size: 0.76rem; }
+    .wf-legend { list-style: none; margin: 0.5rem 0 0 0; padding: 0; display: grid; gap: 0.3rem; }
+    .wf-legend li { display: flex; align-items: center; gap: 0.35rem; }
+    .wf-swatch { width: 0.75rem; height: 0.75rem; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.25); display: inline-block; }
+    .wf-note { margin-top: 0.45rem; color: #4b5563; font-size: 0.84rem; }
+    .wf-view { margin-top: 0.5rem; }
+    .wf-waterfall-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #f9fbf9; padding: 0.35rem; }
+    .wf-lane-svg { display: block; width: 100%; min-width: 52rem; height: auto; }
+    .wf-lane-bg { fill: #f9fbf9; }
+    .wf-lane-line { stroke: #d9e1d9; stroke-width: 1; }
+    .wf-lane-label { fill: #374151; font-size: 11px; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .wf-axis { fill: #4b5563; font-size: 11px; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .wf-edge { fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .wf-edge.stay { stroke: rgba(75, 85, 99, 0.42); }
+    .wf-edge.switch { stroke: rgba(17, 24, 39, 0.75); stroke-dasharray: 3 2; }
+    .wf-node { stroke: rgba(17, 24, 39, 0.65); stroke-width: 0.8; }
+    @media (max-width: 760px) {
+      main { width: min(1200px, calc(100vw - 0.2rem)); padding: 0.75rem; }
+      .table-scroll table { font-size: 0.82rem; }
+      .wf-controls { flex-direction: column; align-items: flex-start; }
+      .wf-controls input { max-width: 100%; width: 100%; }
+      .wf-lane-svg { min-width: 38rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <h1>SB Activity Dashboard</h1>
+      <div class="meta">
+        <div><b>Date:</b> <code>2026-01-28</code></div>
+        <div><b>Generated:</b> <code>2026-02-08T14:55:14.543991Z</code></div>
+        <div><b>Chat source:</b> <code>sqlite</code></div>
+        <div><b>Chat scope:</b> <code>all</code></div>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Summary</h2>
+      <div class="grid">
+        <div class="metric">Chat messages<b>33</b></div>
+        <div class="metric">Chat threads<b>3</b></div>
+        <div class="metric">Context switch rate<b>6.2%</b><small>primary score</small></div>
+        <div class="metric">Messages/hour (active)<b>16.50</b><small>2 active hour(s)</small></div>
+        <div class="metric">Messages/chat<b>11.00</b></div>
+        <div class="metric">Switches/hour (active)<b>1.00</b></div>
+        <div class="metric">Top-thread share<b>42.4%</b></div>
+        <div class="metric">Chat switches<b>2</b><small>6.2% of transitions</small></div>
+        <div class="metric">Chat tokens (est)<b>4183</b><small>input=80, output=4103, chars/4 heuristic</small></div>
+        <div class="metric">Context overflow (est)<b>0 thread(s)</b><small>overflow_tokens=0, max-thread-usage=1.3% of 128000 tokens</small></div>
+        <div class="metric">Shell commands<b>0</b><small>host=0, agent_exec=0</small></div>
+        <div class="metric">Agent edit blocks<b>0</b><small>messages with edits=0</small></div>
+        <div class="metric">Agent files touched<b>0</b><small>focus=none, top-file-share=0.0%</small></div>
+        <div class="metric">Agent line deltas<b>+0 / -0</b></div>
+        <div class="metric">Media events<b>0</b></div>
+        <div class="metric">Media items observed<b>0</b></div>
+        <div class="metric">Media consumed<b>0s</b><small>0.00h total</small></div>
+        <div class="metric">Media completion/churn<b>0.0% / 0.0%</b><small>completion by watched/content and churn by low-complete early switches</small></div>
+        <div class="metric">iNaturalist insects<b>0</b><small>no_activity · stable_or_unclear · 0/42d window</small></div>
+        <div class="metric">Mood reports<b>0</b><small>unknown </small></div>
+        <div class="metric">Chat-media overlap<b>0h (0.0%)</b><small>hour buckets where chat and media co-occur</small></div>
+        <div class="metric">Concurrent chat messages<b>0/33</b><small>within ±5m of media event (0.0%)</small></div>
+        <div class="metric">Voice/transcribe overlap<b>0/33</b><small>within ±5m of voice-like activity (0.0%), voice events=0</small></div>
+        <div class="metric">Chat-input/activity overlap<b>0h / 0h</b><small>chat+input=0.0%, chat+activity=0.0% of chat-active hours; chat msgs near input=0/33 (0.0%)</small></div>
+        <div class="metric">Input events<b>0</b></div>
+        <div class="metric">Window focus events<b>0</b></div>
+        <div class="metric">Activity events<b>0</b></div>
+        <div class="metric">Notes meta events<b>0</b></div>
+        <div class="metric">NotebookLM meta events<b>0</b><small>none</small></div>
+        <div class="metric">Git branch events<b>0</b></div>
+        <div class="metric">PR events<b>0</b></div>
+        <div class="metric">PR merged/commented/received<b>0/0/0</b></div>
+      </div>
+      <p class="wf-note">7-day trailing avg (7/7 available): switch rate 6.2% vs 0.0% (+6.2 pts), switches/hour 1.00 vs 0.00, messages/chat 11.00 vs 0.86, top-thread share 42.4% vs 14.3%.</p>
+    </section>
+    <section class="panel">
+      <h2>Context Overlays (Selected)</h2>
+      <p><small>Observer-class overlays only; no inference. iNaturalist phase is a heuristic over daily insect observation counts.</small></p>
+      <div class="grid">
+        <div class="metric">iNaturalist phase<b>no_activity</b><small>stable_or_unclear</small></div>
+        <div class="metric">Mood latest<b>unknown</b><small>none</small></div>
+      </div>
+    </section>
+    <section class="panel bars">
+      <div><h2>Messages/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar chat' style='width:100%;'></div></div><span>23</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar chat' style='width:43%;'></div></div><span>10</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Shell/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Commits/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar git' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Activity/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar activity' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Media/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar media' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Input/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Window/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Branch/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>PR/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li></ul></div>
+    </section>
+    <section class="panel">
+      <h2>Process Artifacts</h2>
+      <ul class="links"><li><a href='../../../COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/CONTEXT.md'>CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md'>20260208T053748Z_context_refresh_6986d38e.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json'>20260208T054246Z_resolver_6986c9f5.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json'>20260208T054330Z_resolver_6986c16d.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json'>20260208T054330Z_resolver_6986ccc6.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt'>20260208T054344Z_latest_6986c16d.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt'>20260208T054344Z_latest_6986c9f5.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt'>20260208T054344Z_latest_6986ccc6.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md'>20260208T054446Z_context_refresh_triplet.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv'>20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json'>20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv'>mentions_rank_20260203_225730.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv</code></li></ul>
+    </section>
+    <section class="panel">
+      <h2>Chat Threads</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Thread ID</th><th>Title</th><th>Origin</th><th>Messages</th><th>First</th><th>Last</th><th>Roles</th></tr></thead>
+          <tbody><tr><td><code title='6151bffe96ba6b439eeab30bcabc977888938782'>6151bffe96ba</code></td><td>O&amp;M Shampoo Silicones</td><td><code>source:re</code></td><td>14</td><td><code>2026-01-28T00:48:10Z</code></td><td><code>2026-01-28T00:49:50Z</code></td><td>assistant:6, system:2, tool:3, user:3</td></tr><tr><td><code title='249f271403475be83e198c768eeccc29004f075b'>249f27140347</code></td><td>VIGI Offline Detection</td><td><code>source:re</code></td><td>10</td><td><code>2026-01-28T02:23:31Z</code></td><td><code>2026-01-28T02:24:00Z</code></td><td>assistant:4, system:1, tool:3, user:2</td></tr><tr><td><code title='81eba0d2f2fbea3003389d714b785f72c5f9fad1'>81eba0d2f2fb</code></td><td>US coup in China</td><td><code>source:re</code></td><td>9</td><td><code>2026-01-28T00:46:53Z</code></td><td><code>2026-01-28T00:47:25Z</code></td><td>assistant:4, system:2, tool:1, user:2</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Chat Context Usage (Estimated)</h2>
+      <p>
+        chars=<code>16731</code>,
+        tokens=<code>4183</code>,
+        input=<code>80</code>,
+        output=<code>4103</code>,
+        default_window=<code>128000</code>,
+        overflow_threads=<code>0</code>,
+        overflow_tokens=<code>0</code>
+      </p>
+      <p><small>Heuristic only: token estimate uses <code>max(1, round(chars/4.0))</code>. Day-scoped logs may undercount true full-thread history.</small></p>
+      <p><small>Window sweep:</small></p>
+      <ul><li><code>32000</code>: overflow_threads=<code>0</code>, overflow_tokens=<code>0</code>, max_thread_usage=<code>5.4%</code></li><li><code>128000</code>: overflow_threads=<code>0</code>, overflow_tokens=<code>0</code>, max_thread_usage=<code>1.3%</code></li><li><code>200000</code>: overflow_threads=<code>0</code>, overflow_tokens=<code>0</code>, max_thread_usage=<code>0.9%</code></li></ul>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Thread</th><th>Messages</th><th>Chars (est)</th><th>Tokens (est)</th><th>Usage (128000)</th><th>Overflow tokens</th><th>Token share</th></tr></thead>
+          <tbody><tr><td>O&amp;M Shampoo Silicones [6151bffe96ba]</td><td>14</td><td>6895</td><td>1724</td><td>1.3%</td><td>0</td><td>41.2%</td></tr><tr><td>US coup in China [81eba0d2f2fb]</td><td>9</td><td>5218</td><td>1305</td><td>1.0%</td><td>0</td><td>31.2%</td></tr><tr><td>VIGI Offline Detection [249f27140347]</td><td>10</td><td>4618</td><td>1154</td><td>0.9%</td><td>0</td><td>27.6%</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Chat Flow Visualizations</h2>
+      <p>
+        messages=<code>33</code>,
+        threads=<code>3</code>,
+        switches=<code>2</code>,
+        switch_rate=<code>6.2%</code>,
+        window=<code>2026-01-28T00:46:53Z</code> to
+        <code>2026-01-28T02:24:00Z</code>
+      </p>
+      <div class="wf-controls">
+        <label>View
+          <select id="wf-view-mode">
+            <option value="linear">Legacy / Linear</option>
+            <option value="waterfall">Actual Waterfall</option>
+          </select>
+        </label>
+        <label>Palette
+          <select id="wf-palette">
+            <option value='viridis'>Viridis</option><option value='turbo'>Turbo (Rainbow)</option><option value='plasma'>Plasma (Blue-Pink-Yellow)</option><option value='rdylgn'>RdYlGn (Red-Yellow-Green)</option><option value='custom'>Custom</option>
+          </select>
+        </label>
+        <label>Color by
+          <select id="wf-color-algo">
+            <option value='thread'>Thread</option><option value='hour'>Time of Day</option><option value='role'>Chat Role</option><option value='switch'>Switch vs Stay</option>
+          </select>
+        </label>
+        <label>Custom colors
+          <input id="wf-custom" type="text" placeholder="#440154,#31688e,#35b779,#fde725">
+        </label>
+        <button id="wf-custom-apply" type="button">Apply</button>
+        <button id="wf-custom-reset" type="button">Reset</button>
+        <code>comma-separated css colors</code>
+      </div>
+      <div id="wf-linear-wrap" class="wf-view wf-linear-wrap">
+        <div class="wf-strip" style="--wf-gap: 0.10rem; --wf-seg-h: 0.95rem;"><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='user' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.4265rem;' title='2026-01-28T00:46:53Z | user | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:46:53Z | user | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='system' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.4265rem;' title='2026-01-28T00:46:53Z | system | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:46:53Z | system | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='assistant' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.4265rem;' title='2026-01-28T00:46:53Z | assistant | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:46:53Z | assistant | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='26' data-role='assistant' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.5891rem;' title='2026-01-28T00:46:54Z | assistant | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:46:54Z | assistant | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='user' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.4265rem;' title='2026-01-28T00:47:20Z | user | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:47:20Z | user | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='system' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.4265rem;' title='2026-01-28T00:47:20Z | system | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:47:20Z | system | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='2' data-role='assistant' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.4330rem;' title='2026-01-28T00:47:20Z | assistant | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:47:20Z | assistant | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='3' data-role='tool' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.4395rem;' title='2026-01-28T00:47:22Z | tool | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:47:22Z | tool | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg wf-seg-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-gap-sec='45' data-role='assistant' data-switch='stay' data-default-color='#440154' style='background:#440154; width:0.7127rem;' title='2026-01-28T00:47:25Z | assistant | US coup in China | stay | 81eba0d2f2fb' aria-label='2026-01-28T00:47:25Z | assistant | US coup in China | stay | 81eba0d2f2fb'></span><span class='wf-seg switch wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='user' data-switch='switch' data-default-color='#414487' style='background:#414487; width:0.4265rem;' title='2026-01-28T00:48:10Z | user | O&amp;M Shampoo Silicones | switch | 6151bffe96ba' aria-label='2026-01-28T00:48:10Z | user | O&amp;M Shampoo Silicones | switch | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='system' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4265rem;' title='2026-01-28T00:48:10Z | system | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:48:10Z | system | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='3' data-role='assistant' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4395rem;' title='2026-01-28T00:48:10Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:48:10Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='2' data-role='tool' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4330rem;' title='2026-01-28T00:48:13Z | tool | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:48:13Z | tool | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='47' data-role='assistant' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.7257rem;' title='2026-01-28T00:48:15Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:48:15Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='user' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4265rem;' title='2026-01-28T00:49:02Z | user | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:02Z | user | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='system' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4265rem;' title='2026-01-28T00:49:02Z | system | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:02Z | system | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='2' data-role='assistant' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4330rem;' title='2026-01-28T00:49:02Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:02Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='2' data-role='tool' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4330rem;' title='2026-01-28T00:49:04Z | tool | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:04Z | tool | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='38' data-role='assistant' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.6672rem;' title='2026-01-28T00:49:06Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:06Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='1' data-role='user' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4265rem;' title='2026-01-28T00:49:44Z | user | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:44Z | user | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='2' data-role='assistant' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4330rem;' title='2026-01-28T00:49:44Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:44Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='4' data-role='tool' data-switch='stay' data-default-color='#414487' style='background:#414487; width:0.4460rem;' title='2026-01-28T00:49:46Z | tool | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:46Z | tool | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg wf-seg-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-gap-sec='5621' data-role='assistant' data-switch='stay' data-default-color='#414487' style='background:#414487; width:5.6000rem;' title='2026-01-28T00:49:50Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba' aria-label='2026-01-28T00:49:50Z | assistant | O&amp;M Shampoo Silicones | stay | 6151bffe96ba'></span><span class='wf-seg switch wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='1' data-role='user' data-switch='switch' data-default-color='#2a788e' style='background:#2a788e; width:0.4265rem;' title='2026-01-28T02:23:31Z | user | VIGI Offline Detection | switch | 249f27140347' aria-label='2026-01-28T02:23:31Z | user | VIGI Offline Detection | switch | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='1' data-role='system' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.4265rem;' title='2026-01-28T02:23:32Z | system | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:23:32Z | system | VIGI Offline Detection | stay | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='1' data-role='assistant' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.4265rem;' title='2026-01-28T02:23:32Z | assistant | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:23:32Z | assistant | VIGI Offline Detection | stay | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='4' data-role='tool' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.4460rem;' title='2026-01-28T02:23:32Z | tool | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:23:32Z | tool | VIGI Offline Detection | stay | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='2' data-role='tool' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.4330rem;' title='2026-01-28T02:23:36Z | tool | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:23:36Z | tool | VIGI Offline Detection | stay | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='18' data-role='assistant' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.5371rem;' title='2026-01-28T02:23:38Z | assistant | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:23:38Z | assistant | VIGI Offline Detection | stay | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='1' data-role='user' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.4265rem;' title='2026-01-28T02:23:56Z | user | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:23:56Z | user | VIGI Offline Detection | stay | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='1' data-role='assistant' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.4265rem;' title='2026-01-28T02:23:56Z | assistant | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:23:56Z | assistant | VIGI Offline Detection | stay | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='3' data-role='tool' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.4395rem;' title='2026-01-28T02:23:57Z | tool | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:23:57Z | tool | VIGI Offline Detection | stay | 249f27140347'></span><span class='wf-seg wf-seg-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-gap-sec='3' data-role='assistant' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e; width:0.4395rem;' title='2026-01-28T02:24:00Z | assistant | VIGI Offline Detection | stay | 249f27140347' aria-label='2026-01-28T02:24:00Z | assistant | VIGI Offline Detection | stay | 249f27140347'></span></div>
+        <p class="wf-note">
+          Each block is one chat message. This is a linear time strip (not a classical waterfall). Width encodes elapsed time until the next message; outlined blocks mark a jump to a different thread.
+        </p>
+      </div>
+      <div id="wf-waterfall-wrap" class="wf-view wf-waterfall-wrap" style="display:none;">
+        <svg class='wf-lane-svg' viewBox='0 0 1096.00 136.00' preserveAspectRatio='xMinYMin meet'><rect x='0' y='0' width='1096.00' height='136.00' class='wf-lane-bg' /><line x1='190.00' y1='39.00' x2='1070.00' y2='39.00' class='wf-lane-line' /><line x1='190.00' y1='65.00' x2='1070.00' y2='65.00' class='wf-lane-line' /><line x1='190.00' y1='91.00' x2='1070.00' y2='91.00' class='wf-lane-line' /><line x1='190.00' y1='91.00' x2='190.00' y2='91.00' class='wf-edge stay' /><line x1='190.00' y1='91.00' x2='190.00' y2='91.00' class='wf-edge stay' /><line x1='190.00' y1='91.00' x2='190.15' y2='91.00' class='wf-edge stay' /><line x1='190.15' y1='91.00' x2='194.08' y2='91.00' class='wf-edge stay' /><line x1='194.08' y1='91.00' x2='194.08' y2='91.00' class='wf-edge stay' /><line x1='194.08' y1='91.00' x2='194.08' y2='91.00' class='wf-edge stay' /><line x1='194.08' y1='91.00' x2='194.38' y2='91.00' class='wf-edge stay' /><line x1='194.38' y1='91.00' x2='194.83' y2='91.00' class='wf-edge stay' /><line x1='194.83' y1='91.00' x2='201.63' y2='39.00' class='wf-edge switch' /><line x1='201.63' y1='39.00' x2='201.63' y2='39.00' class='wf-edge stay' /><line x1='201.63' y1='39.00' x2='201.63' y2='39.00' class='wf-edge stay' /><line x1='201.63' y1='39.00' x2='202.08' y2='39.00' class='wf-edge stay' /><line x1='202.08' y1='39.00' x2='202.38' y2='39.00' class='wf-edge stay' /><line x1='202.38' y1='39.00' x2='209.48' y2='39.00' class='wf-edge stay' /><line x1='209.48' y1='39.00' x2='209.48' y2='39.00' class='wf-edge stay' /><line x1='209.48' y1='39.00' x2='209.48' y2='39.00' class='wf-edge stay' /><line x1='209.48' y1='39.00' x2='209.78' y2='39.00' class='wf-edge stay' /><line x1='209.78' y1='39.00' x2='210.09' y2='39.00' class='wf-edge stay' /><line x1='210.09' y1='39.00' x2='215.82' y2='39.00' class='wf-edge stay' /><line x1='215.82' y1='39.00' x2='215.82' y2='39.00' class='wf-edge stay' /><line x1='215.82' y1='39.00' x2='216.13' y2='39.00' class='wf-edge stay' /><line x1='216.13' y1='39.00' x2='216.73' y2='39.00' class='wf-edge stay' /><line x1='216.73' y1='39.00' x2='1065.62' y2='65.00' class='wf-edge switch' /><line x1='1065.62' y1='65.00' x2='1065.77' y2='65.00' class='wf-edge stay' /><line x1='1065.77' y1='65.00' x2='1065.77' y2='65.00' class='wf-edge stay' /><line x1='1065.77' y1='65.00' x2='1065.77' y2='65.00' class='wf-edge stay' /><line x1='1065.77' y1='65.00' x2='1066.38' y2='65.00' class='wf-edge stay' /><line x1='1066.38' y1='65.00' x2='1066.68' y2='65.00' class='wf-edge stay' /><line x1='1066.68' y1='65.00' x2='1069.40' y2='65.00' class='wf-edge stay' /><line x1='1069.40' y1='65.00' x2='1069.40' y2='65.00' class='wf-edge stay' /><line x1='1069.40' y1='65.00' x2='1069.55' y2='65.00' class='wf-edge stay' /><line x1='1069.55' y1='65.00' x2='1070.00' y2='65.00' class='wf-edge stay' /><circle cx='190.00' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='user' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:46:53Z | user | US coup in China | stay</title></circle><circle cx='190.00' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='system' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:46:53Z | system | US coup in China | stay</title></circle><circle cx='190.00' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:46:53Z | assistant | US coup in China | stay</title></circle><circle cx='190.15' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:46:54Z | assistant | US coup in China | stay</title></circle><circle cx='194.08' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='user' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:47:20Z | user | US coup in China | stay</title></circle><circle cx='194.08' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='system' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:47:20Z | system | US coup in China | stay</title></circle><circle cx='194.08' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:47:20Z | assistant | US coup in China | stay</title></circle><circle cx='194.38' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='tool' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:47:22Z | tool | US coup in China | stay</title></circle><circle cx='194.83' cy='91.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='0' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#440154' style='fill:#440154;'><title>2026-01-28T00:47:25Z | assistant | US coup in China | stay</title></circle><circle cx='201.63' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='user' data-switch='switch' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:48:10Z | user | O&amp;M Shampoo Silicones | switch</title></circle><circle cx='201.63' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='system' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:48:10Z | system | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='201.63' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:48:10Z | assistant | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='202.08' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='tool' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:48:13Z | tool | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='202.38' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:48:15Z | assistant | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='209.48' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='user' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:02Z | user | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='209.48' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='system' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:02Z | system | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='209.48' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:02Z | assistant | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='209.78' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='tool' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:04Z | tool | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='210.09' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:06Z | assistant | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='215.82' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='user' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:44Z | user | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='215.82' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:44Z | assistant | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='216.13' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='tool' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:46Z | tool | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='216.73' cy='39.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='1' data-hour='0' data-thread-start-hour='0' data-role='assistant' data-switch='stay' data-default-color='#414487' style='fill:#414487;'><title>2026-01-28T00:49:50Z | assistant | O&amp;M Shampoo Silicones | stay</title></circle><circle cx='1065.62' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='user' data-switch='switch' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:31Z | user | VIGI Offline Detection | switch</title></circle><circle cx='1065.77' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='system' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:32Z | system | VIGI Offline Detection | stay</title></circle><circle cx='1065.77' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='assistant' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:32Z | assistant | VIGI Offline Detection | stay</title></circle><circle cx='1065.77' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='tool' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:32Z | tool | VIGI Offline Detection | stay</title></circle><circle cx='1066.38' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='tool' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:36Z | tool | VIGI Offline Detection | stay</title></circle><circle cx='1066.68' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='assistant' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:38Z | assistant | VIGI Offline Detection | stay</title></circle><circle cx='1069.40' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='user' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:56Z | user | VIGI Offline Detection | stay</title></circle><circle cx='1069.40' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='assistant' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:56Z | assistant | VIGI Offline Detection | stay</title></circle><circle cx='1069.55' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='tool' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:23:57Z | tool | VIGI Offline Detection | stay</title></circle><circle cx='1070.00' cy='65.00' r='4.0' class='wf-node wf-lane-colorable' data-thread-index='2' data-hour='2' data-thread-start-hour='2' data-role='assistant' data-switch='stay' data-default-color='#2a788e' style='fill:#2a788e;'><title>2026-01-28T02:24:00Z | assistant | VIGI Offline Detection | stay</title></circle><text x='182.00' y='43.00' class='wf-lane-label' text-anchor='end'>O&amp;M Shampoo Silicones [14]</text><text x='182.00' y='69.00' class='wf-lane-label' text-anchor='end'>VIGI Offline Detection [10]</text><text x='182.00' y='95.00' class='wf-lane-label' text-anchor='end'>US coup in China [9]</text><text x='190.00' y='18.00' class='wf-axis'>2026-01-28T00:46:53Z</text><text x='1070.00' y='18.00' class='wf-axis' text-anchor='end'>2026-01-28T02:24:00Z</text></svg>
+      </div>
+      <p class="wf-note" id="wf-waterfall-note" style="display:none;">
+        Actual waterfall mode uses thread lanes over time. Nodes are messages, connectors follow chronological message order, and dashed connectors indicate cross-thread switches.
+      </p>
+      <div id="wf-waterfall-blockers" style="display:none;">
+        <p class="wf-note">Why unavailable:</p>
+        <ul class="wf-legend"><li>None</li></ul>
+      </div>
+      <ul class="wf-legend"><li><span class='wf-swatch wf-colorable' data-thread-index='1' data-thread-start-hour='0' data-role='thread' data-switch='stay' data-default-color='#414487' style='background:#414487;'></span><code>14</code> O&amp;M Shampoo Silicones [6151bffe96ba] <code>42.4% of chat messages</code></li><li><span class='wf-swatch wf-colorable' data-thread-index='2' data-thread-start-hour='2' data-role='thread' data-switch='stay' data-default-color='#2a788e' style='background:#2a788e;'></span><code>10</code> VIGI Offline Detection [249f27140347] <code>30.3% of chat messages</code></li><li><span class='wf-swatch wf-colorable' data-thread-index='0' data-thread-start-hour='0' data-role='thread' data-switch='stay' data-default-color='#440154' style='background:#440154;'></span><code>9</code> US coup in China [81eba0d2f2fb] <code>27.3% of chat messages</code></li></ul>
+    </section>
+    <section class="panel">
+      <h2>Media Consumption</h2>
+      <p>
+        events=<code>0</code>,
+        unique_items=<code>0</code>,
+        consumed=<code>0s</code>,
+        content=<code>0s</code>,
+        completion=<code>0.0%</code>,
+        churn=<code>0</code> (<code>0.0%</code>)
+      </p>
+      <p><small>Churn candidate heuristic: completion ratio &lt; 35% and next different item appears within 15 minutes.</small></p>
+      <p><small>Concurrency view: chat-media overlap=<code>0h</code>; chat messages near media (<code>±5m</code>)=<code>0</code>/<code>33</code>.</small></p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Platform</th><th>Events</th><th>Items</th><th>Consumed</th><th>Content</th><th>Completion</th></tr></thead>
+          <tbody><tr><td colspan='6'>No media events for this date.</td></tr></tbody>
+        </table>
+      </div>
+      <p><b>Media warnings:</b></p>
+      <ul><li>None</li></ul>
+    </section>
+    <section class="panel">
+      <h2>NotebookLM Lifecycle (Metadata)</h2>
+      <p><small>Snapshot/observed rows are tracked as <code>seen</code>. Lifecycle events are inferred from each row&apos;s event name.</small></p>
+      <div class="grid">
+        <div class="metric">Notebooks created<b>0</b></div>
+        <div class="metric">Notebooks modified<b>0</b></div>
+        <div class="metric">Notebooks moved/renamed<b>0</b></div>
+        <div class="metric">Notebooks deleted<b>0</b></div>
+        <div class="metric">Notebooks seen<b>0</b></div>
+        <div class="metric">Files created<b>0</b></div>
+        <div class="metric">Files modified<b>0</b></div>
+        <div class="metric">Files moved/renamed<b>0</b></div>
+        <div class="metric">Files deleted<b>0</b></div>
+        <div class="metric">Files seen<b>0</b></div>
+      </div>
+      <p><b>Lifecycle warnings:</b></p>
+      <ul><li>None</li></ul>
+    </section>
+    <section class="panel">
+      <h2>Tool Use Summary</h2>
+      <p>
+        source=<code>sqlite</code>,
+        tool_messages=<code>0</code>,
+        exec_command(run requests)=<code>0</code>,
+        with_workdir=<code>0</code>,
+        without_workdir=<code>0</code>,
+        unique_commands=<code>0</code>
+      </p>
+      <p><small>Only structured <code>role=tool</code> <code>exec_command</code> payloads are counted as agent-run requests; printed command text is not counted.</small></p>
+      <p><b>Top directories touched:</b></p>
+      <ul><li>None</li></ul>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Command Family</th><th>Count</th><th>Unique Variants</th><th>Top Dirs</th><th>Variants</th></tr></thead>
+          <tbody><tr><td colspan='5'>No tool command activity parsed.</td></tr></tbody>
+        </table>
+      </div>
+      <p><b>Tool summary warnings:</b></p>
+      <ul><li>No tool messages found for this date/scope in sqlite.</li></ul>
+    </section>
+    <section class="panel">
+      <h2>Agent Edit Activity</h2>
+      <p>
+        source=<code>sqlite</code>,
+        messages_scanned=<code>7</code>,
+        messages_with_edits=<code>0</code>,
+        edit_blocks=<code>0</code>,
+        files_touched=<code>0</code>,
+        top_file_share=<code>0.0%</code>,
+        mode=<code>none</code>
+      </p>
+      <p><small>Parsed from assistant/tool message text using <code>Edited &lt;file&gt; (+a -b)</code> blocks. Line refs are best-effort when snippets include explicit line numbers.</small></p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>File</th><th>Blocks</th><th>Delta</th><th>Total Edits</th><th>Share</th><th>Line Refs</th></tr></thead>
+          <tbody><tr><td colspan='6'>No parsed agent edit blocks for this date.</td></tr></tbody>
+        </table>
+      </div>
+      <p><b>Agent edit warnings:</b></p>
+      <ul><li>No `Edited &lt;file&gt; (+a -b)` patterns found in in-scope assistant/tool messages.</li></ul>
+    </section>
+    <section class="panel">
+      <h2>Timeline</h2>
+      <div class="filter-grid">
+        <div class="filter-block">
+          <b>Search</b>
+          <div class="filter-search">
+            <input id="timeline-search" type="search" placeholder="filter timeline rows">
+            <button id="timeline-reset" type="button">Reset</button>
+          </div>
+          <div id="timeline-count" class="timeline-count"></div>
+        </div>
+        <div class="filter-block">
+          <b>Kinds</b>
+          <div class="filter-options"><label><input type='checkbox' class='flt-kind' value='chat' checked> chat <code>33</code></label></div>
+        </div>
+        <div class="filter-block">
+          <b>Sources</b>
+          <div class="filter-options"><label><input type='checkbox' class='flt-source' value='sqlite' checked> sqlite <code>33</code></label></div>
+        </div>
+        <div class="filter-block">
+          <b>Chat Roles</b>
+          <div class="filter-options"><label><input type='checkbox' class='flt-role' value='assistant' checked> assistant <code>14</code></label><label><input type='checkbox' class='flt-role' value='tool' checked> tool <code>7</code></label><label><input type='checkbox' class='flt-role' value='user' checked> user <code>7</code></label><label><input type='checkbox' class='flt-role' value='system' checked> system <code>5</code></label></div>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table id="timeline-table">
+          <thead><tr><th>TS</th><th>Kind</th><th>Detail</th><th>Chars</th><th>Source</th></tr></thead>
+          <tbody><tr data-kind='chat' data-source='sqlite' data-chat-role='user' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:46:53z chat user · us coup in china · source:re · us coup china sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 user'><td><code>2026-01-28T00:46:53Z</code></td><td>chat</td><td>user · US coup in China · source:re · US coup China</td><td><code>14</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='system' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:46:53z chat system · us coup in china · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 system'><td><code>2026-01-28T00:46:53Z</code></td><td>chat</td><td>system · US coup in China · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:46:53z chat assistant · us coup in china · source:re · do you mean **“did the u.s. ever try to stage a coup in china?”**, or are you asking about **claims/fears of a u.s.-backed coup in china today**? here’s the clean, high-signal overview either way: --- ## short answer the... sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 assistant'><td><code>2026-01-28T00:46:53Z</code></td><td>chat</td><td><details><summary>assistant · US coup in China · source:re · Do you mean **“Did the U.S. ever try to stage a coup in China?”**, or are you asking about **claims/fears of a U.S.-backed coup in China today**? H...</summary><pre>assistant · US coup in China · source:re · Do you mean **“Did the U.S. ever try to stage a coup in China?”**, or are you asking about **claims/fears of a U.S.-backed coup in China today**? Here’s the clean, high-signal overview either way: --- ## Short answer The...</pre></details></td><td><code>2684</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:46:54z chat assistant · us coup in china · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 assistant'><td><code>2026-01-28T00:46:54Z</code></td><td>chat</td><td>assistant · US coup in China · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='user' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:47:20z chat user · us coup in china · source:re · j26 2026 sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 user'><td><code>2026-01-28T00:47:20Z</code></td><td>chat</td><td>user · US coup in China · source:re · J26 2026</td><td><code>8</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='system' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:47:20z chat system · us coup in china · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 system'><td><code>2026-01-28T00:47:20Z</code></td><td>chat</td><td>system · US coup in China · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:47:20z chat assistant · us coup in china · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 assistant'><td><code>2026-01-28T00:47:20Z</code></td><td>chat</td><td>assistant · US coup in China · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='tool' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:47:22z chat tool · us coup in china · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 tool'><td><code>2026-01-28T00:47:22Z</code></td><td>chat</td><td>tool · US coup in China · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='81eba0d2f2fbea3003389d714b785f72c5f9fad1' data-search='2026-01-28t00:47:25z chat assistant · us coup in china · source:re · here’s the **latest situation around jan 26 2026** regarding china and **rumours of a coup or internal power struggle** — often referred to in shorthand online as *“j26”* in political chatter: --- navlistrecent develop... sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 81eba0d2f2fbea3003389d714b785f72c5f9fad1 assistant'><td><code>2026-01-28T00:47:25Z</code></td><td>chat</td><td><details><summary>assistant · US coup in China · source:re · Here’s the **latest situation around Jan 26 2026** regarding China and **rumours of a coup or internal power struggle** — often referred to in shor...</summary><pre>assistant · US coup in China · source:re · Here’s the **latest situation around Jan 26 2026** regarding China and **rumours of a coup or internal power struggle** — often referred to in shorthand online as *“J26”* in political chatter: --- navlistRecent develop...</pre></details></td><td><code>2512</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='user' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:48:10z chat user · o&amp;m shampoo silicones · source:re · does o&amp;m colour shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that the other regular ones don&#x27;t have? sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 user'><td><code>2026-01-28T00:48:10Z</code></td><td>chat</td><td><details><summary>user · O&amp;M Shampoo Silicones · source:re · Does O&amp;M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that the other regular ones don&#x27;...</summary><pre>user · O&amp;M Shampoo Silicones · source:re · Does O&amp;M Colour Shampoo have silicones that the other, like the shampoo and conditioner on, do they have silicones that the other regular ones don&#x27;t have?</pre></details></td><td><code>154</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='system' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:48:10z chat system · o&amp;m shampoo silicones · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 system'><td><code>2026-01-28T00:48:10Z</code></td><td>chat</td><td>system · O&amp;M Shampoo Silicones · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:48:10z chat assistant · o&amp;m shampoo silicones · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 assistant'><td><code>2026-01-28T00:48:10Z</code></td><td>chat</td><td>assistant · O&amp;M Shampoo Silicones · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='tool' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:48:13z chat tool · o&amp;m shampoo silicones · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 tool'><td><code>2026-01-28T00:48:13Z</code></td><td>chat</td><td>tool · O&amp;M Shampoo Silicones · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:48:15z chat assistant · o&amp;m shampoo silicones · source:re · here’s the breakdown of **silicones** in o&amp;m shampoos and how that compares across different products: ### 🧴 silicone content in o&amp;m colour/shampoos - products like **entity[&quot;turn0product1&quot;,&quot;o&amp;m original detox shampoo&quot;... sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 assistant'><td><code>2026-01-28T00:48:15Z</code></td><td>chat</td><td><details><summary>assistant · O&amp;M Shampoo Silicones · source:re · Here’s the breakdown of **silicones** in O&amp;M shampoos and how that compares across different products: ### 🧴 Silicone Content in O&amp;M Colour/Sh...</summary><pre>assistant · O&amp;M Shampoo Silicones · source:re · Here’s the breakdown of **silicones** in O&amp;M shampoos and how that compares across different products: ### 🧴 Silicone Content in O&amp;M Colour/Shampoos - Products like **entity[&quot;turn0product1&quot;,&quot;O&amp;M Original Detox Shampoo&quot;...</pre></details></td><td><code>2233</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='user' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:02z chat user · o&amp;m shampoo silicones · source:re · the curly ones sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 user'><td><code>2026-01-28T00:49:02Z</code></td><td>chat</td><td>user · O&amp;M Shampoo Silicones · source:re · The curly ones</td><td><code>14</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='system' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:02z chat system · o&amp;m shampoo silicones · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 system'><td><code>2026-01-28T00:49:02Z</code></td><td>chat</td><td>system · O&amp;M Shampoo Silicones · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:02z chat assistant · o&amp;m shampoo silicones · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 assistant'><td><code>2026-01-28T00:49:02Z</code></td><td>chat</td><td>assistant · O&amp;M Shampoo Silicones · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='tool' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:04z chat tool · o&amp;m shampoo silicones · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 tool'><td><code>2026-01-28T00:49:04Z</code></td><td>chat</td><td>tool · O&amp;M Shampoo Silicones · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:06z chat assistant · o&amp;m shampoo silicones · source:re · here’s what i found specifically about the **o&amp;m “curly” line** and whether it contains **silicones**: ### 🌀 silicone content in o&amp;m *curl curl* products - **entity[&quot;turn0product0&quot;,&quot;o&amp;m curl curl conditioner&quot;,0]** — a... sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 assistant'><td><code>2026-01-28T00:49:06Z</code></td><td>chat</td><td><details><summary>assistant · O&amp;M Shampoo Silicones · source:re · Here’s what I found specifically about the **O&amp;M “Curly” line** and whether it contains **silicones**: ### 🌀 Silicone Content in O&amp;M *Curl Cur...</summary><pre>assistant · O&amp;M Shampoo Silicones · source:re · Here’s what I found specifically about the **O&amp;M “Curly” line** and whether it contains **silicones**: ### 🌀 Silicone Content in O&amp;M *Curl Curl* Products - **entity[&quot;turn0product0&quot;,&quot;O&amp;M Curl Curl Conditioner&quot;,0]** — a...</pre></details></td><td><code>1902</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='user' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:44z chat user · o&amp;m shampoo silicones · source:re · i thought i&#x27;d seen a water soluble polymer sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 user'><td><code>2026-01-28T00:49:44Z</code></td><td>chat</td><td>user · O&amp;M Shampoo Silicones · source:re · I thought I&#x27;d seen a water soluble polymer</td><td><code>42</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:44z chat assistant · o&amp;m shampoo silicones · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 assistant'><td><code>2026-01-28T00:49:44Z</code></td><td>chat</td><td>assistant · O&amp;M Shampoo Silicones · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='tool' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:46z chat tool · o&amp;m shampoo silicones · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 tool'><td><code>2026-01-28T00:49:46Z</code></td><td>chat</td><td>tool · O&amp;M Shampoo Silicones · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='6151bffe96ba6b439eeab30bcabc977888938782' data-search='2026-01-28t00:49:50z chat assistant · o&amp;m shampoo silicones · source:re · yes — you’re right that even though **entity[&quot;turn0product3&quot;,&quot;o&amp;m curl curl shampoo&quot;,0]** and **entity[&quot;turn0product4&quot;,&quot;o&amp;m curl curl conditioner&quot;,0]** are marketed as *silicone-free* (they’re listed in the *clean... sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 6151bffe96ba6b439eeab30bcabc977888938782 assistant'><td><code>2026-01-28T00:49:50Z</code></td><td>chat</td><td><details><summary>assistant · O&amp;M Shampoo Silicones · source:re · Yes — you’re right that even though **entity[&quot;turn0product3&quot;,&quot;O&amp;M Curl Curl Shampoo&quot;,0]** and **entity[&quot;turn0product4&quot;,&quot;O&amp;M Curl Curl Con...</summary><pre>assistant · O&amp;M Shampoo Silicones · source:re · Yes — you’re right that even though **entity[&quot;turn0product3&quot;,&quot;O&amp;M Curl Curl Shampoo&quot;,0]** and **entity[&quot;turn0product4&quot;,&quot;O&amp;M Curl Curl Conditioner&quot;,0]** are marketed as *silicone-free* (they’re listed in the *Clean...</pre></details></td><td><code>2550</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='user' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:31z chat user · vigi offline detection · source:re · is tp link vigi offline detection? sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b user'><td><code>2026-01-28T02:23:31Z</code></td><td>chat</td><td>user · VIGI Offline Detection · source:re · Is tp link vigi offline detection?</td><td><code>34</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='system' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:32z chat system · vigi offline detection · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b system'><td><code>2026-01-28T02:23:32Z</code></td><td>chat</td><td>system · VIGI Offline Detection · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:32z chat assistant · vigi offline detection · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b assistant'><td><code>2026-01-28T02:23:32Z</code></td><td>chat</td><td>assistant · VIGI Offline Detection · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='tool' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:32z chat tool · vigi offline detection · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b tool'><td><code>2026-01-28T02:23:32Z</code></td><td>chat</td><td>tool · VIGI Offline Detection · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='tool' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:36z chat tool · vigi offline detection · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b tool'><td><code>2026-01-28T02:23:36Z</code></td><td>chat</td><td>tool · VIGI Offline Detection · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:38z chat assistant · vigi offline detection · source:re · yes — **tp-link’s vigi security system does include offline detection/alerting** as part of its device health monitoring and alarm features. here’s how it generally works: citeturn1search6 ### 📌 offline detection in v... sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b assistant'><td><code>2026-01-28T02:23:38Z</code></td><td>chat</td><td><details><summary>assistant · VIGI Offline Detection · source:re · Yes — **TP-Link’s VIGI security system does include offline detection/alerting** as part of its device health monitoring and alarm features....</summary><pre>assistant · VIGI Offline Detection · source:re · Yes — **TP-Link’s VIGI security system does include offline detection/alerting** as part of its device health monitoring and alarm features. Here’s how it generally works: citeturn1search6 ### 📌 Offline Detection in V...</pre></details></td><td><code>2006</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='user' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:56z chat user · vigi offline detection · source:re · no i mean object/vehicle detection, does it require cloud sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b user'><td><code>2026-01-28T02:23:56Z</code></td><td>chat</td><td>user · VIGI Offline Detection · source:re · No I mean object/vehicle detection, does it require cloud</td><td><code>57</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:56z chat assistant · vigi offline detection · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b assistant'><td><code>2026-01-28T02:23:56Z</code></td><td>chat</td><td>assistant · VIGI Offline Detection · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='tool' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:23:57z chat tool · vigi offline detection · source:re sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b tool'><td><code>2026-01-28T02:23:57Z</code></td><td>chat</td><td>tool · VIGI Offline Detection · source:re</td><td><code>0</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr><tr data-kind='chat' data-source='sqlite' data-chat-role='assistant' data-thread='249f271403475be83e198c768eeccc29004f075b' data-search='2026-01-28t02:24:00z chat assistant · vigi offline detection · source:re · **short answer:** ✅ many **tp-link vigi cameras with “ai detection” (human/vehicle classification)** perform **the object/vehicle detection locally on the camera itself** and **do not require a cloud subscription** for t... sqlite /home/c/documents/code/itir-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05 249f271403475be83e198c768eeccc29004f075b assistant'><td><code>2026-01-28T02:24:00Z</code></td><td>chat</td><td><details><summary>assistant · VIGI Offline Detection · source:re · **Short answer:** ✅ Many **TP-Link VIGI cameras with “AI detection” (human/vehicle classification)** perform **the object/vehicle detection l...</summary><pre>assistant · VIGI Offline Detection · source:re · **Short answer:** ✅ Many **TP-Link VIGI cameras with “AI detection” (human/vehicle classification)** perform **the object/vehicle detection locally on the camera itself** and **do not require a cloud subscription** for t...</pre></details></td><td><code>2521</code></td><td><span class='src-badge src-sqlite' title='/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05'>sqlite</span></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Warnings</h2>
+      <ul><li>Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date).</li>
+<li>No `Edited &lt;file&gt; (+a -b)` patterns found in in-scope assistant/tool messages.</li></ul>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const table = document.getElementById("timeline-table");
+      if (!table) return;
+      const bodyRows = Array.from(table.querySelectorAll("tbody tr[data-kind]"));
+      if (!bodyRows.length) return;
+
+      const kindBoxes = Array.from(document.querySelectorAll(".flt-kind"));
+      const sourceBoxes = Array.from(document.querySelectorAll(".flt-source"));
+      const roleBoxes = Array.from(document.querySelectorAll(".flt-role"));
+      const searchInput = document.getElementById("timeline-search");
+      const resetButton = document.getElementById("timeline-reset");
+      const countLabel = document.getElementById("timeline-count");
+
+      const selected = (boxes) =>
+        new Set(boxes.filter((box) => box.checked).map((box) => box.value));
+
+      const applyFilters = () => {
+        const allowedKinds = selected(kindBoxes);
+        const allowedSources = selected(sourceBoxes);
+        const allowedRoles = selected(roleBoxes);
+        const query = (searchInput?.value || "").trim().toLowerCase();
+        let visible = 0;
+
+        bodyRows.forEach((row) => {
+          const kind = row.dataset.kind || "";
+          const source = row.dataset.source || "";
+          const chatRole = row.dataset.chatRole || "n/a";
+          const haystack = row.dataset.search || "";
+          let show = true;
+
+          if (allowedKinds.size && !allowedKinds.has(kind)) show = false;
+          if (show && allowedSources.size && !allowedSources.has(source)) show = false;
+          if (show && kind === "chat" && allowedRoles.size && !allowedRoles.has(chatRole)) show = false;
+          if (show && query && !haystack.includes(query)) show = false;
+
+          row.style.display = show ? "" : "none";
+          if (show) visible += 1;
+        });
+
+        if (countLabel) {
+          countLabel.textContent = `${visible}/${bodyRows.length} rows`;
+        }
+      };
+
+      const resetFilters = () => {
+        kindBoxes.forEach((box) => {
+          box.checked = true;
+        });
+        sourceBoxes.forEach((box) => {
+          box.checked = true;
+        });
+        roleBoxes.forEach((box) => {
+          box.checked = true;
+        });
+        if (searchInput) {
+          searchInput.value = "";
+        }
+        applyFilters();
+      };
+
+      [...kindBoxes, ...sourceBoxes, ...roleBoxes].forEach((box) => {
+        box.addEventListener("change", applyFilters);
+      });
+      if (searchInput) {
+        searchInput.addEventListener("input", applyFilters);
+      }
+      if (resetButton) {
+        resetButton.addEventListener("click", resetFilters);
+      }
+
+      applyFilters();
+    })();
+    (() => {
+      const modeSelect = document.getElementById("wf-view-mode");
+      const paletteSelect = document.getElementById("wf-palette");
+      const algoSelect = document.getElementById("wf-color-algo");
+      const customInput = document.getElementById("wf-custom");
+      const customApply = document.getElementById("wf-custom-apply");
+      const customReset = document.getElementById("wf-custom-reset");
+      const linearWrap = document.getElementById("wf-linear-wrap");
+      const waterfallWrap = document.getElementById("wf-waterfall-wrap");
+      const waterfallNote = document.getElementById("wf-waterfall-note");
+      const waterfallBlockers = document.getElementById("wf-waterfall-blockers");
+      const segNodes = Array.from(document.querySelectorAll(".wf-seg-colorable"));
+      const laneNodes = Array.from(document.querySelectorAll(".wf-lane-colorable"));
+      const swatchNodes = Array.from(document.querySelectorAll(".wf-swatch.wf-colorable"));
+      if (!modeSelect || !paletteSelect || !algoSelect || !customInput || !customApply || !customReset || !linearWrap || !waterfallWrap) return;
+
+      const laneAvailable = true;
+      const PALETTE_KEY = "sb_dashboard_waterfall_palette";
+      const ALGO_KEY = "sb_dashboard_waterfall_color_algo";
+      const CUSTOM_KEY = "sb_dashboard_waterfall_custom";
+      const MODE_KEY = "sb_dashboard_waterfall_view_mode";
+      const defaultPalette = "viridis";
+      const defaultAlgo = "thread";
+      const defaultMode = laneAvailable ? "waterfall" : "linear";
+      const palettes = {"viridis": ["#440154", "#414487", "#2a788e", "#22a884", "#7ad151", "#fde725"], "turbo": ["#30123b", "#4145ab", "#4675ed", "#39a2fc", "#1bcfd4", "#24eca6", "#61fc6c", "#a4fc3c", "#d9e335", "#f8ba2f", "#f88727", "#e6531a", "#c52f0f", "#900c00"], "plasma": ["#0d0887", "#5b02a3", "#9a179b", "#cb4679", "#ed7953", "#fdb42f", "#f0f921"], "rdylgn": ["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee08b", "#d9ef8b", "#a6d96a", "#66bd63", "#1a9850", "#006837"]};
+      const colorableNodes = segNodes.concat(laneNodes);
+      const roleValues = Array.from(
+        new Set(
+          colorableNodes.map((node) => String(node.dataset.role || "unknown").trim().toLowerCase() || "unknown")
+        )
+      ).sort();
+      const roleIndex = new Map(roleValues.map((role, idx) => [role, idx]));
+
+      const parseCustomColors = (value) => {
+        return String(value || "")
+          .split(",")
+          .map((item) => item.trim())
+          .filter((item) => item.length > 0);
+      };
+
+      const resolveColors = (paletteName) => {
+        if (paletteName === "custom") {
+          const customColors = parseCustomColors(customInput.value);
+          if (customColors.length) return customColors;
+          return palettes[defaultPalette] || [];
+        }
+        return palettes[paletteName] || palettes[defaultPalette] || [];
+      };
+
+      const segmentIndex = (node, algoName, paletteSize) => {
+        const threadIdx = Number(node.dataset.threadIndex || "0");
+        if (algoName === "hour") {
+          const hour = Math.max(0, Math.min(23, Number(node.dataset.threadStartHour || node.dataset.hour || "0")));
+          return Math.floor((hour / 24) * Math.max(1, paletteSize));
+        }
+        if (algoName === "role") {
+          const role = String(node.dataset.role || "unknown").trim().toLowerCase() || "unknown";
+          return roleIndex.get(role) || 0;
+        }
+        if (algoName === "switch") {
+          const isSwitch = String(node.dataset.switch || "stay").toLowerCase() === "switch";
+          return isSwitch ? Math.max(1, paletteSize - 1) : 0;
+        }
+        return threadIdx;
+      };
+
+      const applyColors = (paletteName, algoName) => {
+        const colors = resolveColors(paletteName);
+        colorableNodes.forEach((node) => {
+          const idx = segmentIndex(node, algoName, colors.length);
+          const fallback = node.dataset.defaultColor || "#6b7280";
+          const color = colors.length ? colors[Math.abs(idx) % colors.length] : fallback;
+          const tagName = String(node.tagName || "").toLowerCase();
+          if (tagName === "circle") {
+            node.style.fill = color;
+          } else {
+            node.style.background = color;
+          }
+        });
+        swatchNodes.forEach((node) => {
+          const idx = algoName === "hour"
+            ? Math.floor((Math.max(0, Math.min(23, Number(node.dataset.threadStartHour || "0"))) / 24) * Math.max(1, colors.length))
+            : Number(node.dataset.threadIndex || "0");
+          const fallback = node.dataset.defaultColor || "#6b7280";
+          const color = colors.length ? colors[Math.abs(idx) % colors.length] : fallback;
+          node.style.background = color;
+        });
+      };
+
+      const setMode = (modeName, persist = true) => {
+        const mode = modeName === "waterfall" ? "waterfall" : "linear";
+        modeSelect.value = mode;
+        linearWrap.style.display = mode === "linear" ? "block" : "none";
+        waterfallWrap.style.display = mode === "waterfall" ? "block" : "none";
+        if (waterfallNote) {
+          waterfallNote.style.display = mode === "waterfall" ? "block" : "none";
+        }
+        if (waterfallBlockers) {
+          waterfallBlockers.style.display = mode === "waterfall" && !laneAvailable ? "block" : "none";
+        }
+        if (persist) {
+          localStorage.setItem(MODE_KEY, mode);
+        }
+      };
+
+      const setStyle = (paletteName, algoName, persist = true) => {
+        const name = paletteName || defaultPalette;
+        const algo = algoName || defaultAlgo;
+        paletteSelect.value = name;
+        algoSelect.value = algo;
+        applyColors(name, algo);
+        if (persist) {
+          localStorage.setItem(PALETTE_KEY, name);
+          localStorage.setItem(ALGO_KEY, algo);
+          localStorage.setItem(CUSTOM_KEY, customInput.value.trim());
+        }
+      };
+
+      const storedCustom = localStorage.getItem(CUSTOM_KEY) || "";
+      const storedPalette = localStorage.getItem(PALETTE_KEY) || defaultPalette;
+      const storedAlgo = localStorage.getItem(ALGO_KEY) || defaultAlgo;
+      const storedMode = localStorage.getItem(MODE_KEY) || defaultMode;
+      if (storedCustom) {
+        customInput.value = storedCustom;
+      }
+      if (!paletteSelect.querySelector(`option[value="${storedPalette}"]`)) {
+        setStyle(defaultPalette, storedAlgo, false);
+      } else if (!algoSelect.querySelector(`option[value="${storedAlgo}"]`)) {
+        setStyle(storedPalette, defaultAlgo, false);
+      } else {
+        setStyle(storedPalette, storedAlgo, false);
+      }
+      setMode(storedMode, false);
+
+      modeSelect.addEventListener("change", () => {
+        setMode(modeSelect.value, true);
+      });
+      paletteSelect.addEventListener("change", () => {
+        setStyle(paletteSelect.value, algoSelect.value, true);
+      });
+      algoSelect.addEventListener("change", () => {
+        setStyle(paletteSelect.value, algoSelect.value, true);
+      });
+      customApply.addEventListener("click", () => {
+        paletteSelect.value = "custom";
+        setStyle("custom", algoSelect.value, true);
+      });
+      customReset.addEventListener("click", () => {
+        customInput.value = "";
+        setStyle(defaultPalette, algoSelect.value, true);
+      });
+    })();
+  </script>
+</body>
+</html>

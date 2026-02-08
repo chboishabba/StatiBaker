@@ -191,6 +191,9 @@ cython_debug/
 # Ruff stuff:
 .ruff_cache/
 
+# Local run outputs (avoid committing personal artifacts)
+runs_local/
+
 # PyPI configuration file
 .pypirc
 

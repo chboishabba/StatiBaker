@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SB Indicative API Costing 2026-01-01 to 2026-02-08</title>
+  <style>
+    :root {
+      --bg: #f4f8f7;
+      --ink: #17222a;
+      --panel: #ffffff;
+      --line: #d7e1e7;
+    }
+    body { margin: 0; background: linear-gradient(170deg, #eaf2f6, var(--bg)); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", sans-serif; }
+    main { max-width: 1280px; margin: 0 auto; padding: 1.2rem; display: grid; gap: 1rem; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem; }
+    .grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .metric { border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; }
+    .metric b { display:block; font-size: 1.25rem; margin-top: 0.2rem; }
+    h1,h2 { margin: 0 0 0.6rem 0; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .table-scroll { overflow-x: auto; }
+    .table-scroll table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }
+    code { background: #edf2f4; border-radius: 4px; padding: 0.05rem 0.2rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <h1>SB Indicative API Costing</h1>
+      <p>
+        <b>Window:</b> <code>2026-01-01</code> to
+        <code>2026-02-08</code> |
+        <b>Days:</b> <code>39</code> |
+        <b>Chat scope:</b> <code>scoped</code>
+      </p>
+      <p><small>Formula: <code>(input_tokens/1e6*input_rate) + (output_tokens/1e6*output_rate)</code>. Token estimate uses <code>max(1, round(chars/4.0))</code>.</small></p>
+      <p><small>Objective: reduce unnecessary token spend via orchestration/state coordination and better context handling, even without increases in base model skill.</small></p>
+    </section>
+    <section class="panel">
+      <h2>Token Totals (Estimated)</h2>
+      <div class="grid">
+        <div class="metric">Chat messages<b>130</b></div>
+        <div class="metric">Total tokens<b>0</b></div>
+        <div class="metric">Input tokens<b>0</b></div>
+        <div class="metric">Output tokens<b>0</b></div>
+        <div class="metric">Overflow thread-days<b>0</b></div>
+        <div class="metric">Overflow tokens<b>0</b></div>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Scenario Cost Totals</h2>
+      <div class="grid"><div class='metric'>Budget (Indicative)<b>$0.00</b><small>input=$1.00/Mtok, output=$4.00/Mtok</small></div><div class='metric'>Standard (Indicative)<b>$0.00</b><small>input=$5.00/Mtok, output=$15.00/Mtok</small></div><div class='metric'>Premium (Indicative)<b>$0.00</b><small>input=$15.00/Mtok, output=$75.00/Mtok</small></div></div>
+    </section>
+    <section class="panel">
+      <h2>Per-Day Indicative Cost</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Date</th><th>Chat Msg</th><th>Tokens</th><th>Input</th><th>Output</th><th>Overflow threads</th><th>Overflow tokens</th><th>Budget (Indicative) (USD)</th><th>Standard (Indicative) (USD)</th><th>Premium (Indicative) (USD)</th><th>Daily</th></tr></thead>
+          <tbody><tr><td><code>2026-01-01</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-01/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-02</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-02/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-03</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-03/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-04</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-04/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-05</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-05/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-06</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-06/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-07</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-07/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-08</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-08/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-09</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-09/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-10</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-10/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-11</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-11/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-12</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-12/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-13</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-13/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-14</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-14/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-15</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-15/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-16</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-16/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-17</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-17/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-18</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-18/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-19</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-19/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-20</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-20/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-21</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-21/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-22</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-22/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-23</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-23/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-24</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-24/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-25</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-25/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-26</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-26/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-27</code></td><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-27/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-28</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-28/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-29</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-29/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-30</code></td><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-30/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-01-31</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-01-31/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-01</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-02-01/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-02</code></td><td>52</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-02-02/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-03</code></td><td>21</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-02-03/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-04</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-02-04/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-05</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-02-05/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-06</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-02-06/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-07</code></td><td>45</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='../../2026-02-07/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-08</code></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0.0000</td><td>$0.0000</td><td>$0.0000</td><td><a href='dashboard.html'>daily</a></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Warnings</h2>
+      <ul><li>34 day(s) reported one or more warnings.</li>
+<li>State metrics available for 4/39 day(s); missing days treated as zero.</li>
+<li>Indicative costing only; char-based token estimation may differ from provider billing.</li>
+<li>Provider rates in this page are scenario presets, not live/API-queried prices.</li>
+<li>Planned upgrade: ingest provider billing logs (including historical Claude spend incidents) for estimate-vs-actual calibration.</li></ul>
+    </section>
+  </main>
+</body>
+</html>

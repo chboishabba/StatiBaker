@@ -21,6 +21,12 @@ WINDOWS_EVENT_INPUT="${16:-}"
 MACOS_EVENT_INPUT="${17:-}"
 PR_EVENTS_INPUT="${18:-}"
 PR_EVENTS_REPO="${19:-}"
+NOTEBOOKLM_META_INPUT="${20:-}"
+MEDIA_CONSUMPTION_INPUT="${21:-}"
+CONTEXT_FIELD_APPEND_INPUT="${22:-}"
+MEDICATION_TRACKER_INPUT="${23:-}"
+
+RUNS_ROOT="${SB_RUNS_ROOT:-$ROOT_DIR/runs_local}"
 
 if [[ -n "$WINDOW_FOCUS_INPUT" && ! -f "$WINDOW_FOCUS_INPUT" ]]; then
   echo "warn: WINDOW_FOCUS_INPUT not found: $WINDOW_FOCUS_INPUT" >&2
@@ -50,6 +56,14 @@ if [[ -n "$NOTES_META_INPUT" && ! -f "$NOTES_META_INPUT" ]]; then
   echo "warn: NOTES_META_INPUT not found: $NOTES_META_INPUT" >&2
   NOTES_META_INPUT=""
 fi
+if [[ -n "$NOTEBOOKLM_META_INPUT" && ! -f "$NOTEBOOKLM_META_INPUT" ]]; then
+  echo "warn: NOTEBOOKLM_META_INPUT not found: $NOTEBOOKLM_META_INPUT" >&2
+  NOTEBOOKLM_META_INPUT=""
+fi
+if [[ -n "$MEDIA_CONSUMPTION_INPUT" && ! -f "$MEDIA_CONSUMPTION_INPUT" ]]; then
+  echo "warn: MEDIA_CONSUMPTION_INPUT not found: $MEDIA_CONSUMPTION_INPUT" >&2
+  MEDIA_CONSUMPTION_INPUT=""
+fi
 if [[ -n "$SOCIAL_FEED_INPUT" && ! -f "$SOCIAL_FEED_INPUT" ]]; then
   echo "warn: SOCIAL_FEED_INPUT not found: $SOCIAL_FEED_INPUT" >&2
   SOCIAL_FEED_INPUT=""
@@ -66,8 +80,16 @@ if [[ -n "$PR_EVENTS_INPUT" && ! -f "$PR_EVENTS_INPUT" ]]; then
   echo "warn: PR_EVENTS_INPUT not found: $PR_EVENTS_INPUT" >&2
   PR_EVENTS_INPUT=""
 fi
+if [[ -n "$CONTEXT_FIELD_APPEND_INPUT" && ! -f "$CONTEXT_FIELD_APPEND_INPUT" ]]; then
+  echo "warn: CONTEXT_FIELD_APPEND_INPUT not found: $CONTEXT_FIELD_APPEND_INPUT" >&2
+  CONTEXT_FIELD_APPEND_INPUT=""
+fi
+if [[ -n "$MEDICATION_TRACKER_INPUT" && ! -f "$MEDICATION_TRACKER_INPUT" ]]; then
+  echo "warn: MEDICATION_TRACKER_INPUT not found: $MEDICATION_TRACKER_INPUT" >&2
+  MEDICATION_TRACKER_INPUT=""
+fi
 
-RUN_DIR="$ROOT_DIR/runs/$DATE"
+RUN_DIR="$RUNS_ROOT/$DATE"
 LOG_DIR="$RUN_DIR/logs/git"
 OUT_DIR="$RUN_DIR/outputs"
 
@@ -85,7 +107,7 @@ python "$ROOT_DIR/adapters/git_branch.py" --repo "$REPO_PATH" --date "$DATE" --o
 if [[ -n "$FS_DIR" ]]; then
   FS_LOG_DIR="$RUN_DIR/logs/fs"
   FS_LOG_PATH="$FS_LOG_DIR/$DATE.jsonl"
-  FS_STATE_PATH="$ROOT_DIR/runs/fs_state.json"
+  FS_STATE_PATH="$RUNS_ROOT/fs_state.json"
   mkdir -p "$FS_LOG_DIR"
   python "$ROOT_DIR/adapters/fs_meta.py" --dir "$FS_DIR" --state "$FS_STATE_PATH" --output "$FS_LOG_PATH"
 fi
@@ -163,11 +185,23 @@ if [[ -n "$CLOUD_AUDIT_INPUT" ]]; then
   python "$ROOT_DIR/adapters/cloud_audit.py" --input "$CLOUD_AUDIT_INPUT" --output "$CLOUD_LOG_PATH"
 fi
 
-if [[ -n "$NOTES_META_INPUT" ]]; then
+if [[ -n "$NOTES_META_INPUT" || -n "$NOTEBOOKLM_META_INPUT" ]]; then
   NOTES_LOG_DIR="$RUN_DIR/logs/notes"
   NOTES_LOG_PATH="$NOTES_LOG_DIR/$DATE.jsonl"
   mkdir -p "$NOTES_LOG_DIR"
-  python "$ROOT_DIR/adapters/notes_meta.py" --input "$NOTES_META_INPUT" --output "$NOTES_LOG_PATH"
+  : >"$NOTES_LOG_PATH"
+  if [[ -n "$NOTES_META_INPUT" ]]; then
+    NOTES_TMP_PATH="$(mktemp)"
+    python "$ROOT_DIR/adapters/notes_meta.py" --input "$NOTES_META_INPUT" --output "$NOTES_TMP_PATH"
+    cat "$NOTES_TMP_PATH" >>"$NOTES_LOG_PATH"
+    rm -f "$NOTES_TMP_PATH"
+  fi
+  if [[ -n "$NOTEBOOKLM_META_INPUT" ]]; then
+    NLM_TMP_PATH="$(mktemp)"
+    python "$ROOT_DIR/adapters/notebooklm_meta.py" --input "$NOTEBOOKLM_META_INPUT" --output "$NLM_TMP_PATH"
+    cat "$NLM_TMP_PATH" >>"$NOTES_LOG_PATH"
+    rm -f "$NLM_TMP_PATH"
+  fi
 fi
 
 if [[ -n "$SOCIAL_FEED_INPUT" ]]; then
@@ -175,6 +209,31 @@ if [[ -n "$SOCIAL_FEED_INPUT" ]]; then
   SOCIAL_LOG_PATH="$SOCIAL_LOG_DIR/$DATE.jsonl"
   mkdir -p "$SOCIAL_LOG_DIR"
   python "$ROOT_DIR/adapters/social_feed.py" --input "$SOCIAL_FEED_INPUT" --output "$SOCIAL_LOG_PATH"
+fi
+
+if [[ -n "$MEDIA_CONSUMPTION_INPUT" ]]; then
+  MEDIA_LOG_DIR="$RUN_DIR/logs/media"
+  MEDIA_LOG_PATH="$MEDIA_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$MEDIA_LOG_DIR"
+  python "$ROOT_DIR/adapters/media_consumption.py" --input "$MEDIA_CONSUMPTION_INPUT" --output "$MEDIA_LOG_PATH"
+fi
+
+if [[ -n "$CONTEXT_FIELD_APPEND_INPUT" || -n "$MEDICATION_TRACKER_INPUT" ]]; then
+  CONTEXT_LOG_DIR="$RUN_DIR/logs/context"
+  CONTEXT_LOG_PATH="$CONTEXT_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$CONTEXT_LOG_DIR"
+  : >>"$CONTEXT_LOG_PATH"
+
+  if [[ -n "$CONTEXT_FIELD_APPEND_INPUT" ]]; then
+    cat "$CONTEXT_FIELD_APPEND_INPUT" >>"$CONTEXT_LOG_PATH"
+  fi
+
+  if [[ -n "$MEDICATION_TRACKER_INPUT" ]]; then
+    MED_TMP_PATH="$(mktemp)"
+    python "$ROOT_DIR/adapters/medication_tracker_stub.py" --input "$MEDICATION_TRACKER_INPUT" --output "$MED_TMP_PATH"
+    cat "$MED_TMP_PATH" >>"$CONTEXT_LOG_PATH"
+    rm -f "$MED_TMP_PATH"
+  fi
 fi
 
 if [[ -n "$WINDOWS_EVENT_INPUT" ]]; then

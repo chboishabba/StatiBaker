@@ -1,6 +1,6 @@
 {
   "counters": {
-    "event_source_diversity": 1,
+    "event_source_diversity": 2,
     "low_signal_events": 0,
     "low_signal_runs": 0,
     "stale_carryover_threads": 0

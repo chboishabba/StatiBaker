@@ -5,9 +5,13 @@ import unittest
 from pathlib import Path
 
 from sb.dashboard import (
+    build_lifetime_costing_payload,
     build_dashboard,
+    build_lifetime_dashboard,
     build_weekly_dashboard,
+    write_costing_outputs,
     write_dashboard_outputs,
+    write_lifetime_outputs,
     write_weekly_outputs,
 )
 
@@ -31,6 +35,8 @@ class TestDashboardBuild(unittest.TestCase):
             (run_logs / "git").mkdir(parents=True, exist_ok=True)
             (run_logs / "git_branch").mkdir(parents=True, exist_ok=True)
             (run_logs / "pr").mkdir(parents=True, exist_ok=True)
+            (run_logs / "media").mkdir(parents=True, exist_ok=True)
+            (run_logs / "context").mkdir(parents=True, exist_ok=True)
             (context_root / "last_sync").mkdir(parents=True, exist_ok=True)
 
             convo_id = "69882636-4404-839a-80cb-a2c770e25ae3"
@@ -68,6 +74,20 @@ class TestDashboardBuild(unittest.TestCase):
                     '{"ts":"2026-02-08T06:02:30Z","signal":"pr_event","event_type":"pr_received","repo":"ITIR-suite","pr_number":7}\n'
                     '{"ts":"2026-02-08T06:03:30Z","signal":"pr_event","event_type":"pr_commented","repo":"ITIR-suite","pr_number":7}\n'
                     '{"ts":"2026-02-08T06:04:30Z","signal":"pr_event","event_type":"pr_merged","repo":"ITIR-suite","pr_number":7}\n'
+                ),
+                encoding="utf-8",
+            )
+            (run_logs / "media" / f"{date}.jsonl").write_text(
+                (
+                    '{"ts":"2026-02-08T06:05:00Z","signal":"media_consumption","platform":"youtube","event_type":"playback_observed","item_id_hash":"sha256:item1","consumed_seconds":20,"content_duration_seconds":120,"completion_ratio":0.167}\n'
+                    '{"ts":"2026-02-08T06:10:00Z","signal":"media_consumption","platform":"spotify","event_type":"playback_observed","item_id_hash":"sha256:item2","consumed_seconds":120,"content_duration_seconds":120,"completion_ratio":1.0}\n'
+                ),
+                encoding="utf-8",
+            )
+            (run_logs / "context" / f"{date}.jsonl").write_text(
+                (
+                    '{"ts":"2026-02-08T05:10:00Z","signal":"context_field","context_type":"mood","event_type":"report_logged","mood_code":"stressed","stress_score":8,"provenance":{"source":"test","collected_at":"2026-02-08T05:10:01Z"}}\n'
+                    '{"ts":"2026-02-08T05:20:00Z","signal":"context_field","context_type":"inaturalist","event_type":"observation_observed","taxon_id_hash":"sha256:taxon1","iconic_taxon_code":"insecta","insect_flag":1,"obs_count":2,"provenance":{"source":"test","collected_at":"2026-02-08T05:20:01Z"}}\n'
                 ),
                 encoding="utf-8",
             )
@@ -140,7 +160,36 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertAlmostEqual(2.0, payload["summary"]["messages_per_hour_active"], places=2)
             self.assertAlmostEqual(2.0, payload["summary"]["messages_per_chat"], places=2)
             self.assertEqual(0, payload["summary"]["chat_switches"])
+            self.assertAlmostEqual(0.0, payload["summary"]["context_switch_rate"], places=3)
+            self.assertAlmostEqual(0.0, payload["summary"]["switches_per_active_hour"], places=2)
+            self.assertAlmostEqual(1.0, payload["summary"]["top_thread_share"], places=3)
             self.assertEqual(1, payload["summary"]["shell_commands"])
+            self.assertEqual(2, payload["summary"]["media_events"])
+            self.assertEqual(2, payload["summary"]["media_items_observed"])
+            self.assertEqual(140, payload["summary"]["media_consumed_seconds"])
+            self.assertEqual(240, payload["summary"]["media_content_seconds"])
+            self.assertAlmostEqual(0.583, payload["summary"]["media_completion_ratio"], places=3)
+            self.assertEqual(1, payload["summary"]["media_churn_events"])
+            self.assertAlmostEqual(0.5, payload["summary"]["media_churn_rate"], places=3)
+            self.assertGreater(payload["summary"]["chat_tokens_est"], 0)
+            self.assertGreater(payload["summary"]["chat_input_tokens_est"], 0)
+            self.assertGreater(payload["summary"]["chat_output_tokens_est"], 0)
+            self.assertEqual(128000, payload["summary"]["chat_context_default_window_tokens"])
+            self.assertEqual(0, payload["summary"]["chat_context_overflow_threads"])
+            self.assertEqual(300, payload["summary"]["concurrency_window_seconds"])
+            self.assertEqual(2, payload["summary"]["inaturalist_insect_observations"])
+            self.assertEqual(1, payload["summary"]["mood_reports"])
+            self.assertEqual(1, payload["summary"]["chat_media_overlap_hours"])
+            self.assertAlmostEqual(1.0, payload["summary"]["chat_media_overlap_rate"], places=3)
+            self.assertEqual(1, payload["summary"]["chat_input_overlap_hours"])
+            self.assertAlmostEqual(1.0, payload["summary"]["chat_input_overlap_rate"], places=3)
+            self.assertEqual(1, payload["summary"]["chat_activity_overlap_hours"])
+            self.assertAlmostEqual(1.0, payload["summary"]["chat_activity_overlap_rate"], places=3)
+            self.assertEqual(2, payload["summary"]["chat_messages_with_media_nearby"])
+            self.assertAlmostEqual(1.0, payload["summary"]["chat_messages_with_media_nearby_rate"], places=3)
+            self.assertEqual(0, payload["summary"]["voice_activity_events"])
+            self.assertEqual(0, payload["summary"]["chat_messages_with_voice_activity_nearby"])
+            self.assertAlmostEqual(0.0, payload["summary"]["chat_messages_with_voice_activity_nearby_rate"], places=3)
             self.assertEqual(1, payload["summary"]["input_events"])
             self.assertEqual(10, payload["summary"]["input_keys_total"])
             self.assertEqual(5, payload["summary"]["input_mouse_total"])
@@ -153,12 +202,17 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(1, payload["summary"]["pr_commented"])
             self.assertEqual(1, payload["summary"]["pr_merged"])
             self.assertEqual(2, payload["frequency_by_hour"]["chat"][6])
+            self.assertEqual(1, payload["frequency_by_hour"]["git"][6])
+            self.assertEqual(1, payload["frequency_by_hour"]["activity"][6])
             self.assertEqual(1, payload["frequency_by_hour"]["git_branch"][6])
             self.assertEqual(3, payload["frequency_by_hour"]["pr"][6])
+            self.assertEqual(2, payload["frequency_by_hour"]["media"][6])
             self.assertEqual(2, payload["chat_flow"]["message_count"])
             self.assertEqual(1, payload["chat_flow"]["thread_count"])
             self.assertEqual(0, payload["chat_flow"]["switch_count"])
             self.assertEqual(2, len(payload["chat_flow"]["waterfall"]))
+            self.assertEqual(0, payload["chat_context_trailing"]["available_days"])
+            self.assertFalse(payload["chat_context_trailing"]["has_baseline"])
 
             link_paths = [item["path"] for item in payload["artifact_links"]]
             self.assertIn(str(run_outputs / "daily_brief.md"), link_paths)
@@ -175,7 +229,28 @@ class TestDashboardBuild(unittest.TestCase):
             html_text = html_out.read_text(encoding="utf-8")
             self.assertIn("SB Activity Dashboard", html_text)
             self.assertIn("Messages/chat", html_text)
-            self.assertIn("Chat Flow Waterfall", html_text)
+            self.assertIn("Chat Flow Visualizations", html_text)
+            self.assertIn("table-scroll", html_text)
+            self.assertIn("--wf-gap:", html_text)
+            self.assertIn("data-gap-sec=", html_text)
+            self.assertIn("wf-view-mode", html_text)
+            self.assertIn("Legacy / Linear", html_text)
+            self.assertIn("Actual Waterfall", html_text)
+            self.assertIn("wf-palette", html_text)
+            self.assertIn("wf-color-algo", html_text)
+            self.assertIn("Turbo (Rainbow)", html_text)
+            self.assertIn("Time of Day", html_text)
+            self.assertIn("% of chat messages", html_text)
+            self.assertIn("Chat Context Usage (Estimated)", html_text)
+            self.assertIn("Context overflow (est)", html_text)
+            self.assertIn("Media/hour", html_text)
+            self.assertIn("Commits/hour", html_text)
+            self.assertIn("Activity/hour", html_text)
+            self.assertIn("Media completion/churn", html_text)
+            self.assertIn("iNaturalist insects", html_text)
+            self.assertIn("Mood reports", html_text)
+            self.assertIn("Chat-media overlap", html_text)
+            self.assertIn("Voice/transcribe overlap", html_text)
             self.assertIn("timeline-search", html_text)
             self.assertIn("Timeline</h2>", html_text)
 
@@ -268,6 +343,7 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual("all", debug_payload["chat_scope_mode"])
             self.assertEqual(2, debug_payload["summary"]["chat_messages"])
             self.assertEqual(0, debug_payload["summary"]["chat_switches"])
+            self.assertAlmostEqual(0.0, debug_payload["summary"]["context_switch_rate"], places=3)
             self.assertEqual("resolver", debug_payload["chat_source"])
             self.assertEqual(2, debug_payload["frequency_by_hour"]["chat"][6])
             self.assertIn(
@@ -276,6 +352,97 @@ class TestDashboardBuild(unittest.TestCase):
             )
             link_paths = [item["path"] for item in debug_payload["artifact_links"]]
             self.assertIn(str(resolver_path), link_paths)
+
+    def test_build_dashboard_parses_agent_edit_activity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            thread_id = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+            (context_root / "convo_ids.md").write_text(
+                (
+                    "| id | title | tail_lines | notes |\n"
+                    "| --- | --- | --- | --- |\n"
+                    f"| {thread_id} | Agent Edit Thread | 100 | test |\n"
+                ),
+                encoding="utf-8",
+            )
+            date = "2026-02-08"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+
+            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            assistant_text = (
+                "• Edited docs/planning/assumption_stress_test_20260208.md (+9 -1)\n"
+                "    25  | prior line\n"
+                "    26 +| new line\n"
+                "• Edited TODO.md (+5 -0)\n"
+                "    28  - existing\n"
+                "    29 +  - new\n"
+            )
+            rows = [
+                ("m1", thread_id, "chatgpt", "main", f"{date}T10:00:00+00:00", "user", "please patch docs", "Agent Edit Thread", "src"),
+                ("m2", thread_id, "chatgpt", "main", f"{date}T10:01:00+00:00", "assistant", assistant_text, "Agent Edit Thread", "src"),
+            ]
+            cur.executemany("INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+            con.commit()
+            con.close()
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=False,
+            )
+
+            self.assertEqual(2, payload["summary"]["agent_edit_blocks"])
+            self.assertEqual(2, payload["summary"]["agent_edit_files"])
+            self.assertEqual(14, payload["summary"]["agent_edit_lines_added"])
+            self.assertEqual(1, payload["summary"]["agent_edit_lines_removed"])
+            self.assertAlmostEqual(0.667, payload["summary"]["agent_edit_top_file_share"], places=3)
+            agent_summary = payload.get("agent_edit_summary") or {}
+            self.assertEqual("sqlite", agent_summary.get("source"))
+            self.assertEqual(1, agent_summary.get("messages_with_edits"))
+            files = agent_summary.get("files") or []
+            self.assertEqual("docs/planning/assumption_stress_test_20260208.md", files[0].get("path"))
+            self.assertIn(25, files[0].get("line_numbers"))
+            self.assertIn(26, files[0].get("line_numbers"))
+
+            out_json = runs_root / date / "outputs" / "dashboard.json"
+            out_html = runs_root / date / "outputs" / "dashboard.html"
+            write_dashboard_outputs(payload, json_path=out_json, html_path=out_html)
+            html_text = out_html.read_text(encoding="utf-8")
+            self.assertIn("Agent Edit Activity", html_text)
+            self.assertIn("docs/planning/assumption_stress_test_20260208.md", html_text)
+            self.assertIn("25, 26", html_text)
 
     def test_build_weekly_dashboard_summary(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -369,6 +536,10 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(3, payload["totals"]["git_commits"])
             self.assertEqual(1, payload["totals"]["shell_commands"])
             self.assertEqual(2, payload["totals"]["activity_events"])
+            self.assertIn("weekday_hour_heatmaps", payload)
+            self.assertIn("series", payload["weekday_hour_heatmaps"])
+            self.assertIn("chat_context_averages", payload)
+            self.assertIn("context_switch_rate", payload["chat_context_averages"])
             self.assertEqual(2, len(payload["daily"]))
 
             weekly_json = runs_root / day_two / "outputs" / "dashboard_weekly_2d.json"
@@ -380,6 +551,698 @@ class TestDashboardBuild(unittest.TestCase):
                 "SB Weekly Dashboard",
                 weekly_html.read_text(encoding="utf-8"),
             )
+            self.assertIn(
+                "When You Work (Weekday x Hour)",
+                weekly_html.read_text(encoding="utf-8"),
+            )
+            self.assertIn(
+                "By weekday (avg/day)",
+                weekly_html.read_text(encoding="utf-8"),
+            )
+            self.assertIn(
+                "Switch Rate",
+                weekly_html.read_text(encoding="utf-8"),
+            )
+
+    def test_weekly_and_lifetime_media_rollups(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+
+            day_one = "2026-02-07"
+            day_two = "2026-02-08"
+            media_rows = {
+                day_one: [
+                    {
+                        "ts": f"{day_one}T06:00:00Z",
+                        "signal": "media_consumption",
+                        "platform": "youtube",
+                        "event_type": "playback_observed",
+                        "item_id_hash": "sha256:item-a",
+                        "consumed_seconds": 50,
+                        "content_duration_seconds": 200,
+                        "completion_ratio": 0.25,
+                    },
+                    {
+                        "ts": f"{day_one}T06:05:00Z",
+                        "signal": "media_consumption",
+                        "platform": "spotify",
+                        "event_type": "playback_observed",
+                        "item_id_hash": "sha256:item-b",
+                        "consumed_seconds": 100,
+                        "content_duration_seconds": 100,
+                        "completion_ratio": 1.0,
+                    },
+                ],
+                day_two: [
+                    {
+                        "ts": f"{day_two}T07:00:00Z",
+                        "signal": "media_consumption",
+                        "platform": "vlc",
+                        "event_type": "playback_observed",
+                        "item_id_hash": "sha256:item-c",
+                        "consumed_seconds": 120,
+                        "content_duration_seconds": 240,
+                        "completion_ratio": 0.5,
+                    },
+                ],
+            }
+            for date in (day_one, day_two):
+                logs_dir = runs_root / date / "logs" / "media"
+                out_dir = runs_root / date / "outputs"
+                logs_dir.mkdir(parents=True, exist_ok=True)
+                out_dir.mkdir(parents=True, exist_ok=True)
+                (logs_dir / f"{date}.jsonl").write_text(
+                    "".join(json.dumps(row) + "\n" for row in media_rows[date]),
+                    encoding="utf-8",
+                )
+                (out_dir / "activity_ledger.json").write_text(
+                    json.dumps({"activity_events": [], "provenance": {}}),
+                    encoding="utf-8",
+                )
+
+            weekly_payload = build_weekly_dashboard(
+                end_date_text=day_two,
+                days=2,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_exports_dir=repo_root / "chat_exports",
+            )
+            self.assertEqual(3, weekly_payload["totals"]["media_events"])
+            self.assertEqual(3, weekly_payload["totals"]["media_items_observed"])
+            self.assertEqual(270, weekly_payload["totals"]["media_consumed_seconds"])
+            self.assertEqual(540, weekly_payload["totals"]["media_content_seconds"])
+            self.assertEqual(1, weekly_payload["totals"]["media_churn_events"])
+            self.assertAlmostEqual(0.5, weekly_payload["media_averages"]["completion_ratio"], places=3)
+            self.assertAlmostEqual(0.25, weekly_payload["media_averages"]["churn_rate"], places=3)
+
+            weekly_json = runs_root / day_two / "outputs" / "dashboard_weekly_2d.json"
+            weekly_html = runs_root / day_two / "outputs" / "dashboard_weekly_2d.html"
+            write_weekly_outputs(weekly_payload, json_path=weekly_json, html_path=weekly_html)
+            self.assertIn("Media events", weekly_html.read_text(encoding="utf-8"))
+
+            lifetime_payload = build_lifetime_dashboard(
+                end_date_text=day_two,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_exports_dir=repo_root / "chat_exports",
+            )
+            self.assertEqual(3, lifetime_payload["totals"]["media_events"])
+            self.assertEqual(3, lifetime_payload["totals"]["media_items_observed"])
+            self.assertEqual(270, lifetime_payload["totals"]["media_consumed_seconds"])
+            self.assertEqual(1, lifetime_payload["totals"]["media_churn_events"])
+            self.assertAlmostEqual(0.5, lifetime_payload["media_averages"]["completion_ratio"], places=3)
+            self.assertAlmostEqual(0.25, lifetime_payload["media_averages"]["churn_rate"], places=3)
+
+            lifetime_json = runs_root / day_two / "outputs" / "dashboard_lifetime.json"
+            lifetime_html = runs_root / day_two / "outputs" / "dashboard_lifetime.html"
+            write_lifetime_outputs(lifetime_payload, json_path=lifetime_json, html_path=lifetime_html)
+            self.assertIn("Media events", lifetime_html.read_text(encoding="utf-8"))
+
+    def test_build_weekly_dashboard_debug_writes_and_links_daily_all_outputs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            scoped_thread = "11111111-1111-4111-8111-111111111111"
+            (context_root / "convo_ids.md").write_text(
+                (
+                    "| id | title | tail_lines | notes |\n"
+                    "| --- | --- | --- | --- |\n"
+                    f"| {scoped_thread} | Scoped Thread | 100 | test |\n"
+                ),
+                encoding="utf-8",
+            )
+
+            date = "2026-02-08"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+
+            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            unscoped_thread = "22222222-2222-4222-8222-222222222222"
+            cur.execute(
+                "INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (
+                    "m1",
+                    unscoped_thread,
+                    "chatgpt",
+                    "main",
+                    f"{date}T10:00:00+00:00",
+                    "user",
+                    "hello",
+                    "Unscoped Thread",
+                    "src",
+                ),
+            )
+            con.commit()
+            con.close()
+
+            payload = build_weekly_dashboard(
+                end_date_text=date,
+                days=1,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                include_all_chat=True,
+            )
+
+            self.assertEqual("all", payload["chat_scope_mode"])
+            self.assertEqual(1, payload["totals"]["chat_messages"])
+            self.assertEqual(1, payload["daily"][0]["summary"]["chat_messages"])
+            self.assertTrue(payload["daily"][0]["daily_html_path"].endswith("dashboard_all.html"))
+            self.assertTrue(payload["daily"][0]["daily_json_path"].endswith("dashboard_all.json"))
+            self.assertTrue((out_dir / "dashboard_all.html").exists())
+            self.assertTrue((out_dir / "dashboard_all.json").exists())
+
+    def test_build_lifetime_dashboard_includes_state_volume_metrics(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+
+            day_one = "2026-02-07"
+            day_two = "2026-02-08"
+            for date in (day_one, day_two):
+                out_dir = runs_root / date / "outputs"
+                out_dir.mkdir(parents=True, exist_ok=True)
+                summary_payload = {
+                    "date": date,
+                    "chat_source": "sqlite",
+                    "chat_scope_mode": "scoped",
+                    "summary": {
+                        "chat_messages": 2 if date == day_one else 1,
+                        "chat_threads": 1,
+                        "chat_switches": 0,
+                        "shell_commands": 0,
+                        "shell_commands_host": 0,
+                        "shell_commands_agent_exec": 0,
+                        "input_events": 0,
+                        "input_keys_total": 0,
+                        "input_mouse_total": 0,
+                        "window_focus_events": 0,
+                        "activity_events": 0,
+                        "git_commits": 0,
+                        "git_branch_events": 0,
+                        "pr_events": 0,
+                        "pr_received": 0,
+                        "pr_commented": 0,
+                        "pr_merged": 0,
+                        "timeline_events": 0,
+                        "context_switch_rate": 0.0,
+                        "switches_per_active_hour": 0.0,
+                        "messages_per_chat": 2.0 if date == day_one else 1.0,
+                        "top_thread_share": 1.0,
+                    },
+                    "warnings": [],
+                }
+                (out_dir / "dashboard.json").write_text(
+                    json.dumps(summary_payload),
+                    encoding="utf-8",
+                )
+                (out_dir / "dashboard.html").write_text("<html></html>", encoding="utf-8")
+
+            (runs_root / day_one / "outputs" / "state.json").write_text(
+                json.dumps(
+                    {
+                        "events": [
+                            {
+                                "id": "e1",
+                                "low_signal": True,
+                                "collapsed_count": 2,
+                                "collapsed_ids": ["a", "b"],
+                            },
+                            {
+                                "id": "e2",
+                                "low_signal": False,
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (runs_root / day_two / "outputs" / "state.json").write_text(
+                json.dumps(
+                    {
+                        "events": [
+                            {
+                                "id": "e3",
+                                "low_signal": False,
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            payload = build_lifetime_dashboard(
+                end_date_text=day_two,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_exports_dir=repo_root / "chat_exports",
+            )
+
+            self.assertEqual(day_one, payload["period_start"])
+            self.assertEqual(day_two, payload["period_end"])
+            self.assertEqual(2, payload["days"])
+            self.assertEqual(2, payload["state_days"])
+            self.assertEqual(4, payload["state_totals"]["raw_events"])
+            self.assertEqual(3, payload["state_totals"]["compressed_events"])
+            self.assertEqual(2, payload["state_totals"]["junk_events_raw"])
+            self.assertEqual(1, payload["state_totals"]["junk_events_compressed"])
+            self.assertAlmostEqual(0.75, payload["state_ratios"]["compression_ratio"], places=3)
+
+            lifetime_json = runs_root / day_two / "outputs" / "dashboard_lifetime.json"
+            lifetime_html = runs_root / day_two / "outputs" / "dashboard_lifetime.html"
+            write_lifetime_outputs(payload, json_path=lifetime_json, html_path=lifetime_html)
+            self.assertTrue(lifetime_json.exists())
+            self.assertTrue(lifetime_html.exists())
+            html_text = lifetime_html.read_text(encoding="utf-8")
+            self.assertIn("SB Lifetime Dashboard", html_text)
+            self.assertIn("Compression ratio", html_text)
+            self.assertIn("Junk events (raw est)", html_text)
+
+    def test_build_lifetime_costing_payload_and_outputs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+
+            day_one = "2026-02-07"
+            day_two = "2026-02-08"
+            for date, tokens, in_tokens, out_tokens, overflow_threads, overflow_tokens in (
+                (day_one, 12000, 4000, 8000, 0, 0),
+                (day_two, 260000, 90000, 170000, 1, 132000),
+            ):
+                out_dir = runs_root / date / "outputs"
+                out_dir.mkdir(parents=True, exist_ok=True)
+                summary_payload = {
+                    "date": date,
+                    "chat_source": "sqlite",
+                    "chat_scope_mode": "scoped",
+                    "summary": {
+                        "chat_messages": 20 if date == day_one else 55,
+                        "chat_threads": 2,
+                        "chat_switches": 3,
+                        "chat_chars_est": tokens * 4,
+                        "chat_tokens_est": tokens,
+                        "chat_input_tokens_est": in_tokens,
+                        "chat_output_tokens_est": out_tokens,
+                        "chat_other_tokens_est": 0,
+                        "chat_context_overflow_threads": overflow_threads,
+                        "chat_context_overflow_tokens": overflow_tokens,
+                        "shell_commands": 0,
+                        "shell_commands_host": 0,
+                        "shell_commands_agent_exec": 0,
+                        "input_events": 0,
+                        "input_keys_total": 0,
+                        "input_mouse_total": 0,
+                        "window_focus_events": 0,
+                        "activity_events": 0,
+                        "git_commits": 0,
+                        "git_branch_events": 0,
+                        "pr_events": 0,
+                        "pr_received": 0,
+                        "pr_commented": 0,
+                        "pr_merged": 0,
+                        "timeline_events": 0,
+                        "context_switch_rate": 0.0,
+                        "switches_per_active_hour": 0.0,
+                        "messages_per_chat": 10.0,
+                        "top_thread_share": 0.8,
+                        "agent_edit_blocks": 0,
+                        "agent_edit_files": 0,
+                        "agent_edit_lines_added": 0,
+                        "agent_edit_lines_removed": 0,
+                        "agent_edit_top_file_share": 0.0,
+                        "media_events": 0,
+                        "media_items_observed": 0,
+                        "media_consumed_seconds": 0,
+                        "media_content_seconds": 0,
+                        "media_completion_ratio": 0.0,
+                        "media_churn_events": 0,
+                        "media_churn_rate": 0.0,
+                    },
+                    "warnings": [],
+                }
+                (out_dir / "dashboard.json").write_text(
+                    json.dumps(summary_payload),
+                    encoding="utf-8",
+                )
+                (out_dir / "dashboard.html").write_text("<html></html>", encoding="utf-8")
+
+            lifetime_payload = build_lifetime_dashboard(
+                end_date_text=day_two,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_exports_dir=repo_root / "chat_exports",
+            )
+            costing_payload = build_lifetime_costing_payload(lifetime_payload=lifetime_payload)
+            self.assertEqual(2, costing_payload["days"])
+            self.assertEqual(272000, costing_payload["totals"]["chat_tokens_est"])
+            self.assertEqual(94000, costing_payload["totals"]["chat_input_tokens_est"])
+            self.assertEqual(178000, costing_payload["totals"]["chat_output_tokens_est"])
+            self.assertEqual(1, costing_payload["totals"]["chat_context_overflow_threads"])
+            self.assertEqual(132000, costing_payload["totals"]["chat_context_overflow_tokens"])
+            self.assertTrue(any(item["id"] == "standard" for item in costing_payload["profiles"]))
+
+            costing_json = runs_root / day_two / "outputs" / "dashboard_costing.json"
+            costing_html = runs_root / day_two / "outputs" / "dashboard_costing.html"
+            write_costing_outputs(costing_payload, json_path=costing_json, html_path=costing_html)
+            self.assertTrue(costing_json.exists())
+            self.assertTrue(costing_html.exists())
+            html_text = costing_html.read_text(encoding="utf-8")
+            self.assertIn("SB Indicative API Costing", html_text)
+            self.assertIn("Scenario Cost Totals", html_text)
+            self.assertIn("Claude", html_text)
+
+    def test_build_dashboard_tracks_notebooklm_lifecycle_metrics(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+
+            date = "2026-02-08"
+            logs_dir = runs_root / date / "logs" / "notes"
+            out_dir = runs_root / date / "outputs"
+            logs_dir.mkdir(parents=True, exist_ok=True)
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+            notes_rows = [
+                {
+                    "ts": f"{date}T06:00:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "notebook_created",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": None,
+                },
+                {
+                    "ts": f"{date}T06:01:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "notebook_modified",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": None,
+                },
+                {
+                    "ts": f"{date}T06:02:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "notebook_renamed",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": None,
+                },
+                {
+                    "ts": f"{date}T06:03:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "notebook_deleted",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": None,
+                },
+                {
+                    "ts": f"{date}T06:04:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "notebook_observed",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": None,
+                },
+                {
+                    "ts": f"{date}T06:05:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "source_created",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": "sha256:file1",
+                },
+                {
+                    "ts": f"{date}T06:06:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "source_updated",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": "sha256:file1",
+                },
+                {
+                    "ts": f"{date}T06:07:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "source_moved",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": "sha256:file1",
+                },
+                {
+                    "ts": f"{date}T06:08:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "source_deleted",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": "sha256:file1",
+                },
+                {
+                    "ts": f"{date}T06:09:00Z",
+                    "signal": "notes_meta",
+                    "app": "notebooklm",
+                    "event": "source_observed",
+                    "notebook_id_hash": "sha256:nb1",
+                    "note_id_hash": "sha256:file1",
+                },
+                {
+                    "ts": f"{date}T06:10:00Z",
+                    "signal": "notes_meta",
+                    "app": "obsidian",
+                    "event": "note_modified",
+                    "vault_id_hash": "sha256:v1",
+                    "note_id_hash": "sha256:n1",
+                },
+            ]
+            (logs_dir / f"{date}.jsonl").write_text(
+                "".join(json.dumps(row) + "\n" for row in notes_rows),
+                encoding="utf-8",
+            )
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=False,
+            )
+
+            self.assertEqual(11, payload["summary"]["notes_meta_events"])
+            self.assertEqual(10, payload["summary"]["notebooklm_events"])
+            notes_meta = payload.get("notes_meta_summary") or {}
+            self.assertEqual(11, notes_meta.get("total_events"))
+            self.assertEqual(10, notes_meta.get("notebooklm_events"))
+            lifecycle = notes_meta.get("lifecycle") or {}
+            notebook = lifecycle.get("notebook") or {}
+            file_counts = lifecycle.get("file") or {}
+            self.assertEqual(1, notebook.get("created"))
+            self.assertEqual(1, notebook.get("modified"))
+            self.assertEqual(1, notebook.get("moved"))
+            self.assertEqual(1, notebook.get("deleted"))
+            self.assertEqual(1, notebook.get("seen"))
+            self.assertEqual(1, file_counts.get("created"))
+            self.assertEqual(1, file_counts.get("modified"))
+            self.assertEqual(1, file_counts.get("moved"))
+            self.assertEqual(1, file_counts.get("deleted"))
+            self.assertEqual(1, file_counts.get("seen"))
+
+            out_json = runs_root / date / "outputs" / "dashboard.json"
+            out_html = runs_root / date / "outputs" / "dashboard.html"
+            write_dashboard_outputs(payload, json_path=out_json, html_path=out_html)
+            html_text = out_html.read_text(encoding="utf-8")
+            self.assertIn("NotebookLM Lifecycle (Metadata)", html_text)
+            self.assertIn("Notebooks created", html_text)
+            self.assertIn("Files created", html_text)
+
+    def test_build_lifetime_dashboard_aggregates_notebooklm_lifecycle_metrics(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+
+            day_one = "2026-02-07"
+            day_two = "2026-02-08"
+            for date in (day_one, day_two):
+                out_dir = runs_root / date / "outputs"
+                notes_dir = runs_root / date / "logs" / "notes"
+                out_dir.mkdir(parents=True, exist_ok=True)
+                notes_dir.mkdir(parents=True, exist_ok=True)
+                summary_payload = {
+                    "date": date,
+                    "chat_source": "sqlite",
+                    "chat_scope_mode": "scoped",
+                    "summary": {
+                        "chat_messages": 0,
+                        "chat_threads": 0,
+                        "chat_switches": 0,
+                        "shell_commands": 0,
+                        "shell_commands_host": 0,
+                        "shell_commands_agent_exec": 0,
+                    },
+                    "warnings": [],
+                }
+                (out_dir / "dashboard.json").write_text(
+                    json.dumps(summary_payload),
+                    encoding="utf-8",
+                )
+                (out_dir / "dashboard.html").write_text("<html></html>", encoding="utf-8")
+
+            (runs_root / day_one / "logs" / "notes" / f"{day_one}.jsonl").write_text(
+                (
+                    json.dumps(
+                        {
+                            "ts": f"{day_one}T06:00:00Z",
+                            "signal": "notes_meta",
+                            "app": "notebooklm",
+                            "event": "notebook_created",
+                            "notebook_id_hash": "sha256:nb1",
+                        }
+                    )
+                    + "\n"
+                    + json.dumps(
+                        {
+                            "ts": f"{day_one}T06:01:00Z",
+                            "signal": "notes_meta",
+                            "app": "notebooklm",
+                            "event": "source_created",
+                            "notebook_id_hash": "sha256:nb1",
+                            "note_id_hash": "sha256:file1",
+                        }
+                    )
+                    + "\n"
+                ),
+                encoding="utf-8",
+            )
+            (runs_root / day_two / "logs" / "notes" / f"{day_two}.jsonl").write_text(
+                (
+                    json.dumps(
+                        {
+                            "ts": f"{day_two}T06:00:00Z",
+                            "signal": "notes_meta",
+                            "app": "notebooklm",
+                            "event": "source_updated",
+                            "notebook_id_hash": "sha256:nb1",
+                            "note_id_hash": "sha256:file1",
+                        }
+                    )
+                    + "\n"
+                    + json.dumps(
+                        {
+                            "ts": f"{day_two}T06:01:00Z",
+                            "signal": "notes_meta",
+                            "app": "notebooklm",
+                            "event": "notebook_renamed",
+                            "notebook_id_hash": "sha256:nb1",
+                        }
+                    )
+                    + "\n"
+                    + json.dumps(
+                        {
+                            "ts": f"{day_two}T06:02:00Z",
+                            "signal": "notes_meta",
+                            "app": "notebooklm",
+                            "event": "notebook_observed",
+                            "notebook_id_hash": "sha256:nb1",
+                        }
+                    )
+                    + "\n"
+                ),
+                encoding="utf-8",
+            )
+
+            payload = build_lifetime_dashboard(
+                end_date_text=day_two,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_exports_dir=repo_root / "chat_exports",
+            )
+
+            notes_totals = payload.get("notes_meta_totals") or {}
+            lifecycle_totals = payload.get("notebooklm_lifecycle_totals") or {}
+            self.assertEqual(5, notes_totals.get("total_events"))
+            self.assertEqual(5, notes_totals.get("notebooklm_events"))
+            self.assertEqual(1, lifecycle_totals.get("notebook", {}).get("created"))
+            self.assertEqual(1, lifecycle_totals.get("notebook", {}).get("moved"))
+            self.assertEqual(1, lifecycle_totals.get("notebook", {}).get("seen"))
+            self.assertEqual(1, lifecycle_totals.get("file", {}).get("created"))
+            self.assertEqual(1, lifecycle_totals.get("file", {}).get("modified"))
 
     def test_tool_use_summary_groups_commands_and_dirs(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -481,12 +1344,211 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual("sqlite", summary.get("source"))
             self.assertEqual(3, summary.get("total_tool_messages"))
             self.assertEqual(3, summary.get("exec_command_count"))
+            self.assertEqual(3, summary.get("exec_with_workdir_count"))
+            self.assertEqual(0, summary.get("exec_without_workdir_count"))
             self.assertEqual(3, summary.get("unique_commands"))
+            self.assertEqual(3, payload["summary"]["shell_commands"])
+            self.assertEqual(0, payload["summary"]["shell_commands_host"])
+            self.assertEqual(3, payload["summary"]["shell_commands_agent_exec"])
 
             families = {item["family"]: item for item in summary.get("families") or []}
             self.assertIn("python build_dashboard.py", families)
             self.assertEqual(2, families["python build_dashboard.py"]["count"])
             self.assertIn("git status", families)
+
+    def test_tool_use_summary_skips_env_assignments_for_family(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            thread_id = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb"
+            (context_root / "convo_ids.md").write_text(
+                (
+                    "| id | title | tail_lines | notes |\n"
+                    "| --- | --- | --- | --- |\n"
+                    f"| {thread_id} | Env Prefix Thread | 100 | test |\n"
+                ),
+                encoding="utf-8",
+            )
+            date = "2026-02-08"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+
+            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            rows = [
+                (
+                    "m1",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T10:00:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"PYTHONPATH=/repo/.deps:/repo/src python /repo/src/ingest.py --in sample.json","workdir":"/repo"}',
+                    "",
+                    "src",
+                ),
+                (
+                    "m2",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T10:01:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"env PYTHONPATH=/repo/.deps:/repo/src python -m unittest discover -s tests","workdir":"/repo"}',
+                    "",
+                    "src",
+                ),
+            ]
+            cur.executemany(
+                "INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                rows,
+            )
+            con.commit()
+            con.close()
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=False,
+            )
+
+            summary = payload.get("tool_use_summary") or {}
+            families = {item["family"]: item for item in summary.get("families") or []}
+            self.assertIn("python ingest.py", families)
+            self.assertIn("python -m unittest", families)
+            self.assertNotIn(".deps", families)
+            self.assertNotIn("src", families)
+
+    def test_tool_use_summary_groups_non_rg_variants_by_env_prefix(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            thread_id = "cccccccc-cccc-4ccc-8ccc-cccccccccccc"
+            (context_root / "convo_ids.md").write_text(
+                (
+                    "| id | title | tail_lines | notes |\n"
+                    "| --- | --- | --- | --- |\n"
+                    f"| {thread_id} | Prefix Group Thread | 100 | test |\n"
+                ),
+                encoding="utf-8",
+            )
+            date = "2026-02-08"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+
+            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            rows = [
+                (
+                    "m1",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T11:00:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"PYTHONPATH=/repo/.deps:/repo/src python /repo/src/ingest.py --in a.json","workdir":"/repo"}',
+                    "",
+                    "src",
+                ),
+                (
+                    "m2",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T11:01:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"PYTHONPATH=/repo/.deps:/repo/src python /repo/src/ingest.py --in b.json","workdir":"/repo"}',
+                    "",
+                    "src",
+                ),
+            ]
+            cur.executemany(
+                "INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                rows,
+            )
+            con.commit()
+            con.close()
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=False,
+            )
+
+            summary = payload.get("tool_use_summary") or {}
+            families = {item["family"]: item for item in summary.get("families") or []}
+            self.assertIn("python ingest.py", families)
+            ingest_family = families["python ingest.py"]
+            groups = ingest_family.get("variant_groups") or []
+            prefix_group = next(
+                (item for item in groups if str(item.get("group", "")).startswith("PYTHONPATH=")),
+                None,
+            )
+            self.assertIsNotNone(prefix_group)
+            self.assertEqual(2, int(prefix_group.get("count") or 0))
+            variant_details = " ".join(
+                str(item.get("detail") or "") for item in (prefix_group.get("variants") or [])
+            )
+            self.assertIn("--in a.json", variant_details)
+            self.assertIn("--in b.json", variant_details)
 
     def test_untitled_sqlite_thread_uses_first_user_preview_and_codex_origin(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -755,15 +1817,106 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(2, flow["thread_count"])
             self.assertEqual(2, flow["switch_count"])
             self.assertAlmostEqual(0.667, flow["switch_rate"], places=3)
+            self.assertAlmostEqual(2.0, flow["switches_per_active_hour"], places=2)
             self.assertAlmostEqual(2.0, payload["summary"]["messages_per_chat"], places=2)
             self.assertEqual(2, payload["summary"]["chat_switches"])
+            self.assertAlmostEqual(0.667, payload["summary"]["context_switch_rate"], places=3)
+            self.assertAlmostEqual(2.0, payload["summary"]["switches_per_active_hour"], places=2)
+            self.assertAlmostEqual(0.75, payload["summary"]["top_thread_share"], places=3)
+            self.assertEqual([60, 60, 60, 60], [item.get("gap_to_next_seconds") for item in flow["waterfall"]])
+            self.assertEqual([10, 10, 10, 10], [item.get("thread_start_hour") for item in flow["waterfall"]])
 
             out_html = runs_root / date / "outputs" / "dashboard.html"
             out_json = runs_root / date / "outputs" / "dashboard.json"
             write_dashboard_outputs(payload, json_path=out_json, html_path=out_html)
             html_text = out_html.read_text(encoding="utf-8")
-            self.assertIn("Chat Flow Waterfall", html_text)
+            self.assertIn("Chat Flow Visualizations", html_text)
             self.assertIn("wf-seg switch", html_text)
+            self.assertIn("wf-lane-svg", html_text)
+            self.assertIn("Width encodes elapsed time until the next message", html_text)
+
+    def test_chat_context_trailing_comparison_uses_prior_daily_dashboards(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+            date = "2026-02-08"
+            prior_date = "2026-02-07"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+            prior_out = runs_root / prior_date / "outputs"
+            prior_out.mkdir(parents=True, exist_ok=True)
+            (prior_out / "dashboard.json").write_text(
+                json.dumps(
+                    {
+                        "date": prior_date,
+                        "summary": {
+                            "context_switch_rate": 0.2,
+                            "switches_per_active_hour": 0.5,
+                            "messages_per_chat": 3.0,
+                            "top_thread_share": 0.9,
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            thread_a = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            thread_b = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            rows = [
+                ("m1", thread_a, "chatgpt", "main", "2026-02-08T10:00:00+00:00", "user", "a1", "Thread A", "src"),
+                ("m2", thread_b, "chatgpt", "main", "2026-02-08T10:01:00+00:00", "assistant", "b1", "Thread B", "src"),
+            ]
+            cur.executemany("INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+            con.commit()
+            con.close()
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=True,
+            )
+
+            trailing = payload["chat_context_trailing"]
+            self.assertTrue(trailing["has_baseline"])
+            self.assertEqual(1, trailing["available_days"])
+            self.assertAlmostEqual(1.0, trailing["current"]["context_switch_rate"], places=3)
+            self.assertAlmostEqual(0.2, trailing["baseline_avg"]["context_switch_rate"], places=3)
+            self.assertAlmostEqual(0.8, trailing["delta"]["context_switch_rate"], places=3)
 
 
 if __name__ == "__main__":

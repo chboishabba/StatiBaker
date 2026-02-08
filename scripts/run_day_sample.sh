@@ -15,4 +15,10 @@ DATE="${1:-$(date +%F)}"
   /tmp/notes_meta.jsonl \
   /tmp/social_feed.jsonl \
   /tmp/windows_event.jsonl \
-  /tmp/macos_unified.jsonl
+  /tmp/macos_unified.jsonl \
+  "" \
+  "" \
+  "" \
+  /tmp/media_consumption.jsonl \
+  /tmp/context_fields.jsonl \
+  /tmp/medication_raw.jsonl

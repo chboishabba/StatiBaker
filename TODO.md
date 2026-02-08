@@ -70,6 +70,64 @@
 - Grouped `rg` tool-use variants by mode (`--files`, `-n`) with only differing
   arguments shown per subgroup.
 
+## In Progress (2026-02-08) - Media connectors + churn metrics
+- [ ] Add unified `media_consumption` adapter contract (meta-only).
+- [ ] Add stub connectors for YouTube, Spotify, VLC, and Last.fm export JSONL.
+- [ ] Wire `run_day.sh` to ingest media input into `logs/media/<date>.jsonl`.
+- [ ] Add daily/weekly/lifetime dashboard metrics:
+  watch/listen seconds, completion ratio, churn events/rate.
+- [ ] Add tests for adapter normalization and dashboard aggregation.
+- [ ] Add docs for connector mappings and churn heuristic.
+
+### Deferred / decisions needed
+- [ ] Decide live API collectors scope (YouTube API, Spotify Web API, Last.fm API)
+  vs export-file-only ingestion in default flow.
+- [ ] Decide per-platform identity linkage policy (single person/account merge vs
+  separate hashed identities).
+
+## In Progress (2026-02-08) - Cross-platform daemon + web management
+- [ ] Implement `sb-supervisor` local daemon skeleton with connector registry.
+- [ ] Add localhost control API endpoints for connector/job management.
+- [ ] Add web UI panel to manage connectors (enable/disable/schedule/run-now).
+- [ ] Add cross-platform service installers:
+  Linux systemd user service, macOS launchd agent, Windows service/task mode.
+- [ ] Move NotebookLM wrapper flow under daemon jobs (capture/normalize/run_day).
+- [ ] Add local SQLite persistence for daemon jobs/events/artifacts.
+- [ ] Add retention policy and dedupe strategy for snapshot archival.
+
+### Deferred / decisions needed
+- [ ] Confirm auth model for localhost mutation endpoints.
+- [ ] Confirm Windows service wrapper strategy.
+- [ ] Confirm daemon log storage model (SQLite vs file+index).
+
+## In Progress (2026-02-08) - Chat flow lane mode (alternate view)
+- [ ] Add chat flow mode selector: `Auto / Timeline Strip / Thread Lanes`.
+- [ ] Extend `chat_flow` payload with lane data (`lanes`, `lane_points`,
+  `lane_edges`, availability/blockers).
+- [ ] Render lane-mode SVG/canvas with message nodes and transition connectors.
+- [ ] Emphasize cross-lane switch connectors while preserving switch counts.
+- [ ] Add auto-fallback thresholds for dense days (message/thread counts).
+- [ ] Add UI fallback reason text when lane mode is unavailable.
+- [ ] Add tests for deterministic lane layout and mode-selection thresholds.
+
+## In Progress (2026-02-08) - Chat context usage + indicative API costing
+- [ ] Add per-chat context usage approximation (`chars -> tokens`) with
+  per-thread usage/overflow estimates against configurable context windows.
+- [ ] Add daily dashboard section for context usage and overflow diagnostics.
+- [ ] Add lifetime costing page (`dashboard_costing(.json|.html)`) with
+  scenario-based token/cost estimates (input vs output token buckets).
+- [ ] Add warning/assumption text that costing is indicative and non-authoritative
+  unless reconciled against provider billing logs.
+- [ ] Add tests for token/context aggregation and costing page rendering.
+
+### Deferred / decisions needed
+- [ ] Ingest provider usage/billing logs when available (including historical
+  Claude incidents) to calibrate estimate-vs-actual accuracy.
+- [ ] Decide supported provider profile presets and where pricing assumptions are
+  configured.
+- [ ] Add benchmark target: demonstrate spend reduction via orchestration/state
+  coordination improvements, even when base agent skill level is unchanged.
+
 ## Sprint plan references (2026-02-05)
 - Sprint plan: `__CONTEXT/sprints/stati_baker_sprints.md`.
 - Sprint 1 focus: guard tests + multi-day replay (see "Normalization and compression (Phase 1: minimal fold)").
@@ -115,6 +173,7 @@
 - Agent log adapters
 - Tool execution envelope adapter (OpenClaw or similar; evidence-only)
 - Smart home status adapter
+- Pet wearable / smart collar stub adapter (meta-only context overlay)
 - PR lifecycle adapter (receive/comment/review/merge events)
 - TIRC event adapter (trajectory/open/closed signals as SB events)
 - SL constraint adapter (rule/constraint IDs with refs only)
@@ -160,6 +219,7 @@ https://truenas.local:30037/d/truenas-overview4/truenas-scale-overview4
 - Wazuh: lifecycle and failures; ignore alert semantics
 - osquery: curated facts snapshots only
 - Prometheus: numeric summaries only
+- iNaturalist: biodiversity observation metadata (hashed IDs + coarse location only)
 - OpenRecall: visual evidence only
 - Android: coarse status only
 
@@ -174,6 +234,23 @@ https://truenas.local:30037/d/truenas-overview4/truenas-scale-overview4
 - Which export format is the canonical portable bundle
 - How to represent execution envelopes in `STATE_SCHEMA.json` without granting authority
 - How to surface epistemic modes without implying promotion or authority
+
+## UI Migration (SvelteKit)
+
+This is not exercised today. Current dashboards are rendered by Python in
+`sb/dashboard.py` and tested via `tests/test_dashboard.py`.
+
+Sprint 0 (contracts + scaffold):
+- Plan: `docs/sb_ui_migration_sprint_0.md`
+- Migration overview: `docs/svelte_migration_sprint.md`
+- Module boundaries: `docs/web_module_map.md`
+
+Sprint 0 checklist:
+- Add `DASHBOARD_SCHEMA.json` for `runs/<date>/outputs/dashboard.json`.
+- Add payload fixtures under `fixtures/dashboard_payloads/`.
+- Emit `payload_version` in dashboard JSON outputs (e.g. `"dashboard.v1"`).
+- Scaffold `frontend/sb-dashboard` (SvelteKit) and load a real daily payload.
+- Add runtime validation in the app (zod or schema validator) with a clear error panel.
 
 ## Sprint 4–6 (next arc)
 - Sprint 4: run bad-data runs + manual brief review (drift counters done, bad-data tests added; manual review pending).

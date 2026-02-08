@@ -1,0 +1,679 @@
+{
+  "chat_scope_mode": "all",
+  "daily": [
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 36,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-01/outputs/dashboard_all.html",
+      "date": "2026-01-01"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 198,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-02/outputs/dashboard_all.html",
+      "date": "2026-01-02"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-03/outputs/dashboard_all.html",
+      "date": "2026-01-03"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 159,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-04/outputs/dashboard_all.html",
+      "date": "2026-01-04"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 745,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-05/outputs/dashboard_all.html",
+      "date": "2026-01-05"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-06/outputs/dashboard_all.html",
+      "date": "2026-01-06"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 394,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-07/outputs/dashboard_all.html",
+      "date": "2026-01-07"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-08/outputs/dashboard_all.html",
+      "date": "2026-01-08"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 263,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-09/outputs/dashboard_all.html",
+      "date": "2026-01-09"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 21,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-10/outputs/dashboard_all.html",
+      "date": "2026-01-10"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-11/outputs/dashboard_all.html",
+      "date": "2026-01-11"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 633,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-12/outputs/dashboard_all.html",
+      "date": "2026-01-12"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 1201,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-13/outputs/dashboard_all.html",
+      "date": "2026-01-13"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-14/outputs/dashboard_all.html",
+      "date": "2026-01-14"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 801,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-15/outputs/dashboard_all.html",
+      "date": "2026-01-15"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 475,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-16/outputs/dashboard_all.html",
+      "date": "2026-01-16"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-17/outputs/dashboard_all.html",
+      "date": "2026-01-17"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 482,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-18/outputs/dashboard_all.html",
+      "date": "2026-01-18"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 764,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-19/outputs/dashboard_all.html",
+      "date": "2026-01-19"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-20/outputs/dashboard_all.html",
+      "date": "2026-01-20"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 1178,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-21/outputs/dashboard_all.html",
+      "date": "2026-01-21"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 720,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-22/outputs/dashboard_all.html",
+      "date": "2026-01-22"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 213,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-23/outputs/dashboard_all.html",
+      "date": "2026-01-23"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-24/outputs/dashboard_all.html",
+      "date": "2026-01-24"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 326,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-25/outputs/dashboard_all.html",
+      "date": "2026-01-25"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 44,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-26/outputs/dashboard_all.html",
+      "date": "2026-01-26"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 523,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-27/outputs/dashboard_all.html",
+      "date": "2026-01-27"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 33,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-28/outputs/dashboard_all.html",
+      "date": "2026-01-28"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 391,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-29/outputs/dashboard_all.html",
+      "date": "2026-01-29"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 880,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-30/outputs/dashboard_all.html",
+      "date": "2026-01-30"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-01-31/outputs/dashboard_all.html",
+      "date": "2026-01-31"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 35,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-01/outputs/dashboard_all.html",
+      "date": "2026-02-01"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 77190,
+      "chat_messages": 503,
+      "chat_output_tokens_est": 156354,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 233544,
+      "costs_usd": {
+        "budget": 0.7026,
+        "premium": 12.8844,
+        "standard": 2.7313
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-02/outputs/dashboard_all.html",
+      "date": "2026-02-02"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 182283,
+      "chat_messages": 805,
+      "chat_output_tokens_est": 217580,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 399863,
+      "costs_usd": {
+        "budget": 1.0526,
+        "premium": 19.0527,
+        "standard": 4.1751
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-03/outputs/dashboard_all.html",
+      "date": "2026-02-03"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 37715,
+      "chat_messages": 167,
+      "chat_output_tokens_est": 41337,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 79052,
+      "costs_usd": {
+        "budget": 0.2031,
+        "premium": 3.666,
+        "standard": 0.8086
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-04/outputs/dashboard_all.html",
+      "date": "2026-02-04"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 216470,
+      "chat_messages": 1552,
+      "chat_output_tokens_est": 189728,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 406198,
+      "costs_usd": {
+        "budget": 0.9754,
+        "premium": 17.4766,
+        "standard": 3.9283
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-05/outputs/dashboard_all.html",
+      "date": "2026-02-05"
+    },
+    {
+      "chat_context_overflow_threads": 1,
+      "chat_context_overflow_tokens": 74945,
+      "chat_input_tokens_est": 170503,
+      "chat_messages": 2194,
+      "chat_output_tokens_est": 116991,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 287494,
+      "costs_usd": {
+        "budget": 0.6385,
+        "premium": 11.3319,
+        "standard": 2.6074
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-06/outputs/dashboard_all.html",
+      "date": "2026-02-06"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 14582,
+      "chat_messages": 45,
+      "chat_output_tokens_est": 11660,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 26242,
+      "costs_usd": {
+        "budget": 0.0612,
+        "premium": 1.0932,
+        "standard": 0.2478
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/dashboard_all.html",
+      "date": "2026-02-07"
+    },
+    {
+      "chat_context_overflow_threads": 0,
+      "chat_context_overflow_tokens": 0,
+      "chat_input_tokens_est": 0,
+      "chat_messages": 0,
+      "chat_output_tokens_est": 0,
+      "chat_scope_mode": "all",
+      "chat_tokens_est": 0,
+      "costs_usd": {
+        "budget": 0.0,
+        "premium": 0.0,
+        "standard": 0.0
+      },
+      "daily_html_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/dashboard_all.html",
+      "date": "2026-02-08"
+    }
+  ],
+  "days": 39,
+  "generated_at": "2026-02-08T12:43:39.072374Z",
+  "period_end": "2026-02-08",
+  "period_start": "2026-01-01",
+  "positioning_note": "Objective: reduce unnecessary token spend via orchestration/state coordination and better context handling, even without increases in base model skill.",
+  "profile_cost_totals_usd": {
+    "budget": 3.6334,
+    "premium": 65.5048,
+    "standard": 14.4985
+  },
+  "profiles": [
+    {
+      "id": "budget",
+      "input_usd_per_mtok": 1.0,
+      "label": "Budget (Indicative)",
+      "output_usd_per_mtok": 4.0
+    },
+    {
+      "id": "standard",
+      "input_usd_per_mtok": 5.0,
+      "label": "Standard (Indicative)",
+      "output_usd_per_mtok": 15.0
+    },
+    {
+      "id": "premium",
+      "input_usd_per_mtok": 15.0,
+      "label": "Premium (Indicative)",
+      "output_usd_per_mtok": 75.0
+    }
+  ],
+  "token_estimation": {
+    "chars_per_token": 4.0,
+    "method": "max(1, round(chars/4.0)) when chars > 0"
+  },
+  "totals": {
+    "chat_context_overflow_threads": 1,
+    "chat_context_overflow_tokens": 74945,
+    "chat_input_tokens_est": 698743,
+    "chat_messages": 15781,
+    "chat_output_tokens_est": 733650,
+    "chat_tokens_est": 1432393
+  },
+  "warnings": [
+    "39 day(s) reported one or more warnings.",
+    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for each day).",
+    "State metrics available for 4/39 day(s); missing days treated as zero.",
+    "Indicative costing only; char-based token estimation may differ from provider billing.",
+    "Provider rates in this page are scenario presets, not live/API-queried prices.",
+    "Planned upgrade: ingest provider billing logs (including historical Claude spend incidents) for estimate-vs-actual calibration."
+  ]
+}

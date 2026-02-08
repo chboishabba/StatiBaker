@@ -55,6 +55,45 @@ Input fields (JSONL):
 
 Output signal: `social_feed` with `platform=reddit`.
 
+## Facebook Messenger
+Adapter: `adapters/social_facebook_messenger_stub.py`
+
+Input fields (JSONL):
+- `ts`
+- `message_id` or `mid`
+- `sender_id` or `author`
+- `thread_id` or `conversation_id`
+- `event_type`
+- `collected_at`
+
+Output signal: `social_feed` with `platform=facebook_messenger`.
+
+## Telegram
+Adapter: `adapters/social_telegram_stub.py`
+
+Input fields (JSONL):
+- `ts`
+- `message_id` or `msg_id`
+- `from_id` or `author`
+- `chat_id` or `thread_id`
+- `event_type`
+- `collected_at`
+
+Output signal: `social_feed` with `platform=telegram`.
+
+## WhatsApp
+Adapter: `adapters/social_whatsapp_stub.py`
+
+Input fields (JSONL):
+- `ts`
+- `message_id` or `msg_id`
+- `contact_id` or `author`
+- `chat_id` or `thread_id`
+- `event_type`
+- `collected_at`
+
+Output signal: `social_feed` with `platform=whatsapp`.
+
 ## Running a stub
 Example:
 

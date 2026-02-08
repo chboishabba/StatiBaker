@@ -1,4 +1,20 @@
 {
+  "agent_edit_summary": {
+    "avg_edits_per_file": 0.0,
+    "edit_blocks": 0,
+    "files": [],
+    "files_touched": 0,
+    "focus_mode": "none",
+    "lines_added": 0,
+    "lines_removed": 0,
+    "messages_scanned": 0,
+    "messages_with_edits": 0,
+    "source": "sqlite",
+    "top_file_share": 0.0,
+    "warnings": [
+      "No in-scope assistant/tool messages found for agent edit parsing."
+    ]
+  },
   "artifact_links": [
     {
       "label": "daily_brief.md",
@@ -85,6 +101,53 @@
       "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
     }
   ],
+  "chat_context_trailing": {
+    "available_days": 7,
+    "baseline_avg": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 16.86,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.429
+    },
+    "current": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "delta": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": -16.86,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": -0.429
+    },
+    "has_baseline": true,
+    "window_days": 7
+  },
+  "chat_context_usage": {
+    "chars_est": 0,
+    "default_context_window_tokens": 128000,
+    "input_tokens_est": 0,
+    "max_thread_usage_pct": 0.0,
+    "messages": 0,
+    "other_tokens_est": 0,
+    "output_tokens_est": 0,
+    "overflow_threads": 0,
+    "overflow_tokens": 0,
+    "reference_context_windows": [
+      32000,
+      128000,
+      200000
+    ],
+    "threads": 0,
+    "threads_usage": [],
+    "token_estimation": {
+      "chars_per_token": 4.0,
+      "method": "max(1, round(chars/4.0)) when chars > 0"
+    },
+    "tokens_est": 0,
+    "window_summary": []
+  },
   "chat_flow": {
     "active_hours": 0,
     "dominant_thread_share": 0.0,
@@ -123,6 +186,7 @@
     "switch_count": 0,
     "switch_opportunities": 0,
     "switch_rate": 0.0,
+    "switches_per_active_hour": 0.0,
     "thread_count": 0,
     "threads": [],
     "waterfall": [],
@@ -133,8 +197,84 @@
   "chat_scope_thread_count": 8,
   "chat_source": "none",
   "chat_threads": [],
+  "concurrency_summary": {
+    "chat_active_hours": 0,
+    "chat_activity_overlap_hours": 0,
+    "chat_activity_overlap_rate": 0.0,
+    "chat_input_overlap_hours": 0,
+    "chat_input_overlap_rate": 0.0,
+    "chat_media_overlap_hours": 0,
+    "chat_media_overlap_rate": 0.0,
+    "chat_messages_with_input_nearby": 0,
+    "chat_messages_with_input_nearby_rate": 0.0,
+    "chat_messages_with_media_nearby": 0,
+    "chat_messages_with_media_nearby_rate": 0.0,
+    "chat_messages_with_voice_activity_nearby": 0,
+    "chat_messages_with_voice_activity_nearby_rate": 0.0,
+    "voice_activity_events": 0,
+    "voice_activity_overlap_hours": 0,
+    "voice_activity_overlap_rate": 0.0,
+    "window_seconds": 300
+  },
+  "context_field_counts": {
+    "inaturalist_events": 0,
+    "mood_reports": 0,
+    "total_rows": 0
+  },
   "date": "2026-02-08",
   "frequency_by_hour": {
+    "activity": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "calendar": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
     "chat": [
       0,
       0,
@@ -161,7 +301,59 @@
       0,
       0
     ],
+    "git": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
     "git_branch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      3,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "input": [
       0,
       0,
       0,
@@ -187,7 +379,7 @@
       0,
       0
     ],
-    "input": [
+    "media": [
       0,
       0,
       0,
@@ -292,28 +484,351 @@
       0
     ]
   },
-  "generated_at": "2026-02-08T09:21:25.544742Z",
+  "generated_at": "2026-02-08T14:59:56.196871Z",
+  "inaturalist_trend": {
+    "available_days": 0,
+    "daily": [
+      {
+        "date": "2025-12-29",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-30",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-31",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-01",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-02",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-03",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-04",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-05",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-06",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-07",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-08",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-09",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-10",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-11",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-12",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-13",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-14",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-15",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-16",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-17",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-18",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-19",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-20",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-21",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-22",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-23",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-24",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-25",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-26",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-27",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-28",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-29",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-30",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-31",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-02-01",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-02-02",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-02-03",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-02-04",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-02-05",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-02-06",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-02-07",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-02-08",
+        "events": 0,
+        "insect_observations": 0
+      }
+    ],
+    "diagnostics": {
+      "max": 0
+    },
+    "expectation_code": "stable_or_unclear",
+    "phase_code": "no_activity",
+    "window_days": 42
+  },
+  "media_summary": {
+    "by_platform": {},
+    "churn_events": 0,
+    "churn_rate": 0.0,
+    "completion_ratio": 0.0,
+    "consumed_seconds": 0,
+    "content_duration_seconds": 0,
+    "events": 0,
+    "items_observed": 0,
+    "warnings": []
+  },
+  "mood_latest": {},
+  "notes_meta_summary": {
+    "app_counts": {
+      "notebooklm": 557
+    },
+    "lifecycle": {
+      "context": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 1
+      },
+      "file": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 534
+      },
+      "notebook": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 22
+      },
+      "unknown": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      }
+    },
+    "notebooklm_events": 557,
+    "total_events": 557,
+    "warnings": []
+  },
   "summary": {
     "activity_events": 2,
+    "agent_edit_blocks": 0,
+    "agent_edit_files": 0,
+    "agent_edit_lines_added": 0,
+    "agent_edit_lines_removed": 0,
+    "agent_edit_top_file_share": 0.0,
+    "calendar_events": 0,
     "chat_active_hours": 0,
+    "chat_activity_overlap_hours": 0,
+    "chat_activity_overlap_rate": 0.0,
+    "chat_chars_est": 0,
+    "chat_context_default_window_tokens": 128000,
+    "chat_context_max_thread_usage_pct": 0.0,
+    "chat_context_overflow_threads": 0,
+    "chat_context_overflow_tokens": 0,
+    "chat_input_overlap_hours": 0,
+    "chat_input_overlap_rate": 0.0,
+    "chat_input_tokens_est": 0,
+    "chat_media_overlap_hours": 0,
+    "chat_media_overlap_rate": 0.0,
     "chat_messages": 0,
+    "chat_messages_with_input_nearby": 0,
+    "chat_messages_with_input_nearby_rate": 0.0,
+    "chat_messages_with_media_nearby": 0,
+    "chat_messages_with_media_nearby_rate": 0.0,
+    "chat_messages_with_voice_activity_nearby": 0,
+    "chat_messages_with_voice_activity_nearby_rate": 0.0,
+    "chat_other_tokens_est": 0,
+    "chat_output_tokens_est": 0,
     "chat_switch_rate": 0.0,
     "chat_switches": 0,
     "chat_threads": 0,
-    "git_branch_events": 0,
-    "git_commits": 0,
+    "chat_tokens_est": 0,
+    "concurrency_window_seconds": 300,
+    "context_switch_rate": 0.0,
+    "git_branch_events": 9,
+    "git_commits": 3,
+    "inaturalist_events": 0,
+    "inaturalist_insect_observations": 0,
     "input_events": 0,
     "input_keys_total": 0,
     "input_mouse_total": 0,
+    "media_churn_events": 0,
+    "media_churn_rate": 0.0,
+    "media_completion_ratio": 0.0,
+    "media_consumed_seconds": 0,
+    "media_content_seconds": 0,
+    "media_events": 0,
+    "media_items_observed": 0,
     "messages_per_chat": 0.0,
     "messages_per_hour_active": 0.0,
     "messages_per_hour_day": 0.0,
+    "mood_reports": 0,
+    "notebooklm_events": 557,
+    "notes_meta_events": 557,
     "pr_commented": 1,
     "pr_events": 3,
     "pr_merged": 1,
     "pr_received": 1,
     "shell_commands": 0,
-    "timeline_events": 5,
+    "shell_commands_agent_exec": 0,
+    "shell_commands_host": 0,
+    "switches_per_active_hour": 0.0,
+    "timeline_events": 17,
+    "top_thread_share": 0.0,
+    "voice_activity_events": 0,
+    "voice_activity_overlap_hours": 0,
+    "voice_activity_overlap_rate": 0.0,
     "window_focus_events": 0
   },
   "timeline": [
@@ -321,6 +836,11 @@
       "detail": "activity app=firefox.desktop duration_s=90",
       "hour": 11,
       "kind": "activity",
+      "meta": {
+        "duration_s": 90,
+        "primary_app": "firefox.desktop",
+        "t_end": "2026-02-03T11:01:30Z"
+      },
       "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json",
       "ts": "2026-02-03T11:00:00Z"
     },
@@ -328,6 +848,11 @@
       "detail": "activity app=org.gnome.Terminal duration_s=70",
       "hour": 11,
       "kind": "activity",
+      "meta": {
+        "duration_s": 70,
+        "primary_app": "org.gnome.Terminal",
+        "t_end": "2026-02-03T11:11:10Z"
+      },
       "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json",
       "ts": "2026-02-03T11:10:00Z"
     },
@@ -351,10 +876,96 @@
       "kind": "pr",
       "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/pr/2026-02-08.jsonl",
       "ts": "2026-02-08T06:14:10Z"
+    },
+    {
+      "detail": "git commit=6ec5ff8 repo=ITIR-suite",
+      "hour": 7,
+      "kind": "git",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git/2026-02-08.jsonl",
+      "ts": "2026-02-08T07:24:43Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_commit ref=refs/heads/master repo=ITIR-suite",
+      "hour": 7,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T07:24:43Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_commit ref=HEAD repo=ITIR-suite",
+      "hour": 7,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T07:24:43Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_tip_update ref=refs/remotes/origin/master repo=ITIR-suite",
+      "hour": 7,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T07:24:45Z"
+    },
+    {
+      "detail": "git commit=5f6f24e repo=ITIR-suite",
+      "hour": 8,
+      "kind": "git",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git/2026-02-08.jsonl",
+      "ts": "2026-02-08T08:32:31Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_commit ref=refs/heads/master repo=ITIR-suite",
+      "hour": 8,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T08:32:31Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_commit ref=HEAD repo=ITIR-suite",
+      "hour": 8,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T08:32:31Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_tip_update ref=refs/remotes/origin/master repo=ITIR-suite",
+      "hour": 8,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T08:32:33Z"
+    },
+    {
+      "detail": "git commit=4bbf81b repo=ITIR-suite",
+      "hour": 9,
+      "kind": "git",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git/2026-02-08.jsonl",
+      "ts": "2026-02-08T09:38:14Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_commit ref=refs/heads/master repo=ITIR-suite",
+      "hour": 9,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T09:38:14Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_commit ref=HEAD repo=ITIR-suite",
+      "hour": 9,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T09:38:14Z"
+    },
+    {
+      "detail": "git_branch event_type=branch_tip_update ref=refs/remotes/origin/master repo=ITIR-suite",
+      "hour": 9,
+      "kind": "git_branch",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/logs/git_branch/2026-02-08.jsonl",
+      "ts": "2026-02-08T09:38:15Z"
     }
   ],
   "tool_use_summary": {
     "exec_command_count": 0,
+    "exec_with_workdir_count": 0,
+    "exec_without_workdir_count": 0,
     "families": [],
     "source": "sqlite",
     "top_dirs": [],
@@ -365,6 +976,8 @@
     ]
   },
   "warnings": [
-    "No chat events found for this date in sqlite, chat exports, or resolver files."
+    "No chat events found for this date in sqlite, chat exports, or resolver files.",
+    "Chat archive has 0 messages on 2026-02-08; latest archived message is 2026-02-06T11:56:25+00:00. Sync/import newer chats.",
+    "No in-scope assistant/tool messages found for agent edit parsing."
   ]
 }

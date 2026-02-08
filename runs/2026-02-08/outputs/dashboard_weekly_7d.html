@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SB Weekly Dashboard 2026-02-02 to 2026-02-08</title>
+  <style>
+    :root {
+      --bg: #f4f8f7;
+      --ink: #17222a;
+      --panel: #ffffff;
+      --line: #d7e1e7;
+    }
+    body { margin: 0; background: linear-gradient(170deg, #eaf2f6, var(--bg)); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", sans-serif; }
+    main { max-width: 1200px; margin: 0 auto; padding: 1.2rem; display: grid; gap: 1rem; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem; }
+    .grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    .metric { border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; }
+    .metric b { display:block; font-size: 1.25rem; margin-top: 0.2rem; }
+    h1,h2 { margin: 0 0 0.6rem 0; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }
+    code { background: #edf2f4; border-radius: 4px; padding: 0.05rem 0.2rem; }
+    @media (max-width: 760px) { table { font-size: 0.82rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <h1>SB Weekly Dashboard</h1>
+      <p>
+        <b>Window:</b> <code>2026-02-02</code> to
+        <code>2026-02-08</code> |
+        <b>Days:</b> <code>7</code> |
+        <b>Chat scope:</b> <code>scoped</code>
+      </p>
+    </section>
+    <section class="panel">
+      <h2>Totals</h2>
+      <div class="grid">
+        <div class="metric">Chat messages<b>118</b></div>
+        <div class="metric">Chat threads<b>3</b></div>
+        <div class="metric">Chat switches<b>0</b></div>
+        <div class="metric">Shell commands<b>0</b></div>
+        <div class="metric">Agent edit blocks<b>0</b></div>
+        <div class="metric">Agent files touched<b>0</b></div>
+        <div class="metric">Agent line deltas<b>+0 / -0</b></div>
+        <div class="metric">Media events<b>0</b></div>
+        <div class="metric">Media items observed<b>0</b></div>
+        <div class="metric">Media consumed<b>0.00 h</b></div>
+        <div class="metric">Media completion/churn<b>0.0% / 0.0%</b></div>
+        <div class="metric">Input events<b>0</b></div>
+        <div class="metric">Window focus events<b>0</b></div>
+        <div class="metric">Activity events<b>8</b></div>
+        <div class="metric">Git commits<b>4</b></div>
+        <div class="metric">Git branch events<b>9</b></div>
+        <div class="metric">PR events<b>3</b></div>
+      </div>
+      <p>
+        <b>Daily averages:</b>
+        chat=<code>16.86</code>,
+        switches=<code>0.0</code>,
+        switch_rate=<code>0.0%</code>,
+        switches/hour=<code>0.00</code>,
+        messages/chat=<code>16.86</code>,
+        top-thread-share=<code>42.9%</code>,
+        agent-top-file-share=<code>0.0%</code>,
+        agent-edits/file=<code>0.00</code>,
+        media-completion=<code>0.0%</code>,
+        media-churn=<code>0.0%</code>,
+        shell=<code>0.0</code>,
+        commits=<code>0.57</code>,
+        prs=<code>0.43</code>
+      </p>
+    </section>
+    <section class="panel">
+      <h2>NotebookLM Lifecycle (Metadata)</h2>
+      <div class="grid">
+        <div class="metric">Notes meta events<b>557</b></div>
+        <div class="metric">NotebookLM meta events<b>557</b></div>
+        <div class="metric">Notebooks created/modified/moved/deleted/seen<b>0/0/0/0/22</b></div>
+        <div class="metric">Files created/modified/moved/deleted/seen<b>0/0/0/0/534</b></div>
+      </div>
+      <p>
+        <b>Daily averages:</b>
+        notes_meta=<code>79.57</code>,
+        notebooklm=<code>79.57</code>
+      </p>
+    </section>
+    <section class="panel">
+      <h2>Per-Day Summary</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Date</th><th>Chat Source</th><th>Scope</th><th>Chat Msg</th><th>Chat Threads</th><th>Switches</th><th>Switch Rate</th><th>Switch/hr</th><th>Msg/chat</th><th>Top Thread</th><th>Shell</th><th>Agent blocks</th><th>Agent files</th><th>Agent delta</th><th>Agent top file</th><th>Media evt</th><th>Media items</th><th>Media h</th><th>Media churn</th><th>Commits</th><th>Branch</th><th>PR</th><th>Warnings</th><th>Daily</th></tr></thead>
+          <tbody><tr><td><code>2026-02-02</code></td><td>sqlite</td><td>scoped</td><td>52</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>52.00</td><td>100.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td><a href='../../2026-02-02/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-03</code></td><td>sqlite</td><td>scoped</td><td>21</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>21.00</td><td>100.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td><a href='../../2026-02-03/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-04</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-02-04/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-05</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>1</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-02-05/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-06</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>3</td><td><a href='../../2026-02-06/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-07</code></td><td>chat_exports</td><td>scoped</td><td>45</td><td>1</td><td>0</td><td>0.0%</td><td>0.00</td><td>45.00</td><td>100.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td><a href='../../2026-02-07/outputs/dashboard.html'>daily</a></td></tr><tr><td><code>2026-02-08</code></td><td>none</td><td>scoped</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.00</td><td>0.00</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>+0 / -0</td><td>0.0%</td><td>0</td><td>0</td><td>0.00</td><td>0.0%</td><td>3</td><td>9</td><td>3</td><td>3</td><td><a href='dashboard.html'>daily</a></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Warnings</h2>
+      <ul><li>7 day(s) reported one or more warnings.</li></ul>
+    </section>
+  </main>
+</body>
+</html>

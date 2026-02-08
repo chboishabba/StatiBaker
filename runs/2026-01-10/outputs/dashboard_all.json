@@ -1,0 +1,1629 @@
+{
+  "agent_edit_summary": {
+    "avg_edits_per_file": 0.0,
+    "edit_blocks": 0,
+    "files": [],
+    "files_touched": 0,
+    "focus_mode": "none",
+    "lines_added": 0,
+    "lines_removed": 0,
+    "messages_scanned": 6,
+    "messages_with_edits": 0,
+    "source": "sqlite",
+    "top_file_share": 0.0,
+    "warnings": [
+      "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
+    ]
+  },
+  "artifact_links": [
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md"
+    },
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "20260208T053748Z_context_refresh_6986d38e.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md"
+    },
+    {
+      "label": "20260208T054246Z_resolver_6986c9f5.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986c16d.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986ccc6.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c16d.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c9f5.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986ccc6.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt"
+    },
+    {
+      "label": "20260208T054446Z_context_refresh_triplet.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md"
+    },
+    {
+      "label": "20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv"
+    },
+    {
+      "label": "20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
+    },
+    {
+      "label": "20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
+    },
+    {
+      "label": "mentions_rank_20260203_225730.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
+    }
+  ],
+  "chat_context_trailing": {
+    "available_days": 7,
+    "baseline_avg": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "current": {
+      "context_switch_rate": 0.05,
+      "messages_per_chat": 10.5,
+      "switches_per_active_hour": 0.5,
+      "top_thread_share": 0.571
+    },
+    "delta": {
+      "context_switch_rate": 0.05,
+      "messages_per_chat": 10.5,
+      "switches_per_active_hour": 0.5,
+      "top_thread_share": 0.571
+    },
+    "has_baseline": true,
+    "window_days": 7
+  },
+  "chat_context_usage": {
+    "chars_est": 15456,
+    "default_context_window_tokens": 128000,
+    "input_tokens_est": 57,
+    "max_thread_usage_pct": 0.017,
+    "messages": 21,
+    "other_tokens_est": 0,
+    "output_tokens_est": 3806,
+    "overflow_threads": 0,
+    "overflow_tokens": 0,
+    "reference_context_windows": [
+      32000,
+      128000,
+      200000
+    ],
+    "threads": 2,
+    "threads_usage": [
+      {
+        "chars_est": 8837,
+        "first_ts": "2026-01-10T03:24:04Z",
+        "input_tokens_est": 12,
+        "last_ts": "2026-01-10T03:43:33Z",
+        "message_count": 9,
+        "other_tokens_est": 0,
+        "output_tokens_est": 2197,
+        "overflow_pct": 0.0,
+        "overflow_tokens": 0,
+        "share_tokens_pct": 0.572,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_title": "Install on Home Assistant",
+        "tokens_est": 2209,
+        "window_usage_pct": 0.017
+      },
+      {
+        "chars_est": 6619,
+        "first_ts": "2026-01-10T05:40:40Z",
+        "input_tokens_est": 45,
+        "last_ts": "2026-01-10T05:41:25Z",
+        "message_count": 12,
+        "other_tokens_est": 0,
+        "output_tokens_est": 1609,
+        "overflow_pct": 0.0,
+        "overflow_tokens": 0,
+        "share_tokens_pct": 0.428,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_title": "Duck Slow Roast Guide",
+        "tokens_est": 1654,
+        "window_usage_pct": 0.013
+      }
+    ],
+    "token_estimation": {
+      "chars_per_token": 4.0,
+      "method": "max(1, round(chars/4.0)) when chars > 0"
+    },
+    "tokens_est": 3863,
+    "window_summary": [
+      {
+        "context_window_tokens": 32000,
+        "max_thread_usage_pct": 0.069,
+        "overflow_threads": 0,
+        "overflow_tokens": 0
+      },
+      {
+        "context_window_tokens": 128000,
+        "max_thread_usage_pct": 0.017,
+        "overflow_threads": 0,
+        "overflow_tokens": 0
+      },
+      {
+        "context_window_tokens": 200000,
+        "max_thread_usage_pct": 0.011,
+        "overflow_threads": 0,
+        "overflow_tokens": 0
+      }
+    ]
+  },
+  "chat_flow": {
+    "active_hours": 2,
+    "dominant_thread_share": 0.571,
+    "first_ts": "2026-01-10T03:24:04Z",
+    "hour_bins": [
+      0,
+      0,
+      0,
+      9,
+      0,
+      12,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "last_ts": "2026-01-10T05:41:25Z",
+    "message_count": 21,
+    "messages_per_chat": 10.5,
+    "messages_per_hour_active": 10.5,
+    "messages_per_hour_day": 0.88,
+    "switch_count": 1,
+    "switch_opportunities": 20,
+    "switch_rate": 0.05,
+    "switches_per_active_hour": 0.5,
+    "thread_count": 2,
+    "threads": [
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "message_count": 12,
+        "share": 0.571,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_order": 1,
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "message_count": 9,
+        "share": 0.429,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_order": 0,
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant"
+      }
+    ],
+    "waterfall": [
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 3,
+        "role": "user",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:24:04Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 3,
+        "role": "system",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:24:05Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 3,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:24:05Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 753,
+        "hour": 3,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:24:05Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 3,
+        "role": "user",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:36:38Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 3,
+        "role": "system",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:36:39Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 413,
+        "hour": 3,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:36:40Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 1,
+        "hour": 3,
+        "role": "user",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:43:33Z"
+      },
+      {
+        "color_hex": "#440154",
+        "color_index": 0,
+        "gap_to_next_seconds": 7027,
+        "hour": 3,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_key": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_start_hour": 3,
+        "thread_start_ts": "2026-01-10T03:24:04Z",
+        "thread_title": "Install on Home Assistant",
+        "ts": "2026-01-10T03:43:33Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 5,
+        "role": "user",
+        "switch": true,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:40:40Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 5,
+        "role": "system",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:40:41Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 3,
+        "hour": 5,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:40:41Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 5,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:40:44Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 23,
+        "hour": 5,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:40:45Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 5,
+        "role": "user",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:41:08Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 5,
+        "role": "system",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:41:08Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 5,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:41:08Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 2,
+        "hour": 5,
+        "role": "tool",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:41:09Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 13,
+        "hour": 5,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:41:11Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 5,
+        "role": "user",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:41:24Z"
+      },
+      {
+        "color_hex": "#414487",
+        "color_index": 1,
+        "gap_to_next_seconds": 1,
+        "hour": 5,
+        "role": "assistant",
+        "switch": false,
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_key": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_start_hour": 5,
+        "thread_start_ts": "2026-01-10T05:40:40Z",
+        "thread_title": "Duck Slow Roast Guide",
+        "ts": "2026-01-10T05:41:25Z"
+      }
+    ],
+    "waterfall_render_limit": 480,
+    "waterfall_truncated": false
+  },
+  "chat_scope_mode": "all",
+  "chat_scope_thread_count": 8,
+  "chat_source": "sqlite",
+  "chat_threads": [
+    {
+      "first_ts": "2026-01-10T05:40:40Z",
+      "first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+      "last_ts": "2026-01-10T05:41:25Z",
+      "message_count": 12,
+      "origin": "source:src",
+      "roles": {
+        "assistant": 5,
+        "system": 2,
+        "tool": 2,
+        "user": 3
+      },
+      "source_ids": {
+        "src_0001": 12
+      },
+      "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+      "title": "Duck Slow Roast Guide",
+      "title_resolved": "Duck Slow Roast Guide"
+    },
+    {
+      "first_ts": "2026-01-10T03:24:04Z",
+      "first_user_preview": "Ok I've added them to the Tuya App",
+      "last_ts": "2026-01-10T03:43:33Z",
+      "message_count": 9,
+      "origin": "source:src",
+      "roles": {
+        "assistant": 4,
+        "system": 2,
+        "user": 3
+      },
+      "source_ids": {
+        "src_0001": 9
+      },
+      "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+      "title": "Install on Home Assistant",
+      "title_resolved": "Install on Home Assistant"
+    }
+  ],
+  "concurrency_summary": {
+    "chat_active_hours": 2,
+    "chat_activity_overlap_hours": 0,
+    "chat_activity_overlap_rate": 0.0,
+    "chat_input_overlap_hours": 0,
+    "chat_input_overlap_rate": 0.0,
+    "chat_media_overlap_hours": 0,
+    "chat_media_overlap_rate": 0.0,
+    "chat_messages_with_input_nearby": 0,
+    "chat_messages_with_input_nearby_rate": 0.0,
+    "chat_messages_with_media_nearby": 0,
+    "chat_messages_with_media_nearby_rate": 0.0,
+    "chat_messages_with_voice_activity_nearby": 0,
+    "chat_messages_with_voice_activity_nearby_rate": 0.0,
+    "voice_activity_events": 0,
+    "voice_activity_overlap_hours": 0,
+    "voice_activity_overlap_rate": 0.0,
+    "window_seconds": 300
+  },
+  "context_field_counts": {
+    "inaturalist_events": 0,
+    "mood_reports": 0,
+    "total_rows": 0
+  },
+  "date": "2026-01-10",
+  "frequency_by_hour": {
+    "activity": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "calendar": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "chat": [
+      0,
+      0,
+      0,
+      9,
+      0,
+      12,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "git": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "git_branch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "input": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "media": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pr": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "shell": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "generated_at": "2026-02-08T14:55:01.407012Z",
+  "inaturalist_trend": {
+    "available_days": 0,
+    "daily": [
+      {
+        "date": "2025-11-30",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-01",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-02",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-03",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-04",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-05",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-06",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-07",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-08",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-09",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-10",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-11",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-12",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-13",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-14",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-15",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-16",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-17",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-18",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-19",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-20",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-21",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-22",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-23",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-24",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-25",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-26",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-27",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-28",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-29",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-30",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2025-12-31",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-01",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-02",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-03",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-04",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-05",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-06",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-07",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-08",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-09",
+        "events": 0,
+        "insect_observations": 0
+      },
+      {
+        "date": "2026-01-10",
+        "events": 0,
+        "insect_observations": 0
+      }
+    ],
+    "diagnostics": {
+      "max": 0
+    },
+    "expectation_code": "stable_or_unclear",
+    "phase_code": "no_activity",
+    "window_days": 42
+  },
+  "media_summary": {
+    "by_platform": {},
+    "churn_events": 0,
+    "churn_rate": 0.0,
+    "completion_ratio": 0.0,
+    "consumed_seconds": 0,
+    "content_duration_seconds": 0,
+    "events": 0,
+    "items_observed": 0,
+    "warnings": []
+  },
+  "mood_latest": {},
+  "notes_meta_summary": {
+    "app_counts": {},
+    "lifecycle": {
+      "context": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "file": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "notebook": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "unknown": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      }
+    },
+    "notebooklm_events": 0,
+    "total_events": 0,
+    "warnings": []
+  },
+  "summary": {
+    "activity_events": 0,
+    "agent_edit_blocks": 0,
+    "agent_edit_files": 0,
+    "agent_edit_lines_added": 0,
+    "agent_edit_lines_removed": 0,
+    "agent_edit_top_file_share": 0.0,
+    "calendar_events": 0,
+    "chat_active_hours": 2,
+    "chat_activity_overlap_hours": 0,
+    "chat_activity_overlap_rate": 0.0,
+    "chat_chars_est": 15456,
+    "chat_context_default_window_tokens": 128000,
+    "chat_context_max_thread_usage_pct": 0.017,
+    "chat_context_overflow_threads": 0,
+    "chat_context_overflow_tokens": 0,
+    "chat_input_overlap_hours": 0,
+    "chat_input_overlap_rate": 0.0,
+    "chat_input_tokens_est": 57,
+    "chat_media_overlap_hours": 0,
+    "chat_media_overlap_rate": 0.0,
+    "chat_messages": 21,
+    "chat_messages_with_input_nearby": 0,
+    "chat_messages_with_input_nearby_rate": 0.0,
+    "chat_messages_with_media_nearby": 0,
+    "chat_messages_with_media_nearby_rate": 0.0,
+    "chat_messages_with_voice_activity_nearby": 0,
+    "chat_messages_with_voice_activity_nearby_rate": 0.0,
+    "chat_other_tokens_est": 0,
+    "chat_output_tokens_est": 3806,
+    "chat_switch_rate": 0.05,
+    "chat_switches": 1,
+    "chat_threads": 2,
+    "chat_tokens_est": 3863,
+    "concurrency_window_seconds": 300,
+    "context_switch_rate": 0.05,
+    "git_branch_events": 0,
+    "git_commits": 0,
+    "inaturalist_events": 0,
+    "inaturalist_insect_observations": 0,
+    "input_events": 0,
+    "input_keys_total": 0,
+    "input_mouse_total": 0,
+    "media_churn_events": 0,
+    "media_churn_rate": 0.0,
+    "media_completion_ratio": 0.0,
+    "media_consumed_seconds": 0,
+    "media_content_seconds": 0,
+    "media_events": 0,
+    "media_items_observed": 0,
+    "messages_per_chat": 10.5,
+    "messages_per_hour_active": 10.5,
+    "messages_per_hour_day": 0.88,
+    "mood_reports": 0,
+    "notebooklm_events": 0,
+    "notes_meta_events": 0,
+    "pr_commented": 0,
+    "pr_events": 0,
+    "pr_merged": 0,
+    "pr_received": 0,
+    "shell_commands": 0,
+    "shell_commands_agent_exec": 0,
+    "shell_commands_host": 0,
+    "switches_per_active_hour": 0.5,
+    "timeline_events": 21,
+    "top_thread_share": 0.571,
+    "voice_activity_events": 0,
+    "voice_activity_overlap_hours": 0,
+    "voice_activity_overlap_rate": 0.0,
+    "window_focus_events": 0
+  },
+  "timeline": [
+    {
+      "detail": "chat role=user chars=34",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 34,
+        "preview": "Ok I've added them to the Tuya App",
+        "role": "user",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:24:04Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:24:05Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:24:05Z"
+    },
+    {
+      "detail": "chat role=assistant chars=3083",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 3083,
+        "preview": "Perfect \ud83d\udc4d \u2014 you\u2019re past the **hardest and most failure-prone step**. From here it\u2019s very mechanical. Below is **exactly what to do next**, in order, with checks so you know it\u2019s working. --- ## \u2705 Where you are now - Devi...",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:24:05Z"
+    },
+    {
+      "detail": "chat role=user chars=0",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "user",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:36:38Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:36:39Z"
+    },
+    {
+      "detail": "chat role=assistant chars=3138",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 3138,
+        "preview": "Great \u2014 you\u2019re **in the right place**. \ud83d\udc4d That screenshot confirms you\u2019re logged into the **Tuya Developer Platform** successfully. Now we just need to do **three very specific things** on this site so LocalTuya can auto-...",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:36:40Z"
+    },
+    {
+      "detail": "chat role=user chars=14",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 14,
+        "preview": "created champ",
+        "role": "user",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:43:33Z"
+    },
+    {
+      "detail": "chat role=assistant chars=2568",
+      "hour": 3,
+      "kind": "chat",
+      "meta": {
+        "chars": 2568,
+        "preview": "Perfect \u2014 **this screen is exactly what we wanted to see**. \u2705 You\u2019ve done the right thing creating the **\u201cchamp\u201d** project, and the **API selection is correct**. Let\u2019s lock it in and move to Home Assistant. --- ## \u2705 What...",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "Ok I've added them to the Tuya App",
+        "thread_id": "e97b2f30bbcc44e84462ada8294d0f5c9447a66c",
+        "thread_origin": "source:src",
+        "thread_title": "Install on Home Assistant",
+        "thread_title_raw": "Install on Home Assistant"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T03:43:33Z"
+    },
+    {
+      "detail": "chat role=user chars=120",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 120,
+        "preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "role": "user",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:40:40Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:40:41Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:40:41Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:40:44Z"
+    },
+    {
+      "detail": "chat role=assistant chars=2698",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 2698,
+        "preview": "Here are some **web-sourced recipes and guides** for cooking a whole duck **low and slow first, then finishing at high heat for crispy skin** \u2014 with temperatures in **Celsius** where possible: ### \ud83e\udd86 Whole Duck Slow-Then-...",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:40:45Z"
+    },
+    {
+      "detail": "chat role=user chars=40",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 40,
+        "preview": "Can you find Nagi's banh mi pork recipe?",
+        "role": "user",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:41:08Z"
+    },
+    {
+      "detail": "chat role=system chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "system",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:41:08Z"
+    },
+    {
+      "detail": "chat role=assistant chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:41:08Z"
+    },
+    {
+      "detail": "chat role=tool chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "preview": "",
+        "role": "tool",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:41:09Z"
+    },
+    {
+      "detail": "chat role=assistant chars=1793",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 1793,
+        "preview": "Yes! **Nagi\u2019s Crispy Pork Belly B\u00e1nh M\u00ec recipe** from *RecipeTin Eats* is available online \u2014 it\u2019s one of her most popular takes on the Vietnamese sandwich, using slow-roasted (low first) then high-heat crackled pork bell...",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:41:11Z"
+    },
+    {
+      "detail": "chat role=user chars=19",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 19,
+        "preview": "Could I do 120/125?",
+        "role": "user",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:41:24Z"
+    },
+    {
+      "detail": "chat role=assistant chars=1949",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 1949,
+        "preview": "Yes \u2014 **120\u2013125 \u00b0C works very well**, and it\u2019s actually *ideal* for what you\u2019re trying to do \ud83d\udc4d You\u2019ll just trade **time for gentleness**. Here\u2019s how to think about it and how I\u2019d run it. --- ## \ud83e\udd86 Whole Duck at 120\u2013125 \u00b0C...",
+        "role": "assistant",
+        "source_id": "src_0001",
+        "thread_first_user_preview": "im wanting to cook a duck on low and then finish on high for crispy skin can you find any recipes/guides online? celsius",
+        "thread_id": "c85b25498e0469fe95a6377d7d1049c39511a833",
+        "thread_origin": "source:src",
+        "thread_title": "Duck Slow Roast Guide",
+        "thread_title_raw": "Duck Slow Roast Guide"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#src_0001",
+      "ts": "2026-01-10T05:41:25Z"
+    }
+  ],
+  "tool_use_summary": {
+    "exec_command_count": 0,
+    "exec_with_workdir_count": 0,
+    "exec_without_workdir_count": 0,
+    "families": [],
+    "source": "sqlite",
+    "top_dirs": [],
+    "total_tool_messages": 0,
+    "unique_commands": 0,
+    "warnings": [
+      "No tool messages found for this date/scope in sqlite."
+    ]
+  },
+  "warnings": [
+    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date).",
+    "No `Edited <file> (+a -b)` patterns found in in-scope assistant/tool messages."
+  ]
+}

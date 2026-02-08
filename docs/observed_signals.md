@@ -70,11 +70,76 @@ Cloud connectors are read-only audit feeds.
 - Signal: `notes_meta`
 - Required fields: `ts`, `app`, `note_id_hash`, `event`, `provenance`
 - Allowed fields: `vault_id_hash`, `notebook_id_hash`
+- NotebookLM connector emits into this same signal with `app: notebooklm`.
 
-### Social feeds (Bluesky, Twitter/X, Mastodon, Reddit)
+### Social feeds (Bluesky, Twitter/X, Mastodon, Reddit, FB Messenger, Telegram, WhatsApp)
 - Signal: `social_feed`
 - Required fields: `ts`, `platform`, `event_type`, `post_id_hash`, `provenance`
 - Allowed fields: `author_hash`, `thread_id_hash`
+
+### Media consumption feeds (YouTube, Spotify, VLC, Last.fm)
+- Signal: `media_consumption`
+- Required fields: `ts`, `platform`, `event_type`, `item_id_hash`, `provenance`
+- Allowed fields: `item_title_hash`, `artist_hash`, `channel_hash`,
+  `consumed_seconds`, `content_duration_seconds`, `completion_ratio`,
+  `session_id_hash`
+- Meta only: no media text/transcripts/lyrics/titles in cleartext.
+
+### Living environment / aquaponics / crops (non-authoritative overlays)
+- Signal: `context_field`
+- Required fields: `ts`, `context_type`, `event_type`, `provenance`
+- Allowed fields:
+  - living environment: `temp_c`, `humidity_pct`, `co2_ppm`, `pm25_ug_m3`,
+    `voc_index`, `noise_db`, `light_lux`, hashed zone/scenario IDs
+  - aquaponics: `water_temp_c`, `ph`, `ec_ms_cm`, `dissolved_o2_mg_l`,
+    `ammonia_mg_l`, `nitrite_mg_l`, `nitrate_mg_l`, `flow_l_min`, hashed IDs
+  - crops: `stage_code`, `canopy_pct`, `soil_moisture_pct`,
+    `irrigation_liters`, `nutrient_ec_ms_cm`, `brix`, hashed plot/crop IDs
+- Constraint: these remain context overlays and must not be used for behavioural
+  inference or automatic prioritisation.
+
+### Medication tracker overlays (non-authoritative)
+- Signal: `context_field`
+- Required fields: `ts`, `context_type=medication`, `event_type`, `provenance`
+- Allowed fields:
+  - hashed IDs: `tracker_id_hash`, `medication_id_hash`, `schedule_id_hash`,
+    `intake_id_hash`
+  - numeric/categorical telemetry: `dose_amount`, `dose_unit`, `route_code`,
+    `adherence_flag`, `missed_flag`, `prn_flag`, `delay_minutes`,
+    `symptom_score`, `side_effect_flag`
+- Constraint: no medication names, notes, or free-text symptom narratives in
+  cleartext; this remains a metadata-only overlay lane.
+
+### Mood self-report overlays (non-authoritative)
+- Signal: `context_field`
+- Required fields: `ts`, `context_type=mood`, `event_type`, `mood_code`, `provenance`
+- Allowed fields: numeric scales only (`valence_score`, `stress_score`, etc) and
+  `note_id_hash` pointers.
+- Constraint: mood is self-report only; SB must not infer mood from other lanes.
+  No free text in this lane.
+
+### iNaturalist biodiversity overlays (non-authoritative)
+- Signal: `context_field`
+- Required fields: `ts`, `context_type=inaturalist`, `event_type`, `taxon_id_hash`, `provenance`
+- Allowed fields: `place_id_hash`, `project_id_hash`, `quality_grade_code`,
+  `iconic_taxon_code`, `obs_count`, `insect_flag`
+- Constraint: minimize location precision; no raw GPS or species text.
+
+### Pet wearables / smart collar overlays (non-authoritative)
+- Signal: `context_field`
+- Required fields: `ts`, `context_type=pet_wearable`, `event_type`, `device_id_hash`, `pet_id_hash`, `provenance`
+- Allowed fields: `activity_index`, `steps_count`, `sleep_minutes`, `hr_bpm`,
+  `location_cell_hash`, `battery_pct`
+- Constraint: no raw GPS tracks, pet names, owner names, or household address.
+
+### Maps timeline overlays (Google/Apple) (non-authoritative)
+- Signal: `context_field`
+- Required fields: `ts`, `context_type=location_timeline`, `event_type`, `timeline_provider`, `provenance`
+- Allowed fields:
+  - hashed IDs: `device_id_hash`, `timeline_id_hash`, `place_id_hash`, `visit_id_hash`, `segment_id_hash`
+  - hashed coarse location: `location_cell_hash`
+  - numeric/categorical metadata: `duration_minutes`, `travel_mode_code`, `confidence_code`, `start_ts`, `end_ts`
+- Constraint: no raw coordinates, addresses, place names, or free-text notes.
 
 ## Platform notes
 - Linux: journald + collectors emit normalized records.
@@ -97,13 +162,27 @@ Example using pre-exported JSONL files (no live collection):
   /tmp/social_feed.jsonl \
   /tmp/windows_event.jsonl \
   /tmp/macos_unified.jsonl \
-  /tmp/pr_events.jsonl
+  /tmp/pr_events.jsonl \
+  "" \
+  /tmp/media_consumption.jsonl \
+  /tmp/context_fields.jsonl \
+  /tmp/medication_raw.jsonl
 ```
 
 All inputs are optional; missing files are skipped with warnings.
 `logs/git_branch/<date>.jsonl` is emitted automatically from local git reflog.
 For direct GitHub PR ingestion (no JSONL input file), pass positional arg 19
 to `run_day.sh` as `auto` or `owner/repo`.
+For NotebookLM metadata snapshots, pass positional arg 20 to `run_day.sh` as
+`NOTEBOOKLM_META_INPUT` (see `docs/notebooklm_connector.md`).
+For media consumption snapshots, pass positional arg 21 as
+`MEDIA_CONSUMPTION_INPUT` (see `docs/media_connectors.md`).
+For context-field overlays, either:
+- pass a pre-normalized `context_field` JSONL as positional arg 22
+  (`CONTEXT_FIELD_APPEND_INPUT`) to append into `logs/context/<date>.jsonl`, or
+- pass a medication tracker raw JSONL as positional arg 23
+  (`MEDICATION_TRACKER_INPUT`) and `run_day.sh` will normalize it via
+  `adapters/medication_tracker_stub.py` and append it into `logs/context/<date>.jsonl`.
 
 ## Social stub collectors
 See `docs/social_stub_collectors.md` for per-platform stub inputs.

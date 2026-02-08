@@ -1,4 +1,20 @@
 {
+  "agent_edit_summary": {
+    "avg_edits_per_file": 0.0,
+    "edit_blocks": 0,
+    "files": [],
+    "files_touched": 0,
+    "focus_mode": "none",
+    "lines_added": 0,
+    "lines_removed": 0,
+    "messages_scanned": 0,
+    "messages_with_edits": 0,
+    "source": "sqlite",
+    "top_file_share": 0.0,
+    "warnings": [
+      "No in-scope assistant/tool messages found for agent edit parsing."
+    ]
+  },
   "artifact_links": [
     {
       "label": "daily_brief.md",
@@ -81,6 +97,74 @@
       "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json"
     }
   ],
+  "chat_context_trailing": {
+    "available_days": 7,
+    "baseline_avg": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 11.29,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.429
+    },
+    "current": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": 0.0,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": 0.0
+    },
+    "delta": {
+      "context_switch_rate": 0.0,
+      "messages_per_chat": -11.29,
+      "switches_per_active_hour": 0.0,
+      "top_thread_share": -0.429
+    },
+    "has_baseline": true,
+    "window_days": 7
+  },
+  "chat_flow": {
+    "active_hours": 0,
+    "dominant_thread_share": 0.0,
+    "first_ts": "",
+    "hour_bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "last_ts": "",
+    "message_count": 0,
+    "messages_per_chat": 0.0,
+    "messages_per_hour_active": 0.0,
+    "messages_per_hour_day": 0.0,
+    "switch_count": 0,
+    "switch_opportunities": 0,
+    "switch_rate": 0.0,
+    "switches_per_active_hour": 0.0,
+    "thread_count": 0,
+    "threads": [],
+    "waterfall": [],
+    "waterfall_render_limit": 480,
+    "waterfall_truncated": false
+  },
   "chat_scope_mode": "scoped",
   "chat_scope_thread_count": 8,
   "chat_source": "none",
@@ -140,6 +224,32 @@
       0
     ],
     "input": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "media": [
       0,
       0,
       0,
@@ -244,22 +354,98 @@
       0
     ]
   },
-  "generated_at": "2026-02-08T09:11:36.790302Z",
+  "generated_at": "2026-02-08T12:24:31.728074Z",
+  "media_summary": {
+    "by_platform": {},
+    "churn_events": 0,
+    "churn_rate": 0.0,
+    "completion_ratio": 0.0,
+    "consumed_seconds": 0,
+    "content_duration_seconds": 0,
+    "events": 0,
+    "items_observed": 0,
+    "warnings": []
+  },
+  "notes_meta_summary": {
+    "app_counts": {},
+    "lifecycle": {
+      "context": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "file": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "notebook": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      },
+      "unknown": {
+        "created": 0,
+        "deleted": 0,
+        "modified": 0,
+        "moved": 0,
+        "other": 0,
+        "seen": 0
+      }
+    },
+    "notebooklm_events": 0,
+    "total_events": 0,
+    "warnings": []
+  },
   "summary": {
     "activity_events": 2,
+    "agent_edit_blocks": 0,
+    "agent_edit_files": 0,
+    "agent_edit_lines_added": 0,
+    "agent_edit_lines_removed": 0,
+    "agent_edit_top_file_share": 0.0,
+    "chat_active_hours": 0,
     "chat_messages": 0,
+    "chat_switch_rate": 0.0,
+    "chat_switches": 0,
     "chat_threads": 0,
+    "context_switch_rate": 0.0,
     "git_branch_events": 0,
     "git_commits": 1,
     "input_events": 0,
     "input_keys_total": 0,
     "input_mouse_total": 0,
+    "media_churn_events": 0,
+    "media_churn_rate": 0.0,
+    "media_completion_ratio": 0.0,
+    "media_consumed_seconds": 0,
+    "media_content_seconds": 0,
+    "media_events": 0,
+    "media_items_observed": 0,
+    "messages_per_chat": 0.0,
+    "messages_per_hour_active": 0.0,
+    "messages_per_hour_day": 0.0,
+    "notebooklm_events": 0,
+    "notes_meta_events": 0,
     "pr_commented": 0,
     "pr_events": 0,
     "pr_merged": 0,
     "pr_received": 0,
     "shell_commands": 0,
+    "shell_commands_agent_exec": 0,
+    "shell_commands_host": 0,
+    "switches_per_active_hour": 0.0,
     "timeline_events": 3,
+    "top_thread_share": 0.0,
     "window_focus_events": 0
   },
   "timeline": [
@@ -287,6 +473,8 @@
   ],
   "tool_use_summary": {
     "exec_command_count": 0,
+    "exec_with_workdir_count": 0,
+    "exec_without_workdir_count": 0,
     "families": [],
     "source": "sqlite",
     "top_dirs": [],
@@ -297,6 +485,8 @@
     ]
   },
   "warnings": [
-    "No chat events found for this date in sqlite, chat exports, or resolver files."
+    "No chat events found for this date in sqlite, chat exports, or resolver files.",
+    "Chat archive has 1552 message(s) on 2026-02-05 but none matched current convo scope; refresh convo_ids or run --debug-include-all-chat.",
+    "No in-scope assistant/tool messages found for agent edit parsing."
   ]
 }

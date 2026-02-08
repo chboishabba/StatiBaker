@@ -186,6 +186,81 @@ Each line (JSON):
   "provenance": {"source": "fs_watcher", "collected_at": "2026-02-05T14:10:02Z"}
 }
 
+### NotebookLM metadata via connector
+NotebookLM events are normalized into the same `notes_meta` signal with
+`app: "notebooklm"`:
+
+{
+  "ts": "2026-02-08T10:00:00Z",
+  "signal": "notes_meta",
+  "app": "notebooklm",
+  "notebook_id_hash": "sha256:...",
+  "note_id_hash": "sha256:...",
+  "event": "source_observed",
+  "provenance": {"source": "notebooklm_meta", "collected_at": "2026-02-08T10:00:00Z"}
+}
+
+Raw snapshot capture helper:
+```bash
+python scripts/capture_notebooklm_meta.py --output /tmp/notebooklm_meta.jsonl
+python adapters/notebooklm_meta.py --input /tmp/notebooklm_meta.jsonl --output /tmp/notebooklm_notes.jsonl
+```
+
+`run_day.sh` can ingest this directly with positional arg 20 (`NOTEBOOKLM_META_INPUT`).
+
+## Media consumption metadata (machine)
+Path: `logs/media/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-08T12:20:00Z",
+  "signal": "media_consumption",
+  "platform": "youtube",
+  "event_type": "playback_observed",
+  "item_id_hash": "sha256:...",
+  "item_title_hash": "sha256:...",
+  "channel_hash": "sha256:...",
+  "consumed_seconds": 412,
+  "content_duration_seconds": 920,
+  "completion_ratio": 0.448,
+  "provenance": {"source": "youtube_watch_stub", "collected_at": "2026-02-08T12:20:05Z"}
+}
+
+`run_day.sh` ingests this via positional arg 21 (`MEDIA_CONSUMPTION_INPUT`).
+See `docs/media_connectors.md` for connector mappings and churn heuristics.
+
+## Context-field overlays (machine)
+Path: `logs/context/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-08T12:30:00Z",
+  "signal": "context_field",
+  "context_type": "living_environment",   // aquaponics | crops | medication | mood | inaturalist | pet_wearable | location_timeline | weather | ...
+  "event_type": "snapshot_observed",
+  "zone_id_hash": "sha256:...",
+  "temp_c": 23.7,
+  "humidity_pct": 51.2,
+  "co2_ppm": 612,
+  "provenance": {"source": "living_environment_simulator_stub", "collected_at": "2026-02-08T12:30:01Z"}
+}
+
+Adapter stubs for this signal:
+- `adapters/living_environment_simulator_stub.py`
+- `adapters/aquaponics_calculator_stub.py`
+- `adapters/crops_stub.py`
+- `adapters/medication_tracker_stub.py`
+- `adapters/mood_self_report_stub.py`
+- `adapters/inaturalist_stub.py`
+- `adapters/pet_wearable_stub.py`
+
+These records are non-authoritative context overlays only.
+
+`run_day.sh` can append these via positional arg 22 (`CONTEXT_FIELD_APPEND_INPUT`).
+Medication tracker raw JSONL can be passed via positional arg 23
+(`MEDICATION_TRACKER_INPUT`) and will be normalized with
+`adapters/medication_tracker_stub.py` before appending to the same path.
+
 ## Social feeds (machine)
 Path: `logs/social/YYYY-MM-DD.jsonl`
 
