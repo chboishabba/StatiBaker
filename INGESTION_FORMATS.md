@@ -73,6 +73,23 @@ Each line (JSON):
   "summary": "Add schema and templates"
 }
 
+## Git branch history (machine)
+Path: `logs/git_branch/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-08T06:00:55Z",
+  "signal": "git_branch",
+  "event_type": "branch_checkout",
+  "repo": "StatiBaker",
+  "ref": "HEAD",
+  "from_ref": "main",
+  "to_ref": "feature/dashboard",
+  "commit_hash": "abc1234",
+  "event_hash": "sha256:...",
+  "provenance": {"source": "git_reflog", "collected_at": "2026-02-08T06:00:55Z"}
+}
+
 ## Input activity (machine)
 Path: `logs/input/YYYY-MM-DD.jsonl`
 
@@ -277,6 +294,29 @@ Each line (JSON):
   "exit": 1,
   "duration_ms": 430
 }
+
+## Pull request lifecycle (machine)
+Path: `logs/pr/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-02-08T06:12:10Z",
+  "signal": "pr_event",
+  "event_type": "pr_commented",
+  "repo": "ITIR-suite",
+  "pr_number": 42,
+  "pr_key_hash": "sha256:...",
+  "actor_hash": "sha256:...",
+  "state": "open",
+  "provenance": {"source": "github_webhook", "collected_at": "2026-02-08T06:12:11Z"}
+}
+
+Direct connector:
+```bash
+python adapters/pr_events_github.py --date 2026-02-08 --repo owner/repo --output /tmp/pr_events.jsonl
+```
+When used from `run_day.sh` with positional arg 19, source becomes
+`github_gh_cli`.
 
 ## Mobile status (machine)
 Path: `logs/mobile/YYYY-MM-DD.jsonl`

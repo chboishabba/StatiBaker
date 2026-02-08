@@ -362,3 +362,16 @@ That’s the difference that keeps SB from becoming the thing your PDF warns abo
 - Explicit compression: summaries declare loss profiles and remain expandable.
 - Deterministic replay: the same event log yields the same bake.
 - ADHD support focus: SB reconstructs lived state after context collapse without smoothing the gaps.
+
+## Chat context sync note (2026-02-07)
+
+- Conversation synced: `Conductor vs SB/ITIR`
+  (`6986c9f5-3988-839d-ad80-9338ea8a04eb`).
+- Latest assistant reply timestamp: `2026-02-07T06:10:06.463491Z`.
+- Update extracted for SB docs:
+  - Frame the current wave (Codeex/Convex/Agent HQ) as state-governance pressure,
+    not only DX tooling shifts.
+  - Preserve SB boundary: execution stacks can be excellent but cannot define
+    canonical truth/memory authority.
+  - Keep ADR direction: "Cloud as Observer, Not Authority", extended with
+    "database != memory" and explicit reconstruction requirements.

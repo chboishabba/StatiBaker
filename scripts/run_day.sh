@@ -19,6 +19,8 @@ NOTES_META_INPUT="${14:-}"
 SOCIAL_FEED_INPUT="${15:-}"
 WINDOWS_EVENT_INPUT="${16:-}"
 MACOS_EVENT_INPUT="${17:-}"
+PR_EVENTS_INPUT="${18:-}"
+PR_EVENTS_REPO="${19:-}"
 
 if [[ -n "$WINDOW_FOCUS_INPUT" && ! -f "$WINDOW_FOCUS_INPUT" ]]; then
   echo "warn: WINDOW_FOCUS_INPUT not found: $WINDOW_FOCUS_INPUT" >&2
@@ -60,6 +62,10 @@ if [[ -n "$MACOS_EVENT_INPUT" && ! -f "$MACOS_EVENT_INPUT" ]]; then
   echo "warn: MACOS_EVENT_INPUT not found: $MACOS_EVENT_INPUT" >&2
   MACOS_EVENT_INPUT=""
 fi
+if [[ -n "$PR_EVENTS_INPUT" && ! -f "$PR_EVENTS_INPUT" ]]; then
+  echo "warn: PR_EVENTS_INPUT not found: $PR_EVENTS_INPUT" >&2
+  PR_EVENTS_INPUT=""
+fi
 
 RUN_DIR="$ROOT_DIR/runs/$DATE"
 LOG_DIR="$RUN_DIR/logs/git"
@@ -70,6 +76,11 @@ export PYTHONPATH="${PYTHONPATH:-$ROOT_DIR}"
 
 GIT_LOG_PATH="$LOG_DIR/$DATE.jsonl"
 python "$ROOT_DIR/adapters/gitlog.py" --repo "$REPO_PATH" --date "$DATE" --output "$GIT_LOG_PATH"
+
+GIT_BRANCH_LOG_DIR="$RUN_DIR/logs/git_branch"
+GIT_BRANCH_LOG_PATH="$GIT_BRANCH_LOG_DIR/$DATE.jsonl"
+mkdir -p "$GIT_BRANCH_LOG_DIR"
+python "$ROOT_DIR/adapters/git_branch.py" --repo "$REPO_PATH" --date "$DATE" --output "$GIT_BRANCH_LOG_PATH"
 
 if [[ -n "$FS_DIR" ]]; then
   FS_LOG_DIR="$RUN_DIR/logs/fs"
@@ -180,6 +191,27 @@ if [[ -n "$MACOS_EVENT_INPUT" ]]; then
   python "$ROOT_DIR/adapters/macos_unified_log_stub.py" --input "$MACOS_EVENT_INPUT" --output "$SYS_LOG_PATH"
 fi
 
+if [[ -n "$PR_EVENTS_INPUT" ]]; then
+  PR_LOG_DIR="$RUN_DIR/logs/pr"
+  PR_LOG_PATH="$PR_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$PR_LOG_DIR"
+  python "$ROOT_DIR/adapters/pr_events.py" --input "$PR_EVENTS_INPUT" --output "$PR_LOG_PATH"
+elif [[ -n "$PR_EVENTS_REPO" ]]; then
+  PR_LOG_DIR="$RUN_DIR/logs/pr"
+  PR_LOG_PATH="$PR_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$PR_LOG_DIR"
+  PR_DIRECT_CMD=(python "$ROOT_DIR/adapters/pr_events_github.py" --date "$DATE" --repo-path "$REPO_PATH" --output "$PR_LOG_PATH")
+  if [[ "$PR_EVENTS_REPO" != "auto" ]]; then
+    PR_DIRECT_CMD+=(--repo "$PR_EVENTS_REPO")
+  fi
+  if "${PR_DIRECT_CMD[@]}"; then
+    PR_STATUS="ok"
+  else
+    PR_STATUS="failed"
+    : >"$PR_LOG_PATH"
+  fi
+fi
+
 DEFAULT_SNAPSHOTS="$ROOT_DIR/tests/fixtures/snapshots.json"
 if [[ -z "$SNAPSHOTS_PATH" && -f "$DEFAULT_SNAPSHOTS" ]]; then
   SNAPSHOTS_PATH="$DEFAULT_SNAPSHOTS"
@@ -224,6 +256,7 @@ STATE_PATH="$STATE_PATH" \
 DRIFT_PATH="$DRIFT_PATH" \
 PROM_STATUS="${PROM_STATUS:-}" \
 OSQUERY_STATUS="${OSQUERY_STATUS:-}" \
+PR_STATUS="${PR_STATUS:-}" \
 python - <<'PY'
 import json
 import os
@@ -241,6 +274,7 @@ state_path = os.environ["STATE_PATH"]
 drift_path = os.environ["DRIFT_PATH"]
 prom_status = os.environ.get("PROM_STATUS")
 osquery_status = os.environ.get("OSQUERY_STATUS")
+pr_status = os.environ.get("PR_STATUS")
 
 entries = []
 with open(git_log_path, "r", encoding="utf-8") as handle:
@@ -321,6 +355,8 @@ if prom_status == "failed":
     labels.append("prometheus_missing")
 if osquery_status == "failed":
     labels.append("osquery_missing")
+if pr_status == "failed":
+    labels.append("pr_events_missing")
 state["labels"] = labels
 
 def _bullet_list(items, empty="- None"):

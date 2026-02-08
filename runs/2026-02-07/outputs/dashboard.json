@@ -1,0 +1,875 @@
+{
+  "artifact_links": [
+    {
+      "label": "daily_brief.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/daily_brief.md"
+    },
+    {
+      "label": "retrospective.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/retrospective.md"
+    },
+    {
+      "label": "state.json",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/state.json"
+    },
+    {
+      "label": "activity_ledger.json",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/activity_ledger.json"
+    },
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md"
+    },
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "20260208T053748Z_context_refresh_6986d38e.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md"
+    },
+    {
+      "label": "20260208T054246Z_resolver_6986c9f5.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986c16d.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986ccc6.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c16d.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c9f5.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986ccc6.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt"
+    },
+    {
+      "label": "20260208T054446Z_context_refresh_triplet.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md"
+    },
+    {
+      "label": "20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv"
+    },
+    {
+      "label": "20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
+    },
+    {
+      "label": "mentions_rank_20260203_225730.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
+    }
+  ],
+  "chat_scope_mode": "all",
+  "chat_scope_thread_count": 8,
+  "chat_source": "chat_exports",
+  "chat_threads": [
+    {
+      "first_ts": "2026-02-07T05:13:30.006000Z",
+      "last_ts": "2026-02-07T05:31:50.890812Z",
+      "message_count": 45,
+      "roles": {
+        "assistant": 20,
+        "system": 6,
+        "tool": 8,
+        "user": 11
+      },
+      "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+      "title": "Conductor vs SB/ITIR"
+    }
+  ],
+  "date": "2026-02-07",
+  "frequency_by_hour": {
+    "chat": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      45,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "git_branch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "input": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pr": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "shell": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "generated_at": "2026-02-08T06:57:54.523446Z",
+  "summary": {
+    "activity_events": 2,
+    "chat_messages": 45,
+    "chat_threads": 1,
+    "git_branch_events": 0,
+    "git_commits": 0,
+    "input_events": 0,
+    "input_keys_total": 0,
+    "input_mouse_total": 0,
+    "pr_commented": 0,
+    "pr_events": 0,
+    "pr_merged": 0,
+    "pr_received": 0,
+    "shell_commands": 0,
+    "timeline_events": 47,
+    "window_focus_events": 0
+  },
+  "timeline": [
+    {
+      "detail": "activity app=firefox.desktop duration_s=90",
+      "hour": 11,
+      "kind": "activity",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/activity_ledger.json",
+      "ts": "2026-02-03T11:00:00Z"
+    },
+    {
+      "detail": "activity app=org.gnome.Terminal duration_s=70",
+      "hour": 11,
+      "kind": "activity",
+      "source_path": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-07/outputs/activity_ledger.json",
+      "ts": "2026-02-03T11:10:00Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=9162",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 9162,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:13:30.006000Z"
+    },
+    {
+      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:13:30.340909Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=4592",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4592,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:13:30.382921Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:13:30.430427Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=16698",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 16698,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:14:03.499000Z"
+    },
+    {
+      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:14:03.885647Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=5199",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5199,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:14:03.944249Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=106",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 106,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:14:33.107000Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=5959",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5959,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:14:34.139168Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=52",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 52,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:15:08.982000Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=2703",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 2703,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:15:09.793387Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=31063",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 31063,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:25:20.283000Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=5758",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5758,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:25:20.750938Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=170",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 170,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:26:16.074000Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=3755",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 3755,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:26:16.517632Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=39",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 39,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:26:48.039000Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:26:48.460333Z"
+    },
+    {
+      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:26:49.065163Z"
+    },
+    {
+      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:26:49.067682Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=2996",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 2996,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:26:51.382020Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=46",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 46,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:27:41.758000Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=4844",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4844,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:27:42.169150Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=131",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 131,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:29:19.521000Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=1291",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 1291,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:29:19.920707Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=761",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 761,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:30.977000Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:32.830085Z"
+    },
+    {
+      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:34.676006Z"
+    },
+    {
+      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:34.682170Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:34.784253Z"
+    },
+    {
+      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:36.249945Z"
+    },
+    {
+      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:36.252383Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:39.232935Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:43.046234Z"
+    },
+    {
+      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:43.993149Z"
+    },
+    {
+      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:43.996406Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:46.107067Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:51.579361Z"
+    },
+    {
+      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:51.991412Z"
+    },
+    {
+      "detail": "chat role=tool thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:51.994123Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=4918",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4918,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:53.513236Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:30:58.054668Z"
+    },
+    {
+      "detail": "chat role=user thread=Conductor vs SB/ITIR chars=102",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 102,
+        "role": "user",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:31:50.407000Z"
+    },
+    {
+      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:31:50.812537Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Conductor vs SB/ITIR chars=4615",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4615,
+        "role": "assistant",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:31:50.850667Z"
+    },
+    {
+      "detail": "chat role=system thread=Conductor vs SB/ITIR chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "6986c9f5-3988-839d-ad80-9338ea8a04eb",
+        "thread_title": "Conductor vs SB/ITIR"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat_exports/conductor-vs-sb-itir__4c9f5a32a7c1e3f0.json",
+      "ts": "2026-02-07T05:31:50.890812Z"
+    }
+  ],
+  "warnings": [
+    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+  ]
+}

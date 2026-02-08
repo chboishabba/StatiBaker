@@ -5,6 +5,7 @@ All collectors are **meta-only** and must not emit content.
 
 ## Core system collectors
 - `adapters/gitlog.py` (git commits)
+- `adapters/git_branch.py` (git branch history via reflog)
 - `adapters/fs_meta.py` (filesystem metadata)
 - `adapters/prometheus_summary.py` (metrics summaries)
 - `adapters/journald.py` (Linux system events)
@@ -25,6 +26,8 @@ All collectors are **meta-only** and must not emit content.
 
 ## Cloud audit feeds
 - `adapters/cloud_audit.py` (Google Drive / MS365 audit logs)
+- `adapters/pr_events.py` (pull request lifecycle event normalization)
+- `adapters/pr_events_github.py` (direct GitHub PR lifecycle collection via `gh`)
 
 ## Social feed stubs
 - `adapters/social_feed.py` (generic meta-only social events)

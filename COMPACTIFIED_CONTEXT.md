@@ -86,6 +86,23 @@ Plan: `__CONTEXT/sprints/stati_baker_sprints_7_9.md`.
 - Epistemic modes and boundary rules documented in
   `docs/multimodal_system_doctrine.md`.
 
+## Tool interop boundary (2026-02-07)
+- Source conversation: `Conductor vs SB/ITIR`
+  (`6986c9f5-3988-839d-ad80-9338ea8a04eb`),
+  latest assistant reply synced at `2026-02-07T06:10:06.463491Z`.
+- Added `docs/tool_interop_observer_contract.md` to codify:
+  - learn from orchestration and observability tooling,
+  - do not re-implement control planes,
+  - ingest read-only execution/provenance events only.
+- Cloud posture clarified: cloud can execute and observe, but is not memory
+  authority for SB truth/reconstruction.
+- Follow-up direction: draft formal ADR `Cloud as Observer, Not Authority`
+  with explicit acceptance checks (cloud removal, retention expiry, billing pressure,
+  adversarial interpretation, and export/replay viability).
+- Latest extract emphasis: modern "agent-native" database/orchestration debates
+  are primarily memory authority and state governance debates; SB keeps memory
+  sovereignty outside execution platforms.
+
 ## Open questions
 - Drift representation and scoring
 - Safe defaults for agent autonomy

@@ -45,6 +45,25 @@
 - Added query base-path guard for safe reads with optional CLI enforcement.
 - Extended ITIR ingest contract with explicit forbidden fields.
 
+## Completed (2026-02-08)
+- Added activity dashboard contract doc (`docs/activity_dashboard.md`) for
+  read-only process-lens requirements and invariants.
+- Implemented daily dashboard generation for chat/CLI/input/window/activity
+  timelines with per-hour frequency summaries and artifact linkbacks.
+- Added git branch history ingestion (`adapters/git_branch.py`) and integrated
+  branch events into dashboard timeline/frequency summaries.
+- Added PR lifecycle ingestion (`adapters/pr_events.py`) and integrated
+  receive/comment/merge event counts into dashboard outputs.
+- Added direct GitHub PR connector (`adapters/pr_events_github.py`) and wired
+  `run_day.sh` arg 19 (`auto` or `owner/repo`) for day-scoped PR ingestion.
+- Added static HTML and machine-readable JSON outputs under
+  `runs/<date>/outputs/`.
+- Added test coverage for mixed-source aggregation and context-link surfacing.
+- Added optional weekly dashboard view to summarize daily dashboard outputs over
+  rolling windows ending at a selected date.
+- Added dashboard tool-use summary section that parses chat `tool` messages
+  into grouped command variants and directory-touch counts.
+
 ## Sprint plan references (2026-02-05)
 - Sprint plan: `__CONTEXT/sprints/stati_baker_sprints.md`.
 - Sprint 1 focus: guard tests + multi-day replay (see "Normalization and compression (Phase 1: minimal fold)").
@@ -90,10 +109,20 @@
 - Agent log adapters
 - Tool execution envelope adapter (OpenClaw or similar; evidence-only)
 - Smart home status adapter
+- PR lifecycle adapter (receive/comment/review/merge events)
 - TIRC event adapter (trajectory/open/closed signals as SB events)
 - SL constraint adapter (rule/constraint IDs with refs only)
 - ITIR overlay adapter (annotation IDs, no content)
 - Read-only query surface for agents (MCP or equivalent)
+
+## Interop boundary follow-up (2026-02-07)
+- Define a minimal observer event schema for external orchestration tools
+  (`session_started`, `session_completed`, `pr_opened`, `pr_merged`, `ci_finished`).
+- Add read-only ingest adapter for execution-plane provenance pointers
+  (issue/PR/commit/CI run IDs only; no semantic authority).
+- Add guard tests that reject workflow-enforcement fields and inferred goals.
+- Add export view for timeline lens consumers (CodexMonitor-style panels) without
+  granting mutation authority. (done: `scripts/build_dashboard.py`)
 
 ## Observability (Prometheus / Grafana)
 - Define SB metrics surface (`/metrics`)

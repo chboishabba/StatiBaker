@@ -24,11 +24,49 @@
       "window_days": 30
     }
   ],
+  "compression": {
+    "loss_profiles": []
+  },
   "constraints": [],
   "date": "2026-02-08",
   "day_state": "active",
-  "events": [],
+  "events": [
+    {
+      "id": "signal-4c077625fabc",
+      "meta": {
+        "event_type": "pr_received",
+        "signal": "pr_event"
+      },
+      "source": "observed",
+      "text": "signal=pr_event, event_type=pr_received",
+      "ts": "2026-02-08T06:12:10Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-ac8dcb1fb0de",
+      "meta": {
+        "event_type": "pr_commented",
+        "signal": "pr_event"
+      },
+      "source": "observed",
+      "text": "signal=pr_event, event_type=pr_commented",
+      "ts": "2026-02-08T06:13:10Z",
+      "type": "signal"
+    },
+    {
+      "id": "signal-418c9fb31a3c",
+      "meta": {
+        "event_type": "pr_merged",
+        "signal": "pr_event"
+      },
+      "source": "observed",
+      "text": "signal=pr_event, event_type=pr_merged",
+      "ts": "2026-02-08T06:14:10Z",
+      "type": "signal"
+    }
+  ],
   "human_energy": "medium",
+  "labels": [],
   "open_questions": [],
   "priorities": [
     "Review git activity",

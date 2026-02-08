@@ -1,5 +1,44 @@
 # Changelog
 
+## 2026-02-08
+- Added process-lens dashboard contract in `docs/activity_dashboard.md` and
+  linked it from `README.md` and `docs/INDEX.md`.
+- Added `sb.dashboard` builder to compile day-scoped timeline/frequency views
+  from chat, shell, input, window, git, git-branch, PR, and activity-ledger
+  sources.
+- Added `scripts/build_dashboard.py` to emit
+  `runs/<date>/outputs/dashboard.json` and `dashboard.html`.
+- Added `adapters/git_branch.py` to ingest local git reflog branch-history
+  events by day.
+- Added `adapters/pr_events.py` to normalize PR lifecycle events
+  (receive/comment/review/merge/close) into metadata-only JSONL.
+- Added `adapters/pr_events_github.py` to fetch PR lifecycle events directly
+  from GitHub via `gh api`.
+- Updated `scripts/run_day.sh` to emit `logs/git_branch/<date>.jsonl` and
+  optionally ingest PR events into `logs/pr/<date>.jsonl` from either JSONL
+  input (arg 18) or direct GitHub connector (arg 19: `auto` or `owner/repo`).
+- Added dashboard test coverage in `tests/test_dashboard.py` for mixed-source
+  aggregation and process-context artifact linkbacks.
+- Added dashboard debug mode (`scripts/build_dashboard.py --debug`) to bypass
+  `convo_ids` chat scoping and scan all chat threads for the selected date.
+- Added optional weekly dashboard summary output via
+  `scripts/build_dashboard.py --weekly --weekly-days <N>` producing
+  `dashboard_weekly_<N>d.json/html`.
+- Added tool-use summary extraction in dashboard output from chat `tool`
+  messages (command family grouping, variant counts, and directories touched).
+
+## 2026-02-07
+- Synced context from ChatGPT conversation `Conductor vs SB/ITIR`
+  (`6986c9f5-3988-839d-ad80-9338ea8a04eb`) and recorded the resulting boundary
+  decisions in SB docs.
+- Added `docs/tool_interop_observer_contract.md` to formalize read-only
+  interoperability with orchestration/observability tools.
+- Linked the new interop contract from `README.md` and `docs/INDEX.md`.
+- Updated `CONTEXT.md` and `COMPACTIFIED_CONTEXT.md` with the 2026-02-07 sync
+  note and cloud-as-observer stance.
+- Added TODO follow-up items for observer event schema, read-only execution
+  provenance ingest, workflow-enforcement rejection tests, and timeline-lens export.
+
 ## 2026-02-06
 - Expanded red-team plan with path traversal, DoS/resource exhaustion, and
   blast-radius constraints.

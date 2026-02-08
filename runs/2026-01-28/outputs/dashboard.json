@@ -1,0 +1,715 @@
+{
+  "artifact_links": [
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md"
+    },
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "20260208T053748Z_context_refresh_6986d38e.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md"
+    },
+    {
+      "label": "20260208T054246Z_resolver_6986c9f5.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986c16d.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986ccc6.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c16d.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c9f5.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986ccc6.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt"
+    },
+    {
+      "label": "20260208T054446Z_context_refresh_triplet.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md"
+    },
+    {
+      "label": "20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv"
+    },
+    {
+      "label": "20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
+    },
+    {
+      "label": "mentions_rank_20260203_225730.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
+    }
+  ],
+  "chat_scope_mode": "all",
+  "chat_scope_thread_count": 8,
+  "chat_source": "sqlite",
+  "chat_threads": [
+    {
+      "first_ts": "2026-01-28T00:48:10Z",
+      "last_ts": "2026-01-28T00:49:50Z",
+      "message_count": 14,
+      "roles": {
+        "assistant": 6,
+        "system": 2,
+        "tool": 3,
+        "user": 3
+      },
+      "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+      "title": "O&M Shampoo Silicones"
+    },
+    {
+      "first_ts": "2026-01-28T02:23:31Z",
+      "last_ts": "2026-01-28T02:24:00Z",
+      "message_count": 10,
+      "roles": {
+        "assistant": 4,
+        "system": 1,
+        "tool": 3,
+        "user": 2
+      },
+      "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+      "title": "VIGI Offline Detection"
+    },
+    {
+      "first_ts": "2026-01-28T00:46:53Z",
+      "last_ts": "2026-01-28T00:47:25Z",
+      "message_count": 9,
+      "roles": {
+        "assistant": 4,
+        "system": 2,
+        "tool": 1,
+        "user": 2
+      },
+      "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+      "title": "US coup in China"
+    }
+  ],
+  "date": "2026-01-28",
+  "frequency_by_hour": {
+    "chat": [
+      23,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "git_branch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "input": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pr": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "shell": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "generated_at": "2026-02-08T06:57:51.401094Z",
+  "summary": {
+    "activity_events": 0,
+    "chat_messages": 33,
+    "chat_threads": 3,
+    "git_branch_events": 0,
+    "git_commits": 0,
+    "input_events": 0,
+    "input_keys_total": 0,
+    "input_mouse_total": 0,
+    "pr_commented": 0,
+    "pr_events": 0,
+    "pr_merged": 0,
+    "pr_received": 0,
+    "shell_commands": 0,
+    "timeline_events": 33,
+    "window_focus_events": 0
+  },
+  "timeline": [
+    {
+      "detail": "chat role=user thread=US coup in China chars=14",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 14,
+        "role": "user",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:46:53Z"
+    },
+    {
+      "detail": "chat role=system thread=US coup in China chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:46:53Z"
+    },
+    {
+      "detail": "chat role=assistant thread=US coup in China chars=2684",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 2684,
+        "role": "assistant",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:46:53Z"
+    },
+    {
+      "detail": "chat role=assistant thread=US coup in China chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:46:54Z"
+    },
+    {
+      "detail": "chat role=user thread=US coup in China chars=8",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 8,
+        "role": "user",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:20Z"
+    },
+    {
+      "detail": "chat role=system thread=US coup in China chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:20Z"
+    },
+    {
+      "detail": "chat role=assistant thread=US coup in China chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:20Z"
+    },
+    {
+      "detail": "chat role=tool thread=US coup in China chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:22Z"
+    },
+    {
+      "detail": "chat role=assistant thread=US coup in China chars=2512",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 2512,
+        "role": "assistant",
+        "thread_id": "81eba0d2f2fbea3003389d714b785f72c5f9fad1",
+        "thread_title": "US coup in China"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:47:25Z"
+    },
+    {
+      "detail": "chat role=user thread=O&M Shampoo Silicones chars=154",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 154,
+        "role": "user",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:10Z"
+    },
+    {
+      "detail": "chat role=system thread=O&M Shampoo Silicones chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:10Z"
+    },
+    {
+      "detail": "chat role=assistant thread=O&M Shampoo Silicones chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:10Z"
+    },
+    {
+      "detail": "chat role=tool thread=O&M Shampoo Silicones chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:13Z"
+    },
+    {
+      "detail": "chat role=assistant thread=O&M Shampoo Silicones chars=2233",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 2233,
+        "role": "assistant",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:48:15Z"
+    },
+    {
+      "detail": "chat role=user thread=O&M Shampoo Silicones chars=14",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 14,
+        "role": "user",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:02Z"
+    },
+    {
+      "detail": "chat role=system thread=O&M Shampoo Silicones chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:02Z"
+    },
+    {
+      "detail": "chat role=assistant thread=O&M Shampoo Silicones chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:02Z"
+    },
+    {
+      "detail": "chat role=tool thread=O&M Shampoo Silicones chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:04Z"
+    },
+    {
+      "detail": "chat role=assistant thread=O&M Shampoo Silicones chars=1902",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 1902,
+        "role": "assistant",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:06Z"
+    },
+    {
+      "detail": "chat role=user thread=O&M Shampoo Silicones chars=42",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 42,
+        "role": "user",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:44Z"
+    },
+    {
+      "detail": "chat role=assistant thread=O&M Shampoo Silicones chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:44Z"
+    },
+    {
+      "detail": "chat role=tool thread=O&M Shampoo Silicones chars=0",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:46Z"
+    },
+    {
+      "detail": "chat role=assistant thread=O&M Shampoo Silicones chars=2550",
+      "hour": 0,
+      "kind": "chat",
+      "meta": {
+        "chars": 2550,
+        "role": "assistant",
+        "thread_id": "6151bffe96ba6b439eeab30bcabc977888938782",
+        "thread_title": "O&M Shampoo Silicones"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T00:49:50Z"
+    },
+    {
+      "detail": "chat role=user thread=VIGI Offline Detection chars=34",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 34,
+        "role": "user",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:31Z"
+    },
+    {
+      "detail": "chat role=system thread=VIGI Offline Detection chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:32Z"
+    },
+    {
+      "detail": "chat role=assistant thread=VIGI Offline Detection chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:32Z"
+    },
+    {
+      "detail": "chat role=tool thread=VIGI Offline Detection chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:32Z"
+    },
+    {
+      "detail": "chat role=tool thread=VIGI Offline Detection chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:36Z"
+    },
+    {
+      "detail": "chat role=assistant thread=VIGI Offline Detection chars=2006",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 2006,
+        "role": "assistant",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:38Z"
+    },
+    {
+      "detail": "chat role=user thread=VIGI Offline Detection chars=57",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 57,
+        "role": "user",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:56Z"
+    },
+    {
+      "detail": "chat role=assistant thread=VIGI Offline Detection chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:56Z"
+    },
+    {
+      "detail": "chat role=tool thread=VIGI Offline Detection chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:23:57Z"
+    },
+    {
+      "detail": "chat role=assistant thread=VIGI Offline Detection chars=2521",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 2521,
+        "role": "assistant",
+        "thread_id": "249f271403475be83e198c768eeccc29004f075b",
+        "thread_title": "VIGI Offline Detection"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-01-28T02:24:00Z"
+    }
+  ],
+  "warnings": [
+    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+  ]
+}

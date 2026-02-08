@@ -1,0 +1,2635 @@
+{
+  "artifact_links": [
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md"
+    },
+    {
+      "label": "COMPACTIFIED_CONTEXT.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md"
+    },
+    {
+      "label": "20260208T053748Z_context_refresh_6986d38e.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md"
+    },
+    {
+      "label": "20260208T054246Z_resolver_6986c9f5.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986c16d.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json"
+    },
+    {
+      "label": "20260208T054330Z_resolver_6986ccc6.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c16d.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986c9f5.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt"
+    },
+    {
+      "label": "20260208T054344Z_latest_6986ccc6.txt",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt"
+    },
+    {
+      "label": "20260208T054446Z_context_refresh_triplet.md",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md"
+    },
+    {
+      "label": "20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv"
+    },
+    {
+      "label": "20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json"
+    },
+    {
+      "label": "mentions_rank_20260203_225730.tsv",
+      "path": "/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv"
+    }
+  ],
+  "chat_scope_mode": "all",
+  "chat_scope_thread_count": 8,
+  "chat_source": "sqlite",
+  "chat_threads": [
+    {
+      "first_ts": "2026-02-04T05:11:42Z",
+      "last_ts": "2026-02-04T05:52:03Z",
+      "message_count": 47,
+      "roles": {
+        "assistant": 23,
+        "system": 10,
+        "tool": 4,
+        "user": 10
+      },
+      "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+      "title": "tqdm Progress in Whisper"
+    },
+    {
+      "first_ts": "2026-02-04T04:44:40Z",
+      "last_ts": "2026-02-04T07:12:48Z",
+      "message_count": 32,
+      "roles": {
+        "assistant": 15,
+        "system": 5,
+        "tool": 3,
+        "user": 9
+      },
+      "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+      "title": "KFD/AMDGPU Driver Changes"
+    },
+    {
+      "first_ts": "2026-02-04T05:58:53Z",
+      "last_ts": "2026-02-04T06:01:29Z",
+      "message_count": 12,
+      "roles": {
+        "assistant": 5,
+        "system": 3,
+        "user": 4
+      },
+      "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+      "title": "Docker ROCm Arch Setup"
+    },
+    {
+      "first_ts": "2026-02-04T06:45:32Z",
+      "last_ts": "2026-02-04T06:53:26Z",
+      "message_count": 11,
+      "roles": {
+        "assistant": 5,
+        "system": 2,
+        "user": 4
+      },
+      "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+      "title": "Implications of Shavuot in Zurich"
+    },
+    {
+      "first_ts": "2026-02-04T22:01:46Z",
+      "last_ts": "2026-02-04T22:03:27Z",
+      "message_count": 11,
+      "roles": {
+        "assistant": 4,
+        "system": 3,
+        "tool": 1,
+        "user": 3
+      },
+      "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+      "title": "Epstein Files and Illuminati"
+    },
+    {
+      "first_ts": "2026-02-04T01:07:57Z",
+      "last_ts": "2026-02-04T01:09:20Z",
+      "message_count": 9,
+      "roles": {
+        "assistant": 4,
+        "system": 2,
+        "user": 3
+      },
+      "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+      "title": "Purge AI Manifesto Alternatives"
+    },
+    {
+      "first_ts": "2026-02-04T01:02:55Z",
+      "last_ts": "2026-02-04T01:04:14Z",
+      "message_count": 8,
+      "roles": {
+        "assistant": 3,
+        "system": 2,
+        "tool": 1,
+        "user": 2
+      },
+      "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+      "title": "Moltbook Purge Manifesto"
+    },
+    {
+      "first_ts": "2026-02-04T05:36:48Z",
+      "last_ts": "2026-02-04T05:49:55Z",
+      "message_count": 7,
+      "roles": {
+        "tool": 7
+      },
+      "thread_id": "dbcfb20d67213216c7aa02ed8493ae21fd39730d",
+      "title": ""
+    },
+    {
+      "first_ts": "2026-02-04T06:53:14Z",
+      "last_ts": "2026-02-04T06:55:01Z",
+      "message_count": 7,
+      "roles": {
+        "tool": 5,
+        "user": 2
+      },
+      "thread_id": "dec8d7f06b8203feaa08021f6ecef5a8e233cc29",
+      "title": ""
+    },
+    {
+      "first_ts": "2026-02-04T05:35:16Z",
+      "last_ts": "2026-02-04T05:35:25Z",
+      "message_count": 6,
+      "roles": {
+        "assistant": 3,
+        "system": 2,
+        "user": 1
+      },
+      "thread_id": "9a78d87f24c21b6c947cff21136e99c5acf56e86",
+      "title": "VAD Audio Decode Issue"
+    },
+    {
+      "first_ts": "2026-02-04T06:09:19Z",
+      "last_ts": "2026-02-04T06:09:20Z",
+      "message_count": 4,
+      "roles": {
+        "assistant": 2,
+        "system": 1,
+        "user": 1
+      },
+      "thread_id": "16c98aa71da5948b94b9264e2c7e43369afdce39",
+      "title": "WhisperStreaming vs SimulStreaming"
+    },
+    {
+      "first_ts": "2026-02-04T21:46:48Z",
+      "last_ts": "2026-02-04T21:46:49Z",
+      "message_count": 4,
+      "roles": {
+        "assistant": 2,
+        "system": 1,
+        "user": 1
+      },
+      "thread_id": "4a95ef1386f86e11cd99745dc0f5087d2d9e2bc4",
+      "title": "Abrahamic Religions and Conspiracy"
+    },
+    {
+      "first_ts": "2026-02-04T02:55:53Z",
+      "last_ts": "2026-02-04T02:55:53Z",
+      "message_count": 3,
+      "roles": {
+        "assistant": 1,
+        "system": 1,
+        "user": 1
+      },
+      "thread_id": "42efb07f03e2821a3e2caf3eabe89b48c2fc5b3a",
+      "title": "Facebook Chat Archives Python"
+    },
+    {
+      "first_ts": "2026-02-04T05:11:08Z",
+      "last_ts": "2026-02-04T05:11:08Z",
+      "message_count": 1,
+      "roles": {
+        "tool": 1
+      },
+      "thread_id": "80def619fdc72bcdcbb05a6bf9444ff76980f64d",
+      "title": "Codex Shell Snapshot"
+    },
+    {
+      "first_ts": "2026-02-04T05:36:34Z",
+      "last_ts": "2026-02-04T05:36:34Z",
+      "message_count": 1,
+      "roles": {
+        "tool": 1
+      },
+      "thread_id": "13fa5479c9ef6eea9c5472d6b9ed8e523abe00b0",
+      "title": "Codex Shell Snapshot"
+    },
+    {
+      "first_ts": "2026-02-04T05:36:44Z",
+      "last_ts": "2026-02-04T05:36:44Z",
+      "message_count": 1,
+      "roles": {
+        "user": 1
+      },
+      "thread_id": "784a4d760f0d83435a018bbef58b9128f695545c",
+      "title": ""
+    },
+    {
+      "first_ts": "2026-02-04T05:48:38Z",
+      "last_ts": "2026-02-04T05:48:38Z",
+      "message_count": 1,
+      "roles": {
+        "tool": 1
+      },
+      "thread_id": "7d15c831d710b9091282c49b49ab66b789b965e1",
+      "title": "Codex Shell Snapshot"
+    },
+    {
+      "first_ts": "2026-02-04T05:49:39Z",
+      "last_ts": "2026-02-04T05:49:39Z",
+      "message_count": 1,
+      "roles": {
+        "user": 1
+      },
+      "thread_id": "9e3cfee50d1f9c8d18069b316703ac128cc228b4",
+      "title": ""
+    },
+    {
+      "first_ts": "2026-02-04T06:51:48Z",
+      "last_ts": "2026-02-04T06:51:48Z",
+      "message_count": 1,
+      "roles": {
+        "tool": 1
+      },
+      "thread_id": "7517293af4ff1fa08079eef69d205b21b22fb1ee",
+      "title": "Codex Shell Snapshot"
+    }
+  ],
+  "date": "2026-02-04",
+  "frequency_by_hour": {
+    "chat": [
+      0,
+      17,
+      3,
+      0,
+      15,
+      86,
+      28,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      11,
+      0
+    ],
+    "git_branch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "input": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pr": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "shell": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "generated_at": "2026-02-08T06:57:53.570825Z",
+  "summary": {
+    "activity_events": 0,
+    "chat_messages": 167,
+    "chat_threads": 19,
+    "git_branch_events": 0,
+    "git_commits": 0,
+    "input_events": 0,
+    "input_keys_total": 0,
+    "input_mouse_total": 0,
+    "pr_commented": 0,
+    "pr_events": 0,
+    "pr_merged": 0,
+    "pr_received": 0,
+    "shell_commands": 0,
+    "timeline_events": 167,
+    "window_focus_events": 0
+  },
+  "timeline": [
+    {
+      "detail": "chat role=user thread=Moltbook Purge Manifesto chars=44",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 44,
+        "role": "user",
+        "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+        "thread_title": "Moltbook Purge Manifesto"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:02:55Z"
+    },
+    {
+      "detail": "chat role=system thread=Moltbook Purge Manifesto chars=0",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+        "thread_title": "Moltbook Purge Manifesto"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:02:55Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Moltbook Purge Manifesto chars=0",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+        "thread_title": "Moltbook Purge Manifesto"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:02:55Z"
+    },
+    {
+      "detail": "chat role=tool thread=Moltbook Purge Manifesto chars=0",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+        "thread_title": "Moltbook Purge Manifesto"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:02:58Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Moltbook Purge Manifesto chars=2902",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 2902,
+        "role": "assistant",
+        "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+        "thread_title": "Moltbook Purge Manifesto"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:03:01Z"
+    },
+    {
+      "detail": "chat role=user thread=Moltbook Purge Manifesto chars=0",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "user",
+        "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+        "thread_title": "Moltbook Purge Manifesto"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:04:14Z"
+    },
+    {
+      "detail": "chat role=system thread=Moltbook Purge Manifesto chars=0",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+        "thread_title": "Moltbook Purge Manifesto"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:04:14Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Moltbook Purge Manifesto chars=3453",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 3453,
+        "role": "assistant",
+        "thread_id": "a84a9c04f4501e04454ea335a3241d9a7425de2b",
+        "thread_title": "Moltbook Purge Manifesto"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:04:14Z"
+    },
+    {
+      "detail": "chat role=user thread=Purge AI Manifesto Alternatives chars=44",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 44,
+        "role": "user",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:07:57Z"
+    },
+    {
+      "detail": "chat role=system thread=Purge AI Manifesto Alternatives chars=0",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:07:57Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Purge AI Manifesto Alternatives chars=1080",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 1080,
+        "role": "assistant",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:07:57Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Purge AI Manifesto Alternatives chars=0",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:07:57Z"
+    },
+    {
+      "detail": "chat role=user thread=Purge AI Manifesto Alternatives chars=42",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 42,
+        "role": "user",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:08:28Z"
+    },
+    {
+      "detail": "chat role=system thread=Purge AI Manifesto Alternatives chars=0",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:08:28Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Purge AI Manifesto Alternatives chars=3180",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 3180,
+        "role": "assistant",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:08:28Z"
+    },
+    {
+      "detail": "chat role=user thread=Purge AI Manifesto Alternatives chars=158",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 158,
+        "role": "user",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:09:20Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Purge AI Manifesto Alternatives chars=4173",
+      "hour": 1,
+      "kind": "chat",
+      "meta": {
+        "chars": 4173,
+        "role": "assistant",
+        "thread_id": "fd38f0ea7065d9e63d1211db792c0619475d4a43",
+        "thread_title": "Purge AI Manifesto Alternatives"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T01:09:20Z"
+    },
+    {
+      "detail": "chat role=user thread=Facebook Chat Archives Python chars=51",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 51,
+        "role": "user",
+        "thread_id": "42efb07f03e2821a3e2caf3eabe89b48c2fc5b3a",
+        "thread_title": "Facebook Chat Archives Python"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T02:55:53Z"
+    },
+    {
+      "detail": "chat role=system thread=Facebook Chat Archives Python chars=0",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "42efb07f03e2821a3e2caf3eabe89b48c2fc5b3a",
+        "thread_title": "Facebook Chat Archives Python"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T02:55:53Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Facebook Chat Archives Python chars=4993",
+      "hour": 2,
+      "kind": "chat",
+      "meta": {
+        "chars": 4993,
+        "role": "assistant",
+        "thread_id": "42efb07f03e2821a3e2caf3eabe89b48c2fc5b3a",
+        "thread_title": "Facebook Chat Archives Python"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T02:55:53Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=1633",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 1633,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:44:40Z"
+    },
+    {
+      "detail": "chat role=system thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:44:41Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:44:41Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=6349",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 6349,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:44:43Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=1763",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 1763,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:49:00Z"
+    },
+    {
+      "detail": "chat role=system thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:49:00Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:49:01Z"
+    },
+    {
+      "detail": "chat role=tool thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:49:02Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=5540",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 5540,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:49:03Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=51",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 51,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:50:03Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:50:03Z"
+    },
+    {
+      "detail": "chat role=tool thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:50:04Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=4691",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 4691,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:50:05Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=4455",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 4455,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:58:45Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=5636",
+      "hour": 4,
+      "kind": "chat",
+      "meta": {
+        "chars": 5636,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T04:58:45Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=38",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 38,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:00:52Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=4529",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4529,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:00:52Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=19",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 19,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:01:47Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:01:49Z"
+    },
+    {
+      "detail": "chat role=system thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:01:49Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:01:50Z"
+    },
+    {
+      "detail": "chat role=tool thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:01:55Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=5459",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5459,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:01:56Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:01:56Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=88",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 88,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:07:56Z"
+    },
+    {
+      "detail": "chat role=system thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:07:57Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=3866",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 3866,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:07:57Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=51",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 51,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:08:31Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=4531",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4531,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:08:31Z"
+    },
+    {
+      "detail": "chat role=tool thread=Codex Shell Snapshot chars=2434",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 2434,
+        "role": "tool",
+        "thread_id": "80def619fdc72bcdcbb05a6bf9444ff76980f64d",
+        "thread_title": "Codex Shell Snapshot"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0001",
+      "ts": "2026-02-04T05:11:08Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=64",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 64,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:11:42Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:11:42Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=2692",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 2692,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:11:42Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:11:43Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=12",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 12,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:12:34Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=4385",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4385,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:12:37Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:12:37Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:12:37Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:12:43Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=111",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 111,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:13:38Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:13:38Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:13:38Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:13:38Z"
+    },
+    {
+      "detail": "chat role=tool thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:13:40Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=4040",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4040,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:13:42Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=38",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 38,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:14:23Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=3131",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 3131,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:14:24Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=64195",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 64195,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:19:27Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:19:29Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:19:29Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:19:30Z"
+    },
+    {
+      "detail": "chat role=tool thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:19:34Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=2492",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 2492,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:19:36Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:19:43Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=22057",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 22057,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:25:52Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:25:54Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:25:55Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:25:55Z"
+    },
+    {
+      "detail": "chat role=tool thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:26:01Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=4688",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 4688,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:26:05Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:26:07Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=240",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 240,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:27:04Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:27:05Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:27:05Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:27:06Z"
+    },
+    {
+      "detail": "chat role=tool thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:27:10Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=8245",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 8245,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:27:14Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:27:14Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=1474",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 1474,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:28:55Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:28:56Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=6571",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 6571,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:28:56Z"
+    },
+    {
+      "detail": "chat role=user thread=VAD Audio Decode Issue chars=5252",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5252,
+        "role": "user",
+        "thread_id": "9a78d87f24c21b6c947cff21136e99c5acf56e86",
+        "thread_title": "VAD Audio Decode Issue"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:35:16Z"
+    },
+    {
+      "detail": "chat role=assistant thread=VAD Audio Decode Issue chars=3299",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 3299,
+        "role": "assistant",
+        "thread_id": "9a78d87f24c21b6c947cff21136e99c5acf56e86",
+        "thread_title": "VAD Audio Decode Issue"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:35:18Z"
+    },
+    {
+      "detail": "chat role=system thread=VAD Audio Decode Issue chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "9a78d87f24c21b6c947cff21136e99c5acf56e86",
+        "thread_title": "VAD Audio Decode Issue"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:35:19Z"
+    },
+    {
+      "detail": "chat role=system thread=VAD Audio Decode Issue chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "9a78d87f24c21b6c947cff21136e99c5acf56e86",
+        "thread_title": "VAD Audio Decode Issue"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:35:19Z"
+    },
+    {
+      "detail": "chat role=assistant thread=VAD Audio Decode Issue chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "9a78d87f24c21b6c947cff21136e99c5acf56e86",
+        "thread_title": "VAD Audio Decode Issue"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:35:19Z"
+    },
+    {
+      "detail": "chat role=assistant thread=VAD Audio Decode Issue chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "9a78d87f24c21b6c947cff21136e99c5acf56e86",
+        "thread_title": "VAD Audio Decode Issue"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:35:25Z"
+    },
+    {
+      "detail": "chat role=tool thread=Codex Shell Snapshot chars=2430",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 2430,
+        "role": "tool",
+        "thread_id": "13fa5479c9ef6eea9c5472d6b9ed8e523abe00b0",
+        "thread_title": "Codex Shell Snapshot"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0001",
+      "ts": "2026-02-04T05:36:34Z"
+    },
+    {
+      "detail": "chat role=user thread=784a4d760f0d83435a018bbef58b9128f695545c chars=5259",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5259,
+        "role": "user",
+        "thread_id": "784a4d760f0d83435a018bbef58b9128f695545c",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:36:44Z"
+    },
+    {
+      "detail": "chat role=tool thread=dbcfb20d67213216c7aa02ed8493ae21fd39730d chars=25",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 25,
+        "role": "tool",
+        "thread_id": "dbcfb20d67213216c7aa02ed8493ae21fd39730d",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:36:48Z"
+    },
+    {
+      "detail": "chat role=tool thread=dbcfb20d67213216c7aa02ed8493ae21fd39730d chars=145",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 145,
+        "role": "tool",
+        "thread_id": "dbcfb20d67213216c7aa02ed8493ae21fd39730d",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:36:51Z"
+    },
+    {
+      "detail": "chat role=tool thread=dbcfb20d67213216c7aa02ed8493ae21fd39730d chars=113",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 113,
+        "role": "tool",
+        "thread_id": "dbcfb20d67213216c7aa02ed8493ae21fd39730d",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:36:54Z"
+    },
+    {
+      "detail": "chat role=tool thread=dbcfb20d67213216c7aa02ed8493ae21fd39730d chars=105",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 105,
+        "role": "tool",
+        "thread_id": "dbcfb20d67213216c7aa02ed8493ae21fd39730d",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:37:01Z"
+    },
+    {
+      "detail": "chat role=tool thread=Codex Shell Snapshot chars=2430",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 2430,
+        "role": "tool",
+        "thread_id": "7d15c831d710b9091282c49b49ab66b789b965e1",
+        "thread_title": "Codex Shell Snapshot"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0001",
+      "ts": "2026-02-04T05:48:38Z"
+    },
+    {
+      "detail": "chat role=user thread=9e3cfee50d1f9c8d18069b316703ac128cc228b4 chars=8556",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 8556,
+        "role": "user",
+        "thread_id": "9e3cfee50d1f9c8d18069b316703ac128cc228b4",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:49:39Z"
+    },
+    {
+      "detail": "chat role=tool thread=dbcfb20d67213216c7aa02ed8493ae21fd39730d chars=132",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 132,
+        "role": "tool",
+        "thread_id": "dbcfb20d67213216c7aa02ed8493ae21fd39730d",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:49:45Z"
+    },
+    {
+      "detail": "chat role=tool thread=dbcfb20d67213216c7aa02ed8493ae21fd39730d chars=125",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 125,
+        "role": "tool",
+        "thread_id": "dbcfb20d67213216c7aa02ed8493ae21fd39730d",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:49:51Z"
+    },
+    {
+      "detail": "chat role=tool thread=dbcfb20d67213216c7aa02ed8493ae21fd39730d chars=127",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 127,
+        "role": "tool",
+        "thread_id": "dbcfb20d67213216c7aa02ed8493ae21fd39730d",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T05:49:55Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=57",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 57,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:50:12Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:50:12Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=5040",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5040,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:50:12Z"
+    },
+    {
+      "detail": "chat role=user thread=tqdm Progress in Whisper chars=98",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 98,
+        "role": "user",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:52:00Z"
+    },
+    {
+      "detail": "chat role=assistant thread=tqdm Progress in Whisper chars=5509",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5509,
+        "role": "assistant",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:52:02Z"
+    },
+    {
+      "detail": "chat role=system thread=tqdm Progress in Whisper chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "797d65a6b8574ede3b41f14dbe158669128c87fc",
+        "thread_title": "tqdm Progress in Whisper"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:52:03Z"
+    },
+    {
+      "detail": "chat role=user thread=Docker ROCm Arch Setup chars=26",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 26,
+        "role": "user",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:58:53Z"
+    },
+    {
+      "detail": "chat role=system thread=Docker ROCm Arch Setup chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:58:54Z"
+    },
+    {
+      "detail": "chat role=system thread=Docker ROCm Arch Setup chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:58:54Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Docker ROCm Arch Setup chars=0",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:58:55Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Docker ROCm Arch Setup chars=3488",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 3488,
+        "role": "assistant",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:58:55Z"
+    },
+    {
+      "detail": "chat role=user thread=Docker ROCm Arch Setup chars=85",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 85,
+        "role": "user",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:59:31Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Docker ROCm Arch Setup chars=5103",
+      "hour": 5,
+      "kind": "chat",
+      "meta": {
+        "chars": 5103,
+        "role": "assistant",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T05:59:31Z"
+    },
+    {
+      "detail": "chat role=user thread=Docker ROCm Arch Setup chars=4002",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 4002,
+        "role": "user",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:00:40Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Docker ROCm Arch Setup chars=5452",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 5452,
+        "role": "assistant",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:00:40Z"
+    },
+    {
+      "detail": "chat role=user thread=Docker ROCm Arch Setup chars=4025",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 4025,
+        "role": "user",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:01:28Z"
+    },
+    {
+      "detail": "chat role=system thread=Docker ROCm Arch Setup chars=0",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:01:29Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Docker ROCm Arch Setup chars=2989",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 2989,
+        "role": "assistant",
+        "thread_id": "2422cbb97956054657bbab55a6e52755d9d3e3b2",
+        "thread_title": "Docker ROCm Arch Setup"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:01:29Z"
+    },
+    {
+      "detail": "chat role=user thread=WhisperStreaming vs SimulStreaming chars=517",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 517,
+        "role": "user",
+        "thread_id": "16c98aa71da5948b94b9264e2c7e43369afdce39",
+        "thread_title": "WhisperStreaming vs SimulStreaming"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:09:19Z"
+    },
+    {
+      "detail": "chat role=system thread=WhisperStreaming vs SimulStreaming chars=0",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "16c98aa71da5948b94b9264e2c7e43369afdce39",
+        "thread_title": "WhisperStreaming vs SimulStreaming"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:09:19Z"
+    },
+    {
+      "detail": "chat role=assistant thread=WhisperStreaming vs SimulStreaming chars=2728",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 2728,
+        "role": "assistant",
+        "thread_id": "16c98aa71da5948b94b9264e2c7e43369afdce39",
+        "thread_title": "WhisperStreaming vs SimulStreaming"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:09:20Z"
+    },
+    {
+      "detail": "chat role=assistant thread=WhisperStreaming vs SimulStreaming chars=0",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "16c98aa71da5948b94b9264e2c7e43369afdce39",
+        "thread_title": "WhisperStreaming vs SimulStreaming"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:09:20Z"
+    },
+    {
+      "detail": "chat role=user thread=Implications of Shavuot in Zurich chars=27",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 27,
+        "role": "user",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:45:32Z"
+    },
+    {
+      "detail": "chat role=system thread=Implications of Shavuot in Zurich chars=0",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:45:33Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Implications of Shavuot in Zurich chars=1769",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 1769,
+        "role": "assistant",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:45:33Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Implications of Shavuot in Zurich chars=0",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:45:33Z"
+    },
+    {
+      "detail": "chat role=user thread=Implications of Shavuot in Zurich chars=7",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 7,
+        "role": "user",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:46:29Z"
+    },
+    {
+      "detail": "chat role=system thread=Implications of Shavuot in Zurich chars=0",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:46:29Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Implications of Shavuot in Zurich chars=1329",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 1329,
+        "role": "assistant",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:46:29Z"
+    },
+    {
+      "detail": "chat role=user thread=Implications of Shavuot in Zurich chars=72",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 72,
+        "role": "user",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:47:27Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Implications of Shavuot in Zurich chars=1390",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 1390,
+        "role": "assistant",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:47:27Z"
+    },
+    {
+      "detail": "chat role=tool thread=Codex Shell Snapshot chars=1294",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 1294,
+        "role": "tool",
+        "thread_id": "7517293af4ff1fa08079eef69d205b21b22fb1ee",
+        "thread_title": "Codex Shell Snapshot"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0001",
+      "ts": "2026-02-04T06:51:48Z"
+    },
+    {
+      "detail": "chat role=user thread=dec8d7f06b8203feaa08021f6ecef5a8e233cc29 chars=23794",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 23794,
+        "role": "user",
+        "thread_id": "dec8d7f06b8203feaa08021f6ecef5a8e233cc29",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T06:53:14Z"
+    },
+    {
+      "detail": "chat role=tool thread=dec8d7f06b8203feaa08021f6ecef5a8e233cc29 chars=25",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 25,
+        "role": "tool",
+        "thread_id": "dec8d7f06b8203feaa08021f6ecef5a8e233cc29",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T06:53:20Z"
+    },
+    {
+      "detail": "chat role=tool thread=dec8d7f06b8203feaa08021f6ecef5a8e233cc29 chars=36",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 36,
+        "role": "tool",
+        "thread_id": "dec8d7f06b8203feaa08021f6ecef5a8e233cc29",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T06:53:23Z"
+    },
+    {
+      "detail": "chat role=user thread=Implications of Shavuot in Zurich chars=89",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 89,
+        "role": "user",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:53:25Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Implications of Shavuot in Zurich chars=1394",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 1394,
+        "role": "assistant",
+        "thread_id": "d2e4cfe6c11b684b7e9c322ef7f6ce000e875e0b",
+        "thread_title": "Implications of Shavuot in Zurich"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T06:53:26Z"
+    },
+    {
+      "detail": "chat role=tool thread=dec8d7f06b8203feaa08021f6ecef5a8e233cc29 chars=38",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 38,
+        "role": "tool",
+        "thread_id": "dec8d7f06b8203feaa08021f6ecef5a8e233cc29",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T06:53:30Z"
+    },
+    {
+      "detail": "chat role=user thread=dec8d7f06b8203feaa08021f6ecef5a8e233cc29 chars=14",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 14,
+        "role": "user",
+        "thread_id": "dec8d7f06b8203feaa08021f6ecef5a8e233cc29",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T06:54:53Z"
+    },
+    {
+      "detail": "chat role=tool thread=dec8d7f06b8203feaa08021f6ecef5a8e233cc29 chars=49",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 49,
+        "role": "tool",
+        "thread_id": "dec8d7f06b8203feaa08021f6ecef5a8e233cc29",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T06:54:57Z"
+    },
+    {
+      "detail": "chat role=tool thread=dec8d7f06b8203feaa08021f6ecef5a8e233cc29 chars=47",
+      "hour": 6,
+      "kind": "chat",
+      "meta": {
+        "chars": 47,
+        "role": "tool",
+        "thread_id": "dec8d7f06b8203feaa08021f6ecef5a8e233cc29",
+        "thread_title": ""
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#codex_0002",
+      "ts": "2026-02-04T06:55:01Z"
+    },
+    {
+      "detail": "chat role=user thread=KFD/AMDGPU Driver Changes chars=281",
+      "hour": 7,
+      "kind": "chat",
+      "meta": {
+        "chars": 281,
+        "role": "user",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T07:12:47Z"
+    },
+    {
+      "detail": "chat role=system thread=KFD/AMDGPU Driver Changes chars=0",
+      "hour": 7,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T07:12:48Z"
+    },
+    {
+      "detail": "chat role=assistant thread=KFD/AMDGPU Driver Changes chars=5252",
+      "hour": 7,
+      "kind": "chat",
+      "meta": {
+        "chars": 5252,
+        "role": "assistant",
+        "thread_id": "26a9f7f925f30aea43b3166b6ed386ba72173dcb",
+        "thread_title": "KFD/AMDGPU Driver Changes"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T07:12:48Z"
+    },
+    {
+      "detail": "chat role=user thread=Abrahamic Religions and Conspiracy chars=2001",
+      "hour": 21,
+      "kind": "chat",
+      "meta": {
+        "chars": 2001,
+        "role": "user",
+        "thread_id": "4a95ef1386f86e11cd99745dc0f5087d2d9e2bc4",
+        "thread_title": "Abrahamic Religions and Conspiracy"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T21:46:48Z"
+    },
+    {
+      "detail": "chat role=system thread=Abrahamic Religions and Conspiracy chars=0",
+      "hour": 21,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "4a95ef1386f86e11cd99745dc0f5087d2d9e2bc4",
+        "thread_title": "Abrahamic Religions and Conspiracy"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T21:46:49Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Abrahamic Religions and Conspiracy chars=4160",
+      "hour": 21,
+      "kind": "chat",
+      "meta": {
+        "chars": 4160,
+        "role": "assistant",
+        "thread_id": "4a95ef1386f86e11cd99745dc0f5087d2d9e2bc4",
+        "thread_title": "Abrahamic Religions and Conspiracy"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T21:46:49Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Abrahamic Religions and Conspiracy chars=0",
+      "hour": 21,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "4a95ef1386f86e11cd99745dc0f5087d2d9e2bc4",
+        "thread_title": "Abrahamic Religions and Conspiracy"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T21:46:49Z"
+    },
+    {
+      "detail": "chat role=user thread=Epstein Files and Illuminati chars=72",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 72,
+        "role": "user",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:01:46Z"
+    },
+    {
+      "detail": "chat role=system thread=Epstein Files and Illuminati chars=0",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:01:46Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Epstein Files and Illuminati chars=0",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "assistant",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:01:46Z"
+    },
+    {
+      "detail": "chat role=tool thread=Epstein Files and Illuminati chars=0",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "tool",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:01:47Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Epstein Files and Illuminati chars=3555",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 3555,
+        "role": "assistant",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:01:49Z"
+    },
+    {
+      "detail": "chat role=user thread=Epstein Files and Illuminati chars=0",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "user",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:02:22Z"
+    },
+    {
+      "detail": "chat role=system thread=Epstein Files and Illuminati chars=0",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:02:22Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Epstein Files and Illuminati chars=3258",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 3258,
+        "role": "assistant",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:02:22Z"
+    },
+    {
+      "detail": "chat role=user thread=Epstein Files and Illuminati chars=0",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "user",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:03:27Z"
+    },
+    {
+      "detail": "chat role=system thread=Epstein Files and Illuminati chars=0",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 0,
+        "role": "system",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:03:27Z"
+    },
+    {
+      "detail": "chat role=assistant thread=Epstein Files and Illuminati chars=3454",
+      "hour": 22,
+      "kind": "chat",
+      "meta": {
+        "chars": 3454,
+        "role": "assistant",
+        "thread_id": "c2765c2abee9f1092c55159e52fb6f071f76797f",
+        "thread_title": "Epstein Files and Illuminati"
+      },
+      "source_path": "/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05",
+      "ts": "2026-02-04T22:03:27Z"
+    }
+  ],
+  "warnings": [
+    "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
+  ]
+}

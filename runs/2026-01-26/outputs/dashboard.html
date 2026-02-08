@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SB Activity Dashboard 2026-01-26</title>
+  <style>
+    :root {
+      --bg: #f3f6f0;
+      --ink: #1c2321;
+      --panel: #ffffff;
+      --chat: #0b6e4f;
+      --shell: #1d4ed8;
+      --input: #a16207;
+      --window: #9d174d;
+      --branch: #0f766e;
+      --pr: #7c3aed;
+      --line: #d9e1d9;
+    }
+    body { margin: 0; background: radial-gradient(circle at top left, #e7f2ea, var(--bg)); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", sans-serif; }
+    main { max-width: 1200px; margin: 0 auto; padding: 1.2rem; display: grid; gap: 1rem; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem; }
+    h1,h2 { margin: 0 0 0.6rem 0; font-family: "IBM Plex Mono", "Consolas", monospace; }
+    .meta { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.92rem; }
+    .grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+    .metric { border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; }
+    .metric b { display:block; font-size: 1.3rem; margin-top: 0.2rem; }
+    .bars { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .bars ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+    .bars li { display: grid; grid-template-columns: 2.2rem 1fr 2rem; align-items: center; gap: 0.4rem; }
+    .bar-wrap { border: 1px solid var(--line); border-radius: 7px; overflow: hidden; height: 0.7rem; }
+    .bar { height: 100%; }
+    .chat { background: var(--chat); } .shell { background: var(--shell); } .input { background: var(--input); } .window { background: var(--window); } .branch { background: var(--branch); } .pr { background: var(--pr); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }
+    code { background: #eff2ef; border-radius: 4px; padding: 0.05rem 0.2rem; }
+    .links li { display: grid; gap: 0.15rem; margin-bottom: 0.45rem; }
+    @media (max-width: 760px) { table { font-size: 0.82rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <h1>SB Activity Dashboard</h1>
+      <div class="meta">
+        <div><b>Date:</b> <code>2026-01-26</code></div>
+        <div><b>Generated:</b> <code>2026-02-08T06:57:50.796662Z</code></div>
+        <div><b>Chat source:</b> <code>sqlite</code></div>
+        <div><b>Chat scope:</b> <code>all</code></div>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Summary</h2>
+      <div class="grid">
+        <div class="metric">Chat messages<b>44</b></div>
+        <div class="metric">Chat threads<b>3</b></div>
+        <div class="metric">Shell commands<b>0</b></div>
+        <div class="metric">Input events<b>0</b></div>
+        <div class="metric">Window focus events<b>0</b></div>
+        <div class="metric">Activity events<b>0</b></div>
+        <div class="metric">Git branch events<b>0</b></div>
+        <div class="metric">PR events<b>0</b></div>
+        <div class="metric">PR merged/commented/received<b>0/0/0</b></div>
+      </div>
+    </section>
+    <section class="panel bars">
+      <div><h2>Chat/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar chat' style='width:100%;'></div></div><span>30</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar chat' style='width:13%;'></div></div><span>4</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar chat' style='width:26%;'></div></div><span>8</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar chat' style='width:6%;'></div></div><span>2</span></li></ul></div>
+      <div><h2>Shell/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar shell' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Input/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar input' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Window/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar window' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>Branch/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar branch' style='width:0%;'></div></div><span>0</span></li></ul></div>
+      <div><h2>PR/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>01</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>02</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>03</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>04</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>05</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>06</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>07</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>08</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>09</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>10</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>11</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>12</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>13</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>14</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>15</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>16</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>17</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>18</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>19</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>20</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>21</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>22</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li>
+<li><code>23</code><div class='bar-wrap'><div class='bar pr' style='width:0%;'></div></div><span>0</span></li></ul></div>
+    </section>
+    <section class="panel">
+      <h2>Process Artifacts</h2>
+      <ul class="links"><li><a href='../../../COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/CONTEXT.md'>CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md'>20260208T053748Z_context_refresh_6986d38e.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json'>20260208T054246Z_resolver_6986c9f5.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json'>20260208T054330Z_resolver_6986c16d.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json'>20260208T054330Z_resolver_6986ccc6.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt'>20260208T054344Z_latest_6986c16d.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt'>20260208T054344Z_latest_6986c9f5.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt'>20260208T054344Z_latest_6986ccc6.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md'>20260208T054446Z_context_refresh_triplet.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv'>20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json'>20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</code></li><li><a href='../../../../__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv'>mentions_rank_20260203_225730.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv</code></li></ul>
+    </section>
+    <section class="panel">
+      <h2>Chat Threads</h2>
+      <table>
+        <thead><tr><th>Thread ID</th><th>Title</th><th>Messages</th><th>First</th><th>Last</th><th>Roles</th></tr></thead>
+        <tbody><tr><td><code>d3f2f299f3c504d7d5013bbc2704eb42640288f3</code></td><td>Skepta Song Search</td><td>30</td><td><code>2026-01-26T02:28:34Z</code></td><td><code>2026-01-26T02:34:20Z</code></td><td>assistant:15, system:3, tool:8, user:4</td></tr><tr><td><code>37967f06cf96b8adb9e34fc5cf6dbe13a8b02636</code></td><td>Branch · DASHI vs LES</td><td>10</td><td><code>2026-01-26T05:06:27Z</code></td><td><code>2026-01-26T23:19:47Z</code></td><td>assistant:3, system:1, tool:4, user:2</td></tr><tr><td><code>c947a01ce019fc4a798c79386e617299d2d3a228</code></td><td>Sussy or Safe</td><td>4</td><td><code>2026-01-26T03:31:34Z</code></td><td><code>2026-01-26T03:31:34Z</code></td><td>assistant:2, system:1, user:1</td></tr></tbody>
+      </table>
+    </section>
+    <section class="panel">
+      <h2>Timeline</h2>
+      <table>
+        <thead><tr><th>TS</th><th>Kind</th><th>Detail</th><th>Source</th></tr></thead>
+        <tbody><tr><td><code>2026-01-26T02:28:34Z</code></td><td>chat</td><td>chat role=user thread=Skepta Song Search chars=187</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:28:34Z</code></td><td>chat</td><td>chat role=system thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:28:34Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:28:35Z</code></td><td>chat</td><td>chat role=tool thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:28:41Z</code></td><td>chat</td><td>chat role=tool thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:28:42Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=2163</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:30:21Z</code></td><td>chat</td><td>chat role=user thread=Skepta Song Search chars=32</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:30:21Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:30:22Z</code></td><td>chat</td><td>chat role=tool thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:30:24Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=1687</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:32:50Z</code></td><td>chat</td><td>chat role=user thread=Skepta Song Search chars=96</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:32:52Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:32:52Z</code></td><td>chat</td><td>chat role=system thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:32:52Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:32:57Z</code></td><td>chat</td><td>chat role=tool thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:00Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:03Z</code></td><td>chat</td><td>chat role=tool thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:03Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:04Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:07Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:08Z</code></td><td>chat</td><td>chat role=tool thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:10Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:21Z</code></td><td>chat</td><td>chat role=tool thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:21Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:27Z</code></td><td>chat</td><td>chat role=tool thread=Skepta Song Search chars=264</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:27Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=914</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:33:33Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:34:20Z</code></td><td>chat</td><td>chat role=user thread=Skepta Song Search chars=19</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:34:20Z</code></td><td>chat</td><td>chat role=system thread=Skepta Song Search chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T02:34:20Z</code></td><td>chat</td><td>chat role=assistant thread=Skepta Song Search chars=1242</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T03:31:34Z</code></td><td>chat</td><td>chat role=user thread=Sussy or Safe chars=6</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T03:31:34Z</code></td><td>chat</td><td>chat role=system thread=Sussy or Safe chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T03:31:34Z</code></td><td>chat</td><td>chat role=assistant thread=Sussy or Safe chars=1336</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T03:31:34Z</code></td><td>chat</td><td>chat role=assistant thread=Sussy or Safe chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T05:06:27Z</code></td><td>chat</td><td>chat role=user thread=Branch · DASHI vs LES chars=162</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T05:06:27Z</code></td><td>chat</td><td>chat role=system thread=Branch · DASHI vs LES chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T05:06:27Z</code></td><td>chat</td><td>chat role=tool thread=Branch · DASHI vs LES chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T05:06:31Z</code></td><td>chat</td><td>chat role=tool thread=Branch · DASHI vs LES chars=45126</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T05:06:31Z</code></td><td>chat</td><td>chat role=assistant thread=Branch · DASHI vs LES chars=5388</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T05:06:31Z</code></td><td>chat</td><td>chat role=tool thread=Branch · DASHI vs LES chars=16224</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T05:06:31Z</code></td><td>chat</td><td>chat role=tool thread=Branch · DASHI vs LES chars=3463</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T05:06:31Z</code></td><td>chat</td><td>chat role=assistant thread=Branch · DASHI vs LES chars=0</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T23:19:47Z</code></td><td>chat</td><td>chat role=user thread=Branch · DASHI vs LES chars=569</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr><tr><td><code>2026-01-26T23:19:47Z</code></td><td>chat</td><td>chat role=assistant thread=Branch · DASHI vs LES chars=5267</td><td><code>/home/c/Documents/code/ITIR-suite/chat-export-structurer/my_archive.sqlite#re_gpt_phase4_live_2026_02_05</code></td></tr></tbody>
+      </table>
+    </section>
+    <section class="panel">
+      <h2>Warnings</h2>
+      <ul><li>Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date).</li></ul>
+    </section>
+  </main>
+</body>
+</html>

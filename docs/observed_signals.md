@@ -31,6 +31,18 @@ Cloud connectors are read-only audit feeds.
 - Required fields: `ts`, `cmd_hash`, `cwd_hash`, `exit`, `provenance`
 - Allowed fields: `duration_ms`, `shell` (no raw command lines)
 
+### Git branch history
+- Signal: `git_branch`
+- Required fields: `ts`, `event_type`, `repo`, `ref`, `provenance`
+- Allowed fields: `commit_hash`, `event_hash`, `from_ref`, `to_ref`
+- Events are metadata-only branch transitions (no commit body text).
+
+### Pull request lifecycle
+- Signal: `pr_event`
+- Required fields: `ts`, `event_type`, `repo`, `pr_number`, `provenance`
+- Allowed fields: `state`, `actor_hash`, `pr_key_hash`
+- Typical event types: `pr_received`, `pr_opened`, `pr_commented`, `pr_merged`
+
 ### System event logs
 - Signal: `system`
 - Required fields: `ts`, `platform`, `event_id`, `severity`, `provenance`
@@ -84,10 +96,14 @@ Example using pre-exported JSONL files (no live collection):
   /tmp/notes_meta.jsonl \
   /tmp/social_feed.jsonl \
   /tmp/windows_event.jsonl \
-  /tmp/macos_unified.jsonl
+  /tmp/macos_unified.jsonl \
+  /tmp/pr_events.jsonl
 ```
 
 All inputs are optional; missing files are skipped with warnings.
+`logs/git_branch/<date>.jsonl` is emitted automatically from local git reflog.
+For direct GitHub PR ingestion (no JSONL input file), pass positional arg 19
+to `run_day.sh` as `auto` or `owner/repo`.
 
 ## Social stub collectors
 See `docs/social_stub_collectors.md` for per-platform stub inputs.

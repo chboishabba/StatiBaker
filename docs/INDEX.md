@@ -19,12 +19,14 @@
 
 ## Integration
 - `docs/openclaw_integration.md`
+- `docs/tool_interop_observer_contract.md`
 - `ITIR_INGEST_CONTRACT.md`
 - `OCR_ADAPTER_CONTRACT.md`
 - `ANDROID_STATUS_CONTRACT.md`
 
 ## Observed Signals
 - `docs/observed_signals.md`
+- `docs/activity_dashboard.md`
 - `docs/social_audit_redaction.md`
 - `docs/social_stub_collectors.md`
 
