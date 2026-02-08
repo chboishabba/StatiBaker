@@ -42,6 +42,7 @@ No motivational framing.
 <img width="926" height="1280" alt="image" src="https://github.com/user-attachments/assets/2e76f49d-4bf1-4cde-bfbd-fbe66919cf04" />
 <img width="1287" height="946" alt="image" src="https://github.com/user-attachments/assets/94086272-c641-459d-afbb-7a9ff469b421" />
 <img width="1310" height="843" alt="image" src="https://github.com/user-attachments/assets/f6879eef-aa7c-4a93-827f-4c25a7b72cc7" />
+<img width="1002" height="807" alt="image" src="https://github.com/user-attachments/assets/acf88ca8-4d62-45b0-87a4-154b5057e7c0" />
 
 ---
 
