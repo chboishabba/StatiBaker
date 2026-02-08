@@ -37,6 +37,10 @@ No judgement.
 No optimisation.
 No motivational framing.
 
+
+---
+<img width="926" height="1280" alt="image" src="https://github.com/user-attachments/assets/2e76f49d-4bf1-4cde-bfbd-fbe66919cf04" />
+
 ---
 
 ## Inputs (state surface)
