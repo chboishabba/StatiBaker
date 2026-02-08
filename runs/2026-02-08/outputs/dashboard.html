@@ -25,6 +25,7 @@
     .grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
     .metric { border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; }
     .metric b { display:block; font-size: 1.3rem; margin-top: 0.2rem; }
+    .metric small { display:block; margin-top: 0.2rem; color: #4b5563; font-size: 0.78rem; }
     .bars { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
     .bars ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
     .bars li { display: grid; grid-template-columns: 2.2rem 1fr 2rem; align-items: center; gap: 0.4rem; }
@@ -53,6 +54,13 @@
     .src-outputs { background: #ebf8ff; color: #0f766e; border-color: #9fdcd6; }
     .src-other { background: #f3f4f6; color: #374151; border-color: #d1d5db; }
     .links li { display: grid; gap: 0.15rem; margin-bottom: 0.45rem; }
+    .wf-strip { display: flex; gap: 0.16rem; overflow-x: auto; padding: 0.25rem 0 0.35rem 0; }
+    .wf-seg { width: 0.62rem; height: 0.95rem; border-radius: 2px; border: 1px solid rgba(0, 0, 0, 0.15); flex: 0 0 auto; }
+    .wf-seg.switch { outline: 2px solid rgba(17, 24, 39, 0.65); outline-offset: 1px; }
+    .wf-legend { list-style: none; margin: 0.5rem 0 0 0; padding: 0; display: grid; gap: 0.3rem; }
+    .wf-legend li { display: flex; align-items: center; gap: 0.35rem; }
+    .wf-swatch { width: 0.75rem; height: 0.75rem; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.25); display: inline-block; }
+    .wf-note { margin-top: 0.45rem; color: #4b5563; font-size: 0.84rem; }
     @media (max-width: 760px) { table { font-size: 0.82rem; } }
   </style>
 </head>
@@ -62,9 +70,9 @@
       <h1>SB Activity Dashboard</h1>
       <div class="meta">
         <div><b>Date:</b> <code>2026-02-08</code></div>
-        <div><b>Generated:</b> <code>2026-02-08T07:43:15.437562Z</code></div>
+        <div><b>Generated:</b> <code>2026-02-08T09:21:25.544742Z</code></div>
         <div><b>Chat source:</b> <code>none</code></div>
-        <div><b>Chat scope:</b> <code>all</code></div>
+        <div><b>Chat scope:</b> <code>scoped</code></div>
       </div>
     </section>
     <section class="panel">
@@ -72,6 +80,9 @@
       <div class="grid">
         <div class="metric">Chat messages<b>0</b></div>
         <div class="metric">Chat threads<b>0</b></div>
+        <div class="metric">Messages/hour (active)<b>0.00</b><small>0 active hour(s)</small></div>
+        <div class="metric">Messages/chat<b>0.00</b></div>
+        <div class="metric">Chat switches<b>0</b><small>0.0% of transitions</small></div>
         <div class="metric">Shell commands<b>0</b></div>
         <div class="metric">Input events<b>0</b></div>
         <div class="metric">Window focus events<b>0</b></div>
@@ -82,7 +93,7 @@
       </div>
     </section>
     <section class="panel bars">
-      <div><h2>Chat/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
+      <div><h2>Messages/hour</h2><ul><li><code>00</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
 <li><code>01</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
 <li><code>02</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
 <li><code>03</code><div class='bar-wrap'><div class='bar chat' style='width:0%;'></div></div><span>0</span></li>
@@ -229,7 +240,7 @@
     </section>
     <section class="panel">
       <h2>Process Artifacts</h2>
-      <ul class="links"><li><a href='daily_brief.md'>daily_brief.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/daily_brief.md</code></li><li><a href='retrospective.md'>retrospective.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/retrospective.md</code></li><li><a href='state.json'>state.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/state.json</code></li><li><a href='drift.json'>drift.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/drift.json</code></li><li><a href='activity_ledger.json'>activity_ledger.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json</code></li><li><a href='../../../COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/CONTEXT.md'>CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md'>20260208T053748Z_context_refresh_6986d38e.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json'>20260208T054246Z_resolver_6986c9f5.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json'>20260208T054330Z_resolver_6986c16d.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json'>20260208T054330Z_resolver_6986ccc6.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt'>20260208T054344Z_latest_6986c16d.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt'>20260208T054344Z_latest_6986c9f5.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt'>20260208T054344Z_latest_6986ccc6.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md'>20260208T054446Z_context_refresh_triplet.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv'>20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json'>20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T060942Z_resolver_69882636-4404-839a-80cb-a2c770e25ae3.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv'>mentions_rank_20260203_225730.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/mentions_rank_20260203_225730.tsv</code></li></ul>
+      <ul class="links"><li><a href='daily_brief.md'>daily_brief.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/daily_brief.md</code></li><li><a href='retrospective.md'>retrospective.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/retrospective.md</code></li><li><a href='state.json'>state.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/state.json</code></li><li><a href='drift.json'>drift.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/drift.json</code></li><li><a href='activity_ledger.json'>activity_ledger.json</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/runs/2026-02-08/outputs/activity_ledger.json</code></li><li><a href='../../../COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/StatiBaker/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/CONTEXT.md'>CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/COMPACTIFIED_CONTEXT.md'>COMPACTIFIED_CONTEXT.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/COMPACTIFIED_CONTEXT.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md'>20260208T053748Z_context_refresh_6986d38e.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T053748Z_context_refresh_6986d38e.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json'>20260208T054246Z_resolver_6986c9f5.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054246Z_resolver_6986c9f5.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json'>20260208T054330Z_resolver_6986c16d.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986c16d.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json'>20260208T054330Z_resolver_6986ccc6.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054330Z_resolver_6986ccc6.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt'>20260208T054344Z_latest_6986c16d.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c16d.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt'>20260208T054344Z_latest_6986c9f5.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986c9f5.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt'>20260208T054344Z_latest_6986ccc6.txt</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054344Z_latest_6986ccc6.txt</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md'>20260208T054446Z_context_refresh_triplet.md</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_context_refresh_triplet.md</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv'>20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T054446Z_latest_triplet_6986c9f5_6986ccc6_6986c16d.tsv</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071554Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071606Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071626Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li><li><a href='../../../../__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json'>20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</a><code>/home/c/Documents/code/ITIR-suite/__CONTEXT/last_sync/20260208T071635Z_resolver_6986c9f5-3988-839d-ad80-9338ea8a04eb.json</code></li></ul>
     </section>
     <section class="panel">
       <h2>Chat Threads</h2>
@@ -237,6 +248,22 @@
         <thead><tr><th>Thread ID</th><th>Title</th><th>Origin</th><th>Messages</th><th>First</th><th>Last</th><th>Roles</th></tr></thead>
         <tbody><tr><td colspan='7'>No chat thread activity for this date.</td></tr></tbody>
       </table>
+    </section>
+    <section class="panel">
+      <h2>Chat Flow Waterfall</h2>
+      <p>
+        messages=<code>0</code>,
+        threads=<code>0</code>,
+        switches=<code>0</code>,
+        switch_rate=<code>0.0%</code>,
+        window=<code></code> to
+        <code></code>
+      </p>
+      <div class="wf-strip"><span>No chat messages for this date.</span></div>
+      <p class="wf-note">
+        Each block is one chat message; outlined blocks mark a jump to a different thread.
+      </p>
+      <ul class="wf-legend"><li>None</li></ul>
     </section>
     <section class="panel">
       <h2>Tool Use Summary</h2>
@@ -286,8 +313,7 @@
     </section>
     <section class="panel">
       <h2>Warnings</h2>
-      <ul><li>No chat events found for this date in sqlite, chat exports, or resolver files.</li>
-<li>Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date).</li></ul>
+      <ul><li>No chat events found for this date in sqlite, chat exports, or resolver files.</li></ul>
     </section>
   </main>
   <script>

@@ -136,6 +136,10 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual("resolver", payload["chat_source"])
             self.assertEqual(2, payload["summary"]["chat_messages"])
             self.assertEqual(1, payload["summary"]["chat_threads"])
+            self.assertEqual(1, payload["summary"]["chat_active_hours"])
+            self.assertAlmostEqual(2.0, payload["summary"]["messages_per_hour_active"], places=2)
+            self.assertAlmostEqual(2.0, payload["summary"]["messages_per_chat"], places=2)
+            self.assertEqual(0, payload["summary"]["chat_switches"])
             self.assertEqual(1, payload["summary"]["shell_commands"])
             self.assertEqual(1, payload["summary"]["input_events"])
             self.assertEqual(10, payload["summary"]["input_keys_total"])
@@ -151,6 +155,10 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(2, payload["frequency_by_hour"]["chat"][6])
             self.assertEqual(1, payload["frequency_by_hour"]["git_branch"][6])
             self.assertEqual(3, payload["frequency_by_hour"]["pr"][6])
+            self.assertEqual(2, payload["chat_flow"]["message_count"])
+            self.assertEqual(1, payload["chat_flow"]["thread_count"])
+            self.assertEqual(0, payload["chat_flow"]["switch_count"])
+            self.assertEqual(2, len(payload["chat_flow"]["waterfall"]))
 
             link_paths = [item["path"] for item in payload["artifact_links"]]
             self.assertIn(str(run_outputs / "daily_brief.md"), link_paths)
@@ -166,6 +174,8 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(date, loaded["date"])
             html_text = html_out.read_text(encoding="utf-8")
             self.assertIn("SB Activity Dashboard", html_text)
+            self.assertIn("Messages/chat", html_text)
+            self.assertIn("Chat Flow Waterfall", html_text)
             self.assertIn("timeline-search", html_text)
             self.assertIn("Timeline</h2>", html_text)
 
@@ -257,6 +267,7 @@ class TestDashboardBuild(unittest.TestCase):
             )
             self.assertEqual("all", debug_payload["chat_scope_mode"])
             self.assertEqual(2, debug_payload["summary"]["chat_messages"])
+            self.assertEqual(0, debug_payload["summary"]["chat_switches"])
             self.assertEqual("resolver", debug_payload["chat_source"])
             self.assertEqual(2, debug_payload["frequency_by_hour"]["chat"][6])
             self.assertIn(
@@ -677,6 +688,82 @@ class TestDashboardBuild(unittest.TestCase):
             )
             self.assertIn("*CONTEXT.md", files_variants)
             self.assertIn("context-sources.md", files_variants)
+
+    def test_chat_flow_waterfall_marks_thread_switches(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+            date = "2026-02-08"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+
+            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            thread_a = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            thread_b = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            rows = [
+                ("m1", thread_a, "chatgpt", "main", "2026-02-08T10:00:00+00:00", "user", "a1", "Thread A", "src"),
+                ("m2", thread_a, "chatgpt", "main", "2026-02-08T10:01:00+00:00", "assistant", "a2", "Thread A", "src"),
+                ("m3", thread_b, "chatgpt", "main", "2026-02-08T10:02:00+00:00", "user", "b1", "Thread B", "src"),
+                ("m4", thread_a, "chatgpt", "main", "2026-02-08T10:03:00+00:00", "assistant", "a3", "Thread A", "src"),
+            ]
+            cur.executemany("INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+            con.commit()
+            con.close()
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=True,
+            )
+
+            flow = payload["chat_flow"]
+            self.assertEqual(4, flow["message_count"])
+            self.assertEqual(2, flow["thread_count"])
+            self.assertEqual(2, flow["switch_count"])
+            self.assertAlmostEqual(0.667, flow["switch_rate"], places=3)
+            self.assertAlmostEqual(2.0, payload["summary"]["messages_per_chat"], places=2)
+            self.assertEqual(2, payload["summary"]["chat_switches"])
+
+            out_html = runs_root / date / "outputs" / "dashboard.html"
+            out_json = runs_root / date / "outputs" / "dashboard.json"
+            write_dashboard_outputs(payload, json_path=out_json, html_path=out_html)
+            html_text = out_html.read_text(encoding="utf-8")
+            self.assertIn("Chat Flow Waterfall", html_text)
+            self.assertIn("wf-seg switch", html_text)
 
 
 if __name__ == "__main__":

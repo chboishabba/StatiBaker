@@ -19,6 +19,7 @@ RESOLVER_ID_RE = re.compile(r"resolver_([0-9a-fA-F-]{8,})\.json$")
 WEEKLY_SUMMARY_KEYS = (
     "chat_messages",
     "chat_threads",
+    "chat_switches",
     "shell_commands",
     "input_events",
     "input_keys_total",
@@ -32,6 +33,20 @@ WEEKLY_SUMMARY_KEYS = (
     "pr_commented",
     "pr_merged",
     "timeline_events",
+)
+CHAT_FLOW_COLORS = (
+    "#0b6e4f",
+    "#1d4ed8",
+    "#a16207",
+    "#9d174d",
+    "#0f766e",
+    "#7c3aed",
+    "#b45309",
+    "#be123c",
+    "#047857",
+    "#1e40af",
+    "#7c2d12",
+    "#4c1d95",
 )
 
 
@@ -90,6 +105,19 @@ def _safe_int(value: object) -> int:
         return max(0, int(value))
     except (TypeError, ValueError):
         return 0
+
+
+def _safe_float(value: object) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _ratio(numerator: int, denominator: int, digits: int = 2) -> float:
+    if denominator <= 0:
+        return 0.0
+    return round(float(numerator) / float(denominator), digits)
 
 
 def _display_title(value: object) -> str:
@@ -1142,6 +1170,124 @@ def _increment_bin(bins: list[int], dt: datetime) -> None:
     bins[dt.hour] += 1
 
 
+def _build_chat_flow(
+    chat_events: list[TimelineEvent],
+    *,
+    render_limit: int = 480,
+) -> dict[str, Any]:
+    ordered = sorted((event for event in chat_events if event.kind == "chat"), key=lambda item: item.dt)
+    total_messages = len(ordered)
+    if total_messages == 0:
+        return {
+            "message_count": 0,
+            "thread_count": 0,
+            "active_hours": 0,
+            "switch_count": 0,
+            "switch_rate": 0.0,
+            "switch_opportunities": 0,
+            "messages_per_hour_active": 0.0,
+            "messages_per_hour_day": 0.0,
+            "messages_per_chat": 0.0,
+            "dominant_thread_share": 0.0,
+            "first_ts": "",
+            "last_ts": "",
+            "hour_bins": _empty_bins(),
+            "threads": [],
+            "waterfall": [],
+            "waterfall_render_limit": max(1, render_limit),
+            "waterfall_truncated": False,
+        }
+
+    thread_counts: Counter[str] = Counter()
+    thread_titles: dict[str, str] = {}
+    thread_order: dict[str, int] = {}
+    hour_bins = _empty_bins()
+    switch_count = 0
+    prev_thread_key = ""
+    waterfall_all: list[dict[str, Any]] = []
+
+    for event in ordered:
+        meta = event.meta if isinstance(event.meta, dict) else {}
+        raw_thread_id = str(meta.get("thread_id") or "").strip().lower()
+        thread_title = _resolve_thread_title(
+            meta.get("thread_title"),
+            meta.get("thread_first_user_preview"),
+        )
+        thread_key = raw_thread_id or f"untitled:{thread_title.lower()}"
+        if thread_key not in thread_order:
+            thread_order[thread_key] = len(thread_order)
+            thread_titles[thread_key] = thread_title
+
+        thread_counts[thread_key] += 1
+        _increment_bin(hour_bins, event.dt)
+
+        switched = bool(prev_thread_key) and prev_thread_key != thread_key
+        if switched:
+            switch_count += 1
+        prev_thread_key = thread_key
+
+        color_index = thread_order[thread_key] % len(CHAT_FLOW_COLORS)
+        role_text = str(meta.get("role") or "unknown").strip().lower() or "unknown"
+        waterfall_all.append(
+            {
+                "ts": _iso_utc(event.dt),
+                "hour": event.dt.hour,
+                "thread_id": raw_thread_id,
+                "thread_key": thread_key,
+                "thread_title": thread_titles[thread_key],
+                "role": role_text,
+                "switch": switched,
+                "color_index": color_index,
+                "color_hex": CHAT_FLOW_COLORS[color_index],
+            }
+        )
+
+    render_limit_safe = max(1, int(render_limit))
+    waterfall = waterfall_all[-render_limit_safe:]
+    active_hours = sum(1 for count in hour_bins if count > 0)
+    thread_count = len(thread_counts)
+    dominant_count = max(thread_counts.values()) if thread_counts else 0
+
+    threads: list[dict[str, Any]] = []
+    for thread_key, count in sorted(
+        thread_counts.items(),
+        key=lambda item: (-item[1], thread_order.get(item[0], 0)),
+    ):
+        color_index = thread_order.get(thread_key, 0) % len(CHAT_FLOW_COLORS)
+        threads.append(
+            {
+                "thread_key": thread_key,
+                "thread_id": "" if thread_key.startswith("untitled:") else thread_key,
+                "thread_title": thread_titles.get(thread_key, "(no title)"),
+                "message_count": count,
+                "share": _ratio(count, total_messages, digits=3),
+                "color_index": color_index,
+                "color_hex": CHAT_FLOW_COLORS[color_index],
+            }
+        )
+
+    return {
+        "message_count": total_messages,
+        "thread_count": thread_count,
+        "active_hours": active_hours,
+        "switch_count": switch_count,
+        "switch_rate": _ratio(switch_count, max(0, total_messages - 1), digits=3),
+        "switches_per_active_hour": _ratio(switch_count, active_hours, digits=2),
+        "switch_opportunities": max(0, total_messages - 1),
+        "messages_per_hour_active": _ratio(total_messages, active_hours, digits=2),
+        "messages_per_hour_day": round(total_messages / 24.0, 2),
+        "messages_per_chat": _ratio(total_messages, thread_count, digits=2),
+        "dominant_thread_share": _ratio(dominant_count, total_messages, digits=3),
+        "first_ts": _iso_utc(ordered[0].dt),
+        "last_ts": _iso_utc(ordered[-1].dt),
+        "hour_bins": hour_bins,
+        "threads": threads,
+        "waterfall": waterfall,
+        "waterfall_render_limit": render_limit_safe,
+        "waterfall_truncated": total_messages > len(waterfall),
+    }
+
+
 def _rel_href(target: str, html_path: Path) -> str:
     try:
         return os.path.relpath(target, html_path.parent)
@@ -1173,6 +1319,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     threads = payload.get("chat_threads", [])
     tool_use_summary = payload.get("tool_use_summary") or {}
     warnings = payload.get("warnings", [])
+    chat_flow = payload.get("chat_flow") or {}
 
     artifact_rows = []
     for item in artifacts:
@@ -1273,6 +1420,48 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     tool_warning_rows = "\n".join(
         f"<li>{escape(str(warn))}</li>" for warn in (tool_use_summary.get("warnings") or [])
     )
+
+    flow_thread_rows: list[str] = []
+    for thread in chat_flow.get("threads") or []:
+        if not isinstance(thread, dict):
+            continue
+        color_hex = str(thread.get("color_hex") or "#6b7280")
+        message_count = _safe_int(thread.get("message_count"))
+        share_pct = _safe_float(thread.get("share")) * 100.0
+        thread_title = str(thread.get("thread_title") or "(no title)")
+        thread_id = str(thread.get("thread_id") or "")
+        thread_label = thread_title
+        if thread_id:
+            thread_label = f"{thread_label} [{_short_id(thread_id, width=12)}]"
+        flow_thread_rows.append(
+            "<li>"
+            f"<span class='wf-swatch' style='background:{escape(color_hex)};'></span>"
+            f"<code>{message_count}</code> {escape(thread_label)} <code>{share_pct:.1f}%</code>"
+            "</li>"
+        )
+
+    flow_segments: list[str] = []
+    for segment in chat_flow.get("waterfall") or []:
+        if not isinstance(segment, dict):
+            continue
+        color_hex = str(segment.get("color_hex") or "#6b7280")
+        thread_title = str(segment.get("thread_title") or "(no title)")
+        thread_id = str(segment.get("thread_id") or "")
+        role_text = str(segment.get("role") or "unknown")
+        ts_text = str(segment.get("ts") or "")
+        switch_text = "switch" if bool(segment.get("switch")) else "stay"
+        title_parts = [ts_text, role_text, thread_title, switch_text]
+        if thread_id:
+            title_parts.append(_short_id(thread_id, width=12))
+        title_text = " | ".join(item for item in title_parts if item)
+        class_text = "wf-seg switch" if bool(segment.get("switch")) else "wf-seg"
+        flow_segments.append(
+            f"<span class='{class_text}' style='background:{escape(color_hex)};' title='{escape(title_text)}' aria-label='{escape(title_text)}'></span>"
+        )
+
+    messages_per_hour_active = _safe_float(summary.get("messages_per_hour_active"))
+    messages_per_chat = _safe_float(summary.get("messages_per_chat"))
+    chat_switch_rate_pct = _safe_float(summary.get("chat_switch_rate")) * 100.0
 
     kind_counts: Counter[str] = Counter()
     source_counts: Counter[str] = Counter()
@@ -1403,6 +1592,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     .grid {{ display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }}
     .metric {{ border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; }}
     .metric b {{ display:block; font-size: 1.3rem; margin-top: 0.2rem; }}
+    .metric small {{ display:block; margin-top: 0.2rem; color: #4b5563; font-size: 0.78rem; }}
     .bars {{ display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }}
     .bars ul {{ list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }}
     .bars li {{ display: grid; grid-template-columns: 2.2rem 1fr 2rem; align-items: center; gap: 0.4rem; }}
@@ -1431,6 +1621,13 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     .src-outputs {{ background: #ebf8ff; color: #0f766e; border-color: #9fdcd6; }}
     .src-other {{ background: #f3f4f6; color: #374151; border-color: #d1d5db; }}
     .links li {{ display: grid; gap: 0.15rem; margin-bottom: 0.45rem; }}
+    .wf-strip {{ display: flex; gap: 0.16rem; overflow-x: auto; padding: 0.25rem 0 0.35rem 0; }}
+    .wf-seg {{ width: 0.62rem; height: 0.95rem; border-radius: 2px; border: 1px solid rgba(0, 0, 0, 0.15); flex: 0 0 auto; }}
+    .wf-seg.switch {{ outline: 2px solid rgba(17, 24, 39, 0.65); outline-offset: 1px; }}
+    .wf-legend {{ list-style: none; margin: 0.5rem 0 0 0; padding: 0; display: grid; gap: 0.3rem; }}
+    .wf-legend li {{ display: flex; align-items: center; gap: 0.35rem; }}
+    .wf-swatch {{ width: 0.75rem; height: 0.75rem; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.25); display: inline-block; }}
+    .wf-note {{ margin-top: 0.45rem; color: #4b5563; font-size: 0.84rem; }}
     @media (max-width: 760px) {{ table {{ font-size: 0.82rem; }} }}
   </style>
 </head>
@@ -1450,6 +1647,9 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       <div class="grid">
         <div class="metric">Chat messages<b>{summary.get("chat_messages", 0)}</b></div>
         <div class="metric">Chat threads<b>{summary.get("chat_threads", 0)}</b></div>
+        <div class="metric">Messages/hour (active)<b>{messages_per_hour_active:.2f}</b><small>{_safe_int(summary.get("chat_active_hours"))} active hour(s)</small></div>
+        <div class="metric">Messages/chat<b>{messages_per_chat:.2f}</b></div>
+        <div class="metric">Chat switches<b>{_safe_int(summary.get("chat_switches"))}</b><small>{chat_switch_rate_pct:.1f}% of transitions</small></div>
         <div class="metric">Shell commands<b>{summary.get("shell_commands", 0)}</b></div>
         <div class="metric">Input events<b>{summary.get("input_events", 0)}</b></div>
         <div class="metric">Window focus events<b>{summary.get("window_focus_events", 0)}</b></div>
@@ -1460,7 +1660,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       </div>
     </section>
     <section class="panel bars">
-      <div><h2>Chat/hour</h2><ul>{_render_hour_rows(freq.get("chat", _empty_bins()), "chat")}</ul></div>
+      <div><h2>Messages/hour</h2><ul>{_render_hour_rows(freq.get("chat", _empty_bins()), "chat")}</ul></div>
       <div><h2>Shell/hour</h2><ul>{_render_hour_rows(freq.get("shell", _empty_bins()), "shell")}</ul></div>
       <div><h2>Input/hour</h2><ul>{_render_hour_rows(freq.get("input", _empty_bins()), "input")}</ul></div>
       <div><h2>Window/hour</h2><ul>{_render_hour_rows(freq.get("window", _empty_bins()), "window")}</ul></div>
@@ -1477,6 +1677,26 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         <thead><tr><th>Thread ID</th><th>Title</th><th>Origin</th><th>Messages</th><th>First</th><th>Last</th><th>Roles</th></tr></thead>
         <tbody>{"".join(thread_rows) if thread_rows else "<tr><td colspan='7'>No chat thread activity for this date.</td></tr>"}</tbody>
       </table>
+    </section>
+    <section class="panel">
+      <h2>Chat Flow Waterfall</h2>
+      <p>
+        messages=<code>{_safe_int(chat_flow.get("message_count"))}</code>,
+        threads=<code>{_safe_int(chat_flow.get("thread_count"))}</code>,
+        switches=<code>{_safe_int(chat_flow.get("switch_count"))}</code>,
+        switch_rate=<code>{_safe_float(chat_flow.get("switch_rate")) * 100.0:.1f}%</code>,
+        window=<code>{escape(str(chat_flow.get("first_ts") or ""))}</code> to
+        <code>{escape(str(chat_flow.get("last_ts") or ""))}</code>
+      </p>
+      <div class="wf-strip">{"".join(flow_segments) if flow_segments else "<span>No chat messages for this date.</span>"}</div>
+      <p class="wf-note">
+        {(
+          f"Showing newest {_safe_int(chat_flow.get('waterfall_render_limit'))} of {_safe_int(chat_flow.get('message_count'))} messages."
+          if bool(chat_flow.get("waterfall_truncated"))
+          else "Each block is one chat message; outlined blocks mark a jump to a different thread."
+        )}
+      </p>
+      <ul class="wf-legend">{"".join(flow_thread_rows) if flow_thread_rows else "<li>None</li>"}</ul>
     </section>
     <section class="panel">
       <h2>Tool Use Summary</h2>
@@ -1619,6 +1839,73 @@ def _date_window(end_date_text: str, days: int) -> list[str]:
     ]
 
 
+def _build_trailing_chat_context(
+    *,
+    date_text: str,
+    runs_root: Path,
+    current_summary: dict[str, Any],
+    days: int = 7,
+) -> dict[str, Any]:
+    if days <= 0:
+        return {"window_days": 0, "available_days": 0, "has_baseline": False}
+
+    end_date = date_cls.fromisoformat(date_text)
+    baseline_summaries: list[dict[str, Any]] = []
+    for idx in range(1, days + 1):
+        day_text = (end_date - timedelta(days=idx)).isoformat()
+        summary_path = runs_root / day_text / "outputs" / "dashboard.json"
+        if not summary_path.exists():
+            continue
+        try:
+            payload = json.loads(summary_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        summary = payload.get("summary")
+        if isinstance(summary, dict):
+            baseline_summaries.append(summary)
+
+    def mean(metric_key: str, digits: int) -> float:
+        if not baseline_summaries:
+            return 0.0
+        total = sum(_safe_float(item.get(metric_key)) for item in baseline_summaries)
+        return round(total / len(baseline_summaries), digits)
+
+    current_rate = _safe_float(current_summary.get("context_switch_rate"))
+    current_switches_per_hour = _safe_float(current_summary.get("switches_per_active_hour"))
+    current_messages_per_chat = _safe_float(current_summary.get("messages_per_chat"))
+    current_top_thread_share = _safe_float(current_summary.get("top_thread_share"))
+
+    baseline_rate = mean("context_switch_rate", 3)
+    baseline_switches_per_hour = mean("switches_per_active_hour", 2)
+    baseline_messages_per_chat = mean("messages_per_chat", 2)
+    baseline_top_thread_share = mean("top_thread_share", 3)
+
+    available_days = len(baseline_summaries)
+    return {
+        "window_days": days,
+        "available_days": available_days,
+        "has_baseline": available_days > 0,
+        "current": {
+            "context_switch_rate": round(current_rate, 3),
+            "switches_per_active_hour": round(current_switches_per_hour, 2),
+            "messages_per_chat": round(current_messages_per_chat, 2),
+            "top_thread_share": round(current_top_thread_share, 3),
+        },
+        "baseline_avg": {
+            "context_switch_rate": baseline_rate,
+            "switches_per_active_hour": baseline_switches_per_hour,
+            "messages_per_chat": baseline_messages_per_chat,
+            "top_thread_share": baseline_top_thread_share,
+        },
+        "delta": {
+            "context_switch_rate": round(current_rate - baseline_rate, 3),
+            "switches_per_active_hour": round(current_switches_per_hour - baseline_switches_per_hour, 2),
+            "messages_per_chat": round(current_messages_per_chat - baseline_messages_per_chat, 2),
+            "top_thread_share": round(current_top_thread_share - baseline_top_thread_share, 3),
+        },
+    }
+
+
 def build_dashboard(
     *,
     date_text: str,
@@ -1701,6 +1988,8 @@ def build_dashboard(
         elif event.kind == "pr":
             _increment_bin(freq["pr"], event.dt)
 
+    chat_flow = _build_chat_flow(chat_events)
+
     artifacts = _collect_artifact_links(
         repo_root,
         outputs_dir,
@@ -1717,30 +2006,49 @@ def build_dashboard(
             "Debug mode enabled: chat scope filter disabled (all chat threads scanned for this date)."
         )
 
+    summary = {
+        "chat_messages": len(chat_events),
+        "chat_threads": len(thread_activity),
+        "chat_active_hours": _safe_int(chat_flow.get("active_hours")),
+        "messages_per_hour_active": _safe_float(chat_flow.get("messages_per_hour_active")),
+        "messages_per_hour_day": _safe_float(chat_flow.get("messages_per_hour_day")),
+        "messages_per_chat": _safe_float(chat_flow.get("messages_per_chat")),
+        "chat_switches": _safe_int(chat_flow.get("switch_count")),
+        "chat_switch_rate": _safe_float(chat_flow.get("switch_rate")),
+        "context_switch_rate": _safe_float(chat_flow.get("switch_rate")),
+        "switches_per_active_hour": _safe_float(chat_flow.get("switches_per_active_hour")),
+        "top_thread_share": _safe_float(chat_flow.get("dominant_thread_share")),
+        "shell_commands": shell_commands,
+        "input_events": input_count,
+        "input_keys_total": input_keys_total,
+        "input_mouse_total": input_mouse_total,
+        "window_focus_events": window_count,
+        "activity_events": activity_count,
+        "git_commits": git_commits,
+        "git_branch_events": git_branch_count,
+        "pr_events": pr_count,
+        "pr_received": pr_detail_counts.get("pr_received", 0),
+        "pr_commented": pr_detail_counts.get("pr_commented", 0),
+        "pr_merged": pr_detail_counts.get("pr_merged", 0),
+        "timeline_events": len(all_events),
+    }
+    trailing_chat_context = _build_trailing_chat_context(
+        date_text=date_text,
+        runs_root=runs_root,
+        current_summary=summary,
+        days=7,
+    )
+
     return {
         "date": date_text,
         "generated_at": _iso_utc(datetime.now(UTC)),
         "chat_source": chat_source,
         "chat_scope_mode": "all" if include_all_chat else "scoped",
         "chat_scope_thread_count": len(scoped_thread_ids),
-        "summary": {
-            "chat_messages": len(chat_events),
-            "chat_threads": len(thread_activity),
-            "shell_commands": shell_commands,
-            "input_events": input_count,
-            "input_keys_total": input_keys_total,
-            "input_mouse_total": input_mouse_total,
-            "window_focus_events": window_count,
-            "activity_events": activity_count,
-            "git_commits": git_commits,
-            "git_branch_events": git_branch_count,
-            "pr_events": pr_count,
-            "pr_received": pr_detail_counts.get("pr_received", 0),
-            "pr_commented": pr_detail_counts.get("pr_commented", 0),
-            "pr_merged": pr_detail_counts.get("pr_merged", 0),
-            "timeline_events": len(all_events),
-        },
+        "summary": summary,
         "frequency_by_hour": freq,
+        "chat_flow": chat_flow,
+        "chat_context_trailing": trailing_chat_context,
         "chat_threads": thread_activity,
         "tool_use_summary": tool_use_summary,
         "artifact_links": artifacts,
@@ -1797,6 +2105,10 @@ def build_weekly_dashboard(
             value = _safe_int(summary.get(key))
             totals[key] += value
             day_summary[key] = value
+        day_summary["context_switch_rate"] = _safe_float(summary.get("context_switch_rate"))
+        day_summary["switches_per_active_hour"] = _safe_float(summary.get("switches_per_active_hour"))
+        day_summary["messages_per_chat"] = _safe_float(summary.get("messages_per_chat"))
+        day_summary["top_thread_share"] = _safe_float(summary.get("top_thread_share"))
 
         daily_outputs = runs_root / date_text / "outputs"
         daily.append(
@@ -1816,6 +2128,28 @@ def build_weekly_dashboard(
         key: round(totals[key] / max(1, len(dates)), 2)
         for key in WEEKLY_SUMMARY_KEYS
     }
+    context_averages = {
+        "context_switch_rate": round(
+            sum(_safe_float((row.get("summary") or {}).get("context_switch_rate")) for row in daily)
+            / max(1, len(daily)),
+            3,
+        ),
+        "switches_per_active_hour": round(
+            sum(_safe_float((row.get("summary") or {}).get("switches_per_active_hour")) for row in daily)
+            / max(1, len(daily)),
+            2,
+        ),
+        "messages_per_chat": round(
+            sum(_safe_float((row.get("summary") or {}).get("messages_per_chat")) for row in daily)
+            / max(1, len(daily)),
+            2,
+        ),
+        "top_thread_share": round(
+            sum(_safe_float((row.get("summary") or {}).get("top_thread_share")) for row in daily)
+            / max(1, len(daily)),
+            3,
+        ),
+    }
     warnings: list[str] = []
     if warning_days:
         warnings.append(f"{len(warning_days)} day(s) reported one or more warnings.")
@@ -1832,6 +2166,7 @@ def build_weekly_dashboard(
         "chat_scope_mode": "all" if include_all_chat else "scoped",
         "totals": totals,
         "averages_per_day": averages,
+        "chat_context_averages": context_averages,
         "chat_source_counts": chat_source_counts,
         "daily": daily,
         "warning_days": warning_days,
@@ -1856,6 +2191,7 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
             f"<td>{escape(str(row.get('chat_scope_mode') or 'scoped'))}</td>"
             f"<td>{_safe_int(summary.get('chat_messages'))}</td>"
             f"<td>{_safe_int(summary.get('chat_threads'))}</td>"
+            f"<td>{_safe_int(summary.get('chat_switches'))}</td>"
             f"<td>{_safe_int(summary.get('shell_commands'))}</td>"
             f"<td>{_safe_int(summary.get('git_commits'))}</td>"
             f"<td>{_safe_int(summary.get('git_branch_events'))}</td>"
@@ -1908,6 +2244,7 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
       <div class="grid">
         <div class="metric">Chat messages<b>{_safe_int(totals.get("chat_messages"))}</b></div>
         <div class="metric">Chat threads<b>{_safe_int(totals.get("chat_threads"))}</b></div>
+        <div class="metric">Chat switches<b>{_safe_int(totals.get("chat_switches"))}</b></div>
         <div class="metric">Shell commands<b>{_safe_int(totals.get("shell_commands"))}</b></div>
         <div class="metric">Input events<b>{_safe_int(totals.get("input_events"))}</b></div>
         <div class="metric">Window focus events<b>{_safe_int(totals.get("window_focus_events"))}</b></div>
@@ -1919,6 +2256,7 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
       <p>
         <b>Daily averages:</b>
         chat=<code>{escape(str(averages.get("chat_messages", 0)))}</code>,
+        switches=<code>{escape(str(averages.get("chat_switches", 0)))}</code>,
         shell=<code>{escape(str(averages.get("shell_commands", 0)))}</code>,
         commits=<code>{escape(str(averages.get("git_commits", 0)))}</code>,
         prs=<code>{escape(str(averages.get("pr_events", 0)))}</code>
@@ -1927,8 +2265,8 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
     <section class="panel">
       <h2>Per-Day Summary</h2>
       <table>
-        <thead><tr><th>Date</th><th>Chat Source</th><th>Scope</th><th>Chat Msg</th><th>Chat Threads</th><th>Shell</th><th>Commits</th><th>Branch</th><th>PR</th><th>Warnings</th><th>Daily</th></tr></thead>
-        <tbody>{"".join(day_rows) if day_rows else "<tr><td colspan='11'>No days found.</td></tr>"}</tbody>
+        <thead><tr><th>Date</th><th>Chat Source</th><th>Scope</th><th>Chat Msg</th><th>Chat Threads</th><th>Switches</th><th>Shell</th><th>Commits</th><th>Branch</th><th>PR</th><th>Warnings</th><th>Daily</th></tr></thead>
+        <tbody>{"".join(day_rows) if day_rows else "<tr><td colspan='12'>No days found.</td></tr>"}</tbody>
       </table>
     </section>
     <section class="panel">
