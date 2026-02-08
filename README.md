@@ -1,6 +1,6 @@
 # StatiBaker
-
-**Just old-fashioned organisation — with modern failure modes taken seriously.**
+## Just old-fashioned organisation — with modern failure modes taken seriously.
+**LLMs are like ogres; they like onions**
 
 We don’t tell you what to do, who to be, or how to optimise.
 We don’t infer preferences, goals, or intent.
