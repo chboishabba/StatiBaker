@@ -1,7 +1,13 @@
-# NotebookLM Connector (Metadata-Only)
+# NotebookLM Connector (Metadata + Display Snippets)
 
 This connector ingests NotebookLM activity as `notes_meta` records with
-`app: "notebooklm"`. It captures IDs/status only (no notebook/source content).
+`app: "notebooklm"`.
+
+Default intent:
+- capture lifecycle metadata (context/notebook/source/artifact observed)
+- preserve display-safe fields users expect to see in the UI (titles/types/status/timestamps/URLs)
+- optionally capture short source-guide snippets (summary + keywords)
+- avoid storing full notebook/source bodies by default
 
 ## 1) Prerequisites
 
@@ -33,11 +39,28 @@ Connectivity check:
 notebooklm auth check --test --json
 ```
 
-## 2) Capture raw NotebookLM metadata snapshot
+## 2) Capture raw NotebookLM snapshot
 
 ```bash
 cd StatiBaker
 python scripts/capture_notebooklm_meta.py --output /tmp/notebooklm_meta.jsonl
+```
+
+Optional richer capture:
+```bash
+python scripts/capture_notebooklm_meta.py \
+  --output /tmp/notebooklm_meta.jsonl \
+  --with-source-guides \
+  --source-snippet-chars 600
+```
+
+Optional artifact-only reductions:
+```bash
+# Skip artifact listing
+python scripts/capture_notebooklm_meta.py --output /tmp/notebooklm_meta.jsonl --no-artifacts
+
+# Skip source listing (status + notebooks only)
+python scripts/capture_notebooklm_meta.py --output /tmp/notebooklm_meta.jsonl --no-sources
 ```
 
 ### One-command daily wrapper (capture -> normalize -> run_day arg20)
@@ -73,10 +96,15 @@ Preview only:
 scripts/run_day_notebooklm_auto.sh --dry-run --date 2026-02-08 --repo /home/c/Documents/code/ITIR-suite
 ```
 
-Output lines are metadata-only events:
+Output lines include event records such as:
 - `context_observed`
 - `notebook_observed`
 - `source_observed`
+- `artifact_observed`
+
+`source_observed` can include display fields (`source_title`, `source_type`,
+`source_status`, `source_url`) and optional snippet fields
+(`source_summary`, `source_keywords`).
 
 ## 3) Normalize into SB notes signal
 
@@ -91,7 +119,13 @@ Normalized output schema:
 - `signal: notes_meta`
 - `app: notebooklm`
 - hashed IDs: `notebook_id_hash`, `note_id_hash`
-- `event`: `context_observed` / `notebook_observed` / `source_observed`
+- `event`: `context_observed` / `notebook_observed` / `source_observed` / `artifact_observed`
+- preserved display fields when present:
+  - notebook: `notebook_title`
+  - source: `source_title`, `source_type`, `source_status`, `source_url`,
+    optional `source_summary`, `source_keywords`
+  - artifact: `artifact_title`, `artifact_type`, `artifact_status`,
+    `artifact_created_at`
 
 ## 4) Ingest through `run_day.sh`
 
@@ -107,6 +141,8 @@ If you already have an app-notes feed for arg 14, pass both:
 
 ## 5) Privacy boundary
 
-- Do not emit NotebookLM prompt/answer text bodies.
-- Only metadata IDs/timestamps/status fields are allowed.
+- Do not emit full NotebookLM prompt/answer/source bodies by default.
+- Display fields and short snippets are allowed for local-user UX parity.
+- If a stricter posture is needed, disable source-guide capture and rely on
+  hashed IDs + lifecycle status only.
 - Keep provenance on every record (`source`, `collected_at`).

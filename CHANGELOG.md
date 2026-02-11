@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-02-11
+- Extended NotebookLM snapshot capture (`scripts/capture_notebooklm_meta.py`)
+  to ingest per-notebook artifact listings (`artifact_observed`) and optional
+  source-guide snippets/keywords (`--with-source-guides`).
+- Added capture controls for NotebookLM metadata breadth:
+  `--no-artifacts`, `--with-source-guides`, and `--source-snippet-chars`.
+- Updated NotebookLM normalization (`adapters/notebooklm_meta.py`) to preserve
+  display fields for local UX (notebook/source/artifact title/type/status/url
+  and snippet fields) while keeping hashed identifiers for join keys.
+- Added adapter test coverage for NotebookLM display-field preservation and
+  artifact event expansion (`tests/test_observed_signals_meta_only.py`).
+- Updated NotebookLM ingestion docs/contracts (`docs/notebooklm_connector.md`,
+  `INGESTION_FORMATS.md`, `README.md`) to document lifecycle + snippet-bearing
+  metadata behavior.
+
 ## 2026-02-08
 - Documented chat-flow visual semantics split:
   - current `Timeline Strip` mode (linear sequence),

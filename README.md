@@ -37,12 +37,31 @@ No judgement.
 No optimisation.
 No motivational framing.
 
-
 ---
 <img width="926" height="1280" alt="image" src="https://github.com/user-attachments/assets/2e76f49d-4bf1-4cde-bfbd-fbe66919cf04" />
 <img width="1287" height="946" alt="image" src="https://github.com/user-attachments/assets/94086272-c641-459d-afbb-7a9ff469b421" />
 <img width="1310" height="843" alt="image" src="https://github.com/user-attachments/assets/f6879eef-aa7c-4a93-827f-4c25a7b72cc7" />
 <img width="1002" height="807" alt="image" src="https://github.com/user-attachments/assets/acf88ca8-4d62-45b0-87a4-154b5057e7c0" />
+
+## Current module features (what exists today)
+
+- **Run pipeline (append-only logs -> compiled state)**
+  - A reference run script that collects inputs into a per-day run dir and writes outputs: `scripts/run_day.sh`
+  - Pluggable adapters for common streams (git, filesystem meta, Prometheus, osquery, input/window focus, browser usage, notes meta, social/meta stubs, etc.): `adapters/`
+- **Daily bake outputs**
+  - Machine-readable state and supporting artifacts (runs under `runs_local/<YYYY-MM-DD>/outputs/` by default): `sb/`
+  - Drift counters written as observational JSON: `sb/drift.py` (see `DRIFT_SIGNALS.md`)
+- **Dashboards + web surfaces (current HTML, future Svelte)**
+  - Static dashboard builder that emits **JSON + HTML** for daily/weekly/lifetime views: `scripts/build_dashboard.py`, `sb/dashboard.py`
+  - HTML renderer functions (embedded CSS + client-side JS for filtering/palette controls):
+    `sb/dashboard.py` (`render_dashboard_html`, `render_weekly_dashboard_html`, `render_lifetime_dashboard_html`)
+  - Web iteration map (UI contracts + safe edit zones): `docs/web_module_map.md`
+  - Documented migration target for decomposing the monolithic renderer (SvelteKit + Tailwind): `docs/svelte_migration_sprint.md`
+  - Minimal metrics HTTP server (`/metrics`, Prometheus text format): `sb/metrics_server.py`, `scripts/serve_metrics.py`
+- **Portable bundles**
+  - Bundle spec + build/verify scripts for sharing state snapshots with traceability: `BUNDLE_SPEC.md`, `sb/bundle.py`, `scripts/bundle_export.py`, `scripts/verify_bundle.py`
+- **Query surface**
+  - Read-only query module over compiled artifacts/state: `sb/query.py` (see `QUERY_SURFACE.md`)
 
 ---
 
@@ -71,7 +90,8 @@ If it produces state, it can be baked.
 - Browser usage metadata (domain-level, duration only)
 - Cloud audit feeds (Google Drive, MS365)
 - Notes app metadata (Obsidian, Evernote)
-- NotebookLM metadata (notebook/source/context IDs only)
+- NotebookLM lifecycle metadata (context/notebook/source/artifact) with
+  optional display snippets for local UX
 - Media consumption metadata (YouTube/Spotify/VLC/Last.fm)
 - Social feed metadata (Bluesky and other socials; hashes only)
 
@@ -247,8 +267,8 @@ acting.
 
 ## Current status
 
-**Docs-only foundation.**
-No implementation yet — deliberately.
+**Implementation exists, but remains pre-1.0 and contract-first.**
+Core pipeline pieces (ingest/adapters, bake outputs, dashboards, bundles, and tests) are present, but interfaces and payload contracts are still being hardened and should be treated as unstable until explicitly frozen in docs/ADRs.
 
 The goal at this stage is to:
 

@@ -8,6 +8,16 @@ Thread `69882c94-3094-839a-b539-15529d7e9c6c` shows the practical choice as:
 
 For this migration plan, treat `SvelteKit + Tailwind` as the working target.
 
+## Current State (2026-02-10)
+
+Working SvelteKit implementation lives in the suite root:
+- `itir-svelte/`
+
+It currently:
+- loads existing SB `dashboard*.json` outputs from `SB_RUNS_ROOT`
+- supports `?start=YYYY-MM-DD&end=YYYY-MM-DD` ranges (aggregated from daily payloads)
+- surfaces missing days and can invoke the SB runner to build missing daily dashboards (when `SB_RUNS_ROOT` is writable)
+
 Immediate next sprint (actionable checklist from the current repo state):
 - `docs/sb_ui_migration_sprint_0.md`
 
@@ -23,8 +33,15 @@ Data compile + render are coupled in the same module:
 - `build_weekly_dashboard(...)` in `sb/dashboard.py:2926`
 - `build_lifetime_dashboard(...)` in `sb/dashboard.py:3086`
 
+The current HTML renderer includes embedded CSS and client-side JS for:
+- timeline filtering/search/reset
+- chat-flow "waterfall" palette + algorithm selection (persisted via `localStorage`)
+
 Layout contract already exists and should drive component boundaries:
 - `docs/dashboard_implementation_notes.md:77`
+
+Current “what exists” map (safe edit zones + UI contract assumptions):
+- `docs/web_module_map.md`
 
 ## Target Architecture
 
@@ -61,7 +78,7 @@ Cross-cutting:
 
 - Lock payload fields consumed by UI (`summary`, `chat_flow`, `timeline`, etc.).
 - Add JSON schema for dashboard payload (or zod runtime validation).
-- Scaffold `frontend/sb-dashboard` with `SvelteKit + Tailwind`.
+- Scaffold `itir-svelte/` with `SvelteKit + Tailwind`.
 - Add data adapter that loads existing `runs/<date>/outputs/dashboard*.json`.
 
 Done when:
@@ -86,6 +103,16 @@ Done when:
 
 Done when:
 - Svelte interactions match existing HTML behavior on a known run date.
+
+## Known Parity Gaps (as of 2026-02-10)
+
+Legacy SB weekly/lifetime HTML includes modules not yet ported into `itir-svelte/`,
+including:
+- weekly/lifetime routes that load the precomputed `dashboard_weekly_*.json` and
+  `dashboard_lifetime*.json` payloads (currently `itir-svelte/` aggregates from daily payloads)
+- rollups / totals grid modules as shown in the legacy weekly HTML
+- NotebookLM lifecycle (`notes_meta_summary`) projection
+- per-day summary table (daily rows across range)
 
 ## Sprint 3 (3-4 days): Weekly/Lifetime Pages + Routing
 

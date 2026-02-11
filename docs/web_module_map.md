@@ -45,6 +45,9 @@ Primary entrypoints:
     - `render_weekly_dashboard_html(...)`
     - `render_lifetime_dashboard_html(...)`
     - `write_*_outputs(...)`
+  - Current client-side behavior (embedded JS in the HTML output):
+    - Timeline filtering/search/reset (operates on the rendered table/rows; no server)
+    - Chat-flow waterfall palette + algorithm selection (persists settings via `localStorage`)
   - Complexity note: this is currently a monolith (data loading + metrics + HTML +
     client JS) and is the main iteration bottleneck.
 

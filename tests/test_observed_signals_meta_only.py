@@ -116,6 +116,53 @@ def test_notebooklm_meta_hashes_ids():
     assert normalized["event"] == "source_observed"
 
 
+def test_notebooklm_meta_preserves_display_fields_and_snippet():
+    record = {
+        "ts": "2026-02-08T12:00:00Z",
+        "event_type": "source_observed",
+        "notebook_id": "nb-123",
+        "notebook_title": "Policy Notebook",
+        "source_id": "src-456",
+        "source_title": "Vendor transition notes",
+        "source_type": "google_doc",
+        "source_status": "ready",
+        "source_url": "https://example.test/doc/123",
+        "source_summary": "Short summary snippet",
+        "source_keywords": ["vendor", "transition"],
+        "collected_at": "2026-02-08T12:00:01Z",
+    }
+    normalized = notebooklm_meta.normalize_record(record, "test")
+    assert normalized["event"] == "source_observed"
+    assert normalized["notebook_title"] == "Policy Notebook"
+    assert normalized["source_title"] == "Vendor transition notes"
+    assert normalized["source_type"] == "google_doc"
+    assert normalized["source_status"] == "ready"
+    assert normalized["source_url"] == "https://example.test/doc/123"
+    assert normalized["source_summary"] == "Short summary snippet"
+    assert normalized["source_keywords"] == ["vendor", "transition"]
+
+
+def test_notebooklm_meta_artifact_event_hashes_artifact_id():
+    record = {
+        "ts": "2026-02-08T12:00:00Z",
+        "event_type": "artifact_observed",
+        "notebook_id": "nb-123",
+        "artifact_id": "art-789",
+        "artifact_title": "Executive Brief",
+        "artifact_type": "report",
+        "artifact_status": "ready",
+        "artifact_created_at": "2026-02-08T11:59:58Z",
+        "collected_at": "2026-02-08T12:00:01Z",
+    }
+    normalized = notebooklm_meta.normalize_record(record, "test")
+    assert normalized["event"] == "artifact_observed"
+    assert normalized["artifact_id_hash"].startswith("sha256:")
+    assert normalized["artifact_title"] == "Executive Brief"
+    assert normalized["artifact_type"] == "report"
+    assert normalized["artifact_status"] == "ready"
+    assert normalized["artifact_created_at"] == "2026-02-08T11:59:58Z"
+
+
 def test_notebooklm_meta_expands_cli_list_payloads():
     record = {
         "ts": "2026-02-08T12:00:00Z",
@@ -126,6 +173,19 @@ def test_notebooklm_meta_expands_cli_list_payloads():
     assert len(normalized) == 1
     assert normalized[0]["event"] == "notebook_observed"
     assert normalized[0]["notebook_id_hash"].startswith("sha256:")
+
+
+def test_notebooklm_meta_expands_artifact_list_payloads():
+    record = {
+        "ts": "2026-02-08T12:00:00Z",
+        "collected_at": "2026-02-08T12:00:01Z",
+        "notebook_id": "nb-1",
+        "artifacts": [{"id": "art-1", "title": "Study Guide", "type": "report", "status": "ready"}],
+    }
+    normalized = list(notebooklm_meta.normalize_records([record], "test"))
+    assert len(normalized) == 1
+    assert normalized[0]["event"] == "artifact_observed"
+    assert normalized[0]["artifact_title"] == "Study Guide"
 
 
 def test_windows_event_stub_normalizes():

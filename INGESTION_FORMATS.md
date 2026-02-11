@@ -197,13 +197,37 @@ NotebookLM events are normalized into the same `notes_meta` signal with
   "notebook_id_hash": "sha256:...",
   "note_id_hash": "sha256:...",
   "event": "source_observed",
+  "source_title": "Quarterly Review Notes",
+  "source_type": "google_doc",
+  "source_status": "ready",
+  "source_url": "https://docs.google.com/...",
+  "source_summary": "Short source-guide summary snippet...",
+  "source_keywords": ["q1", "variance", "forecast"],
   "provenance": {"source": "notebooklm_meta", "collected_at": "2026-02-08T10:00:00Z"}
 }
+
+Optional NotebookLM event types and fields:
+- `event: artifact_observed`
+  - `artifact_id_hash`
+  - `artifact_title`
+  - `artifact_type`
+  - `artifact_status`
+  - `artifact_created_at`
+- `event: notebook_observed`
+  - `notebook_title`
 
 Raw snapshot capture helper:
 ```bash
 python scripts/capture_notebooklm_meta.py --output /tmp/notebooklm_meta.jsonl
 python adapters/notebooklm_meta.py --input /tmp/notebooklm_meta.jsonl --output /tmp/notebooklm_notes.jsonl
+```
+
+Richer local UX capture (optional):
+```bash
+python scripts/capture_notebooklm_meta.py \
+  --output /tmp/notebooklm_meta.jsonl \
+  --with-source-guides \
+  --source-snippet-chars 600
 ```
 
 `run_day.sh` can ingest this directly with positional arg 20 (`NOTEBOOKLM_META_INPUT`).
