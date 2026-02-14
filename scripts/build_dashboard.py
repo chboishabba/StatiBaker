@@ -41,12 +41,31 @@ def main() -> None:
         help="Path to chat exports directory (default: <repo-root>/chat_exports).",
     )
     parser.add_argument(
+        "--db-path",
+        help="Path to canonical dashboard SQLite DB (default: <runs-root>/dashboard.sqlite).",
+    )
+    parser.add_argument(
+        "--no-db",
+        action="store_true",
+        help="Disable writing dashboard payloads to the canonical SQLite DB.",
+    )
+    parser.add_argument(
         "--json-out",
-        help="Output path for dashboard JSON (default: runs/<date>/outputs/dashboard.json).",
+        help="Legacy/regression output path for dashboard JSON (default: runs/<date>/outputs/dashboard.json).",
     )
     parser.add_argument(
         "--html-out",
-        help="Output path for dashboard HTML (default: runs/<date>/outputs/dashboard.html).",
+        help="Legacy/regression output path for dashboard HTML (default: runs/<date>/outputs/dashboard.html).",
+    )
+    parser.add_argument(
+        "--write-json",
+        action="store_true",
+        help="Write legacy dashboard JSON outputs (regression/debug only).",
+    )
+    parser.add_argument(
+        "--write-html",
+        action="store_true",
+        help="Write legacy dashboard HTML outputs (regression/debug only).",
     )
     parser.add_argument(
         "--max-timeline-events",
@@ -131,6 +150,7 @@ def main() -> None:
         write_lifetime_outputs,
         write_weekly_outputs,
     )
+    from sb.dashboard_store_sqlite import DashboardKey, upsert_dashboard_payload
 
     repo_root = (
         Path(args.repo_root).expanduser().resolve() if args.repo_root else sb_root.parent
@@ -160,15 +180,23 @@ def main() -> None:
     )
 
     default_out_dir = runs_root / args.date / "outputs"
+    db_path = (
+        Path(args.db_path).expanduser().resolve()
+        if args.db_path
+        else (runs_root / "dashboard.sqlite")
+    )
+
+    write_json = bool(args.write_json or args.json_out)
+    write_html = bool(args.write_html or args.html_out)
     json_out = (
         Path(args.json_out).expanduser().resolve()
         if args.json_out
-        else default_out_dir / "dashboard.json"
+        else (default_out_dir / "dashboard.json")
     )
     html_out = (
         Path(args.html_out).expanduser().resolve()
         if args.html_out
-        else default_out_dir / "dashboard.html"
+        else (default_out_dir / "dashboard.html")
     )
 
     payload = build_dashboard(
@@ -182,9 +210,21 @@ def main() -> None:
         max_timeline_events=max(1, args.max_timeline_events),
         include_all_chat=bool(args.debug or args.debug_include_all_chat),
     )
-    write_dashboard_outputs(payload, json_path=json_out, html_path=html_out)
-    print(json_out)
-    print(html_out)
+    scope = "all" if bool(args.debug or args.debug_include_all_chat) else "scoped"
+    if not args.no_db:
+        upsert_dashboard_payload(
+            db_path=db_path,
+            key=DashboardKey(date=args.date, view="daily", scope=scope, window_days=0),
+            payload=payload,
+        )
+        print(db_path)
+
+    if write_json or write_html:
+        # Legacy outputs (regression/debug-only). This emits both JSON and HTML to keep
+        # the legacy writer interface simple and predictable.
+        write_dashboard_outputs(payload, json_path=json_out, html_path=html_out)
+        print(json_out)
+        print(html_out)
 
     if args.weekly:
         weekly_json_out = (
@@ -209,13 +249,20 @@ def main() -> None:
             max_timeline_events=max(1, args.max_timeline_events),
             include_all_chat=bool(args.debug or args.debug_include_all_chat),
         )
-        write_weekly_outputs(
-            weekly_payload,
-            json_path=weekly_json_out,
-            html_path=weekly_html_out,
-        )
-        print(weekly_json_out)
-        print(weekly_html_out)
+        if not args.no_db:
+            upsert_dashboard_payload(
+                db_path=db_path,
+                key=DashboardKey(date=args.date, view="weekly", scope=scope, window_days=max(1, args.weekly_days)),
+                payload=weekly_payload,
+            )
+        if write_json or write_html:
+            write_weekly_outputs(
+                weekly_payload,
+                json_path=weekly_json_out,
+                html_path=weekly_html_out,
+            )
+            print(weekly_json_out)
+            print(weekly_html_out)
 
     if args.lifetime:
         lifetime_json_out = (
@@ -240,25 +287,39 @@ def main() -> None:
             include_all_chat=bool(args.debug or args.debug_include_all_chat),
             start_date_text=args.lifetime_start_date,
         )
-        write_lifetime_outputs(
-            lifetime_payload,
-            json_path=lifetime_json_out,
-            html_path=lifetime_html_out,
-        )
-        print(lifetime_json_out)
-        print(lifetime_html_out)
+        if not args.no_db:
+            upsert_dashboard_payload(
+                db_path=db_path,
+                key=DashboardKey(date=args.date, view="lifetime", scope=scope, window_days=0),
+                payload=lifetime_payload,
+            )
+        if write_json or write_html:
+            write_lifetime_outputs(
+                lifetime_payload,
+                json_path=lifetime_json_out,
+                html_path=lifetime_html_out,
+            )
+            print(lifetime_json_out)
+            print(lifetime_html_out)
 
         suffix = "_all" if bool(args.debug or args.debug_include_all_chat) else ""
         costing_json_out = default_out_dir / f"dashboard_costing{suffix}.json"
         costing_html_out = default_out_dir / f"dashboard_costing{suffix}.html"
         costing_payload = build_lifetime_costing_payload(lifetime_payload=lifetime_payload)
-        write_costing_outputs(
-            costing_payload,
-            json_path=costing_json_out,
-            html_path=costing_html_out,
-        )
-        print(costing_json_out)
-        print(costing_html_out)
+        if not args.no_db:
+            upsert_dashboard_payload(
+                db_path=db_path,
+                key=DashboardKey(date=args.date, view="costing", scope=scope, window_days=0),
+                payload=costing_payload,
+            )
+        if write_json or write_html:
+            write_costing_outputs(
+                costing_payload,
+                json_path=costing_json_out,
+                html_path=costing_html_out,
+            )
+            print(costing_json_out)
+            print(costing_html_out)
 
 
 if __name__ == "__main__":

@@ -11,18 +11,22 @@ For module ownership and safe iteration boundaries, see
 1. `scripts/build_dashboard.py` parses CLI args (`--date`, `--debug`, `--weekly`,
    `--weekly-days`, custom output paths).
 2. It calls `sb.dashboard.build_dashboard(...)` for the target day.
-3. Daily payload is serialized via `write_dashboard_outputs(...)` to:
-   - scoped mode: `runs/<date>/outputs/dashboard.json` + `dashboard.html`
-   - all-chat mode: can be written as `dashboard_all.json` + `dashboard_all.html`
+3. Daily payload is persisted canonically to SQLite via `sb/dashboard_store_sqlite.py`:
+   - default DB: `SB_RUNS_ROOT/dashboard.sqlite`
+   - keyed by `(date, view, scope, window_days)`
+   Legacy JSON/HTML exports via `write_dashboard_outputs(...)` remain available for
+   regression/debug only (opt-in flags).
 4. If `--weekly` is set, `build_weekly_dashboard(...)` aggregates day payloads and
-   `write_weekly_outputs(...)` writes `dashboard_weekly_<N>d.json/html`.
+   persists a weekly payload to the same SQLite DB (with `view=weekly` and
+   `window_days=<N>`). Optional legacy JSON/HTML exports remain opt-in.
 5. If `--lifetime` is set, `build_lifetime_dashboard(...)` scans available
    `runs/YYYY-MM-DD` directories up to `--date` and writes
-   `dashboard_lifetime.json/html`.
+   a lifetime payload into the same SQLite DB (`view=lifetime`). Optional legacy
+   JSON/HTML exports remain opt-in.
 6. If `--lifetime` is set, `build_lifetime_costing_payload(...)` writes an
    indicative costing page:
-   - scoped mode: `dashboard_costing.json` + `dashboard_costing.html`
-   - all-chat mode: `dashboard_costing_all.json` + `dashboard_costing_all.html`
+   - persisted into SQLite (`view=costing`)
+   - optional legacy JSON/HTML exports remain opt-in
 
 ## Data flow and source precedence
 
@@ -53,8 +57,8 @@ Weekly behavior:
 This prevents mismatches where weekly all-scope numbers link to scoped daily pages.
 
 Lifetime behavior:
-- Uses existing daily `dashboard(.json|_all.json)` when present; otherwise builds
-  missing daily payloads on demand.
+- Uses existing daily payloads from the canonical dashboard DB when present;
+  otherwise builds missing daily payloads on demand.
 - Includes aggregate state-volume metrics from each day `outputs/state.json`:
   - `raw_events` (estimated pre-compression via `collapsed_count`/`collapsed_ids`)
   - `compressed_events` (stored `events[]` length)

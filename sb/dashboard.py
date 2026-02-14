@@ -1011,16 +1011,36 @@ def _load_or_build_daily_payload(
     max_timeline_events: int,
     include_all_chat: bool,
 ) -> dict[str, Any]:
-    daily_json_path, daily_html_path = _daily_output_paths(
+    # DB-first cache: the canonical store for dashboards is SQLite under runs_root.
+    # JSON files are legacy/regression exports and should not be written implicitly
+    # during higher-level aggregation (weekly/lifetime) builds.
+    from sb.dashboard_store_sqlite import DashboardKey, load_dashboard_payload, upsert_dashboard_payload
+
+    scope = "all" if include_all_chat else "scoped"
+    db_path = runs_root / "dashboard.sqlite"
+    cached_db = load_dashboard_payload(
+        db_path=db_path,
+        key=DashboardKey(date=date_text, view="daily", scope=scope, window_days=0),
+    )
+    if cached_db is not None:
+        summary = cached_db.get("summary") if isinstance(cached_db.get("summary"), dict) else {}
+        if "shell_commands_agent_exec" in summary and "shell_commands_host" in summary:
+            return cached_db
+
+    # Back-compat migration path: if legacy JSON exists, import it into the DB once.
+    daily_json_path, _daily_html_path = _daily_output_paths(
         runs_root=runs_root,
         date_text=date_text,
         include_all_chat=include_all_chat,
     )
-    cached = _load_json_dict(daily_json_path)
-    if cached is not None:
-        summary = cached.get("summary") if isinstance(cached.get("summary"), dict) else {}
-        if "shell_commands_agent_exec" in summary and "shell_commands_host" in summary:
-            return cached
+    cached_json = _load_json_dict(daily_json_path)
+    if cached_json is not None:
+        upsert_dashboard_payload(
+            db_path=db_path,
+            key=DashboardKey(date=date_text, view="daily", scope=scope, window_days=0),
+            payload=cached_json,
+        )
+        return cached_json
 
     payload = build_dashboard(
         date_text=date_text,
@@ -1033,7 +1053,11 @@ def _load_or_build_daily_payload(
         max_timeline_events=max_timeline_events,
         include_all_chat=include_all_chat,
     )
-    write_dashboard_outputs(payload, json_path=daily_json_path, html_path=daily_html_path)
+    upsert_dashboard_payload(
+        db_path=db_path,
+        key=DashboardKey(date=date_text, view="daily", scope=scope, window_days=0),
+        payload=payload,
+    )
     return payload
 
 
@@ -4812,7 +4836,7 @@ def build_weekly_dashboard(
     daily_payloads: list[tuple[str, dict[str, Any]]] = []
 
     for date_text in dates:
-        payload = build_dashboard(
+        payload = _load_or_build_daily_payload(
             date_text=date_text,
             repo_root=repo_root,
             runs_root=runs_root,
@@ -4858,11 +4882,6 @@ def build_weekly_dashboard(
         if include_all_chat:
             daily_json_path = daily_outputs / "dashboard_all.json"
             daily_html_path = daily_outputs / "dashboard_all.html"
-            write_dashboard_outputs(
-                payload,
-                json_path=daily_json_path,
-                html_path=daily_html_path,
-            )
         else:
             daily_json_path = daily_outputs / "dashboard.json"
             daily_html_path = daily_outputs / "dashboard.html"

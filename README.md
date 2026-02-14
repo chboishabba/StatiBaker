@@ -52,7 +52,8 @@ No motivational framing.
   - Machine-readable state and supporting artifacts (runs under `runs_local/<YYYY-MM-DD>/outputs/` by default): `sb/`
   - Drift counters written as observational JSON: `sb/drift.py` (see `DRIFT_SIGNALS.md`)
 - **Dashboards + web surfaces (current HTML, future Svelte)**
-  - Static dashboard builder that emits **JSON + HTML** for daily/weekly/lifetime views: `scripts/build_dashboard.py`, `sb/dashboard.py`
+  - Dashboard builder that persists **canonically to SQLite** for daily/weekly/lifetime views: `scripts/build_dashboard.py`, `sb/dashboard.py`
+    - Legacy JSON/HTML exports remain available for regression/debug, but are not the canonical store.
   - HTML renderer functions (embedded CSS + client-side JS for filtering/palette controls):
     `sb/dashboard.py` (`render_dashboard_html`, `render_weekly_dashboard_html`, `render_lifetime_dashboard_html`)
   - Web iteration map (UI contracts + safe edit zones): `docs/web_module_map.md`

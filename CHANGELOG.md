@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-02-14
+- Made SQLite the canonical dashboard store (DB-first) via `sb/dashboard_store_sqlite.py` (normalized tables; no persisted payload JSON blobs).
+- Updated `scripts/build_dashboard.py` to persist daily/weekly/lifetime/costing payloads into `SB_RUNS_ROOT/dashboard.sqlite` by default.
+- Added `scripts/query_dashboard_db.py` for deterministic DB-backed dashboard hydration (stdout JSON for callers; DB remains canonical).
+- Updated docs/TODOs to treat `dashboard*.json` as legacy/regression/debug exports rather than canonical outputs.
+- Added regression tests that round-trip DB persistence and (when present) compare against existing `runs/<date>/outputs/dashboard*_all.json` fixtures.
+
 ## 2026-02-11
 - Extended NotebookLM snapshot capture (`scripts/capture_notebooklm_meta.py`)
   to ingest per-notebook artifact listings (`artifact_observed`) and optional

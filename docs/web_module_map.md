@@ -141,8 +141,8 @@ Before merging dashboard changes:
 3. Rebuild at least one real day:
    - `python scripts/build_dashboard.py --date YYYY-MM-DD`
 4. Verify both:
-   - JSON payload fields expected by UI still exist.
-   - HTML still loads with timeline filtering and waterfall controls.
+   - DB-backed payload fields expected by UI still exist (canonical store: `SB_RUNS_ROOT/dashboard.sqlite`).
+   - Optional legacy HTML export still loads with timeline filtering and waterfall controls (if you rely on it).
 
 ## Immediate Refactor Targets (to reduce web iteration friction)
 
@@ -150,6 +150,8 @@ Before merging dashboard changes:
 2. Extract metric assembly into `sb/dashboard_metrics.py`.
 3. Keep renderers in `sb/dashboard_render.py` and weekly/lifetime renderers separate.
 4. Add a lightweight schema file for `dashboard.json` output to protect UI contracts.
+   - DB-first: keep the schema as the canonical contract for DB reconstruction, even
+     if JSON files are no longer written by default.
 
 This keeps frontend iteration mostly isolated to rendering and stable payload
 contracts, instead of forcing edits across ingestion and metric internals.

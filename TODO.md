@@ -240,6 +240,11 @@ https://truenas.local:30037/d/truenas-overview4/truenas-scale-overview4
 This is not exercised today. Current dashboards are rendered by Python in
 `sb/dashboard.py` and tested via `tests/test_dashboard.py`.
 
+DB-first dashboard storage:
+- Make SQLite the canonical dashboard store (e.g. `SB_RUNS_ROOT/dashboard.sqlite`).
+- Stop writing new `dashboard*.json` files by default; keep JSON/HTML export only for regression/debug.
+- Add regression tests that round-trip DB -> payload and compare against existing `runs/<date>/outputs/dashboard*_all.json` fixtures when present.
+
 Sprint 0 (contracts + scaffold):
 - Plan: `docs/sb_ui_migration_sprint_0.md`
 - Migration overview: `docs/svelte_migration_sprint.md`
