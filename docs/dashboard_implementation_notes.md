@@ -32,7 +32,7 @@ For module ownership and safe iteration boundaries, see
 
 Chat ingestion precedence in `build_dashboard(...)`:
 
-1. sqlite archive: `chat-export-structurer/my_archive.sqlite`
+1. sqlite archive: `~/.chat_archive.sqlite`
 2. chat export JSONs: `chat_exports/*.json`
 3. resolver sync files: `__CONTEXT/last_sync/*`
 

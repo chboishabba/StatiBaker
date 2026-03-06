@@ -15,6 +15,8 @@ from sb.dashboard import (
     write_weekly_outputs,
 )
 
+CHAT_ARCHIVE_PATH = Path.home() / ".chat_archive.sqlite"
+
 
 class TestDashboardBuild(unittest.TestCase):
     def test_build_dashboard_with_mixed_sources(self):
@@ -148,7 +150,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
                 max_timeline_events=50,
             )
@@ -317,7 +319,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
                 max_timeline_events=50,
                 include_all_chat=False,
@@ -335,7 +337,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
                 max_timeline_events=50,
                 include_all_chat=True,
@@ -376,7 +378,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()
@@ -526,7 +528,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
             )
 
@@ -634,7 +636,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
             )
             self.assertEqual(3, weekly_payload["totals"]["media_events"])
@@ -656,7 +658,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
             )
             self.assertEqual(3, lifetime_payload["totals"]["media_events"])
@@ -695,7 +697,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()
@@ -843,7 +845,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
             )
 
@@ -947,7 +949,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
             )
             costing_payload = build_lifetime_costing_payload(lifetime_payload=lifetime_payload)
@@ -1090,7 +1092,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
                 max_timeline_events=100,
                 include_all_chat=False,
@@ -1230,7 +1232,7 @@ class TestDashboardBuild(unittest.TestCase):
                 runs_root=runs_root,
                 context_root=context_root,
                 convo_ids_path=context_root / "convo_ids.md",
-                chat_db_path=repo_root / "chat-export-structurer" / "my_archive.sqlite",
+                chat_db_path=CHAT_ARCHIVE_PATH,
                 chat_exports_dir=repo_root / "chat_exports",
             )
 
@@ -1267,7 +1269,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()
@@ -1379,7 +1381,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()
@@ -1471,7 +1473,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()
@@ -1568,7 +1570,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()
@@ -1663,7 +1665,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()
@@ -1769,7 +1771,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()
@@ -1870,7 +1872,7 @@ class TestDashboardBuild(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            db_path = repo_root / "chat-export-structurer" / "my_archive.sqlite"
+            db_path = CHAT_ARCHIVE_PATH
             db_path.parent.mkdir(parents=True, exist_ok=True)
             con = sqlite3.connect(db_path)
             cur = con.cursor()

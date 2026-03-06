@@ -619,7 +619,7 @@ def _render_foldable_text(text: object, limit: int = 180) -> str:
 
 def _source_kind(source_path: str) -> str:
     lowered = source_path.lower()
-    if "chat-export-structurer" in lowered and ".sqlite" in lowered:
+    if ".chat_archive.sqlite" in lowered or ("chat-export-structurer" in lowered and ".sqlite" in lowered):
         return "sqlite"
     if "/chat_exports/" in lowered:
         return "chat_exports"

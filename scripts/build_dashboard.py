@@ -34,7 +34,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--chat-db",
-        help="Path to chat sqlite archive (default: <repo-root>/chat-export-structurer/my_archive.sqlite).",
+        help="Path to chat sqlite archive (default: ~/.chat_archive.sqlite).",
     )
     parser.add_argument(
         "--chat-exports",
@@ -171,7 +171,7 @@ def main() -> None:
     chat_db = (
         Path(args.chat_db).expanduser().resolve()
         if args.chat_db
-        else repo_root / "chat-export-structurer" / "my_archive.sqlite"
+        else Path.home() / ".chat_archive.sqlite"
     )
     chat_exports = (
         Path(args.chat_exports).expanduser().resolve()

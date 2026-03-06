@@ -40,7 +40,7 @@ The dashboard integrates:
 - `runs/<date>/outputs/retrospective.md`
 - `runs/<date>/outputs/state.json`
 - `runs/<date>/outputs/drift.json`
-- `chat-export-structurer/my_archive.sqlite` (preferred chat source)
+- `~/.chat_archive.sqlite` (preferred chat source)
 - `chat_exports/*.json` (chat fallback)
 - `__CONTEXT/convo_ids.md` (thread scope)
 - `__CONTEXT/last_sync/*` (process-context links)
