@@ -238,6 +238,15 @@ If you want advice or recommendations, those belong in **separate, optional laye
 - **TIRC** handles disagreement and plural readings
 - **SL** handles normative structure and constraints
 
+Boundary clarification:
+- StatiBaker is a personal state compiler feeding TiRC/ITIR and adjacent suite
+  surfaces.
+- SB may use or extend SL-owned lexer/compression outputs where shared
+  canonical text handling is needed.
+- That reuse does not transfer semantic or legal authority into SB.
+- Legal-looking canonical IDs or fixtures reaching SB are opaque upstream
+  payloads to preserve, not content for SB to interpret.
+
 StatiBaker never interprets content.
 ITIR never manages lived context.
 They integrate via **context envelopes**, not shared logic.
