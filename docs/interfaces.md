@@ -3,6 +3,9 @@
 ## Intersections
 - Ingests state surfaces from ITIR projects and operator tooling.
 - Consumes outputs from `SensibLaw/`, `tircorder-JOBBIE/`, and automation logs.
+- May consume observer-only Wikipedia revision-monitor exports from
+  `SensibLaw/` as external-signal refs (run summaries, candidate-pair refs,
+  issue-packet refs, section-delta refs).
 - May consume observer-only `fuzzymodo` decision/execution artifacts through a
   bounded append-only seam; see suite note
   `docs/planning/fuzzymodo_statiBaker_interface_20260309.md`.
@@ -21,6 +24,11 @@
 ### Channel A: State Ingress
 - Input: logs, TODO ledgers, events, commits, tool outputs, metadata feeds.
 - Constraint: append-only ingestion; no hidden normalization semantics.
+- Wikipedia-revision-monitor rule:
+  - allowed only as observer-class refs or append-only external-signal rows
+  - pair scores, section deltas, and issue packets do not become SB canonical
+    truth or SB policy
+  - article text/revision text is not ingested as SB authoritative state
 - `fuzzymodo`-specific rule:
   - allowed only as observer events or reference-heavy overlays
   - selector DSL payloads and norm constraints are not SB canonical state
