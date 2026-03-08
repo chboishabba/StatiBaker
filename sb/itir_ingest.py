@@ -32,4 +32,27 @@ def validate_overlay(record):
     if forbidden:
         errors.append(f"forbidden fields present: {sorted(forbidden)}")
 
+    if record.get("observer_kind") == "itir_mission_graph_v1":
+        if "mission_refs" not in record:
+            errors.append("mission observer overlay missing mission_refs")
+        if "evidence_refs" not in record:
+            errors.append("mission observer overlay missing evidence_refs")
+        if "threads" in record or "events" in record:
+            errors.append("mission observer overlays must stay reference-heavy and may not inject threads/events")
+
     return errors
+
+
+def persist_overlays(*, db_path, records):
+    from pathlib import Path
+
+    from sb.dashboard_store_sqlite import upsert_itir_overlay_records
+
+    accepted = []
+    for record in records:
+        errors = validate_overlay(record)
+        if errors:
+            raise ValueError("; ".join(errors))
+        accepted.append(dict(record))
+    upsert_itir_overlay_records(db_path=Path(db_path), records=accepted)
+    return {"accepted_count": len(accepted)}

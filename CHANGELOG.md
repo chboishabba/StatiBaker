@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-03-08
+- Extended the ITIR ingest boundary to accept a bounded mission/follow-up
+  observer payload (`observer_kind = itir_mission_graph_v1`) so long as it
+  stays reference-heavy (`mission_refs` + `evidence_refs`) and does not inject
+  raw thread/event dumps or mutation-shaped fields.
+- Added ingest/boundary tests covering acceptance of the new mission observer
+  overlay and rejection of thread-dump attempts on that lane.
+- Added DB-backed persistence for accepted ITIR mission observer overlays in
+  `sb/dashboard_store_sqlite.py` via `sb_itir_overlays`,
+  `sb_itir_mission_refs`, and `sb_itir_evidence_refs`, keeping the payload
+  reference-heavy while making the SB side of the seam storage-backed too.
+- Added the first fused mission-lens consumption path on the UI side: SB
+  dashboard DB payloads can now be rendered alongside ITIR-owned mission
+  planning artifacts in `itir-svelte` without making SB the planning authority.
+
 ## 2026-02-14
 - Made SQLite the canonical dashboard store (DB-first) via `sb/dashboard_store_sqlite.py` (normalized tables; no persisted payload JSON blobs).
 - Updated `scripts/build_dashboard.py` to persist daily/weekly/lifetime/costing payloads into `SB_RUNS_ROOT/dashboard.sqlite` by default.

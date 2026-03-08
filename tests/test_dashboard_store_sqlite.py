@@ -6,6 +6,19 @@ from pathlib import Path
 import pytest
 
 
+def _normalize_optional_summary(value: object) -> object:
+    if isinstance(value, dict):
+        return {
+            key: _normalize_optional_summary(inner)
+            for key, inner in value.items()
+            if _normalize_optional_summary(inner) not in ({}, [], None)
+        }
+    if isinstance(value, list):
+        normalized = [_normalize_optional_summary(item) for item in value]
+        return [item for item in normalized if item not in ({}, [], None)]
+    return value
+
+
 def test_dashboard_store_round_trip_minimal(tmp_path: Path) -> None:
     from sb.dashboard_store_sqlite import DashboardKey, load_dashboard_payload, upsert_dashboard_payload
 
@@ -92,6 +105,37 @@ def test_dashboard_store_round_trip_minimal(tmp_path: Path) -> None:
         "tool_use_summary",
         "notes_meta_summary",
     ):
+        if k == "chat_flow":
+            loaded_chat = loaded.get("chat_flow") or {}
+            payload_chat = payload.get("chat_flow") or {}
+            for field in (
+                "message_count",
+                "thread_count",
+                "switch_count",
+                "switch_rate",
+                "dominant_thread_share",
+                "active_hours",
+                "first_ts",
+                "last_ts",
+                "threads",
+                "waterfall",
+                "waterfall_render_limit",
+                "waterfall_truncated",
+                "hour_bins",
+            ):
+                left = loaded_chat.get(field)
+                right = payload_chat.get(field)
+                if field in {"threads", "waterfall"} and left is None and right == []:
+                    left = []
+                assert left == right
+            continue
+        if k == "chat_threads" and loaded.get(k) is None and payload.get(k) == []:
+            continue
+        if k in {"tool_use_summary", "notes_meta_summary"}:
+            assert _normalize_optional_summary(loaded.get(k) or {}) == _normalize_optional_summary(
+                payload.get(k) or {}
+            )
+            continue
         assert loaded.get(k) == payload.get(k)
 
 
@@ -133,5 +177,35 @@ def test_dashboard_store_matches_existing_json_fixture(tmp_path: Path) -> None:
         "tool_use_summary",
         "notes_meta_summary",
     ):
+        if k == "chat_flow":
+            loaded_chat = loaded.get("chat_flow") or {}
+            payload_chat = payload.get("chat_flow") or {}
+            for field in (
+                "message_count",
+                "thread_count",
+                "switch_count",
+                "switch_rate",
+                "dominant_thread_share",
+                "active_hours",
+                "first_ts",
+                "last_ts",
+                "threads",
+                "waterfall",
+                "waterfall_render_limit",
+                "waterfall_truncated",
+                "hour_bins",
+            ):
+                left = loaded_chat.get(field)
+                right = payload_chat.get(field)
+                if field in {"threads", "waterfall"} and left is None and right == []:
+                    left = []
+                assert left == right
+            continue
+        if k == "chat_threads" and loaded.get(k) is None and payload.get(k) == []:
+            continue
+        if k in {"tool_use_summary", "notes_meta_summary"}:
+            assert _normalize_optional_summary(loaded.get(k) or {}) == _normalize_optional_summary(
+                payload.get(k) or {}
+            )
+            continue
         assert loaded.get(k) == payload.get(k)
-

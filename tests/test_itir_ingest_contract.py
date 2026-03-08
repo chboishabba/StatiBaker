@@ -29,6 +29,18 @@ class TestITIRIngestContract(unittest.TestCase):
         errors = validate_overlay(record)
         self.assertTrue(errors)
 
+    def test_mission_overlay_requires_reference_fields(self):
+        record = {
+            "activity_event_id": "ae-123",
+            "annotation_id": "obs:mission:ann-1",
+            "provenance": {"actor": "user"},
+            "sb_state_id": "itir:mission:test",
+            "observer_kind": "itir_mission_graph_v1",
+        }
+        errors = validate_overlay(record)
+        self.assertTrue(any("mission_refs" in error for error in errors))
+        self.assertTrue(any("evidence_refs" in error for error in errors))
+
 
 if __name__ == "__main__":
     unittest.main()

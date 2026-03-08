@@ -178,6 +178,15 @@
 - TIRC event adapter (trajectory/open/closed signals as SB events)
 - SL constraint adapter (rule/constraint IDs with refs only)
 - ITIR overlay adapter (annotation IDs, no content)
+  - current bounded extension: accept `itir_mission_graph_v1` observer overlays
+    with `mission_refs` + `evidence_refs`, while still rejecting thread/event
+    dumps and any mutation-shaped fields
+  - [x] persist accepted ITIR mission observer overlays into DB-backed SB
+    tables (`sb_itir_overlays`, `sb_itir_mission_refs`,
+    `sb_itir_evidence_refs`) instead of leaving the lane validation-only
+- [x] Start the fused mission-lens bridge from the SB side by rendering
+  ITIR-owned mission/planning artifacts against canonical dashboard DB payloads
+  rather than inventing a separate spend surface.
 - Read-only query surface for agents (MCP or equivalent)
 
 ## Interop boundary follow-up (2026-02-07)

@@ -71,3 +71,36 @@ def test_no_summary_injection_rejects_synthetic_summary_fields() -> None:
     errors = validate_overlay(record)
     assert errors
     assert any("summary_text" in error for error in errors)
+
+
+def test_mission_observer_overlay_preserves_reference_only_payload() -> None:
+    record = {
+        "activity_event_id": "ae:slack:followup:1",
+        "annotation_id": "obs:mission:followup:1",
+        "provenance": {
+            "source": "SensibLaw",
+            "fixture_role": "mission_overlay_input_only",
+        },
+        "sb_state_id": "itir:mission:fixture",
+        "observer_kind": "itir_mission_graph_v1",
+        "status": "linked",
+        "confidence": "medium",
+        "mission_refs": [
+            {
+                "mission_id": "mission:demo:notification_routing_feature",
+                "node_kind": "task",
+                "topic_label": "notification routing feature",
+                "ref_type": "followup_resolution",
+            }
+        ],
+        "evidence_refs": [
+            {
+                "event_id": "ae:slack:followup:1",
+                "source_id": "slack-thread-1",
+                "ref_kind": "followup_message",
+            }
+        ],
+    }
+    original = deepcopy(record)
+    assert validate_overlay(record) == []
+    assert record == original

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
@@ -239,6 +240,39 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
           value_text TEXT,
           PRIMARY KEY (date, view, scope, window_days, section, path),
           FOREIGN KEY (date, view, scope, window_days) REFERENCES sb_dashboards(date, view, scope, window_days) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_itir_overlays (
+          annotation_id TEXT PRIMARY KEY,
+          activity_event_id TEXT NOT NULL,
+          sb_state_id TEXT,
+          state_date TEXT,
+          observer_kind TEXT,
+          status TEXT,
+          confidence TEXT,
+          provenance_json TEXT NOT NULL,
+          note TEXT NOT NULL DEFAULT ''
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_itir_mission_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          mission_id TEXT NOT NULL,
+          node_kind TEXT,
+          topic_label TEXT,
+          ref_type TEXT,
+          payload_json TEXT NOT NULL,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_itir_evidence_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          event_id TEXT,
+          source_id TEXT,
+          ref_kind TEXT,
+          payload_json TEXT NOT NULL,
+          PRIMARY KEY (annotation_id, ref_order)
         );
         """
     )
@@ -934,3 +968,118 @@ def _load_dashboard_payload_conn(*, conn: sqlite3.Connection, key: DashboardKey)
             payload[section] = _unflatten(flat)
 
     return payload
+
+
+def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]]) -> None:
+    with _connect(db_path) as conn:
+        ensure_schema(conn)
+        for record in records:
+            annotation_id = str(record.get("annotation_id") or "")
+            if not annotation_id:
+                continue
+            conn.execute("DELETE FROM sb_itir_mission_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_itir_evidence_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO sb_itir_overlays(
+                  annotation_id, activity_event_id, sb_state_id, state_date,
+                  observer_kind, status, confidence, provenance_json, note
+                ) VALUES (?,?,?,?,?,?,?,?,?)
+                """,
+                (
+                    annotation_id,
+                    str(record.get("activity_event_id") or ""),
+                    str(record.get("sb_state_id") or "") if record.get("sb_state_id") is not None else None,
+                    str(record.get("state_date") or "") if record.get("state_date") is not None else None,
+                    str(record.get("observer_kind") or "") if record.get("observer_kind") is not None else None,
+                    str(record.get("status") or "") if record.get("status") is not None else None,
+                    str(record.get("confidence") or "") if record.get("confidence") is not None else None,
+                    json.dumps(record.get("provenance", {}), sort_keys=True),
+                    str(record.get("note") or ""),
+                ),
+            )
+            mission_refs = record.get("mission_refs") if isinstance(record.get("mission_refs"), list) else []
+            for ref_order, payload in enumerate(mission_refs):
+                if not isinstance(payload, dict):
+                    continue
+                conn.execute(
+                    """
+                    INSERT INTO sb_itir_mission_refs(
+                      annotation_id, ref_order, mission_id, node_kind, topic_label, ref_type, payload_json
+                    ) VALUES (?,?,?,?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        ref_order,
+                        str(payload.get("mission_id") or ""),
+                        str(payload.get("node_kind") or "") if payload.get("node_kind") is not None else None,
+                        str(payload.get("topic_label") or "") if payload.get("topic_label") is not None else None,
+                        str(payload.get("ref_type") or "") if payload.get("ref_type") is not None else None,
+                        json.dumps(payload, sort_keys=True),
+                    ),
+                )
+            evidence_refs = record.get("evidence_refs") if isinstance(record.get("evidence_refs"), list) else []
+            for ref_order, payload in enumerate(evidence_refs):
+                if not isinstance(payload, dict):
+                    continue
+                conn.execute(
+                    """
+                    INSERT INTO sb_itir_evidence_refs(
+                      annotation_id, ref_order, event_id, source_id, ref_kind, payload_json
+                    ) VALUES (?,?,?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        ref_order,
+                        str(payload.get("event_id") or "") if payload.get("event_id") is not None else None,
+                        str(payload.get("source_id") or "") if payload.get("source_id") is not None else None,
+                        str(payload.get("ref_kind") or "") if payload.get("ref_kind") is not None else None,
+                        json.dumps(payload, sort_keys=True),
+                    ),
+                )
+        conn.commit()
+
+
+def load_itir_overlay_records(*, db_path: Path) -> list[dict[str, Any]]:
+    with _connect(db_path) as conn:
+        ensure_schema(conn)
+        rows = conn.execute(
+            """
+            SELECT annotation_id, activity_event_id, sb_state_id, state_date, observer_kind, status, confidence, provenance_json, note
+            FROM sb_itir_overlays
+            ORDER BY annotation_id
+            """
+        ).fetchall()
+        out: list[dict[str, Any]] = []
+        for row in rows:
+            annotation_id = str(row["annotation_id"])
+            mission_refs = [
+                json.loads(str(item["payload_json"]))
+                for item in conn.execute(
+                    "SELECT payload_json FROM sb_itir_mission_refs WHERE annotation_id = ? ORDER BY ref_order",
+                    (annotation_id,),
+                ).fetchall()
+            ]
+            evidence_refs = [
+                json.loads(str(item["payload_json"]))
+                for item in conn.execute(
+                    "SELECT payload_json FROM sb_itir_evidence_refs WHERE annotation_id = ? ORDER BY ref_order",
+                    (annotation_id,),
+                ).fetchall()
+            ]
+            out.append(
+                {
+                    "activity_event_id": str(row["activity_event_id"]),
+                    "annotation_id": annotation_id,
+                    "sb_state_id": str(row["sb_state_id"]) if row["sb_state_id"] is not None else None,
+                    "state_date": str(row["state_date"]) if row["state_date"] is not None else None,
+                    "observer_kind": str(row["observer_kind"]) if row["observer_kind"] is not None else None,
+                    "status": str(row["status"]) if row["status"] is not None else None,
+                    "confidence": str(row["confidence"]) if row["confidence"] is not None else None,
+                    "provenance": json.loads(str(row["provenance_json"])),
+                    "mission_refs": mission_refs,
+                    "evidence_refs": evidence_refs,
+                    "note": str(row["note"] or ""),
+                }
+            )
+        return out
