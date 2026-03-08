@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-03-09
+- Clarified the `fuzzymodo -> StatiBaker` boundary as observer-only and
+  reference-heavy in `docs/interfaces.md` and
+  `docs/tool_interop_observer_contract.md`, aligned to suite note
+  `docs/planning/fuzzymodo_statiBaker_interface_20260309.md`.
+- Added the parallel `casey-git-clone -> StatiBaker` boundary note and aligned
+  SB interface/observer docs to treat Casey workspace/collapse/build receipts as
+  DB-backed observer-class refs rather than mutable canonical state.
+
 ## 2026-03-08
 - Extended the ITIR ingest boundary to accept a bounded mission/follow-up
   observer payload (`observer_kind = itir_mission_graph_v1`) so long as it

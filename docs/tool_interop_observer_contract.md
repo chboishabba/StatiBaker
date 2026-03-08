@@ -46,6 +46,12 @@ Allowed ingress from orchestration tools:
 - action lifecycle events (`started`, `paused`, `resumed`, `completed`, `failed`)
 - provenance pointers (`issue`, `pr`, `commit`, `ci_run`, `artifact_uri`)
 - execution outcomes (status, duration, retry count)
+- bounded observer-class `fuzzymodo` decision telemetry when it stays
+  append-only and reference-heavy (selector hash / artifact refs / reason
+  codes, not raw selector or policy payloads)
+- bounded observer-class `casey-git-clone` operation/build telemetry when it
+  stays append-only and reference-heavy (workspace/tree/build ids, receipt
+  hashes, explicit collapse/build refs, not mutable candidate graphs)
 
 Forbidden ingress:
 - generated semantic summaries as authoritative truth
