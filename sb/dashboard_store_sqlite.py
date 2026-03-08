@@ -304,6 +304,42 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
           artifact_hash TEXT,
           PRIMARY KEY (annotation_id, ref_order)
         );
+
+        -- Casey workspace v0.1 observer overlay extension tables.
+        CREATE TABLE IF NOT EXISTS sb_casey_workspace_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          ws_id TEXT NOT NULL,
+          head_tree_id TEXT,
+          selected_path_count INTEGER,
+          policy_tie_break TEXT,
+          policy_prefer_author TEXT,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_casey_operation_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          operation_kind TEXT NOT NULL,
+          path TEXT,
+          tree_id_before TEXT,
+          tree_id_after TEXT,
+          chosen_fv_id TEXT,
+          resolved_fv_id TEXT,
+          receipt_hash TEXT,
+          created_at TEXT,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_casey_build_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          build_id TEXT NOT NULL,
+          tree_id TEXT NOT NULL,
+          selection_digest TEXT NOT NULL,
+          created_at TEXT,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
         """
     )
 
@@ -1012,6 +1048,9 @@ def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]])
             conn.execute("DELETE FROM sb_fuzzymodo_selector_refs WHERE annotation_id = ?", (annotation_id,))
             conn.execute("DELETE FROM sb_fuzzymodo_reason_codes WHERE annotation_id = ?", (annotation_id,))
             conn.execute("DELETE FROM sb_fuzzymodo_artifact_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_casey_workspace_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_casey_operation_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_casey_build_refs WHERE annotation_id = ?", (annotation_id,))
             conn.execute(
                 """
                 INSERT OR REPLACE INTO sb_itir_overlays(
@@ -1129,6 +1168,72 @@ def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]])
                         str(payload.get("artifact_hash") or "") if payload.get("artifact_hash") is not None else None,
                     ),
                 )
+
+            workspace_refs = record.get("workspace_refs") if isinstance(record.get("workspace_refs"), list) else []
+            for ref_order, payload in enumerate(workspace_refs):
+                if not isinstance(payload, dict):
+                    continue
+                conn.execute(
+                    """
+                    INSERT INTO sb_casey_workspace_refs(
+                      annotation_id, ref_order, ws_id, head_tree_id, selected_path_count, policy_tie_break, policy_prefer_author
+                    ) VALUES (?,?,?,?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        ref_order,
+                        str(payload.get("ws_id") or ""),
+                        str(payload.get("head_tree_id") or "") if payload.get("head_tree_id") is not None else None,
+                        int(payload.get("selected_path_count")) if payload.get("selected_path_count") is not None else None,
+                        str(payload.get("policy_tie_break") or "") if payload.get("policy_tie_break") is not None else None,
+                        str(payload.get("policy_prefer_author") or "") if payload.get("policy_prefer_author") is not None else None,
+                    ),
+                )
+
+            operation_refs = record.get("operation_refs") if isinstance(record.get("operation_refs"), list) else []
+            for ref_order, payload in enumerate(operation_refs):
+                if not isinstance(payload, dict):
+                    continue
+                conn.execute(
+                    """
+                    INSERT INTO sb_casey_operation_refs(
+                      annotation_id, ref_order, operation_kind, path, tree_id_before, tree_id_after,
+                      chosen_fv_id, resolved_fv_id, receipt_hash, created_at
+                    ) VALUES (?,?,?,?,?,?,?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        ref_order,
+                        str(payload.get("operation_kind") or ""),
+                        str(payload.get("path") or "") if payload.get("path") is not None else None,
+                        str(payload.get("tree_id_before") or "") if payload.get("tree_id_before") is not None else None,
+                        str(payload.get("tree_id_after") or "") if payload.get("tree_id_after") is not None else None,
+                        str(payload.get("chosen_fv_id") or "") if payload.get("chosen_fv_id") is not None else None,
+                        str(payload.get("resolved_fv_id") or "") if payload.get("resolved_fv_id") is not None else None,
+                        str(payload.get("receipt_hash") or "") if payload.get("receipt_hash") is not None else None,
+                        str(payload.get("created_at") or "") if payload.get("created_at") is not None else None,
+                    ),
+                )
+
+            build_refs = record.get("build_refs") if isinstance(record.get("build_refs"), list) else []
+            for ref_order, payload in enumerate(build_refs):
+                if not isinstance(payload, dict):
+                    continue
+                conn.execute(
+                    """
+                    INSERT INTO sb_casey_build_refs(
+                      annotation_id, ref_order, build_id, tree_id, selection_digest, created_at
+                    ) VALUES (?,?,?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        ref_order,
+                        str(payload.get("build_id") or ""),
+                        str(payload.get("tree_id") or ""),
+                        str(payload.get("selection_digest") or ""),
+                        str(payload.get("created_at") or "") if payload.get("created_at") is not None else None,
+                    ),
+                )
         conn.commit()
 
 
@@ -1197,6 +1302,43 @@ def load_itir_overlay_records(*, db_path: Path) -> list[dict[str, Any]]:
                 ).fetchall()
             ]
 
+            workspace_refs = [
+                dict(r)
+                for r in conn.execute(
+                    """
+                    SELECT ref_order, ws_id, head_tree_id, selected_path_count, policy_tie_break, policy_prefer_author
+                    FROM sb_casey_workspace_refs
+                    WHERE annotation_id = ?
+                    ORDER BY ref_order
+                    """,
+                    (annotation_id,),
+                ).fetchall()
+            ]
+            operation_refs = [
+                dict(r)
+                for r in conn.execute(
+                    """
+                    SELECT ref_order, operation_kind, path, tree_id_before, tree_id_after, chosen_fv_id, resolved_fv_id, receipt_hash, created_at
+                    FROM sb_casey_operation_refs
+                    WHERE annotation_id = ?
+                    ORDER BY ref_order
+                    """,
+                    (annotation_id,),
+                ).fetchall()
+            ]
+            build_refs = [
+                dict(r)
+                for r in conn.execute(
+                    """
+                    SELECT ref_order, build_id, tree_id, selection_digest, created_at
+                    FROM sb_casey_build_refs
+                    WHERE annotation_id = ?
+                    ORDER BY ref_order
+                    """,
+                    (annotation_id,),
+                ).fetchall()
+            ]
+
             out.append(
                 {
                     "activity_event_id": str(row["activity_event_id"]),
@@ -1210,6 +1352,12 @@ def load_itir_overlay_records(*, db_path: Path) -> list[dict[str, Any]]:
                     "selector_refs": selector_refs,
                     "reason_codes": reason_codes,
                     "artifact_refs": artifact_refs,
+                    "workspace_refs": workspace_refs,
+                    "operation_refs": operation_refs,
+                    "build_refs": build_refs,
+                    "workspace_refs": workspace_refs,
+                    "operation_refs": operation_refs,
+                    "build_refs": build_refs,
                     "mission_refs": mission_refs,
                     "evidence_refs": evidence_refs,
                     "note": str(row["note"] or ""),
