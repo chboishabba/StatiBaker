@@ -274,6 +274,36 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
           payload_json TEXT NOT NULL,
           PRIMARY KEY (annotation_id, ref_order)
         );
+
+        -- Fuzzymodo selector v0.1 observer overlay extension tables.
+        CREATE TABLE IF NOT EXISTS sb_fuzzymodo_selector_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          selector_hash TEXT NOT NULL,
+          decision_state TEXT,
+          matched INTEGER,
+          policy_hash TEXT,
+          replay_key TEXT,
+          created_at TEXT,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_fuzzymodo_reason_codes (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          reason_code TEXT NOT NULL,
+          detail TEXT,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_fuzzymodo_artifact_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          artifact_kind TEXT NOT NULL,
+          artifact_locator TEXT NOT NULL,
+          artifact_hash TEXT,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
         """
     )
 
@@ -979,6 +1009,9 @@ def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]])
                 continue
             conn.execute("DELETE FROM sb_itir_mission_refs WHERE annotation_id = ?", (annotation_id,))
             conn.execute("DELETE FROM sb_itir_evidence_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_fuzzymodo_selector_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_fuzzymodo_reason_codes WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_fuzzymodo_artifact_refs WHERE annotation_id = ?", (annotation_id,))
             conn.execute(
                 """
                 INSERT OR REPLACE INTO sb_itir_overlays(
@@ -1037,6 +1070,65 @@ def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]])
                         json.dumps(payload, sort_keys=True),
                     ),
                 )
+
+            selector_refs = record.get("selector_refs") if isinstance(record.get("selector_refs"), list) else []
+            for ref_order, payload in enumerate(selector_refs):
+                if not isinstance(payload, dict):
+                    continue
+                conn.execute(
+                    """
+                    INSERT INTO sb_fuzzymodo_selector_refs(
+                      annotation_id, ref_order, selector_hash, decision_state, matched, policy_hash, replay_key, created_at
+                    ) VALUES (?,?,?,?,?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        ref_order,
+                        str(payload.get("selector_hash") or ""),
+                        str(payload.get("decision_state") or "") if payload.get("decision_state") is not None else None,
+                        int(payload.get("matched")) if payload.get("matched") is not None else None,
+                        str(payload.get("policy_hash") or "") if payload.get("policy_hash") is not None else None,
+                        str(payload.get("replay_key") or "") if payload.get("replay_key") is not None else None,
+                        str(payload.get("created_at") or "") if payload.get("created_at") is not None else None,
+                    ),
+                )
+
+            reason_codes = record.get("reason_codes") if isinstance(record.get("reason_codes"), list) else []
+            for ref_order, payload in enumerate(reason_codes):
+                if not isinstance(payload, dict):
+                    continue
+                conn.execute(
+                    """
+                    INSERT INTO sb_fuzzymodo_reason_codes(
+                      annotation_id, ref_order, reason_code, detail
+                    ) VALUES (?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        ref_order,
+                        str(payload.get("reason_code") or ""),
+                        str(payload.get("detail") or "") if payload.get("detail") is not None else None,
+                    ),
+                )
+
+            artifact_refs = record.get("artifact_refs") if isinstance(record.get("artifact_refs"), list) else []
+            for ref_order, payload in enumerate(artifact_refs):
+                if not isinstance(payload, dict):
+                    continue
+                conn.execute(
+                    """
+                    INSERT INTO sb_fuzzymodo_artifact_refs(
+                      annotation_id, ref_order, artifact_kind, artifact_locator, artifact_hash
+                    ) VALUES (?,?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        ref_order,
+                        str(payload.get("artifact_kind") or ""),
+                        str(payload.get("artifact_locator") or ""),
+                        str(payload.get("artifact_hash") or "") if payload.get("artifact_hash") is not None else None,
+                    ),
+                )
         conn.commit()
 
 
@@ -1067,6 +1159,44 @@ def load_itir_overlay_records(*, db_path: Path) -> list[dict[str, Any]]:
                     (annotation_id,),
                 ).fetchall()
             ]
+
+            selector_refs = [
+                dict(r)
+                for r in conn.execute(
+                    """
+                    SELECT ref_order, selector_hash, decision_state, matched, policy_hash, replay_key, created_at
+                    FROM sb_fuzzymodo_selector_refs
+                    WHERE annotation_id = ?
+                    ORDER BY ref_order
+                    """,
+                    (annotation_id,),
+                ).fetchall()
+            ]
+            reason_codes = [
+                dict(r)
+                for r in conn.execute(
+                    """
+                    SELECT ref_order, reason_code, detail
+                    FROM sb_fuzzymodo_reason_codes
+                    WHERE annotation_id = ?
+                    ORDER BY ref_order
+                    """,
+                    (annotation_id,),
+                ).fetchall()
+            ]
+            artifact_refs = [
+                dict(r)
+                for r in conn.execute(
+                    """
+                    SELECT ref_order, artifact_kind, artifact_locator, artifact_hash
+                    FROM sb_fuzzymodo_artifact_refs
+                    WHERE annotation_id = ?
+                    ORDER BY ref_order
+                    """,
+                    (annotation_id,),
+                ).fetchall()
+            ]
+
             out.append(
                 {
                     "activity_event_id": str(row["activity_event_id"]),
@@ -1077,6 +1207,9 @@ def load_itir_overlay_records(*, db_path: Path) -> list[dict[str, Any]]:
                     "status": str(row["status"]) if row["status"] is not None else None,
                     "confidence": str(row["confidence"]) if row["confidence"] is not None else None,
                     "provenance": json.loads(str(row["provenance_json"])),
+                    "selector_refs": selector_refs,
+                    "reason_codes": reason_codes,
+                    "artifact_refs": artifact_refs,
                     "mission_refs": mission_refs,
                     "evidence_refs": evidence_refs,
                     "note": str(row["note"] or ""),

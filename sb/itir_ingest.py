@@ -1,5 +1,5 @@
 REQUIRED_FIELDS = {"activity_event_id", "annotation_id", "provenance"}
-OPTIONAL_FIELDS = {"sb_state_id", "state_date"}
+OPTIONAL_FIELDS = {"sb_state_id", "state_date", "observer_kind", "status", "confidence", "note"}
 FORBIDDEN_FIELDS = {
     "activity_events",
     "activity_ledger",
@@ -32,13 +32,27 @@ def validate_overlay(record):
     if forbidden:
         errors.append(f"forbidden fields present: {sorted(forbidden)}")
 
-    if record.get("observer_kind") == "itir_mission_graph_v1":
+    kind = record.get("observer_kind")
+
+    if kind == "itir_mission_graph_v1":
         if "mission_refs" not in record:
             errors.append("mission observer overlay missing mission_refs")
         if "evidence_refs" not in record:
             errors.append("mission observer overlay missing evidence_refs")
         if "threads" in record or "events" in record:
             errors.append("mission observer overlays must stay reference-heavy and may not inject threads/events")
+
+    if kind == "fuzzymodo_selector_v1":
+        # Extension tables are optional at ingest boundary; we just ensure the base
+        # overlay stays reference-heavy.
+        if "selector" in record or "norm_constraints" in record:
+            errors.append("fuzzymodo selector overlays must not include selector or norm payloads")
+        if "selector_refs" in record and not isinstance(record.get("selector_refs"), list):
+            errors.append("fuzzymodo selector overlay selector_refs must be a list")
+        if "reason_codes" in record and not isinstance(record.get("reason_codes"), list):
+            errors.append("fuzzymodo selector overlay reason_codes must be a list")
+        if "artifact_refs" in record and not isinstance(record.get("artifact_refs"), list):
+            errors.append("fuzzymodo selector overlay artifact_refs must be a list")
 
     return errors
 
