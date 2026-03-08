@@ -56,10 +56,8 @@ class TestSessionize(unittest.TestCase):
             text=True,
             check=False,
         )
-        # Running via `-m sb.activity.sessionize` requires `sb` to be importable on sys.path.
-        # In this repo layout, that isn't guaranteed when running tests from the monorepo root.
-        self.assertNotEqual(0, result.returncode)
-        self.assertTrue(result.stderr.strip())
+        self.assertEqual(2, result.returncode)
+        self.assertIn("error:", result.stderr)
 
 
 if __name__ == "__main__":

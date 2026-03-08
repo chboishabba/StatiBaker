@@ -45,6 +45,10 @@ No motivational framing.
 
 ## Current module features (what exists today)
 
+### Monorepo Python imports
+- From the ITIR-suite repo root, `import sb` and `python -m sb...` are supported via the lightweight shim package at `sb/__init__.py`.
+- This avoids requiring installation/packaging just to run modules locally.
+
 - **Run pipeline (append-only logs -> compiled state)**
   - A reference run script that collects inputs into a per-day run dir and writes outputs: `scripts/run_day.sh`
   - Pluggable adapters for common streams (git, filesystem meta, Prometheus, osquery, input/window focus, browser usage, notes meta, social/meta stubs, etc.): `adapters/`
