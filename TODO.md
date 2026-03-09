@@ -230,6 +230,9 @@ https://truenas.local:30037/d/truenas-overview4/truenas-scale-overview4
 - Prometheus: numeric summaries only
 - iNaturalist: biodiversity observation metadata (hashed IDs + coarse location only)
 - OpenRecall: visual evidence only
+  - keep raw OpenRecall rows out of SB direct ingest
+  - prefer ITIR-normalized observer overlays if capture-derived signals ever
+    need to cross into SB
 - Android: coarse status only
 
 ## Governance and safety

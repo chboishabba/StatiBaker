@@ -4033,6 +4033,14 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     .wf-edge.stay {{ stroke: rgba(75, 85, 99, 0.42); }}
     .wf-edge.switch {{ stroke: rgba(17, 24, 39, 0.75); stroke-dasharray: 3 2; }}
     .wf-node {{ stroke: rgba(17, 24, 39, 0.65); stroke-width: 0.8; }}
+    .role-topbar {{ position: sticky; top: 0; z-index: 50; background: rgba(243, 246, 240, 0.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }}
+    .role-topbar-inner {{ width: min(1200px, calc(100vw - 0.6rem)); margin: 0 auto; padding: 0.55rem 1.2rem; box-sizing: border-box; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }}
+    .role-topbar b {{ font-family: "IBM Plex Mono", "Consolas", monospace; font-size: 0.82rem; color: #374151; margin-right: 0.25rem; }}
+    .role-tab {{ border: 1px solid var(--line); border-radius: 999px; background: #ffffff; padding: 0.25rem 0.55rem; cursor: pointer; font: inherit; font-size: 0.88rem; }}
+    .role-tab[aria-pressed="true"] {{ background: #e7f2ea; border-color: #8ecfb4; color: #0b6e4f; }}
+    .role-topbar-spacer {{ flex: 1 1 auto; }}
+    .role-topbar-link {{ font-size: 0.86rem; color: #1d4ed8; text-decoration: none; border-bottom: 1px dashed rgba(29, 78, 216, 0.45); }}
+    .role-topbar-link:hover {{ border-bottom-style: solid; }}
     @media (max-width: 760px) {{
       main {{ width: min(1200px, calc(100vw - 0.2rem)); padding: 0.75rem; }}
       .table-scroll table {{ font-size: 0.82rem; }}
@@ -4043,8 +4051,29 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
   </style>
 </head>
 <body>
+  <div class="role-topbar">
+    <div class="role-topbar-inner">
+      <b>View</b>
+      <button class="role-tab" type="button" data-role="StatiBaker" aria-pressed="true">StatiBaker</button>
+      <button class="role-tab" type="button" data-role="TiRC (transcript and recording)" aria-pressed="false">TiRC (transcript and recording)</button>
+      <button class="role-tab" type="button" data-role="Fuzzymodo" aria-pressed="false">Fuzzymodo</button>
+      <button class="role-tab" type="button" data-role="casey-git-clone" aria-pressed="false">casey-git-clone</button>
+      <button class="role-tab" type="button" data-role="SensibLaw" aria-pressed="false">SensibLaw</button>
+      <button class="role-tab" type="button" data-role="All" aria-pressed="false">All</button>
+      <span class="role-topbar-spacer"></span>
+      <a class="role-topbar-link" href="#" id="role-show-all">Show all sections</a>
+    </div>
+  </div>
   <main>
-    <section class="panel">
+    <section class="panel" data-role="SensibLaw">
+      <h2>SensibLaw</h2>
+      <p><small>No SensibLaw data in this dashboard view.</small></p>
+    </section>
+    <section class="panel" data-role="casey-git-clone">
+      <h2>casey-git-clone</h2>
+      <p><small>No casey-git-clone specific panels in this dashboard view (yet).</small></p>
+    </section>
+    <section class="panel" data-role="StatiBaker">
       <h1>SB Activity Dashboard</h1>
       <div class="meta">
         <div><b>Date:</b> <code>{escape(str(payload.get("date", "")))}</code></div>
@@ -4053,8 +4082,9 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         <div><b>Chat scope:</b> <code>{escape(str(payload.get("chat_scope_mode", "scoped")))}</code></div>
       </div>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Summary</h2>
+      <p class="wf-note"><small>Use the top tabs to switch between tool/role views.</small></p>
       <div class="grid">
         <div class="metric">Chat messages<b>{summary.get("chat_messages", 0)}</b></div>
         <div class="metric">Chat threads<b>{summary.get("chat_threads", 0)}</b></div>
@@ -4091,8 +4121,10 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       </div>
       <p class="wf-note">{escape(trailing_text)}</p>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="Fuzzymodo">
       <h2>Observer Overlays</h2>
+      <p class="wf-note"><small>Note: this panel may include non-Fuzzymodo overlays today; finer per-tool tab splits can come next.</small></p>
+      <p><small>Tip: Casey overlays will also be shown under <code>casey-git-clone</code> once overlays are split by kind.</small></p>
       <p><small>Observer-class overlays only; reference-heavy. Joins (when present) are read-only lookups by locator/id.</small></p>
       <div class="table-scroll">
         <table>
@@ -4110,7 +4142,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         </table>
       </div>
     </section>
-    <section class="panel bars">
+    <section class="panel bars" data-role="StatiBaker">
       <div><h2>Messages/hour</h2><ul>{_render_hour_rows(freq.get("chat", _empty_bins()), "chat")}</ul></div>
       <div><h2>Shell/hour</h2><ul>{_render_hour_rows(freq.get("shell", _empty_bins()), "shell")}</ul></div>
       <div><h2>Commits/hour</h2><ul>{_render_hour_rows(freq.get("git", _empty_bins()), "git")}</ul></div>
@@ -4121,11 +4153,11 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       <div><h2>Branch/hour</h2><ul>{_render_hour_rows(freq.get("git_branch", _empty_bins()), "branch")}</ul></div>
       <div><h2>PR/hour</h2><ul>{_render_hour_rows(freq.get("pr", _empty_bins()), "pr")}</ul></div>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Process Artifacts</h2>
       <ul class="links">{"".join(artifact_rows) if artifact_rows else "<li>None</li>"}</ul>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="TiRC (transcript and recording)">
       <h2>Chat Threads</h2>
       <div class="table-scroll">
         <table>
@@ -4134,7 +4166,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         </table>
       </div>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="TiRC (transcript and recording)">
       <h2>Chat Context Usage (Estimated)</h2>
       <p>
         chars=<code>{_safe_int(chat_context_usage.get("chars_est"))}</code>,
@@ -4155,7 +4187,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         </table>
       </div>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="TiRC (transcript and recording)">
       <h2>Chat Flow Visualizations</h2>
       <p>
         messages=<code>{_safe_int(chat_flow.get("message_count"))}</code>,
@@ -4232,7 +4264,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       <p><b>Media warnings:</b></p>
       <ul>{media_warning_rows if media_warning_rows else "<li>None</li>"}</ul>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="TiRC (transcript and recording)">
       <h2>NotebookLM Lifecycle (Metadata)</h2>
       <p><small>Snapshot/observed rows are tracked as <code>seen</code>. Lifecycle events are inferred from each row&apos;s event name.</small></p>
       <div class="grid">
@@ -4250,7 +4282,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       <p><b>Lifecycle warnings:</b></p>
       <ul>{notes_warning_rows if notes_warning_rows else "<li>None</li>"}</ul>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Tool Use Summary</h2>
       <p>
         source=<code>{escape(str(tool_use_summary.get("source", "none")))}</code>,
@@ -4272,7 +4304,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       <p><b>Tool summary warnings:</b></p>
       <ul>{tool_warning_rows if tool_warning_rows else "<li>None</li>"}</ul>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Agent Edit Activity</h2>
       <p>
         source=<code>{escape(str(agent_edit_summary.get("source") or "none"))}</code>,
@@ -4293,7 +4325,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       <p><b>Agent edit warnings:</b></p>
       <ul>{agent_warning_rows if agent_warning_rows else "<li>None</li>"}</ul>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="TiRC (transcript and recording)">
       <h2>Timeline</h2>
       <div class="filter-grid">
         <div class="filter-block">
@@ -4324,12 +4356,49 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         </table>
       </div>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Warnings</h2>
       <ul>{warning_rows if warning_rows else "<li>None</li>"}</ul>
     </section>
   </main>
   <script>
+    (() => {{
+      const ROLE_KEY = "sb_dashboard_role_tab";
+      const tabs = Array.from(document.querySelectorAll(".role-tab[data-role]"));
+      const panels = Array.from(document.querySelectorAll("section.panel[data-role]"));
+      if (!tabs.length || !panels.length) return;
+
+      const setRole = (role) => {{
+        const chosen = String(role || "StatiBaker");
+        try {{ localStorage.setItem(ROLE_KEY, chosen); }} catch (_) {{}}
+        tabs.forEach((btn) => {{
+          const pressed = (btn.dataset.role || "") === chosen;
+          btn.setAttribute("aria-pressed", pressed ? "true" : "false");
+        }});
+        panels.forEach((panel) => {{
+          const panelRole = panel.dataset.role || "";
+          panel.style.display = (chosen === "All" || panelRole === chosen) ? "" : "none";
+        }});
+      }};
+
+      tabs.forEach((btn) => {{
+        btn.addEventListener("click", () => setRole(btn.dataset.role || "StatiBaker"));
+      }});
+
+      const showAllLink = document.getElementById("role-show-all");
+      if (showAllLink) {{
+        showAllLink.addEventListener("click", (evt) => {{
+          evt.preventDefault();
+          setRole("All");
+        }});
+      }}
+
+      let initial = "StatiBaker";
+      try {{ initial = localStorage.getItem(ROLE_KEY) || initial; }} catch (_) {{}}
+      if (!tabs.some((b) => (b.dataset.role || "") === initial)) initial = "StatiBaker";
+      setRole(initial);
+    }})();
+
     (() => {{
       const table = document.getElementById("timeline-table");
       if (!table) return;
@@ -5595,8 +5664,21 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
   </style>
 </head>
 <body>
+  <div class="role-topbar">
+    <div class="role-topbar-inner">
+      <b>View</b>
+      <button class="role-tab" type="button" data-role="StatiBaker" aria-pressed="true">StatiBaker</button>
+      <button class="role-tab" type="button" data-role="TiRC (transcript and recording)" aria-pressed="false">TiRC (transcript and recording)</button>
+      <button class="role-tab" type="button" data-role="Fuzzymodo" aria-pressed="false">Fuzzymodo</button>
+      <button class="role-tab" type="button" data-role="casey-git-clone" aria-pressed="false">casey-git-clone</button>
+      <button class="role-tab" type="button" data-role="SensibLaw" aria-pressed="false">SensibLaw</button>
+      <button class="role-tab" type="button" data-role="All" aria-pressed="false">All</button>
+      <span class="role-topbar-spacer"></span>
+      <a class="role-topbar-link" href="#" id="role-show-all">Show all sections</a>
+    </div>
+  </div>
   <main>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h1>SB Weekly Dashboard</h1>
       <p>
         <b>Window:</b> <code>{escape(str(payload.get("period_start", "")))}</code> to
@@ -5606,7 +5688,7 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
       </p>
     </section>
     {interactive}
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Totals</h2>
       <div class="grid">
         <div class="metric">Chat messages<b>{_safe_int(totals.get("chat_messages"))}</b></div>
@@ -5647,7 +5729,7 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
         prs=<code>{escape(str(averages.get("pr_events", 0)))}</code>
       </p>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="TiRC (transcript and recording)">
       <h2>NotebookLM Lifecycle (Metadata)</h2>
       <div class="grid">
         <div class="metric">Notes meta events<b>{_safe_int(notes_totals.get("total_events"))}</b></div>
@@ -5661,7 +5743,7 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
         notebooklm=<code>{escape(str(notes_averages.get("notebooklm_events", 0)))}</code>
       </p>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Per-Day Summary</h2>
       <div class="table-scroll">
         <table>
@@ -5670,11 +5752,49 @@ def render_weekly_dashboard_html(payload: dict[str, Any], html_path: Path) -> st
         </table>
       </div>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Warnings</h2>
       <ul>{warning_rows if warning_rows else "<li>None</li>"}</ul>
     </section>
   </main>
+  <script>
+    (() => {{
+      const ROLE_KEY = "sb_dashboard_role_tab";
+      const tabs = Array.from(document.querySelectorAll(".role-tab[data-role]"));
+      const panels = Array.from(document.querySelectorAll("section.panel[data-role]"));
+      if (!tabs.length || !panels.length) return;
+
+      const setRole = (role) => {{
+        const chosen = String(role || "StatiBaker");
+        try {{ localStorage.setItem(ROLE_KEY, chosen); }} catch (_) {{}}
+        tabs.forEach((btn) => {{
+          const pressed = (btn.dataset.role || "") === chosen;
+          btn.setAttribute("aria-pressed", pressed ? "true" : "false");
+        }});
+        panels.forEach((panel) => {{
+          const panelRole = panel.dataset.role || "";
+          panel.style.display = (chosen === "All" || panelRole === chosen) ? "" : "none";
+        }});
+      }};
+
+      tabs.forEach((btn) => {{
+        btn.addEventListener("click", () => setRole(btn.dataset.role || "StatiBaker"));
+      }});
+
+      const showAllLink = document.getElementById("role-show-all");
+      if (showAllLink) {{
+        showAllLink.addEventListener("click", (evt) => {{
+          evt.preventDefault();
+          setRole("All");
+        }});
+      }}
+
+      let initial = "StatiBaker";
+      try {{ initial = localStorage.getItem(ROLE_KEY) || initial; }} catch (_) {{}}
+      if (!tabs.some((b) => (b.dataset.role || "") === initial)) initial = "StatiBaker";
+      setRole(initial);
+    }})();
+  </script>
 </body>
 </html>
 """
@@ -5766,6 +5886,14 @@ def render_lifetime_dashboard_html(payload: dict[str, Any], html_path: Path) -> 
     th, td {{ border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }}
     code {{ background: #edf2f4; border-radius: 4px; padding: 0.05rem 0.2rem; }}
     .table-scroll {{ overflow-x: auto; }}
+    .role-topbar {{ position: sticky; top: 0; z-index: 50; background: rgba(244, 248, 247, 0.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }}
+    .role-topbar-inner {{ max-width: 1280px; margin: 0 auto; padding: 0.55rem 1.2rem; box-sizing: border-box; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }}
+    .role-topbar b {{ font-family: "IBM Plex Mono", "Consolas", monospace; font-size: 0.82rem; color: #334155; margin-right: 0.25rem; }}
+    .role-tab {{ border: 1px solid var(--line); border-radius: 999px; background: #ffffff; padding: 0.25rem 0.55rem; cursor: pointer; font: inherit; font-size: 0.88rem; }}
+    .role-tab[aria-pressed="true"] {{ background: #eaf2f6; border-color: #adc3f4; color: #1d4ed8; }}
+    .role-topbar-spacer {{ flex: 1 1 auto; }}
+    .role-topbar-link {{ font-size: 0.86rem; color: #1d4ed8; text-decoration: none; border-bottom: 1px dashed rgba(29, 78, 216, 0.45); }}
+    .role-topbar-link:hover {{ border-bottom-style: solid; }}
     @media (max-width: 760px) {{ table {{ font-size: 0.82rem; }} }}
     .filter-grid {{ display: grid; gap: 0.65rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 0.45rem; }}
     .filter-block {{ border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem; background: #fbfcfb; }}
@@ -5804,8 +5932,21 @@ def render_lifetime_dashboard_html(payload: dict[str, Any], html_path: Path) -> 
   </style>
 </head>
 <body>
+  <div class="role-topbar">
+    <div class="role-topbar-inner">
+      <b>View</b>
+      <button class="role-tab" type="button" data-role="StatiBaker" aria-pressed="true">StatiBaker</button>
+      <button class="role-tab" type="button" data-role="TiRC (transcript and recording)" aria-pressed="false">TiRC (transcript and recording)</button>
+      <button class="role-tab" type="button" data-role="Fuzzymodo" aria-pressed="false">Fuzzymodo</button>
+      <button class="role-tab" type="button" data-role="casey-git-clone" aria-pressed="false">casey-git-clone</button>
+      <button class="role-tab" type="button" data-role="SensibLaw" aria-pressed="false">SensibLaw</button>
+      <button class="role-tab" type="button" data-role="All" aria-pressed="false">All</button>
+      <span class="role-topbar-spacer"></span>
+      <a class="role-topbar-link" href="#" id="role-show-all">Show all sections</a>
+    </div>
+  </div>
   <main>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h1>SB Lifetime Dashboard</h1>
       <p>
         <b>Window:</b> <code>{escape(str(payload.get("period_start", "")))}</code> to
@@ -5817,7 +5958,7 @@ def render_lifetime_dashboard_html(payload: dict[str, Any], html_path: Path) -> 
       <p><small>Indicative API costing companion: <a href='{escape(costing_href)}'>{escape(costing_name)}</a></small></p>
     </section>
     {interactive}
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>State Volume</h2>
       <div class="grid">
         <div class="metric">Ingested events (raw est)<b>{_safe_int(state_totals.get("raw_events"))}</b></div>
@@ -5836,7 +5977,7 @@ def render_lifetime_dashboard_html(payload: dict[str, Any], html_path: Path) -> 
         state bytes=<code>{escape(str(state_averages.get("state_json_bytes", 0)))}</code>
       </p>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Activity Totals</h2>
       <div class="grid">
         <div class="metric">Chat messages<b>{_safe_int(totals.get("chat_messages"))}</b></div>
@@ -5874,7 +6015,7 @@ def render_lifetime_dashboard_html(payload: dict[str, Any], html_path: Path) -> 
         media-churn=<code>{(_safe_float(media_averages.get("churn_rate")) * 100.0):.1f}%</code>
       </p>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="TiRC (transcript and recording)">
       <h2>NotebookLM Lifecycle (Metadata)</h2>
       <div class="grid">
         <div class="metric">Notes meta events<b>{_safe_int(notes_totals.get("total_events"))}</b></div>
@@ -5888,7 +6029,7 @@ def render_lifetime_dashboard_html(payload: dict[str, Any], html_path: Path) -> 
         notebooklm=<code>{escape(str(notes_averages.get("notebooklm_events", 0)))}</code>
       </p>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Per-Day Summary</h2>
       <div class="table-scroll">
         <table>
@@ -5897,15 +6038,53 @@ def render_lifetime_dashboard_html(payload: dict[str, Any], html_path: Path) -> 
         </table>
       </div>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Definitions</h2>
       <ul>{definition_rows if definition_rows else "<li>None</li>"}</ul>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Warnings</h2>
       <ul>{warning_rows if warning_rows else "<li>None</li>"}</ul>
     </section>
   </main>
+  <script>
+    (() => {{
+      const ROLE_KEY = "sb_dashboard_role_tab";
+      const tabs = Array.from(document.querySelectorAll(".role-tab[data-role]"));
+      const panels = Array.from(document.querySelectorAll("section.panel[data-role]"));
+      if (!tabs.length || !panels.length) return;
+
+      const setRole = (role) => {{
+        const chosen = String(role || "StatiBaker");
+        try {{ localStorage.setItem(ROLE_KEY, chosen); }} catch (_) {{}}
+        tabs.forEach((btn) => {{
+          const pressed = (btn.dataset.role || "") === chosen;
+          btn.setAttribute("aria-pressed", pressed ? "true" : "false");
+        }});
+        panels.forEach((panel) => {{
+          const panelRole = panel.dataset.role || "";
+          panel.style.display = (chosen === "All" || panelRole === chosen) ? "" : "none";
+        }});
+      }};
+
+      tabs.forEach((btn) => {{
+        btn.addEventListener("click", () => setRole(btn.dataset.role || "StatiBaker"));
+      }});
+
+      const showAllLink = document.getElementById("role-show-all");
+      if (showAllLink) {{
+        showAllLink.addEventListener("click", (evt) => {{
+          evt.preventDefault();
+          setRole("All");
+        }});
+      }}
+
+      let initial = "StatiBaker";
+      try {{ initial = localStorage.getItem(ROLE_KEY) || initial; }} catch (_) {{}}
+      if (!tabs.some((b) => (b.dataset.role || "") === initial)) initial = "StatiBaker";
+      setRole(initial);
+    }})();
+  </script>
 </body>
 </html>
 """
@@ -6027,7 +6206,7 @@ def render_costing_dashboard_html(payload: dict[str, Any], html_path: Path) -> s
         </table>
       </div>
     </section>
-    <section class="panel">
+    <section class="panel" data-role="StatiBaker">
       <h2>Warnings</h2>
       <ul>{warning_rows if warning_rows else "<li>None</li>"}</ul>
     </section>
