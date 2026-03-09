@@ -5,7 +5,7 @@
 - Consumes outputs from `SensibLaw/`, `tircorder-JOBBIE/`, and automation logs.
 - May consume observer-only Wikipedia revision-monitor exports from
   `SensibLaw/` as external-signal refs (run summaries, candidate-pair refs,
-  issue-packet refs, section-delta refs).
+  issue-packet refs, section-delta refs, contested-graph refs/summaries).
 - May consume observer-only `fuzzymodo` decision/execution artifacts through a
   bounded append-only seam; see suite note
   `docs/planning/fuzzymodo_statiBaker_interface_20260309.md`.
