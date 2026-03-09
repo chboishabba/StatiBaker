@@ -7,6 +7,25 @@ import sys
 from pathlib import Path
 
 
+def resolve_chat_db_path(explicit: str | None) -> Path:
+    if explicit:
+        return Path(explicit).expanduser().resolve()
+
+    env_path = os.environ.get("ITIR_CHAT_ARCHIVE_DB_PATH") or os.environ.get("CHAT_ARCHIVE_DB_PATH")
+    if env_path and env_path.strip():
+        return Path(env_path).expanduser().resolve()
+
+    candidates = [
+        Path("/tmp/dashig_chat_archive_latest.sqlite"),
+        Path.home() / "chat_archive.sqlite",
+        Path.home() / ".chat_archive.sqlite",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate.resolve()
+    return (Path.home() / "chat_archive.sqlite").resolve()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build SB daily dashboard with optional weekly/lifetime summary views."
@@ -168,11 +187,7 @@ def main() -> None:
         if args.convo_ids
         else context_root / "convo_ids.md"
     )
-    chat_db = (
-        Path(args.chat_db).expanduser().resolve()
-        if args.chat_db
-        else Path.home() / ".chat_archive.sqlite"
-    )
+    chat_db = resolve_chat_db_path(args.chat_db)
     chat_exports = (
         Path(args.chat_exports).expanduser().resolve()
         if args.chat_exports
