@@ -58,6 +58,11 @@ WEEKLY_SUMMARY_KEYS = (
     "pr_commented",
     "pr_merged",
     "timeline_events",
+    "itir_overlays_total",
+    "itir_overlays_fuzzymodo_selector_v1",
+    "itir_overlays_casey_workspace_v1",
+    "itir_overlays_itir_mission_graph_v1",
+    "itir_overlays_other",
 )
 INAT_PHASE_CODES = ("upward_knee", "rising", "peak", "declining", "stable", "insufficient_data", "no_activity")
 INAT_EXPECTATION_CODES = ("expect_more", "at_or_near_peak", "expect_less", "stable_or_unclear", "insufficient_data")
@@ -3278,6 +3283,8 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     timeline = payload.get("timeline", [])
     threads = payload.get("chat_threads", [])
     tool_use_summary = payload.get("tool_use_summary") or {}
+    itir_overlay_records = payload.get("itir_overlay_records") or []
+    itir_overlay_joins = payload.get("itir_overlay_joins") or []
     warnings = payload.get("warnings", [])
     chat_flow = payload.get("chat_flow") or {}
     trailing = payload.get("chat_context_trailing") or {}
@@ -3411,6 +3418,69 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         label = escape(str(item.get("label", target)))
         href = escape(_rel_href(target, html_path))
         artifact_rows.append(f"<li><a href='{href}'>{label}</a><code>{escape(target)}</code></li>")
+
+    overlay_join_by_annotation: dict[str, dict[str, Any]] = {}
+    if isinstance(itir_overlay_joins, list):
+        for item in itir_overlay_joins:
+            if not isinstance(item, dict):
+                continue
+            ann = str(item.get("annotation_id") or "").strip()
+            if ann:
+                overlay_join_by_annotation[ann] = item
+
+    observer_overlay_rows = ""
+    if isinstance(itir_overlay_records, list):
+        overlay_rows: list[str] = []
+        for rec in itir_overlay_records:
+            if not isinstance(rec, dict):
+                continue
+            ann = str(rec.get("annotation_id") or "").strip()
+            kind = str(rec.get("observer_kind") or "").strip()
+            evt = str(rec.get("activity_event_id") or "").strip()
+            sdate = str(rec.get("state_date") or "").strip()
+            status = str(rec.get("status") or "").strip()
+            conf = str(rec.get("confidence") or "").strip()
+
+            join = overlay_join_by_annotation.get(ann, {})
+            join_bits: list[str] = []
+            fuzz = join.get("fuzzymodo_decision") if isinstance(join.get("fuzzymodo_decision"), dict) else None
+            if isinstance(fuzz, dict):
+                decision_id = str(fuzz.get("decision_id") or "").strip()
+                matched = fuzz.get("matched")
+                state = str(fuzz.get("decision_state") or "").strip()
+                if decision_id:
+                    join_bits.append(f"fuzz: <code>{escape(decision_id)}</code>")
+                if matched in (0, 1):
+                    join_bits.append(f"matched=<code>{matched}</code>")
+                if state:
+                    join_bits.append(f"state=<code>{escape(state)}</code>")
+            casey_op = join.get("casey_operation") if isinstance(join.get("casey_operation"), dict) else None
+            if isinstance(casey_op, dict):
+                op_id = str(casey_op.get("operation_id") or "").strip()
+                op_kind = str(casey_op.get("operation_kind") or "").strip()
+                if op_id:
+                    join_bits.append(f"casey op: <code>{escape(op_id)}</code>")
+                if op_kind:
+                    join_bits.append(f"kind=<code>{escape(op_kind)}</code>")
+            casey_build = join.get("casey_build") if isinstance(join.get("casey_build"), dict) else None
+            if isinstance(casey_build, dict):
+                build_id = str(casey_build.get("build_id") or "").strip()
+                if build_id:
+                    join_bits.append(f"casey build: <code>{escape(build_id)}</code>")
+
+            join_text = " · ".join(join_bits) if join_bits else ""
+            overlay_rows.append(
+                "<tr>"
+                + f"<td><code title='{escape(ann)}'>{escape(_short_id(ann, 12))}</code></td>"
+                + f"<td><code>{escape(kind)}</code></td>"
+                + f"<td><code title='{escape(evt)}'>{escape(_short_id(evt, 12))}</code></td>"
+                + f"<td><code>{escape(sdate)}</code></td>"
+                + f"<td>{escape(status)}</td>"
+                + f"<td>{escape(conf)}</td>"
+                + f"<td>{join_text}</td>"
+                + "</tr>"
+            )
+        observer_overlay_rows = "".join(overlay_rows)
 
     thread_rows = []
     for thread in threads:
@@ -4022,11 +4092,22 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       <p class="wf-note">{escape(trailing_text)}</p>
     </section>
     <section class="panel">
-      <h2>Context Overlays (Selected)</h2>
-      <p><small>Observer-class overlays only; no inference. iNaturalist phase is a heuristic over daily insect observation counts.</small></p>
-      <div class="grid">
-        <div class="metric">iNaturalist phase<b>{escape(inat_phase)}</b><small>{escape(inat_expectation)}</small></div>
-        <div class="metric">Mood latest<b>{escape(mood_latest_code)}</b><small>{escape(mood_latest_ts) if mood_latest_ts else "none"}</small></div>
+      <h2>Observer Overlays</h2>
+      <p><small>Observer-class overlays only; reference-heavy. Joins (when present) are read-only lookups by locator/id.</small></p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Observer</th>
+              <th>Annotation</th>
+              <th>Activity</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Join</th>
+            </tr>
+          </thead>
+          <tbody>{observer_overlay_rows if observer_overlay_rows else "<tr><td colspan='6'>No overlays.</td></tr>"}</tbody>
+        </table>
       </div>
     </section>
     <section class="panel bars">
@@ -4684,6 +4765,64 @@ def build_dashboard(
         scoped_thread_ids,
         include_all_chat=include_all_chat,
     )
+
+    # Observer overlays are persisted in the dashboard sqlite DB (SB-owned). For the
+    # daily payload, we expose the overlay records and a reference-heavy join view
+    # that can resolve external ledgers without copying selector/norm payloads.
+    itir_overlay_records: list[dict[str, Any]] = []
+    itir_overlay_joins: list[dict[str, Any]] = []
+    try:
+        from sb.dashboard_store_sqlite import load_itir_overlay_records
+        from sb.overlay_join import join_overlay_ledgers
+
+        overlay_db_path = runs_root / "dashboard.sqlite"
+        itir_overlay_records = load_itir_overlay_records(db_path=overlay_db_path)
+
+        # Ledger db paths are optional. Join helper is resilient if db paths are not
+        # provided or locators are absent.
+        fuzz_ledger = None
+        casey_ledger = None
+        for record in itir_overlay_records:
+            joined = join_overlay_ledgers(
+                overlay=record,
+                fuzzymodo_ledger_db_path=fuzz_ledger,
+                casey_ledger_db_path=casey_ledger,
+            )
+            join_row: dict[str, Any] = {
+                "annotation_id": str(record.get("annotation_id") or ""),
+                "observer_kind": record.get("observer_kind"),
+            }
+            if joined.fuzzymodo_decisions:
+                # Keep this minimal: stable ids/outcomes only.
+                join_row["fuzzymodo_decision"] = {
+                    "decision_id": joined.fuzzymodo_decisions.get("decision_id"),
+                    "selector_hash": joined.fuzzymodo_decisions.get("selector_hash"),
+                    "decision_state": joined.fuzzymodo_decisions.get("decision_state"),
+                    "matched": joined.fuzzymodo_decisions.get("matched"),
+                    "created_at": joined.fuzzymodo_decisions.get("created_at"),
+                }
+            if joined.casey_operation:
+                join_row["casey_operation"] = {
+                    "operation_id": joined.casey_operation.get("operation_id"),
+                    "operation_kind": joined.casey_operation.get("operation_kind"),
+                    "ws_id": joined.casey_operation.get("ws_id"),
+                    "path": joined.casey_operation.get("path"),
+                    "created_at": joined.casey_operation.get("created_at"),
+                    "receipt_hash": joined.casey_operation.get("receipt_hash"),
+                }
+            if joined.casey_build:
+                join_row["casey_build"] = {
+                    "build_id": joined.casey_build.get("build_id"),
+                    "tree_id": joined.casey_build.get("tree_id"),
+                    "selection_digest": joined.casey_build.get("selection_digest"),
+                    "created_at": joined.casey_build.get("created_at"),
+                }
+            if len(join_row) > 2:
+                itir_overlay_joins.append(join_row)
+    except Exception:
+        # Overlays should never break dashboard generation.
+        itir_overlay_records = []
+        itir_overlay_joins = []
     if timeline_truncated:
         warnings.append(
             f"Timeline truncated to {max_timeline_events} events (newest retained)."
@@ -4705,9 +4844,26 @@ def build_dashboard(
             "Estimated chat context overflow detected for one or more threads (heuristic chars/token model)."
         )
 
+    overlay_kind_counts: dict[str, int] = {}
+    if isinstance(itir_overlay_records, list):
+        for rec in itir_overlay_records:
+            if not isinstance(rec, dict):
+                continue
+            kind = str(rec.get("observer_kind") or "").strip() or "unknown"
+            overlay_kind_counts[kind] = overlay_kind_counts.get(kind, 0) + 1
+
     summary = {
         "chat_messages": len(chat_events),
         "chat_threads": len(thread_activity),
+        "itir_overlays_total": sum(overlay_kind_counts.values()),
+        "itir_overlays_fuzzymodo_selector_v1": overlay_kind_counts.get("fuzzymodo_selector_v1", 0),
+        "itir_overlays_casey_workspace_v1": overlay_kind_counts.get("casey_workspace_v1", 0),
+        "itir_overlays_itir_mission_graph_v1": overlay_kind_counts.get("itir_mission_graph_v1", 0),
+        "itir_overlays_other": sum(
+            count
+            for kind, count in overlay_kind_counts.items()
+            if kind not in ("fuzzymodo_selector_v1", "casey_workspace_v1", "itir_mission_graph_v1")
+        ),
         "chat_active_hours": _safe_int(chat_flow.get("active_hours")),
         "messages_per_hour_active": _safe_float(chat_flow.get("messages_per_hour_active")),
         "messages_per_hour_day": _safe_float(chat_flow.get("messages_per_hour_day")),
@@ -4809,6 +4965,8 @@ def build_dashboard(
         "mood_latest": mood_day.get("latest") if isinstance(mood_day.get("latest"), dict) else {},
         "tool_use_summary": tool_use_summary,
         "artifact_links": artifacts,
+        "itir_overlay_records": itir_overlay_records,
+        "itir_overlay_joins": itir_overlay_joins,
         "timeline": [event.to_payload() for event in all_events],
         "warnings": warnings,
     }

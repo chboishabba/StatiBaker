@@ -243,6 +243,7 @@ class TestDashboardBuild(unittest.TestCase):
             html_text = html_out.read_text(encoding="utf-8")
             self.assertIn("SB Activity Dashboard", html_text)
             self.assertIn("Messages/chat", html_text)
+            self.assertIn("Observer Overlays", html_text)
             self.assertIn("Chat Flow Visualizations", html_text)
             self.assertIn("table-scroll", html_text)
             self.assertIn("--wf-gap:", html_text)
