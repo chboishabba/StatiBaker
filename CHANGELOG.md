@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-03-11
+- Fixed Tool Use Summary hydration coupling at the SB reducer layer:
+  - `Shell/hour` now bins agent `exec_command` tool messages by timestamp hour
+    (in addition to host CLI logs).
+  - `Input/hour` now bins agent `request_user_input` tool messages by timestamp
+    hour (in addition to host input logs).
+- Extended `tool_use_summary` payloads with:
+  - `exec_command_hour_bins`
+  - `request_user_input_count`
+  - `request_user_input_hour_bins`
+  - `notebooklm_meta_event_count`
+  - `notebooklm_meta_hour_bins`
+  - synthetic `families[].family = "notebooklm_meta_event"` entries derived
+    from NotebookLM notes-meta events
+- Updated dashboard daily summary fields to expose `input_events_host` and
+  `input_events_agent_request_user_input`, with `input_events` representing the
+  combined count.
+- Added dashboard regression coverage for the new shell/input hour hydration
+  behavior sourced from chat-archive tool messages.
+
 ## 2026-03-09
 - Clarified the `fuzzymodo -> StatiBaker` boundary as observer-only and
   reference-heavy in `docs/interfaces.md` and

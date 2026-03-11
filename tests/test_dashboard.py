@@ -1120,6 +1120,8 @@ class TestDashboardBuild(unittest.TestCase):
             notes_meta = payload.get("notes_meta_summary") or {}
             self.assertEqual(11, notes_meta.get("total_events"))
             self.assertEqual(10, notes_meta.get("notebooklm_events"))
+            self.assertEqual(10, (notes_meta.get("notebooklm_hour_bins") or [0] * 24)[6])
+            self.assertEqual(1, (notes_meta.get("notebooklm_event_counts") or {}).get("notebook_created"))
             lifecycle = notes_meta.get("lifecycle") or {}
             notebook = lifecycle.get("notebook") or {}
             file_counts = lifecycle.get("file") or {}
@@ -1133,6 +1135,12 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(1, file_counts.get("moved"))
             self.assertEqual(1, file_counts.get("deleted"))
             self.assertEqual(1, file_counts.get("seen"))
+            tool_use_summary = payload.get("tool_use_summary") or {}
+            self.assertEqual(10, tool_use_summary.get("notebooklm_meta_event_count"))
+            self.assertEqual(10, (tool_use_summary.get("notebooklm_meta_hour_bins") or [0] * 24)[6])
+            families = {item.get("family"): item for item in (tool_use_summary.get("families") or [])}
+            self.assertIn("notebooklm_meta_event", families)
+            self.assertEqual(10, (families["notebooklm_meta_event"] or {}).get("count"))
 
             out_json = runs_root / date / "outputs" / "dashboard.json"
             out_html = runs_root / date / "outputs" / "dashboard.html"
@@ -1365,14 +1373,108 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(3, summary.get("exec_with_workdir_count"))
             self.assertEqual(0, summary.get("exec_without_workdir_count"))
             self.assertEqual(3, summary.get("unique_commands"))
+            self.assertEqual(3, (summary.get("exec_command_hour_bins") or [0] * 24)[10])
             self.assertEqual(3, payload["summary"]["shell_commands"])
             self.assertEqual(0, payload["summary"]["shell_commands_host"])
             self.assertEqual(3, payload["summary"]["shell_commands_agent_exec"])
+            self.assertEqual(3, payload["frequency_by_hour"]["shell"][10])
 
             families = {item["family"]: item for item in summary.get("families") or []}
             self.assertIn("python build_dashboard.py", families)
             self.assertEqual(2, families["python build_dashboard.py"]["count"])
             self.assertIn("git status", families)
+
+    def test_tool_use_summary_hydrates_input_hour_from_request_user_input(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            context_root.mkdir(parents=True, exist_ok=True)
+            thread_id = "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee"
+            (context_root / "convo_ids.md").write_text(
+                (
+                    "| id | title | tail_lines | notes |\n"
+                    "| --- | --- | --- | --- |\n"
+                    f"| {thread_id} | Input Hydration Thread | 100 | test |\n"
+                ),
+                encoding="utf-8",
+            )
+            date = "2026-02-08"
+            out_dir = runs_root / date / "outputs"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "activity_ledger.json").write_text(
+                json.dumps({"activity_events": [], "provenance": {}}),
+                encoding="utf-8",
+            )
+
+            db_path = _chat_db_path(tmp, repo_root)
+            con = sqlite3.connect(db_path)
+            cur = con.cursor()
+            cur.execute(
+                """
+                CREATE TABLE messages (
+                  message_id TEXT PRIMARY KEY,
+                  canonical_thread_id TEXT,
+                  platform TEXT,
+                  account_id TEXT,
+                  ts TEXT,
+                  role TEXT,
+                  text TEXT,
+                  title TEXT,
+                  source_id TEXT
+                )
+                """
+            )
+            rows = [
+                (
+                    "m1",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T13:00:00+00:00",
+                    "tool",
+                    'request_user_input {"questions":[{"header":"Scope","id":"scope","question":"Pick one","options":[{"label":"A","description":"opt"}]}]}',
+                    "",
+                    "src",
+                ),
+                (
+                    "m2",
+                    thread_id,
+                    "chatgpt",
+                    "main",
+                    "2026-02-08T13:15:00+00:00",
+                    "tool",
+                    'exec_command {"cmd":"git status","workdir":"/repo/StatiBaker"}',
+                    "",
+                    "src",
+                ),
+            ]
+            cur.executemany(
+                "INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                rows,
+            )
+            con.commit()
+            con.close()
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=db_path,
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=100,
+                include_all_chat=False,
+            )
+
+            summary = payload.get("tool_use_summary") or {}
+            self.assertEqual(1, summary.get("request_user_input_count"))
+            self.assertEqual(1, (summary.get("request_user_input_hour_bins") or [0] * 24)[13])
+            self.assertEqual(1, payload["summary"]["input_events"])
+            self.assertEqual(0, payload["summary"]["input_events_host"])
+            self.assertEqual(1, payload["summary"]["input_events_agent_request_user_input"])
+            self.assertEqual(1, payload["frequency_by_hour"]["input"][13])
 
     def test_tool_use_summary_skips_env_assignments_for_family(self):
         with tempfile.TemporaryDirectory() as tmp:

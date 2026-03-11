@@ -198,6 +198,8 @@ def _empty_notes_meta_summary() -> dict[str, Any]:
     return {
         "total_events": 0,
         "notebooklm_events": 0,
+        "notebooklm_hour_bins": _empty_bins(),
+        "notebooklm_event_counts": {},
         "app_counts": {},
         "lifecycle": _empty_notes_lifecycle_counts(),
         "warnings": [],
@@ -1545,6 +1547,9 @@ def _load_tool_use_summary_sqlite(
         "source": "none",
         "total_tool_messages": 0,
         "exec_command_count": 0,
+        "exec_command_hour_bins": _empty_bins(),
+        "request_user_input_count": 0,
+        "request_user_input_hour_bins": _empty_bins(),
         "exec_with_workdir_count": 0,
         "exec_without_workdir_count": 0,
         "unique_commands": 0,
@@ -1572,7 +1577,7 @@ def _load_tool_use_summary_sqlite(
         try:
             cur.execute(
                 """
-                SELECT canonical_thread_id, title, text
+                SELECT canonical_thread_id, title, ts, text
                 FROM messages
                 WHERE substr(ts, 1, 10) = ?
                   AND role = 'tool'
@@ -1594,6 +1599,9 @@ def _load_tool_use_summary_sqlite(
 
     total_tool_messages = 0
     exec_command_count = 0
+    exec_command_hour_bins = _empty_bins()
+    request_user_input_count = 0
+    request_user_input_hour_bins = _empty_bins()
     exec_with_workdir_count = 0
     exec_without_workdir_count = 0
     parse_failures = 0
@@ -1603,9 +1611,10 @@ def _load_tool_use_summary_sqlite(
     family_variants: dict[str, Counter[str]] = {}
     family_dirs: dict[str, Counter[str]] = {}
 
-    for canonical_thread_id, title, text in rows:
+    for canonical_thread_id, title, ts, text in rows:
         thread_id = str(canonical_thread_id or "").lower()
         thread_title = str(title or "").strip()
+        dt = _parse_ts(ts)
         in_scope = True
         if thread_scope:
             in_scope = thread_id in thread_ids
@@ -1622,6 +1631,11 @@ def _load_tool_use_summary_sqlite(
             continue
 
         tool_name, payload = parsed
+        if tool_name == "request_user_input":
+            request_user_input_count += 1
+            if dt is not None:
+                _increment_bin(request_user_input_hour_bins, dt)
+            continue
         if tool_name != "exec_command":
             continue
 
@@ -1629,6 +1643,8 @@ def _load_tool_use_summary_sqlite(
         if not command:
             continue
         exec_command_count += 1
+        if dt is not None:
+            _increment_bin(exec_command_hour_bins, dt)
         all_command_counts[command] += 1
 
         family = _command_family(command)
@@ -1735,6 +1751,9 @@ def _load_tool_use_summary_sqlite(
         "source": "sqlite",
         "total_tool_messages": int(total_tool_messages),
         "exec_command_count": int(exec_command_count),
+        "exec_command_hour_bins": exec_command_hour_bins,
+        "request_user_input_count": int(request_user_input_count),
+        "request_user_input_hour_bins": request_user_input_hour_bins,
         "exec_with_workdir_count": int(exec_with_workdir_count),
         "exec_without_workdir_count": int(exec_without_workdir_count),
         "unique_commands": int(len(all_command_counts)),
@@ -2226,8 +2245,11 @@ def _load_notes_meta_summary(path: Path) -> dict[str, Any]:
         return summary
 
     app_counts: dict[str, int] = {}
+    notebooklm_event_counts: dict[str, int] = {}
     lifecycle = summary.get("lifecycle")
     lifecycle_counts = lifecycle if isinstance(lifecycle, dict) else _empty_notes_lifecycle_counts()
+    notebooklm_hour_bins = summary.get("notebooklm_hour_bins")
+    notebooklm_hour_bins = notebooklm_hour_bins if isinstance(notebooklm_hour_bins, list) else _empty_bins()
     warnings: list[str] = []
 
     for row in _load_jsonl(path):
@@ -2242,6 +2264,10 @@ def _load_notes_meta_summary(path: Path) -> dict[str, Any]:
             continue
 
         summary["notebooklm_events"] = _safe_int(summary.get("notebooklm_events")) + 1
+        notebooklm_event_counts[event_name or "unknown"] = notebooklm_event_counts.get(event_name or "unknown", 0) + 1
+        dt = _parse_ts(row.get("ts"))
+        if dt is not None:
+            _increment_bin(notebooklm_hour_bins, dt)
         entity, operation = _notes_event_entity_and_operation(
             event_name,
             note_id_hash=row.get("note_id_hash"),
@@ -2256,6 +2282,8 @@ def _load_notes_meta_summary(path: Path) -> dict[str, Any]:
             warnings.append(f"unclassified notebooklm event='{event_name or 'unknown'}'")
 
     summary["app_counts"] = app_counts
+    summary["notebooklm_hour_bins"] = notebooklm_hour_bins
+    summary["notebooklm_event_counts"] = notebooklm_event_counts
     summary["lifecycle"] = lifecycle_counts
     summary["warnings"] = warnings
     return summary
@@ -2415,6 +2443,19 @@ def _merge_notes_meta_summaries(total: dict[str, Any], day: dict[str, Any] | Non
     merged["notebooklm_events"] = _safe_int(total.get("notebooklm_events")) + _safe_int(
         (day or {}).get("notebooklm_events")
     )
+    merged["notebooklm_hour_bins"] = [
+        _safe_int((total.get("notebooklm_hour_bins") or [0] * 24)[idx])
+        + _safe_int(((day or {}).get("notebooklm_hour_bins") or [0] * 24)[idx])
+        for idx in range(24)
+    ]
+    notebooklm_event_counts: dict[str, int] = {}
+    for source in (total.get("notebooklm_event_counts"), (day or {}).get("notebooklm_event_counts")):
+        if not isinstance(source, dict):
+            continue
+        for name, count in source.items():
+            key = str(name or "unknown").strip().lower() or "unknown"
+            notebooklm_event_counts[key] = notebooklm_event_counts.get(key, 0) + _safe_int(count)
+    merged["notebooklm_event_counts"] = notebooklm_event_counts
 
     app_counts: dict[str, int] = {}
     for source in (total.get("app_counts"), (day or {}).get("app_counts")):
@@ -2446,6 +2487,48 @@ def _merge_notes_meta_summaries(total: dict[str, Any], day: dict[str, Any] | Non
         warnings.extend(str(item) for item in source if str(item).strip())
     merged["warnings"] = warnings
     return merged
+
+
+def _augment_tool_use_summary_with_notebooklm(
+    tool_use_summary: dict[str, Any] | None,
+    notes_meta_summary: dict[str, Any] | None,
+) -> dict[str, Any]:
+    out: dict[str, Any] = dict(tool_use_summary or {})
+    notes = notes_meta_summary if isinstance(notes_meta_summary, dict) else {}
+    notebooklm_events = _safe_int(notes.get("notebooklm_events"))
+    if notebooklm_events <= 0:
+        return out
+
+    out["notebooklm_meta_event_count"] = notebooklm_events
+    out["notebooklm_meta_hour_bins"] = [
+        _safe_int((notes.get("notebooklm_hour_bins") or [0] * 24)[idx])
+        for idx in range(24)
+    ]
+
+    families = out.get("families")
+    family_rows = list(families) if isinstance(families, list) else []
+    event_counts = notes.get("notebooklm_event_counts")
+    event_counts = event_counts if isinstance(event_counts, dict) else {}
+    variant_rows = [
+        {"command": str(name), "count": _safe_int(count)}
+        for name, count in sorted(
+            event_counts.items(),
+            key=lambda item: (-_safe_int(item[1]), str(item[0])),
+        )
+        if _safe_int(count) > 0
+    ]
+    family_rows = [row for row in family_rows if str((row or {}).get("family") or "") != "notebooklm_meta_event"]
+    family_rows.append(
+        {
+            "family": "notebooklm_meta_event",
+            "count": notebooklm_events,
+            "unique_variants": len(variant_rows),
+            "variants": variant_rows[:12],
+        }
+    )
+    family_rows.sort(key=lambda row: (-_safe_int((row or {}).get("count")), str((row or {}).get("family") or "")))
+    out["families"] = family_rows[:30]
+    return out
 
 
 def _collect_artifact_links(
@@ -4746,10 +4829,22 @@ def build_dashboard(
 
     cli_events, shell_commands = _load_cli_events(logs_dir / "cli" / f"{date_text}.jsonl")
     agent_shell_commands = _safe_int(tool_use_summary.get("exec_command_count"))
+    agent_shell_hour_bins = (
+        tool_use_summary.get("exec_command_hour_bins")
+        if isinstance(tool_use_summary.get("exec_command_hour_bins"), list)
+        else _empty_bins()
+    )
+    agent_request_user_input_count = _safe_int(tool_use_summary.get("request_user_input_count"))
+    agent_request_user_input_hour_bins = (
+        tool_use_summary.get("request_user_input_hour_bins")
+        if isinstance(tool_use_summary.get("request_user_input_hour_bins"), list)
+        else _empty_bins()
+    )
     total_shell_commands = shell_commands + agent_shell_commands
     input_events, input_count, input_keys_total, input_mouse_total = _load_input_events(
         logs_dir / "input" / f"{date_text}.jsonl"
     )
+    total_input_events = input_count + agent_request_user_input_count
     window_events, window_count = _load_window_events(logs_dir / "windows" / f"{date_text}.jsonl")
     git_events, git_commits = _load_git_events(logs_dir / "git" / f"{date_text}.jsonl")
     git_branch_events, git_branch_count = _load_git_branch_events(
@@ -4760,6 +4855,7 @@ def build_dashboard(
     activity_events, activity_count = _load_activity_events(outputs_dir / "activity_ledger.json")
     media_events, media_summary = _load_media_events_and_summary(logs_dir / "media" / f"{date_text}.jsonl")
     notes_meta_summary = _load_notes_meta_summary(logs_dir / "notes" / f"{date_text}.jsonl")
+    tool_use_summary = _augment_tool_use_summary_with_notebooklm(tool_use_summary, notes_meta_summary)
     context_rows = _load_context_field_rows(logs_dir / "context" / f"{date_text}.jsonl")
     inat_day = _summarize_inaturalist_day(context_rows)
     mood_day = _summarize_mood_day(context_rows)
@@ -4823,6 +4919,11 @@ def build_dashboard(
             _increment_bin(freq["media"], event.dt)
         elif event.kind == "calendar":
             _increment_bin(freq["calendar"], event.dt)
+    for idx in range(24):
+        freq["shell"][idx] += _safe_int(agent_shell_hour_bins[idx] if idx < len(agent_shell_hour_bins) else 0)
+        freq["input"][idx] += _safe_int(
+            agent_request_user_input_hour_bins[idx] if idx < len(agent_request_user_input_hour_bins) else 0
+        )
 
     chat_flow = _build_chat_flow(chat_events)
     chat_context_usage = _build_chat_context_usage(chat_events)
@@ -4986,7 +5087,9 @@ def build_dashboard(
         "chat_messages_with_input_nearby_rate": _safe_float(concurrency_summary.get("chat_messages_with_input_nearby_rate")),
         "chat_messages_with_voice_activity_nearby": _safe_int(concurrency_summary.get("chat_messages_with_voice_activity_nearby")),
         "chat_messages_with_voice_activity_nearby_rate": _safe_float(concurrency_summary.get("chat_messages_with_voice_activity_nearby_rate")),
-        "input_events": input_count,
+        "input_events": total_input_events,
+        "input_events_host": input_count,
+        "input_events_agent_request_user_input": agent_request_user_input_count,
         "input_keys_total": input_keys_total,
         "input_mouse_total": input_mouse_total,
         "window_focus_events": window_count,
