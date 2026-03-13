@@ -146,3 +146,60 @@ If you already have an app-notes feed for arg 14, pass both:
 - If a stricter posture is needed, disable source-guide capture and rely on
   hashed IDs + lifecycle status only.
 - Keep provenance on every record (`source`, `collected_at`).
+
+## Current suite posture
+
+NotebookLM is currently standardized as a **metadata/review/source** lane, not
+as a full SB activity/session lane.
+
+What the current lane supports:
+- lifecycle counters and hour bins
+- notebook/source/artifact review surfaces
+- bounded snippet/keyword capture for local UX
+- source-local text reuse in downstream ITIR/SensibLaw reporting
+
+What it does not yet support honestly:
+- waterfall/timeline usage parity with chat/shell
+- sessionized NotebookLM duration accounting
+- strong mission-lens actual attribution from NotebookLM alone
+
+Those later capabilities require a separate interaction-grade capture contract
+for NotebookLM events, rather than reinterpretation of `notes_meta` snapshots.
+
+## Next additive lane: interaction capture
+
+The suite now also ships a separate interaction contract, not a redefinition
+of `notes_meta`.
+
+Raw event families:
+- `conversation_observed`
+- `note_observed`
+
+Normalized posture:
+- `signal: notebooklm_activity`
+- `app: notebooklm`
+- hashed notebook/note/conversation IDs
+- bounded previews only
+
+Outputs under `runs/<date>/outputs/notebooklm/`:
+- `notebooklm_activity_raw.jsonl`
+- `notebooklm_activity_normalized.jsonl`
+
+Example commands:
+```bash
+cd StatiBaker
+python scripts/capture_notebooklm_activity.py --output /tmp/notebooklm_activity.jsonl
+python adapters/notebooklm_activity.py \
+  --input /tmp/notebooklm_activity.jsonl \
+  --output /tmp/notebooklm_activity_normalized.jsonl
+```
+
+This lane is intended for:
+- query/read-model parity
+- bounded note/conversation review
+- source-local text reuse
+
+It is still not, by itself:
+- sessionized NotebookLM usage
+- waterfall/timeline accounting
+- mission actual-side authority

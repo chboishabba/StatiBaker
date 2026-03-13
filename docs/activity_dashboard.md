@@ -110,6 +110,10 @@ NotebookLM metadata section:
 - Daily dashboard includes a `NotebookLM Lifecycle (Metadata)` panel.
 - Weekly and lifetime dashboards include aggregated notebook/file lifecycle totals.
 - `seen` reflects snapshot/observed rows (for example `notebook_observed`, `source_observed`).
+- This is currently a metadata/review lane, not full activity accounting.
+  NotebookLM may appear in synthetic tool-use family counts and metadata-backed
+  thread views, but it is not yet a first-class waterfall/timeline activity
+  stream.
 
 Context/cost estimate section:
 - Daily dashboard includes per-thread context usage approximation

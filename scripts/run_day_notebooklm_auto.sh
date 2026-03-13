@@ -10,7 +10,11 @@ DATE="$(date +%F)"
 REPO_PATH="$DEFAULT_REPO_PATH"
 NOTEBOOKLM_BINARY="${NOTEBOOKLM_BINARY:-notebooklm}"
 NOTEBOOK_LIMIT="${NOTEBOOKLM_NOTEBOOK_LIMIT:-0}"
+HISTORY_LIMIT="${NOTEBOOKLM_HISTORY_LIMIT:-10}"
+NOTE_LIMIT="${NOTEBOOKLM_NOTE_LIMIT:-20}"
+PREVIEW_CHARS="${NOTEBOOKLM_PREVIEW_CHARS:-280}"
 INCLUDE_SOURCES=1
+INCLUDE_ACTIVITY=1
 DRY_RUN=0
 
 usage() {
@@ -22,14 +26,19 @@ Purpose:
   One-command daily flow:
     1) capture NotebookLM metadata snapshot (raw)
     2) normalize NotebookLM metadata (validation artifact)
-    3) call scripts/run_day.sh with raw snapshot passed as positional arg 20
+    3) optionally capture/normalize bounded NotebookLM interaction observations
+    4) call scripts/run_day.sh with raw snapshot passed as positional arg 20
 
 Options:
   --date YYYY-MM-DD       Run date (default: today)
   --repo PATH             Repo path for run_day arg2 (default: parent of StatiBaker)
   --binary PATH           notebooklm binary path (default: notebooklm or $NOTEBOOKLM_BINARY)
   --notebook-limit N      Cap notebooks queried in capture step (default: 0 = all)
+  --history-limit N       Max conversation-history rows per notebook (default: 10)
+  --note-limit N          Max notes per notebook (default: 20)
+  --preview-chars N       Max chars for interaction previews (default: 280)
   --no-sources            Skip per-notebook source listing during capture
+  --no-activity           Skip bounded interaction capture/normalization
   --dry-run               Print commands only, do not execute
   -h, --help              Show this help
 
@@ -59,8 +68,23 @@ while [[ $# -gt 0 ]]; do
       shift
       NOTEBOOK_LIMIT="${1:-0}"
       ;;
+    --history-limit)
+      shift
+      HISTORY_LIMIT="${1:-10}"
+      ;;
+    --note-limit)
+      shift
+      NOTE_LIMIT="${1:-20}"
+      ;;
+    --preview-chars)
+      shift
+      PREVIEW_CHARS="${1:-280}"
+      ;;
     --no-sources)
       INCLUDE_SOURCES=0
+      ;;
+    --no-activity)
+      INCLUDE_ACTIVITY=0
       ;;
     --dry-run)
       DRY_RUN=1
@@ -96,6 +120,18 @@ if ! [[ "$NOTEBOOK_LIMIT" =~ ^[0-9]+$ ]]; then
   echo "error: --notebook-limit must be a non-negative integer" >&2
   exit 2
 fi
+if ! [[ "$HISTORY_LIMIT" =~ ^[0-9]+$ ]]; then
+  echo "error: --history-limit must be a non-negative integer" >&2
+  exit 2
+fi
+if ! [[ "$NOTE_LIMIT" =~ ^[0-9]+$ ]]; then
+  echo "error: --note-limit must be a non-negative integer" >&2
+  exit 2
+fi
+if ! [[ "$PREVIEW_CHARS" =~ ^[0-9]+$ ]]; then
+  echo "error: --preview-chars must be a non-negative integer" >&2
+  exit 2
+fi
 
 if [[ "${#FORWARDED_ARGS[@]}" -gt 17 ]]; then
   echo "error: too many forwarded arguments (${#FORWARDED_ARGS[@]}). Maximum is 17 (run_day args 3..19)." >&2
@@ -109,6 +145,8 @@ done
 NLM_OUT_DIR="$RUNS_ROOT/$DATE/outputs/notebooklm"
 RAW_PATH="$NLM_OUT_DIR/notebooklm_meta_raw.jsonl"
 NORMALIZED_PATH="$NLM_OUT_DIR/notebooklm_meta_normalized.jsonl"
+ACTIVITY_RAW_PATH="$NLM_OUT_DIR/notebooklm_activity_raw.jsonl"
+ACTIVITY_NORMALIZED_PATH="$NLM_OUT_DIR/notebooklm_activity_normalized.jsonl"
 
 CAPTURE_CMD=(
   python "$ROOT_DIR/scripts/capture_notebooklm_meta.py"
@@ -124,6 +162,21 @@ NORMALIZE_CMD=(
   python "$ROOT_DIR/adapters/notebooklm_meta.py"
   --input "$RAW_PATH"
   --output "$NORMALIZED_PATH"
+)
+
+ACTIVITY_CAPTURE_CMD=(
+  python "$ROOT_DIR/scripts/capture_notebooklm_activity.py"
+  --output "$ACTIVITY_RAW_PATH"
+  --notebook-limit "$NOTEBOOK_LIMIT"
+  --history-limit "$HISTORY_LIMIT"
+  --note-limit "$NOTE_LIMIT"
+  --preview-chars "$PREVIEW_CHARS"
+)
+
+ACTIVITY_NORMALIZE_CMD=(
+  python "$ROOT_DIR/adapters/notebooklm_activity.py"
+  --input "$ACTIVITY_RAW_PATH"
+  --output "$ACTIVITY_NORMALIZED_PATH"
 )
 
 RUN_DAY_CMD=(
@@ -142,6 +195,14 @@ if [[ "$DRY_RUN" -eq 1 ]]; then
   printf 'NORMALIZE: '
   printf '%q ' "${NORMALIZE_CMD[@]}"
   echo
+  if [[ "$INCLUDE_ACTIVITY" -eq 1 ]]; then
+    printf 'ACTIVITY_CAPTURE: '
+    printf '%q ' "${ACTIVITY_CAPTURE_CMD[@]}"
+    echo
+    printf 'ACTIVITY_NORMALIZE: '
+    printf '%q ' "${ACTIVITY_NORMALIZE_CMD[@]}"
+    echo
+  fi
   printf 'RUN_DAY: '
   printf '%q ' "${RUN_DAY_CMD[@]}"
   echo
@@ -156,9 +217,21 @@ echo "Capturing NotebookLM metadata -> $RAW_PATH"
 echo "Normalizing NotebookLM metadata -> $NORMALIZED_PATH"
 "${NORMALIZE_CMD[@]}"
 
+if [[ "$INCLUDE_ACTIVITY" -eq 1 ]]; then
+  echo "Capturing NotebookLM interactions -> $ACTIVITY_RAW_PATH"
+  "${ACTIVITY_CAPTURE_CMD[@]}"
+
+  echo "Normalizing NotebookLM interactions -> $ACTIVITY_NORMALIZED_PATH"
+  "${ACTIVITY_NORMALIZE_CMD[@]}"
+fi
+
 echo "Running daily ingest with NotebookLM arg20 -> $RAW_PATH"
 "${RUN_DAY_CMD[@]}"
 
 echo "done"
 echo "raw=$RAW_PATH"
 echo "normalized=$NORMALIZED_PATH"
+if [[ "$INCLUDE_ACTIVITY" -eq 1 ]]; then
+  echo "activity_raw=$ACTIVITY_RAW_PATH"
+  echo "activity_normalized=$ACTIVITY_NORMALIZED_PATH"
+fi

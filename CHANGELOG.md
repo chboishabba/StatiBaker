@@ -1,6 +1,20 @@
 # Changelog
 
 ## 2026-03-11
+- Clarified NotebookLM posture in docs: current `notes_meta` capture is a
+  metadata/review/source lane, not honest waterfall/timeline activity parity.
+  The dashboard may surface lifecycle counts, hour bins, synthetic tool-use
+  family rows, and metadata-backed thread views, but fuller usage accounting
+  is deferred until a separate interaction-grade NotebookLM capture contract
+  exists.
+- Added the first separate NotebookLM interaction lane without changing
+  dashboard accounting semantics. `scripts/capture_notebooklm_activity.py`
+  now captures bounded conversation-history and note observations,
+  `adapters/notebooklm_activity.py` normalizes them under
+  `signal: notebooklm_activity`, and `scripts/run_day_notebooklm_auto.sh`
+  now emits raw/normalized interaction outputs beside the existing
+  NotebookLM metadata artifacts while keeping them out of `run_day.sh`
+  ingestion and sessionized usage accounting.
 - Fixed Tool Use Summary hydration coupling at the SB reducer layer:
   - `Shell/hour` now bins agent `exec_command` tool messages by timestamp hour
     (in addition to host CLI logs).
@@ -19,6 +33,14 @@
   combined count.
 - Added dashboard regression coverage for the new shell/input hour hydration
   behavior sourced from chat-archive tool messages.
+- Assumption-stress `A2/Q2` fold hardening:
+  - `sb.fold.apply_minimal_fold(...)` now emits explicit machine-readable
+    `fold_policy` metadata with:
+    - `policy_receipt` (`receipt_id`, `policy_id`, `applied_on`)
+    - `mechanical_should_flags` (boolean-only fold controls)
+    - explicit `loss_profile` declaration (`sb.fold.loss_profile.v1`)
+  - Added anti-nudge red-team tests to ensure fold-policy/loss-profile surfaces
+    do not drift into imperative free-text guidance.
 
 ## 2026-03-09
 - Clarified the `fuzzymodo -> StatiBaker` boundary as observer-only and

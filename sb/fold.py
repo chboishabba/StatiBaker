@@ -1,4 +1,50 @@
 from datetime import datetime, timedelta
+from copy import deepcopy
+
+
+def _default_mechanical_should_flags():
+    return {
+        "preserve_carryover_continuity": True,
+        "flag_carryover_saturation": True,
+    }
+
+
+def _coerce_mechanical_should_flags(raw):
+    base = _default_mechanical_should_flags()
+    if not isinstance(raw, dict):
+        return base
+    out = {}
+    for key, default in base.items():
+        out[key] = bool(raw.get(key, default))
+    return out
+
+
+def _build_fold_policy_receipt(date, policy_receipt):
+    return {
+        "receipt_id": str(policy_receipt or ""),
+        "policy_id": "sb.fold.minimal.v1",
+        "applied_on": str(date),
+    }
+
+
+def _build_fold_loss_profile():
+    # Explicit machine-readable declaration of what the fold loses/keeps.
+    return {
+        "profile_id": "sb.fold.loss_profile.v1",
+        "declared_losses": [
+            {
+                "kind": "windowed_aggregation",
+                "field": "carryover_window_counts",
+                "reason_code": "window_bucket_projection",
+            },
+            {
+                "kind": "resolved_thread_elision",
+                "field": "carryover_resolved_threads",
+                "reason_code": "current_state_focus",
+            },
+        ],
+        "declaration_mode": "explicit",
+    }
 
 
 def _parse_date(value):
@@ -36,11 +82,13 @@ def _window_counts(age_days, windows=None):
     return counts
 
 
-def apply_minimal_fold(prev_state, curr_state, date):
+def apply_minimal_fold(prev_state, curr_state, date, *, policy_receipt="", mechanical_should_flags=None):
+    curr_state = deepcopy(curr_state)
     carryover_threads, new_threads, resolved_threads = _carryover_sets(prev_state, curr_state)
     age_days = _age_days(prev_state or {}, carryover_threads, new_threads, date)
     labels = list(curr_state.get("labels", []))
-    if len(carryover_threads) >= 20 and "carryover_saturation" not in labels:
+    flags = _coerce_mechanical_should_flags(mechanical_should_flags)
+    if flags.get("flag_carryover_saturation", True) and len(carryover_threads) >= 20 and "carryover_saturation" not in labels:
         labels.append("carryover_saturation")
     curr_state["carryover_threads"] = carryover_threads
     curr_state["carryover_new_threads"] = new_threads
@@ -48,6 +96,11 @@ def apply_minimal_fold(prev_state, curr_state, date):
     curr_state["carryover_age_days"] = age_days
     curr_state["carryover_window_counts"] = _window_counts(age_days)
     curr_state["labels"] = labels
+    curr_state["fold_policy"] = {
+        "policy_receipt": _build_fold_policy_receipt(date, policy_receipt),
+        "mechanical_should_flags": flags,
+        "loss_profile": _build_fold_loss_profile(),
+    }
     return curr_state
 
 
