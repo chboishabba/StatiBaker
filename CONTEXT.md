@@ -351,7 +351,8 @@ That’s the difference that keeps SB from becoming the thing your PDF warns abo
 - **SL lexer/compression boundary:** SB/TiRC may use or extend SL-owned
   lexer/compression outputs for shell-like, transcript-like, message-like, and
   related normalization work, but that does not grant SB/TiRC semantic or
-  legal authority.
+  legal authority. Supported cross-product import path:
+  `sensiblaw.interfaces.shared_reducer`.
 - **Layer boundaries:** Observers report what was observed; no layer answers another layer's question.
 - **StatiBaker:** Where am I and what happened? (lived time, state reconstruction)
 - **SensibLaw:** What does this mean? (normative reasoning)

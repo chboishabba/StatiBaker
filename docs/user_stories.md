@@ -192,3 +192,29 @@ At home:
 - Bailiffs: objective event logs only; no intent attribution.
 - Family: non-case workload patterns only; no case details.
 - Red lines: no outcome suggestions, similar-case surfacing, appeal prediction, or consistency scoring.
+
+## SL users of SB (cross-suite operator stories)
+
+### SB-SL-US-01: Matter chronology lane for SL review
+- As an SL operator, I want SB to surface a provenance-first chronology lane for a matter so I can review source/excerpt -> observation -> event/fact progression without collapsing uncertainty.
+- SB output must remain sequence-first and expandable to raw artifacts.
+- SB must not promote derived notes into accepted facts.
+- SB must preserve explicit unknowns, contradictions, and absences.
+
+### SB-SL-US-02: Claim/evidence seam visibility in SB overlays
+- As an SL operator, I want SB overlays to show claim/evidence links as references so I can audit what is asserted versus what is sourced before legal reasoning.
+- Overlay records must remain observer-class and append-only.
+- Claim/evidence refs must be drillable back to source handles and timestamps.
+- SB must not treat overlay refs as canonical legal truth.
+
+### SB-SL-US-03: Context-bound handoff from SB to SL
+- As an SL operator, I want SB exports to carry context envelope metadata so SL ingest can preserve audience, time, and source boundaries.
+- Handoff must include provenance, temporal context, and scope markers.
+- Cross-context merges must be explicit and logged; no silent fusion.
+- Removing context in an SB view must remain an explicit, logged action.
+
+### SB-SL-US-04: Tokenizer boundary discipline
+- As an SL operator, I want SB to consume SL canonical token/lexeme outputs by reference so tokenizer migrations do not fork semantic identity between systems.
+- SB must not introduce a separate canonical tokenization lane for SL text.
+- Any SB token-related metrics must be marked as non-canonical approximations.
+- Same source text must resolve to stable shared IDs when traversing SL -> SB -> SL pathways.

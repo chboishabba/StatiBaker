@@ -9,8 +9,26 @@ reject the payload shape without mutating SL-origin segment/ID content.
 """
 
 from copy import deepcopy
+import itertools
+import sys
+from pathlib import Path
 
 from sb.itir_ingest import validate_overlay
+
+ROOT = Path(__file__).resolve().parents[1]
+SUITE_ROOT = ROOT.parent
+SENSIBLAW_ROOT = SUITE_ROOT / "SensibLaw"
+SENSIBLAW_SRC = SUITE_ROOT / "SensibLaw" / "src"
+
+if str(SENSIBLAW_ROOT) not in sys.path:
+    sys.path.insert(0, str(SENSIBLAW_ROOT))
+if str(SENSIBLAW_SRC) not in sys.path:
+    sys.path.insert(0, str(SENSIBLAW_SRC))
+
+from sensiblaw.interfaces.shared_reducer import (  # noqa: E402
+    collect_canonical_lexeme_occurrences,
+    get_canonical_tokenizer_profile,
+)
 
 
 def test_segmentation_preservation_allows_canonical_segment_fields_without_mutation() -> None:
@@ -54,6 +72,46 @@ def test_canonical_id_preservation_allows_shared_sl_ids_without_mutation() -> No
     original = deepcopy(record)
     assert validate_overlay(record) == []
     assert record == original
+
+
+def test_shared_reducer_adapter_can_supply_opaque_sl_origin_ids_to_sb() -> None:
+    text = "Civil Liability Act 2002 (NSW) s 5B applies here."
+    occurrences = collect_canonical_lexeme_occurrences(text)
+    canonical_ids = [occ.norm_text for occ in occurrences if occ.kind.endswith("_ref")]
+    assert canonical_ids
+
+    record = {
+        "activity_event_id": "ae:civil_liability_act:review:1",
+        "annotation_id": "ann:civil_liability_act:canonical",
+        "provenance": {
+            "source": "SensibLaw",
+            "fixture": "Civil Liability Act 2002 (NSW) s 5B",
+            "fixture_role": "sl_shared_reducer_input_only",
+            "tokenizer_profile": get_canonical_tokenizer_profile(),
+        },
+        "state_date": "2026-03-15",
+        "canonical_event_id": "ev:civil_liability_act:review:1",
+        "canonical_lexeme_ids": canonical_ids,
+    }
+    original = deepcopy(record)
+    assert validate_overlay(record) == []
+    assert record == original
+
+
+def test_sb_runtime_code_does_not_import_sl_tokenizer_internals_directly() -> None:
+    forbidden = (
+        "src.text.lexeme_index",
+        "src.text.deterministic_legal_tokenizer",
+    )
+    offender_paths: list[str] = []
+    for path in itertools.chain(
+        (ROOT / "sb").rglob("*.py"),
+        (ROOT / "scripts").rglob("*.py"),
+    ):
+        text = path.read_text(encoding="utf-8")
+        if any(forbidden_import in text for forbidden_import in forbidden):
+            offender_paths.append(str(path.relative_to(ROOT)))
+    assert offender_paths == []
 
 
 def test_no_summary_injection_rejects_synthetic_summary_fields() -> None:

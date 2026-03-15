@@ -158,6 +158,14 @@
 - Define retrospective summary format for real data
 
 ## Integration roadmap (order by determinism)
+- Add a real SB consumer path for the shared SL reducer adapter
+  (`sensiblaw.interfaces.shared_reducer`) so canonical lexeme/structure refs
+  can enter SB through a supported API rather than opaque fixture-only
+  boundary tests.
+- Keep SB-local token estimators/sessionization tokenization explicitly
+  non-canonical and separate from SL-origin canonical reducer outputs.
+- Add guard coverage that SB runtime integration code imports the supported
+  adapter path, not `SensibLaw` tokenizer internals directly.
 - Git log ingestion adapter
 - Calendar ingestion adapter
 - Wazuh adapter (system lifecycle only)
