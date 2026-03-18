@@ -1,7 +1,28 @@
 import hashlib
 import json
+import sys
 from pathlib import Path
 from typing import Dict, Iterable, List
+
+# --- Adapter for SL shared reducer ---
+try:
+    _SUITE_ROOT = Path(__file__).resolve().parents[2]
+    _SENSIBLAW_ROOT = _SUITE_ROOT / "SensibLaw"
+    _SENSIBLAW_SRC = _SENSIBLAW_ROOT / "src"
+    
+    if str(_SENSIBLAW_ROOT) not in sys.path:
+        sys.path.insert(0, str(_SENSIBLAW_ROOT))
+    if str(_SENSIBLAW_SRC) not in sys.path:
+        sys.path.insert(0, str(_SENSIBLAW_SRC))
+        
+    from sensiblaw.interfaces.shared_reducer import (
+        collect_canonical_lexeme_occurrences,
+        get_canonical_tokenizer_profile,
+    )
+    HAS_REDUCER = True
+except ImportError:
+    HAS_REDUCER = False
+# -------------------------------------
 
 ALLOWED_EVENT_FIELDS = {
     "signal",
@@ -46,7 +67,7 @@ def iter_observed_events(log_root: Path) -> Iterable[Dict[str, object]]:
                 safe_record = {k: record.get(k) for k in ALLOWED_EVENT_FIELDS if k in record}
                 summary = _safe_summary(record)
                 event_id = _hash_id(f"{jsonl}:{ts}:{summary}")
-                yield {
+                record_payload = {
                     "id": f"signal-{event_id}",
                     "ts": ts,
                     "source": "observed",
@@ -54,6 +75,16 @@ def iter_observed_events(log_root: Path) -> Iterable[Dict[str, object]]:
                     "text": summary,
                     "meta": safe_record,
                 }
+                
+                if HAS_REDUCER and summary:
+                    # Provide an adapter surface generating canonical refs via SL
+                    record_payload["canonical_lexeme_ids"] = [
+                        occ.norm_text 
+                        for occ in collect_canonical_lexeme_occurrences(summary)
+                    ]
+                    record_payload["tokenizer_profile"] = get_canonical_tokenizer_profile()
+
+                yield record_payload
 
 
 def load_observed_events(log_root: str | Path) -> List[Dict[str, object]]:
