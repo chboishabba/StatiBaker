@@ -12,6 +12,8 @@
 - May consume observer-only `casey-git-clone` workspace/collapse/build
   receipts through a bounded append-only seam; see suite note
   `docs/planning/casey_git_clone_statiBaker_interface_20260309.md`.
+- Casey receipt/reference semantics are further narrowed in
+  `docs/planning/casey_statiBaker_receipt_schema_20260319.md`.
 - Publishes distilled daily state for human and machine consumers.
 
 ## Interaction Model
