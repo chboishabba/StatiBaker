@@ -193,6 +193,7 @@ cython_debug/
 
 # Local run outputs (avoid committing personal artifacts)
 runs_local/
+runs/dashboard.sqlite
 runs/*/outputs/notebooklm/
 runs/*/outputs/notebooklm_meta*.jsonl
 runs/*/logs/notes/*_notebooklm*.jsonl

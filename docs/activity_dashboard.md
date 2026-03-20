@@ -58,6 +58,10 @@ The dashboard integrates:
 as legacy exports (useful for regression tests and ad-hoc inspection), not the
 source of truth.
 
+**Artifact hygiene:** the intended private default is `runs_local/` (or another
+explicit `SB_RUNS_ROOT`), not a checked-in `runs/dashboard.sqlite` populated
+from personal content.
+
 ## UI availability
 
 Yes. The dashboard UI can be served by `itir-svelte` (DB-hydrated) and can also be

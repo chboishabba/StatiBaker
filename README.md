@@ -58,6 +58,8 @@ No motivational framing.
 - **Dashboards + web surfaces (current HTML, future Svelte)**
   - Dashboard builder that persists **canonically to SQLite** for daily/weekly/lifetime views: `scripts/build_dashboard.py`, `sb/dashboard.py`
     - Legacy JSON/HTML exports remain available for regression/debug, but are not the canonical store.
+    - Default private runs root is `runs_local/` via `SB_RUNS_ROOT`; do not
+      treat `runs/dashboard.sqlite` as a checked-in personal-data sample.
   - HTML renderer functions (embedded CSS + client-side JS for filtering/palette controls):
     `sb/dashboard.py` (`render_dashboard_html`, `render_weekly_dashboard_html`, `render_lifetime_dashboard_html`)
   - Web iteration map (UI contracts + safe edit zones): `docs/web_module_map.md`
