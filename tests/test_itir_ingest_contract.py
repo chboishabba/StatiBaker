@@ -1,5 +1,6 @@
 import unittest
 
+from adapters.jmd_runtime import receipt_to_overlay_record
 from sb.itir_ingest import validate_overlay
 
 
@@ -40,6 +41,36 @@ class TestITIRIngestContract(unittest.TestCase):
         errors = validate_overlay(record)
         self.assertTrue(any("mission_refs" in error for error in errors))
         self.assertTrue(any("evidence_refs" in error for error in errors))
+
+    def test_jmd_runtime_overlay_requires_reference_fields(self):
+        receipt = {
+            "receipt_id": "jmd-receipt:1234",
+            "provider_kind": "pastebin",
+            "provider_name": "kant-zk-pastebin",
+            "object_refs": [{"object_id": "jmd:erdfa:shard:note-0001", "locator": "https://pastebin.xware.online/raw/note-0001"}],
+            "graph_refs": [{"graph_id": "jmd-graph:1234", "source_object_id": "jmd:erdfa:shard:note-0001"}],
+        }
+        overlay = receipt_to_overlay_record(
+            receipt=receipt,
+            activity_event_id="ae-123",
+            annotation_id="obs:jmd:ann-1",
+            state_date="2026-03-22",
+            provenance={"actor": "user"},
+        )
+        self.assertEqual([], validate_overlay(overlay))
+
+    def test_jmd_runtime_overlay_rejects_embedded_payloads(self):
+        record = {
+            "activity_event_id": "ae-123",
+            "annotation_id": "obs:jmd:ann-1",
+            "provenance": {"actor": "user"},
+            "state_date": "2026-03-22",
+            "observer_kind": "jmd_runtime_v1",
+            "receipt_refs": [{"receipt_id": "jmd-receipt:1234"}],
+            "object": {"object_id": "jmd:erdfa:shard:note-0001"},
+        }
+        errors = validate_overlay(record)
+        self.assertTrue(any("reference-heavy" in error for error in errors))
 
 
 if __name__ == "__main__":

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-03-20
+- Tightened artifact-hygiene posture in `README.md` and
+  `docs/activity_dashboard.md` to make private runs under `runs_local/` /
+  `SB_RUNS_ROOT` the explicit default for contributors.
+- Stopped treating `runs/dashboard.sqlite` as a normal tracked sample artifact:
+  added it to `.gitignore` and removed it from git tracking so local/personal
+  dashboard state stays private by default.
+
 ## 2026-03-11
 - Clarified NotebookLM posture in docs: current `notes_meta` capture is a
   metadata/review/source lane, not honest waterfall/timeline activity parity.

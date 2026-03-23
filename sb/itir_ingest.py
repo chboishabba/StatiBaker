@@ -152,6 +152,38 @@ def validate_overlay(record):
         if "build_refs" in record and not isinstance(record.get("build_refs"), list):
             errors.append("casey overlay build_refs must be a list")
 
+    if kind == "jmd_runtime_v1":
+        for forbidden in ("object", "graph", "receipt", "nodes", "edges", "raw_text", "text"):
+            if forbidden in record:
+                errors.append("jmd runtime overlays must stay reference-heavy")
+                break
+        for field in ("receipt_refs", "object_refs", "graph_refs"):
+            if field in record and not isinstance(record.get(field), list):
+                errors.append(f"jmd runtime overlay {field} must be a list")
+
+        receipt_refs = record.get("receipt_refs") if isinstance(record.get("receipt_refs"), list) else []
+        for i, receipt_ref in enumerate(receipt_refs):
+            if not isinstance(receipt_ref, dict):
+                continue
+            if not str(receipt_ref.get("receipt_id") or "").strip():
+                errors.append(f"jmd runtime receipt_refs[{i}].receipt_id required")
+
+        object_refs = record.get("object_refs") if isinstance(record.get("object_refs"), list) else []
+        for i, object_ref in enumerate(object_refs):
+            if not isinstance(object_ref, dict):
+                continue
+            if not str(object_ref.get("object_id") or "").strip():
+                errors.append(f"jmd runtime object_refs[{i}].object_id required")
+            if not str(object_ref.get("locator") or "").strip():
+                errors.append(f"jmd runtime object_refs[{i}].locator required")
+
+        graph_refs = record.get("graph_refs") if isinstance(record.get("graph_refs"), list) else []
+        for i, graph_ref in enumerate(graph_refs):
+            if not isinstance(graph_ref, dict):
+                continue
+            if not str(graph_ref.get("graph_id") or "").strip():
+                errors.append(f"jmd runtime graph_refs[{i}].graph_id required")
+
     return errors
 
 

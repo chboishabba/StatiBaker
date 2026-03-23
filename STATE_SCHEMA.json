@@ -74,7 +74,8 @@
           "severity": {"type": "string", "enum": ["info", "warn", "error"]},
           "low_signal": {"type": "boolean"},
           "collapsed_count": {"type": "integer", "minimum": 1},
-          "collapsed_ids": {"type": "array", "items": {"type": "string"}}
+          "collapsed_ids": {"type": "array", "items": {"type": "string"}},
+          "meta": {"type": "object"}
         },
         "additionalProperties": false
       }

@@ -60,9 +60,25 @@ def iter_observed_events(log_root: Path) -> Iterable[Dict[str, object]]:
                 try:
                     record = json.loads(line)
                 except json.JSONDecodeError:
+                    yield {
+                        "id": f"signal-err-json-{_hash_id(line)}",
+                        "ts": None,
+                        "source": "observed",
+                        "type": "error",
+                        "text": "malformed_json",
+                        "meta": {"line_snippet": line[:100]},
+                    }
                     continue
                 ts = record.get("ts")
                 if not ts:
+                    yield {
+                        "id": f"signal-err-ts-{_hash_id(json.dumps(record))}",
+                        "ts": None,
+                        "source": "observed",
+                        "type": "error",
+                        "text": "missing_ts",
+                        "meta": {"record_snippet": json.dumps(record)[:100]},
+                    }
                     continue
                 safe_record = {k: record.get(k) for k in ALLOWED_EVENT_FIELDS if k in record}
                 summary = _safe_summary(record)
