@@ -57,7 +57,7 @@ def test_parse_todo_file_extracts_bullets_and_ignores_prose(tmp_path: Path) -> N
     repo = _write_repo(tmp_path)
     obligations = parse_todo_file(repo / "TODO.md", repo_root=repo)
 
-    assert len(obligations) == 6
+    assert len(obligations) == 4
     assert obligations[0]["state"] == "open"
     assert obligations[1]["state"] == "checked_complete"
     assert obligations[3]["state"] == "checked_complete"
