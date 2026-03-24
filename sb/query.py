@@ -1,6 +1,13 @@
 import json
 from pathlib import Path
 
+from sb.codex_trace import (
+    facts_from_chat_archive_db,
+    facts_from_dashboard_payload,
+    facts_from_raw_codex_logs,
+)
+from sb.todo_graph import analyze_repo_todos
+
 
 def _resolve_path(path):
     return Path(path).expanduser().resolve()
@@ -58,3 +65,76 @@ def completion_candidates(dashboard_path, base_dir=None):
     return {
         "candidates": payload.get("task_completion_candidates", []),
     }
+
+
+def codex_trace_dashboard(dashboard_path, base_dir=None):
+    payload = _read_json(dashboard_path, base_dir=base_dir)
+    return facts_from_dashboard_payload(payload)
+
+
+def codex_trace_archive(db_path, canonical_thread_id=None, limit=None, base_dir=None):
+    target = _resolve_path(db_path)
+    if base_dir:
+        base = _resolve_path(base_dir)
+        try:
+            target.relative_to(base)
+        except ValueError as exc:
+            raise ValueError(f"path escapes base_dir: {db_path}") from exc
+    return facts_from_chat_archive_db(target, canonical_thread_id=canonical_thread_id, limit=limit)
+
+
+def codex_trace_logs(history_path, log_path, canonical_thread_id=None, base_dir=None):
+    history_target = _resolve_path(history_path)
+    log_target = _resolve_path(log_path)
+    if base_dir:
+        base = _resolve_path(base_dir)
+        for original, target in ((history_path, history_target), (log_path, log_target)):
+            try:
+                target.relative_to(base)
+            except ValueError as exc:
+                raise ValueError(f"path escapes base_dir: {original}") from exc
+    return facts_from_raw_codex_logs(
+        history_path=history_target,
+        log_path=log_target,
+        canonical_thread_id=canonical_thread_id,
+    )
+
+
+def _resolve_optional_paths(paths, base_dir=None):
+    resolved = []
+    for path in paths or []:
+        target = _resolve_path(path)
+        if base_dir:
+            base = _resolve_path(base_dir)
+            try:
+                target.relative_to(base)
+            except ValueError as exc:
+                raise ValueError(f"path escapes base_dir: {path}") from exc
+        resolved.append(target)
+    return resolved
+
+
+def todo_graph(repo_root, todo_paths=None, base_dir=None):
+    root = _resolve_path(repo_root)
+    if base_dir:
+        base = _resolve_path(base_dir)
+        try:
+            root.relative_to(base)
+        except ValueError as exc:
+            raise ValueError(f"path escapes base_dir: {repo_root}") from exc
+    return analyze_repo_todos(root, todo_paths=_resolve_optional_paths(todo_paths, base_dir=base_dir))
+
+
+def todo_obligations(repo_root, todo_paths=None, base_dir=None):
+    payload = todo_graph(repo_root, todo_paths=todo_paths, base_dir=base_dir)
+    return {"obligations": payload.get("obligations", [])}
+
+
+def todo_candidates(repo_root, todo_paths=None, base_dir=None):
+    payload = todo_graph(repo_root, todo_paths=todo_paths, base_dir=base_dir)
+    return {"candidates": payload.get("completion_candidates", [])}
+
+
+def todo_alignment(repo_root, todo_paths=None, base_dir=None):
+    payload = todo_graph(repo_root, todo_paths=todo_paths, base_dir=base_dir)
+    return payload.get("alignment", {})

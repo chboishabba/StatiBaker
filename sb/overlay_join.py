@@ -45,7 +45,7 @@ def join_overlay_ledgers(
     artifacts = _index_artifacts_by_kind(overlay.get("artifact_refs"))
 
     fuzz_decision: dict[str, Any] | None = None
-    if kind == "fuzzymodo_selector_v1" and fuzzymodo_ledger_db_path is not None:
+    if kind in {"fuzzymodo_selector_v1", "fuzzymodo_codex_trace_v1"} and fuzzymodo_ledger_db_path is not None:
         # Artifact locators are emitted as: "fuzzymodo_decision_ledger:<decision_id>"
         decision_refs = artifacts.get("decision_ledger_ref", [])
         decision_id = None

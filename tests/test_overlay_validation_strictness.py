@@ -20,6 +20,19 @@ def test_fuzzymodo_overlay_rejects_missing_selector_hash() -> None:
     assert any("selector_hash required" in e for e in errs)
 
 
+def test_fuzzymodo_codex_trace_overlay_rejects_missing_selector_hash() -> None:
+    record = {
+        "activity_event_id": "evt-1",
+        "annotation_id": "obs:fuzzymodo:trace:evt-1",
+        "provenance": {"source": "fuzzymodo"},
+        "state_date": "2026-03-24",
+        "observer_kind": "fuzzymodo_codex_trace_v1",
+        "selector_refs": [{"matched": 1}],
+    }
+    errs = validate_overlay(record)
+    assert any("selector_hash required" in e for e in errs)
+
+
 def test_casey_overlay_rejects_missing_ws_id() -> None:
     record = {
         "activity_event_id": "evt-1",

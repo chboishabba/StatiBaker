@@ -71,6 +71,49 @@ def test_join_overlay_ledgers_fuzzymodo_decision_lookup() -> None:
     assert joined.fuzzymodo_decisions["selector_hash"] == "sel:abc"
 
 
+def test_join_overlay_ledgers_fuzzymodo_codex_trace_lookup() -> None:
+    overlay = {
+        "activity_event_id": "evt-1",
+        "annotation_id": "obs:fuzzymodo:trace:evt-1",
+        "provenance": {"source": "unit"},
+        "state_date": "2026-03-24",
+        "observer_kind": "fuzzymodo_codex_trace_v1",
+        "selector_refs": [{"selector_hash": "sel:trace", "matched": 1}],
+        "artifact_refs": [
+            {
+                "artifact_kind": "decision_ledger_ref",
+                "artifact_locator": "fuzzymodo_decision_ledger:dec-trace-1",
+            }
+        ],
+    }
+
+    with tempfile.TemporaryDirectory() as tmp:
+        ledger = Path(tmp) / "fuzzymodo.sqlite"
+        upsert_decision(
+            db_path=ledger,
+            record=DecisionLedgerRecord(
+                decision_id="dec-trace-1",
+                selector_hash="sel:trace",
+                decision_state="proposed",
+                matched=1,
+                policy_hash=None,
+                replay_key=None,
+                fact_digest="sha256:facts",
+                created_at="2026-03-24T00:00:00Z",
+                decided_by=None,
+                source_tool="fuzzymodo.codex_trace",
+            ),
+            reason_codes=(),
+            artifacts=(),
+        )
+
+        joined = join_overlay_ledgers(overlay=overlay, fuzzymodo_ledger_db_path=ledger)
+
+    assert joined.fuzzymodo_decisions
+    assert joined.fuzzymodo_decisions["decision_id"] == "dec-trace-1"
+    assert joined.fuzzymodo_decisions["source_tool"] == "fuzzymodo.codex_trace"
+
+
 def test_join_overlay_ledgers_casey_operation_and_build_lookup() -> None:
     overlay = {
         "activity_event_id": "evt-1",

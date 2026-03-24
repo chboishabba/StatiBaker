@@ -42,7 +42,7 @@ def validate_overlay(record):
         if "threads" in record or "events" in record:
             errors.append("mission observer overlays must stay reference-heavy and may not inject threads/events")
 
-    if kind == "fuzzymodo_selector_v1":
+    if kind in {"fuzzymodo_selector_v1", "fuzzymodo_codex_trace_v1"}:
         # Extension tables are optional at ingest boundary; we just ensure the base
         # overlay stays reference-heavy.
         if "selector" in record or "norm_constraints" in record:
