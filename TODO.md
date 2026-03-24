@@ -85,6 +85,28 @@
 - [ ] Decide per-platform identity linkage policy (single person/account merge vs
   separate hashed identities).
 
+## In Progress (2026-03-24) - Google commitments + proposal seam
+- [x] Add `external_commitment_event_v1` ingest lane for Google-originated
+  commitments under `logs/commitments/<date>.jsonl`.
+- [x] Add `google_tasks.py` adapter for structured Google Tasks normalization.
+- [x] Add `google_keep_lists.py` adapter for Google Keep/list item normalization.
+- [x] Wire `run_day.sh` to ingest Google Tasks and Google Keep/list inputs into a
+  shared commitments log.
+- [x] Add daily dashboard commitment feed / voice-origin counts / read-only
+  Kanban-lens fields.
+- [x] Add `task_completion_candidate_v1` proposal emission and dashboard review
+  surface without mutating external task state.
+- [x] Add read-only query helpers for commitment feed and completion candidates.
+- [x] Add tests for adapter normalization, dashboard aggregation, and
+  candidate-generation determinism.
+
+### Deferred / decisions already fixed for now
+- [ ] Keep V1 propose-only: no Google-side completion mutation path.
+- [ ] Keep the downstream apply/retirement seam fuzzymodo-first, but only as a
+  reserved future receipt/decision lane in this slice.
+- [ ] Keep Kanban support generic and projection-only; do not bind to one
+  external board product yet.
+
 ## In Progress (2026-02-08) - Cross-platform daemon + web management
 - [ ] Implement `sb-supervisor` local daemon skeleton with connector registry.
 - [ ] Add localhost control API endpoints for connector/job management.

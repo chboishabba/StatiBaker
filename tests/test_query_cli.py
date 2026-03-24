@@ -37,6 +37,28 @@ class TestQuerySurface(unittest.TestCase):
         self.assertEqual("sb.sessionize.v0", payload["activity_ledger"]["algorithm"])
         self.assertEqual("sb.drift.v1", payload["drift"]["algorithm"])
 
+    def test_commitment_feed(self):
+        dashboard = {
+            "external_commitment_summary": {"items_total": 1},
+            "external_commitments": [{"external_item_id": "task-1"}],
+        }
+        with tempfile.NamedTemporaryFile(mode="w+", suffix=".json") as handle:
+            json.dump(dashboard, handle)
+            handle.flush()
+            payload = query.commitment_feed(handle.name)
+        self.assertEqual(1, payload["summary"]["items_total"])
+        self.assertEqual("task-1", payload["items"][0]["external_item_id"])
+
+    def test_completion_candidates(self):
+        dashboard = {
+            "task_completion_candidates": [{"candidate_id": "cand-1"}],
+        }
+        with tempfile.NamedTemporaryFile(mode="w+", suffix=".json") as handle:
+            json.dump(dashboard, handle)
+            handle.flush()
+            payload = query.completion_candidates(handle.name)
+        self.assertEqual("cand-1", payload["candidates"][0]["candidate_id"])
+
 
 if __name__ == "__main__":
     unittest.main()

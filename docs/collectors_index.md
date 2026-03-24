@@ -24,6 +24,8 @@ All collectors are **meta-only** and must not emit content.
 - `adapters/browser_usage.py` (domain hash + duration)
 - `adapters/notes_meta.py` (Obsidian/Evernote metadata)
 - `adapters/notebooklm_meta.py` (NotebookLM notebook/source metadata snapshots)
+- `adapters/google_tasks.py` (Google Tasks -> external_commitment normalization)
+- `adapters/google_keep_lists.py` (Google Keep/list items -> external_commitment normalization)
 - `scripts/capture_notebooklm_meta.py` (NotebookLM CLI snapshot collector)
 - `adapters/media_consumption.py` (unified media watch/listen metadata)
 - `adapters/youtube_watch_stub.py` (YouTube export stub -> media_consumption)
@@ -64,5 +66,6 @@ All collectors are **meta-only** and must not emit content.
 - `docs/social_audit_redaction.md`
 - `docs/social_stub_collectors.md`
 - `docs/notebooklm_connector.md`
+- `docs/google_commitment_connectors.md`
 - `docs/daemon_web_control_plane.md`
 - `docs/media_connectors.md`

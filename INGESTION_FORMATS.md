@@ -61,6 +61,67 @@ Each line (JSON):
   "location": "remote"
 }
 
+## External commitments (machine)
+Path: `logs/commitments/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-03-24T08:10:00Z",
+  "signal": "external_commitment",
+  "version": "external_commitment_event_v1",
+  "source_system": "google",
+  "source_kind": "google_tasks_task",
+  "external_account_id": "acct:primary",
+  "external_list_id": "tasks:default",
+  "external_item_id": "task:123",
+  "title": "Call Mum",
+  "notes_excerpt": "created from voice capture",
+  "status": "open",
+  "due_at": "2026-03-25T09:00:00Z",
+  "voice_origin": "tasks_command",
+  "provenance": {"source": "google_tasks", "collected_at": "2026-03-24T08:10:01Z"}
+}
+
+Allowed `source_kind` values in v1:
+- `google_tasks_task`
+- `google_keep_list_item`
+
+Allowed `status` values in v1:
+- `open`
+- `completed`
+- `archived`
+- `unknown`
+
+These records preserve source truth only. SB may derive read-only projection
+fields and completion candidates later, but it must not overwrite the source
+status.
+
+## Completion candidates (machine)
+Path: `logs/task_candidates/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": "2026-03-24T10:30:00Z",
+  "signal": "task_completion_candidate",
+  "version": "task_completion_candidate_v1",
+  "candidate_id": "cand:task:123:sha256:abc",
+  "target_system": "google",
+  "target_kind": "google_tasks_task",
+  "external_item_id": "task:123",
+  "proposed_action": "mark_complete",
+  "candidate_status": "proposed",
+  "reason_codes": ["title_token_match", "evidence_from_git"],
+  "generator": "sb.dashboard.v1",
+  "generated_at": "2026-03-24T10:30:00Z",
+  "evidence_refs": [
+    {"kind": "git_commit", "id": "abc1234", "source_path": "logs/git/2026-03-24.jsonl"}
+  ]
+}
+
+Candidate rows are append-only proposal artifacts. They do not mutate
+canonical task state and they do not imply that any downstream tool executed
+the proposed action.
+
 ## Git activity (machine)
 Path: `logs/git/YYYY-MM-DD.jsonl`
 

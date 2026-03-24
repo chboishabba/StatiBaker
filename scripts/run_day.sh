@@ -25,6 +25,8 @@ NOTEBOOKLM_META_INPUT="${20:-}"
 MEDIA_CONSUMPTION_INPUT="${21:-}"
 CONTEXT_FIELD_APPEND_INPUT="${22:-}"
 MEDICATION_TRACKER_INPUT="${23:-}"
+GOOGLE_TASKS_INPUT="${24:-}"
+GOOGLE_KEEP_LISTS_INPUT="${25:-}"
 
 RUNS_ROOT="${SB_RUNS_ROOT:-$ROOT_DIR/runs_local}"
 
@@ -87,6 +89,14 @@ fi
 if [[ -n "$MEDICATION_TRACKER_INPUT" && ! -f "$MEDICATION_TRACKER_INPUT" ]]; then
   echo "warn: MEDICATION_TRACKER_INPUT not found: $MEDICATION_TRACKER_INPUT" >&2
   MEDICATION_TRACKER_INPUT=""
+fi
+if [[ -n "$GOOGLE_TASKS_INPUT" && ! -f "$GOOGLE_TASKS_INPUT" ]]; then
+  echo "warn: GOOGLE_TASKS_INPUT not found: $GOOGLE_TASKS_INPUT" >&2
+  GOOGLE_TASKS_INPUT=""
+fi
+if [[ -n "$GOOGLE_KEEP_LISTS_INPUT" && ! -f "$GOOGLE_KEEP_LISTS_INPUT" ]]; then
+  echo "warn: GOOGLE_KEEP_LISTS_INPUT not found: $GOOGLE_KEEP_LISTS_INPUT" >&2
+  GOOGLE_KEEP_LISTS_INPUT=""
 fi
 
 RUN_DIR="$RUNS_ROOT/$DATE"
@@ -233,6 +243,27 @@ if [[ -n "$CONTEXT_FIELD_APPEND_INPUT" || -n "$MEDICATION_TRACKER_INPUT" ]]; the
     python "$ROOT_DIR/adapters/medication_tracker_stub.py" --input "$MEDICATION_TRACKER_INPUT" --output "$MED_TMP_PATH"
     cat "$MED_TMP_PATH" >>"$CONTEXT_LOG_PATH"
     rm -f "$MED_TMP_PATH"
+  fi
+fi
+
+if [[ -n "$GOOGLE_TASKS_INPUT" || -n "$GOOGLE_KEEP_LISTS_INPUT" ]]; then
+  COMMITMENT_LOG_DIR="$RUN_DIR/logs/commitments"
+  COMMITMENT_LOG_PATH="$COMMITMENT_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$COMMITMENT_LOG_DIR"
+  : >"$COMMITMENT_LOG_PATH"
+
+  if [[ -n "$GOOGLE_TASKS_INPUT" ]]; then
+    TASKS_TMP_PATH="$(mktemp)"
+    python "$ROOT_DIR/adapters/google_tasks.py" --input "$GOOGLE_TASKS_INPUT" --output "$TASKS_TMP_PATH"
+    cat "$TASKS_TMP_PATH" >>"$COMMITMENT_LOG_PATH"
+    rm -f "$TASKS_TMP_PATH"
+  fi
+
+  if [[ -n "$GOOGLE_KEEP_LISTS_INPUT" ]]; then
+    KEEP_TMP_PATH="$(mktemp)"
+    python "$ROOT_DIR/adapters/google_keep_lists.py" --input "$GOOGLE_KEEP_LISTS_INPUT" --output "$KEEP_TMP_PATH"
+    cat "$KEEP_TMP_PATH" >>"$COMMITMENT_LOG_PATH"
+    rm -f "$KEEP_TMP_PATH"
   fi
 fi
 

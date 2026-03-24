@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-03-24
+- Added Google commitment ingest as a new SB observer lane:
+  - `adapters/google_tasks.py` normalizes Google Tasks rows into
+    `external_commitment_event_v1`
+  - `adapters/google_keep_lists.py` normalizes Google Keep/list rows into the
+    same family while preserving `source_kind`
+  - `scripts/run_day.sh` now accepts arg 24 (`GOOGLE_TASKS_INPUT`) and arg 25
+    (`GOOGLE_KEEP_LISTS_INPUT`) and appends both into
+    `logs/commitments/<date>.jsonl`
+- Extended daily dashboard payloads and HTML with:
+  - external commitment summaries (total/open/completed/archived)
+  - voice-origin and source-kind accounting
+  - read-only projection lanes for commitment rows
+  - `task_completion_candidate_v1` review surfaces
+- Added a conservative SB-side completion-candidate generator that emits
+  proposal-only candidates from explicit activity/title token matches without
+  mutating source task systems.
+- Added read-only query support for dashboard commitment feeds and completion
+  candidates in `sb/query.py` and `scripts/query_state.py`.
+- Updated docs/TODOs to document the new Google commitment connectors, the
+  propose-only completion-candidate seam, and the continued non-authoritative
+  Kanban/projection posture.
+- Added regression coverage for Google commitment adapter normalization,
+  dashboard aggregation/projection, and commitment/candidate query reads.
+
 ## 2026-03-20
 - Tightened artifact-hygiene posture in `README.md` and
   `docs/activity_dashboard.md` to make private runs under `runs_local/` /

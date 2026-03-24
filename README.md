@@ -80,6 +80,7 @@ If it produces state, it can be baked.
 
 - Journal entries
 - TODOs / task ledgers (e.g., Vikunja)
+- External commitments / task systems (e.g., Google Tasks)
 - Notes and drafts
 - Calendar events
 - Questions-in-progress
@@ -97,6 +98,8 @@ If it produces state, it can be baked.
 - Browser usage metadata (domain-level, duration only)
 - Cloud audit feeds (Google Drive, MS365)
 - Notes app metadata (Obsidian, Evernote)
+- Voice-capture list metadata (e.g., Google Keep list items / Google Home-originated
+  "add to my to do list" flows)
 - NotebookLM lifecycle metadata (context/notebook/source/artifact) with
   optional display snippets for local UX
 - Media consumption metadata (YouTube/Spotify/VLC/Last.fm)
@@ -139,6 +142,10 @@ A strict, schema’d representation of:
 This is what agents and automation query.
 It is **read-only** and **non-authoritative**.
 
+External commitments remain authoritative in their source systems. SB may
+project them, correlate them with evidence, and emit completion candidates, but
+it does not become the task board of record.
+
 ### Retrospective summary (evening)
 
 A fold over the day that:
@@ -174,6 +181,7 @@ For OCR and screen capture guardrails, see `SAFETY_OCR.md`.
 - `docs/social_audit_redaction.md` (social feed redaction rules)
 - `docs/social_stub_collectors.md` (per-platform stub inputs)
 - `docs/notebooklm_connector.md` (NotebookLM connector setup + ingest flow)
+- `docs/google_commitment_connectors.md` (Google Tasks + Google Keep/list commitment connectors)
 - `docs/daemon_web_control_plane.md` (cross-platform daemon + web-managed control plane spec)
 - `docs/media_connectors.md` (media connector mappings + churn heuristic)
 - `docs/inaturalist_connector.md` (iNaturalist meta-only biodiversity connector + trend phases)

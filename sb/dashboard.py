@@ -5,6 +5,7 @@ import os
 import re
 import shlex
 import sqlite3
+import hashlib
 from collections import Counter
 from dataclasses import dataclass
 from datetime import UTC, date as date_cls, datetime, timedelta
@@ -63,6 +64,11 @@ WEEKLY_SUMMARY_KEYS = (
     "itir_overlays_casey_workspace_v1",
     "itir_overlays_itir_mission_graph_v1",
     "itir_overlays_other",
+    "external_commitments_total",
+    "external_commitments_open",
+    "external_commitments_completed",
+    "external_commitments_archived",
+    "task_completion_candidates_proposed",
 )
 INAT_PHASE_CODES = ("upward_knee", "rising", "peak", "declining", "stable", "insufficient_data", "no_activity")
 INAT_EXPECTATION_CODES = ("expect_more", "at_or_near_peak", "expect_less", "stable_or_unclear", "insufficient_data")
@@ -164,6 +170,23 @@ VOICE_ACTIVITY_APP_HINTS = (
     "otter",
     "obs",
 )
+COMMITMENT_STOPWORDS = {
+    "a",
+    "an",
+    "and",
+    "call",
+    "for",
+    "from",
+    "get",
+    "into",
+    "list",
+    "my",
+    "of",
+    "the",
+    "to",
+    "todo",
+    "with",
+}
 
 
 @dataclass
@@ -206,8 +229,27 @@ def _empty_notes_meta_summary() -> dict[str, Any]:
     }
 
 
+def _empty_external_commitment_summary() -> dict[str, Any]:
+    return {
+        "events": 0,
+        "items_total": 0,
+        "open_items": 0,
+        "completed_items": 0,
+        "archived_items": 0,
+        "by_source_kind": {},
+        "by_voice_origin": {},
+        "by_projection_lane": {},
+        "warnings": [],
+    }
+
+
 def _iso_utc(ts: datetime) -> str:
     return ts.astimezone(UTC).isoformat().replace("+00:00", "Z")
+
+
+def _sha256_text(value: str) -> str:
+    digest = hashlib.sha256(value.encode("utf-8")).hexdigest()
+    return f"sha256:{digest}"
 
 
 def _parse_ts(value: object) -> datetime | None:
@@ -2072,11 +2114,15 @@ def _load_activity_events(path: Path) -> tuple[list[TimelineEvent], int]:
         if dt is None:
             continue
         primary_app = str(item.get("primary_app") or "")
+        title = str(item.get("title") or "")
+        key_text = [str(value) for value in (item.get("key_text") or []) if str(value).strip()]
         t_end = _parse_ts(item.get("t_end"))
         duration_s = 0
         if t_end is not None:
             duration_s = max(0, int((t_end - dt).total_seconds()))
         detail = f"activity app={primary_app} duration_s={duration_s}"
+        if title:
+            detail += f" title={title}"
         events.append(
             TimelineEvent(
                 dt=dt,
@@ -2084,7 +2130,10 @@ def _load_activity_events(path: Path) -> tuple[list[TimelineEvent], int]:
                 detail=detail,
                 source_path=str(path),
                 meta={
+                    "activity_id": str(item.get("id") or ""),
                     "primary_app": primary_app,
+                    "title": title,
+                    "key_text": key_text,
                     "duration_s": duration_s,
                     "t_end": _iso_utc(t_end) if t_end is not None else "",
                 },
@@ -2292,6 +2341,280 @@ def _load_notes_meta_summary(path: Path) -> dict[str, Any]:
 def _load_context_field_rows(path: Path) -> list[dict[str, Any]]:
     rows = _load_jsonl(path)
     return [row for row in rows if isinstance(row, dict) and row.get("signal") == "context_field"]
+
+
+def _commitment_identity_key(row: dict[str, Any]) -> str:
+    return "|".join(
+        [
+            str(row.get("source_system") or ""),
+            str(row.get("source_kind") or ""),
+            str(row.get("external_account_id") or ""),
+            str(row.get("external_list_id") or ""),
+            str(row.get("external_item_id") or ""),
+        ]
+    )
+
+
+def _projection_lane(*, status: str, has_candidate: bool, due_at: datetime | None) -> str:
+    lowered = str(status or "unknown").strip().lower()
+    if lowered == "completed":
+        return "source_completed"
+    if lowered == "archived":
+        return "archived"
+    if has_candidate:
+        return "candidate_complete"
+    if due_at is not None and due_at < datetime.now(UTC):
+        return "due"
+    return "active"
+
+
+def _load_external_commitments(path: Path) -> tuple[list[TimelineEvent], list[dict[str, Any]], dict[str, Any]]:
+    events: list[TimelineEvent] = []
+    latest_by_key: dict[str, dict[str, Any]] = {}
+    latest_dt_by_key: dict[str, datetime] = {}
+    warnings: list[str] = []
+
+    for row in _load_jsonl(path):
+        if not isinstance(row, dict):
+            continue
+        if str(row.get("signal") or "").strip() != "external_commitment":
+            continue
+        dt = _parse_ts(row.get("ts"))
+        if dt is None:
+            continue
+        title = str(row.get("title") or "").strip()
+        source_kind = str(row.get("source_kind") or "unknown").strip() or "unknown"
+        status = str(row.get("status") or "unknown").strip().lower() or "unknown"
+        voice_origin = str(row.get("voice_origin") or "unknown").strip().lower() or "unknown"
+        due_at = _parse_ts(row.get("due_at"))
+        detail = (
+            f"commitment source_kind={source_kind} status={status} "
+            f"voice_origin={voice_origin} title={title}"
+        )
+        events.append(
+            TimelineEvent(
+                dt=dt,
+                kind="commitment",
+                detail=detail,
+                source_path=str(path),
+                meta={
+                    "title": title,
+                    "source_kind": source_kind,
+                    "status": status,
+                    "voice_origin": voice_origin,
+                    "external_item_id": str(row.get("external_item_id") or ""),
+                    "chars": len(title),
+                },
+            )
+        )
+        key = _commitment_identity_key(row)
+        if not key.strip():
+            warnings.append("external commitment row missing identity fields")
+            continue
+        if key not in latest_dt_by_key or dt >= latest_dt_by_key[key]:
+            latest_dt_by_key[key] = dt
+            latest_by_key[key] = {
+                **row,
+                "ts": _iso_utc(dt),
+                "status": status,
+                "voice_origin": voice_origin,
+                "due_at": _iso_utc(due_at) if due_at is not None else "",
+            }
+
+    items = sorted(latest_by_key.values(), key=lambda item: str(item.get("ts") or ""), reverse=True)
+    summary = _empty_external_commitment_summary()
+    summary["events"] = len(events)
+    summary["items_total"] = len(items)
+    summary["warnings"] = warnings
+    for item in items:
+        status = str(item.get("status") or "unknown").strip().lower()
+        source_kind = str(item.get("source_kind") or "unknown").strip() or "unknown"
+        voice_origin = str(item.get("voice_origin") or "unknown").strip() or "unknown"
+        if status == "completed":
+            summary["completed_items"] += 1
+        elif status == "archived":
+            summary["archived_items"] += 1
+        else:
+            summary["open_items"] += 1
+        by_kind = summary["by_source_kind"]
+        by_kind[source_kind] = _safe_int(by_kind.get(source_kind)) + 1
+        by_voice = summary["by_voice_origin"]
+        by_voice[voice_origin] = _safe_int(by_voice.get(voice_origin)) + 1
+    return events, items, summary
+
+
+def _commitment_title_tokens(title: str) -> list[str]:
+    tokens: list[str] = []
+    seen: set[str] = set()
+    for token in re.findall(r"[a-z0-9]+", str(title or "").lower()):
+        if len(token) < 4 or token in COMMITMENT_STOPWORDS or token in seen:
+            continue
+        seen.add(token)
+        tokens.append(token)
+    return tokens
+
+
+def _generate_task_completion_candidates(
+    *,
+    commitments: list[dict[str, Any]],
+    activity_events: list[TimelineEvent],
+) -> list[dict[str, Any]]:
+    candidates: list[dict[str, Any]] = []
+    for item in commitments:
+        status = str(item.get("status") or "unknown").strip().lower()
+        if status != "open":
+            continue
+        tokens = _commitment_title_tokens(str(item.get("title") or ""))
+        if len(tokens) < 2:
+            continue
+        evidence_refs: list[dict[str, str]] = []
+        for event in activity_events:
+            meta = event.meta if isinstance(event.meta, dict) else {}
+            texts = [
+                str(meta.get("title") or ""),
+                " ".join(str(v) for v in (meta.get("key_text") or []) if str(v).strip()),
+            ]
+            haystack = " ".join(texts).lower()
+            if not haystack:
+                continue
+            if all(token in haystack for token in tokens):
+                evidence_refs.append(
+                    {
+                        "kind": "activity_event",
+                        "id": str(meta.get("activity_id") or ""),
+                        "source_path": event.source_path,
+                    }
+                )
+        if not evidence_refs:
+            continue
+        external_item_id = str(item.get("external_item_id") or "")
+        evidence_key = "|".join(
+            [external_item_id] + [str(ref.get("id") or ref.get("source_path") or "") for ref in evidence_refs]
+        )
+        candidate_id = f"cand:{_sha256_text(evidence_key)}"
+        generated_at = str(item.get("ts") or "")
+        candidates.append(
+            {
+                "ts": generated_at,
+                "signal": "task_completion_candidate",
+                "version": "task_completion_candidate_v1",
+                "candidate_id": candidate_id,
+                "target_system": str(item.get("source_system") or ""),
+                "target_kind": str(item.get("source_kind") or ""),
+                "external_item_id": external_item_id,
+                "proposed_action": "mark_complete",
+                "candidate_status": "proposed",
+                "reason_codes": ["title_token_match", "evidence_from_activity"],
+                "generator": "sb.activity_commitment_match.v1",
+                "generated_at": generated_at,
+                "evidence_refs": evidence_refs,
+            }
+        )
+    return candidates
+
+
+def _load_task_completion_candidates(
+    path: Path,
+    *,
+    generated_candidates: list[dict[str, Any]] | None = None,
+) -> tuple[list[TimelineEvent], list[dict[str, Any]], dict[str, Any]]:
+    events: list[TimelineEvent] = []
+    latest_by_id: dict[str, dict[str, Any]] = {}
+    latest_dt_by_id: dict[str, datetime] = {}
+
+    def _ingest_row(row: dict[str, Any], source_path: str) -> None:
+        if not isinstance(row, dict):
+            return
+        if str(row.get("signal") or "").strip() != "task_completion_candidate":
+            return
+        dt = _parse_ts(row.get("ts") or row.get("generated_at"))
+        if dt is None:
+            return
+        candidate_id = str(row.get("candidate_id") or "").strip()
+        if not candidate_id:
+            return
+        target_kind = str(row.get("target_kind") or "unknown").strip() or "unknown"
+        status = str(row.get("candidate_status") or "unknown").strip().lower() or "unknown"
+        detail = (
+            f"task_candidate target_kind={target_kind} status={status} "
+            f"action={row.get('proposed_action')} candidate_id={candidate_id}"
+        )
+        events.append(
+            TimelineEvent(
+                dt=dt,
+                kind="task_candidate",
+                detail=detail,
+                source_path=source_path,
+                meta={
+                    "candidate_id": candidate_id,
+                    "target_kind": target_kind,
+                    "candidate_status": status,
+                    "external_item_id": str(row.get("external_item_id") or ""),
+                },
+            )
+        )
+        if candidate_id not in latest_dt_by_id or dt >= latest_dt_by_id[candidate_id]:
+            latest_dt_by_id[candidate_id] = dt
+            latest_by_id[candidate_id] = {
+                **row,
+                "ts": _iso_utc(dt),
+                "candidate_status": status,
+            }
+
+    for row in _load_jsonl(path):
+        _ingest_row(row, str(path))
+    for row in generated_candidates or []:
+        _ingest_row(row, "sb://generated/task_completion_candidates")
+
+    candidates = sorted(latest_by_id.values(), key=lambda item: str(item.get("ts") or ""), reverse=True)
+    summary = {
+        "proposed": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "expired": 0,
+        "executed": 0,
+        "target_items": 0,
+    }
+    target_ids: set[str] = set()
+    for item in candidates:
+        status = str(item.get("candidate_status") or "unknown").strip().lower()
+        if status in summary:
+            summary[status] += 1
+        target_id = str(item.get("external_item_id") or "").strip()
+        if target_id:
+            target_ids.add(target_id)
+    summary["target_items"] = len(target_ids)
+    return events, candidates, summary
+
+
+def _attach_candidates_to_commitments(
+    *,
+    commitments: list[dict[str, Any]],
+    candidates: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    candidate_by_item: dict[str, list[dict[str, Any]]] = {}
+    for item in candidates:
+        target = str(item.get("external_item_id") or "").strip()
+        if not target:
+            continue
+        candidate_by_item.setdefault(target, []).append(item)
+
+    out: list[dict[str, Any]] = []
+    for item in commitments:
+        external_item_id = str(item.get("external_item_id") or "").strip()
+        item_candidates = candidate_by_item.get(external_item_id, [])
+        due_at = _parse_ts(item.get("due_at"))
+        lane = _projection_lane(
+            status=str(item.get("status") or ""),
+            has_candidate=bool(item_candidates),
+            due_at=due_at,
+        )
+        projected = dict(item)
+        projected["projection_lane"] = lane
+        projected["completion_candidate_ids"] = [str(candidate.get("candidate_id") or "") for candidate in item_candidates]
+        projected["completion_candidate_count"] = len(item_candidates)
+        out.append(projected)
+    return out
 
 
 def _summarize_inaturalist_day(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -3371,6 +3694,15 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     warnings = payload.get("warnings", [])
     chat_flow = payload.get("chat_flow") or {}
     trailing = payload.get("chat_context_trailing") or {}
+    external_commitment_summary = payload.get("external_commitment_summary")
+    if not isinstance(external_commitment_summary, dict):
+        external_commitment_summary = _empty_external_commitment_summary()
+    external_commitments = payload.get("external_commitments")
+    if not isinstance(external_commitments, list):
+        external_commitments = []
+    task_completion_candidates = payload.get("task_completion_candidates")
+    if not isinstance(task_completion_candidates, list):
+        task_completion_candidates = []
     notes_meta_summary = payload.get("notes_meta_summary")
     if not isinstance(notes_meta_summary, dict):
         notes_meta_summary = _empty_notes_meta_summary()
@@ -3395,6 +3727,17 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     mood_latest = payload.get("mood_latest") if isinstance(payload.get("mood_latest"), dict) else {}
     mood_latest_code = str(mood_latest.get("mood_code") or "unknown")
     mood_latest_ts = str(mood_latest.get("ts") or "")
+    commitments_total = _safe_int(summary.get("external_commitments_total", external_commitment_summary.get("items_total")))
+    commitments_open = _safe_int(summary.get("external_commitments_open", external_commitment_summary.get("open_items")))
+    commitments_completed = _safe_int(
+        summary.get("external_commitments_completed", external_commitment_summary.get("completed_items"))
+    )
+    commitments_archived = _safe_int(
+        summary.get("external_commitments_archived", external_commitment_summary.get("archived_items"))
+    )
+    commitment_candidates = _safe_int(
+        summary.get("task_completion_candidates_proposed", len(task_completion_candidates))
+    )
     media_events_total = _safe_int(summary.get("media_events", media_summary.get("events")))
     media_items_total = _safe_int(summary.get("media_items_observed", media_summary.get("items_observed")))
     media_consumed_seconds = _safe_int(summary.get("media_consumed_seconds", media_summary.get("consumed_seconds")))
@@ -3475,6 +3818,71 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
             f"<td>{(_ratio(consumed, content, digits=3) * 100.0):.1f}%</td>"
             "</tr>"
         )
+
+    commitment_rows: list[str] = []
+    for item in external_commitments:
+        if not isinstance(item, dict):
+            continue
+        commitment_rows.append(
+            "<tr>"
+            f"<td>{escape(str(item.get('title') or ''))}</td>"
+            f"<td><code>{escape(str(item.get('source_kind') or 'unknown'))}</code></td>"
+            f"<td><code>{escape(str(item.get('status') or 'unknown'))}</code></td>"
+            f"<td><code>{escape(str(item.get('voice_origin') or 'unknown'))}</code></td>"
+            f"<td><code>{escape(str(item.get('projection_lane') or 'unknown'))}</code></td>"
+            f"<td><code>{escape(str(item.get('due_at') or ''))}</code></td>"
+            f"<td>{_safe_int(item.get('completion_candidate_count'))}</td>"
+            "</tr>"
+        )
+
+    candidate_rows: list[str] = []
+    for item in task_completion_candidates:
+        if not isinstance(item, dict):
+            continue
+        reason_codes = ", ".join(str(code) for code in (item.get("reason_codes") or []) if str(code).strip()) or "none"
+        evidence_refs = item.get("evidence_refs") if isinstance(item.get("evidence_refs"), list) else []
+        evidence_text = ", ".join(
+            f"{str(ref.get('kind') or 'ref')}:{str(ref.get('id') or ref.get('source_path') or '')}"
+            for ref in evidence_refs
+            if isinstance(ref, dict)
+        ) or "none"
+        candidate_rows.append(
+            "<tr>"
+            f"<td><code>{escape(_short_id(str(item.get('candidate_id') or ''), 12))}</code></td>"
+            f"<td><code>{escape(str(item.get('target_kind') or 'unknown'))}</code></td>"
+            f"<td><code>{escape(str(item.get('candidate_status') or 'unknown'))}</code></td>"
+            f"<td>{escape(reason_codes)}</td>"
+            f"<td>{escape(evidence_text)}</td>"
+            f"<td><code>{escape(str(item.get('generator') or ''))}</code></td>"
+            "</tr>"
+        )
+    commitment_source_counts = (
+        external_commitment_summary.get("by_source_kind")
+        if isinstance(external_commitment_summary.get("by_source_kind"), dict)
+        else {}
+    )
+    commitment_voice_counts = (
+        external_commitment_summary.get("by_voice_origin")
+        if isinstance(external_commitment_summary.get("by_voice_origin"), dict)
+        else {}
+    )
+    commitment_lane_counts = (
+        external_commitment_summary.get("by_projection_lane")
+        if isinstance(external_commitment_summary.get("by_projection_lane"), dict)
+        else {}
+    )
+    commitment_source_text = ", ".join(
+        f"{kind}:{_safe_int(count)}"
+        for kind, count in sorted(commitment_source_counts.items(), key=lambda item: (-_safe_int(item[1]), item[0]))
+    ) or "none"
+    commitment_voice_text = ", ".join(
+        f"{kind}:{_safe_int(count)}"
+        for kind, count in sorted(commitment_voice_counts.items(), key=lambda item: (-_safe_int(item[1]), item[0]))
+    ) or "none"
+    commitment_lane_text = ", ".join(
+        f"{kind}:{_safe_int(count)}"
+        for kind, count in sorted(commitment_lane_counts.items(), key=lambda item: (-_safe_int(item[1]), item[0]))
+    ) or "none"
 
     agent_edit_rows: list[str] = []
     for row in agent_edit_summary.get("files") or []:
@@ -4187,6 +4595,8 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         <div class="metric">Media items observed<b>{media_items_total}</b></div>
         <div class="metric">Media consumed<b>{_format_seconds_compact(media_consumed_seconds)}</b><small>{media_consumed_seconds / 3600.0:.2f}h total</small></div>
         <div class="metric">Media completion/churn<b>{media_completion_ratio * 100.0:.1f}% / {media_churn_rate * 100.0:.1f}%</b><small>completion by watched/content and churn by low-complete early switches</small></div>
+        <div class="metric">External commitments<b>{commitments_total}</b><small>open={commitments_open}, completed={commitments_completed}, archived={commitments_archived}</small></div>
+        <div class="metric">Task completion candidates<b>{commitment_candidates}</b><small>proposed only; no external mutation in SB</small></div>
         <div class="metric">iNaturalist insects<b>{inat_insects_today}</b><small>{escape(inat_phase)} · {escape(inat_expectation)} · {inat_available_days}/{inat_window_days}d window</small></div>
         <div class="metric">Mood reports<b>{mood_reports_today}</b><small>{escape(mood_latest_code)} {escape(mood_latest_ts)}</small></div>
         <div class="metric">Chat-media overlap<b>{chat_media_overlap_hours}h ({chat_media_overlap_rate_pct:.1f}%)</b><small>hour buckets where chat and media co-occur</small></div>
@@ -4222,6 +4632,35 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
             </tr>
           </thead>
           <tbody>{observer_overlay_rows if observer_overlay_rows else "<tr><td colspan='6'>No overlays.</td></tr>"}</tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel" data-role="StatiBaker">
+      <h2>Commitment Feed</h2>
+      <p>
+        items=<code>{commitments_total}</code>,
+        open=<code>{commitments_open}</code>,
+        completed=<code>{commitments_completed}</code>,
+        archived=<code>{commitments_archived}</code>,
+        candidates=<code>{commitment_candidates}</code>
+      </p>
+      <p><small>Sources: {escape(commitment_source_text)}</small></p>
+      <p><small>Voice origin: {escape(commitment_voice_text)}</small></p>
+      <p><small>Projection lanes: {escape(commitment_lane_text)}</small></p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Title</th><th>Source</th><th>Status</th><th>Voice</th><th>Lane</th><th>Due</th><th>Candidates</th></tr></thead>
+          <tbody>{"".join(commitment_rows) if commitment_rows else "<tr><td colspan='7'>No external commitments for this date.</td></tr>"}</tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel" data-role="StatiBaker">
+      <h2>Task Completion Candidates</h2>
+      <p><small>These are proposal artifacts only. They do not mutate source task systems.</small></p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Candidate</th><th>Target</th><th>Status</th><th>Reason Codes</th><th>Evidence</th><th>Generator</th></tr></thead>
+          <tbody>{"".join(candidate_rows) if candidate_rows else "<tr><td colspan='6'>No completion candidates for this date.</td></tr>"}</tbody>
         </table>
       </div>
     </section>
@@ -4853,6 +5292,26 @@ def build_dashboard(
     pr_events, pr_count, pr_detail_counts = _load_pr_events(logs_dir / "pr" / f"{date_text}.jsonl")
     calendar_events, calendar_count = _load_calendar_events(logs_dir / "calendar" / f"{date_text}.jsonl")
     activity_events, activity_count = _load_activity_events(outputs_dir / "activity_ledger.json")
+    commitment_events, external_commitments, external_commitment_summary = _load_external_commitments(
+        logs_dir / "commitments" / f"{date_text}.jsonl"
+    )
+    generated_task_candidates = _generate_task_completion_candidates(
+        commitments=external_commitments,
+        activity_events=activity_events,
+    )
+    task_candidate_events, task_completion_candidates, task_candidate_summary = _load_task_completion_candidates(
+        logs_dir / "task_candidates" / f"{date_text}.jsonl",
+        generated_candidates=generated_task_candidates,
+    )
+    external_commitments = _attach_candidates_to_commitments(
+        commitments=external_commitments,
+        candidates=task_completion_candidates,
+    )
+    lane_counts: dict[str, int] = {}
+    for item in external_commitments:
+        lane = str(item.get("projection_lane") or "unknown").strip() or "unknown"
+        lane_counts[lane] = lane_counts.get(lane, 0) + 1
+    external_commitment_summary["by_projection_lane"] = lane_counts
     media_events, media_summary = _load_media_events_and_summary(logs_dir / "media" / f"{date_text}.jsonl")
     notes_meta_summary = _load_notes_meta_summary(logs_dir / "notes" / f"{date_text}.jsonl")
     tool_use_summary = _augment_tool_use_summary_with_notebooklm(tool_use_summary, notes_meta_summary)
@@ -4878,6 +5337,8 @@ def build_dashboard(
         + pr_events
         + calendar_events
         + activity_events
+        + commitment_events
+        + task_candidate_events
         + media_events
     )
     all_events.sort(key=lambda item: item.dt)
@@ -5009,6 +5470,12 @@ def build_dashboard(
     warnings.extend(str(item) for item in agent_warnings if str(item).strip())
     media_warnings = media_summary.get("warnings") if isinstance(media_summary.get("warnings"), list) else []
     warnings.extend(str(item) for item in media_warnings if str(item).strip())
+    commitment_warnings = (
+        external_commitment_summary.get("warnings")
+        if isinstance(external_commitment_summary.get("warnings"), list)
+        else []
+    )
+    warnings.extend(str(item) for item in commitment_warnings if str(item).strip())
     if _safe_int(chat_context_usage.get("overflow_threads")) > 0:
         warnings.append(
             "Estimated chat context overflow detected for one or more threads (heuristic chars/token model)."
@@ -5103,6 +5570,11 @@ def build_dashboard(
         "pr_commented": pr_detail_counts.get("pr_commented", 0),
         "pr_merged": pr_detail_counts.get("pr_merged", 0),
         "calendar_events": calendar_count,
+        "external_commitments_total": _safe_int(external_commitment_summary.get("items_total")),
+        "external_commitments_open": _safe_int(external_commitment_summary.get("open_items")),
+        "external_commitments_completed": _safe_int(external_commitment_summary.get("completed_items")),
+        "external_commitments_archived": _safe_int(external_commitment_summary.get("archived_items")),
+        "task_completion_candidates_proposed": _safe_int(task_candidate_summary.get("proposed")),
         "timeline_events": len(all_events),
     }
     trailing_chat_context = _build_trailing_chat_context(
@@ -5128,6 +5600,9 @@ def build_dashboard(
         "media_summary": media_summary,
         "concurrency_summary": concurrency_summary,
         "notes_meta_summary": notes_meta_summary,
+        "external_commitment_summary": external_commitment_summary,
+        "external_commitments": external_commitments,
+        "task_completion_candidates": task_completion_candidates,
         "context_field_counts": {
             "total_rows": len(context_rows),
             "inaturalist_events": _safe_int(inat_day.get("events")),

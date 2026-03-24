@@ -26,6 +26,14 @@
 ### Channel A: State Ingress
 - Input: logs, TODO ledgers, events, commits, tool outputs, metadata feeds.
 - Constraint: append-only ingestion; no hidden normalization semantics.
+- external-commitment rule:
+  - Google Tasks and Google Keep/list items may enter as
+    `external_commitment_event_v1`
+  - source task/list state remains authoritative outside SB
+  - Keep/list items remain distinct from Tasks items at identity and source-kind
+    level
+  - SB may derive projection lanes or completion candidates, but not canonical
+    task-state rewrites
 - Wikipedia-revision-monitor rule:
   - allowed only as observer-class refs or append-only external-signal rows
   - pair scores, section deltas, and issue packets do not become SB canonical
@@ -51,6 +59,11 @@
 ### Channel D: Action-State Egress
 - Output: machine action queue state (pending/blocked/completed) with provenance.
 - Consumer: orchestration and audit tooling.
+- completion-candidate rule:
+  - SB may emit `task_completion_candidate_v1` proposal artifacts
+  - these are append-only and reference-heavy
+  - they do not mutate external task systems
+  - any future apply/retirement path stays outside SB canonical state
 
 ### Channel E: Observer Overlay Ingress
 - Input: reference-heavy overlays attached to existing SB activity/state rows.

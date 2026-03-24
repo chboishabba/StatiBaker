@@ -43,3 +43,18 @@ def provenance(state_path, ledger_path=None, drift_path=None, base_dir=None):
         drift = _read_json(drift_path, base_dir=base_dir)
         payload["drift"] = drift.get("provenance", {}) if isinstance(drift, dict) else {}
     return payload
+
+
+def commitment_feed(dashboard_path, base_dir=None):
+    payload = _read_json(dashboard_path, base_dir=base_dir)
+    return {
+        "summary": payload.get("external_commitment_summary", {}),
+        "items": payload.get("external_commitments", []),
+    }
+
+
+def completion_candidates(dashboard_path, base_dir=None):
+    payload = _read_json(dashboard_path, base_dir=base_dir)
+    return {
+        "candidates": payload.get("task_completion_candidates", []),
+    }

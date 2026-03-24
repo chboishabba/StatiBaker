@@ -50,6 +50,7 @@ class TestDashboardBuild(unittest.TestCase):
             (run_logs / "git_branch").mkdir(parents=True, exist_ok=True)
             (run_logs / "pr").mkdir(parents=True, exist_ok=True)
             (run_logs / "media").mkdir(parents=True, exist_ok=True)
+            (run_logs / "commitments").mkdir(parents=True, exist_ok=True)
             (run_logs / "context").mkdir(parents=True, exist_ok=True)
             (context_root / "last_sync").mkdir(parents=True, exist_ok=True)
 
@@ -98,6 +99,13 @@ class TestDashboardBuild(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            (run_logs / "commitments" / f"{date}.jsonl").write_text(
+                (
+                    '{"ts":"2026-02-08T06:06:00Z","signal":"external_commitment","version":"external_commitment_event_v1","source_system":"google","source_kind":"google_tasks_task","external_account_id":"acct","external_list_id":"tasks","external_item_id":"task-1","title":"Write dashboard docs","status":"open","voice_origin":"tasks_command","provenance":{"source":"test","collected_at":"2026-02-08T06:06:01Z"}}\n'
+                    '{"ts":"2026-02-08T06:07:00Z","signal":"external_commitment","version":"external_commitment_event_v1","source_system":"google","source_kind":"google_keep_list_item","external_account_id":"acct","external_list_id":"keep","external_item_id":"keep-1","title":"Buy milk","status":"completed","voice_origin":"keep_list","provenance":{"source":"test","collected_at":"2026-02-08T06:07:01Z"}}\n'
+                ),
+                encoding="utf-8",
+            )
             (run_logs / "context" / f"{date}.jsonl").write_text(
                 (
                     '{"ts":"2026-02-08T05:10:00Z","signal":"context_field","context_type":"mood","event_type":"report_logged","mood_code":"stressed","stress_score":8,"provenance":{"source":"test","collected_at":"2026-02-08T05:10:01Z"}}\n'
@@ -113,6 +121,8 @@ class TestDashboardBuild(unittest.TestCase):
                             {
                                 "id": "act-1",
                                 "primary_app": "terminal",
+                                "title": "Write dashboard docs",
+                                "key_text": ["Write dashboard docs", "finish docs"],
                                 "t_start": "2026-02-08T06:00:00Z",
                                 "t_end": "2026-02-08T06:10:00Z",
                             }
@@ -215,6 +225,10 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(1, payload["summary"]["pr_received"])
             self.assertEqual(1, payload["summary"]["pr_commented"])
             self.assertEqual(1, payload["summary"]["pr_merged"])
+            self.assertEqual(2, payload["summary"]["external_commitments_total"])
+            self.assertEqual(1, payload["summary"]["external_commitments_open"])
+            self.assertEqual(1, payload["summary"]["external_commitments_completed"])
+            self.assertEqual(1, payload["summary"]["task_completion_candidates_proposed"])
             self.assertEqual(2, payload["frequency_by_hour"]["chat"][6])
             self.assertEqual(1, payload["frequency_by_hour"]["git"][6])
             self.assertEqual(1, payload["frequency_by_hour"]["activity"][6])
@@ -225,6 +239,12 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(1, payload["chat_flow"]["thread_count"])
             self.assertEqual(0, payload["chat_flow"]["switch_count"])
             self.assertEqual(2, len(payload["chat_flow"]["waterfall"]))
+            self.assertEqual(2, len(payload["external_commitments"]))
+            self.assertEqual(1, len(payload["task_completion_candidates"]))
+            open_commitment = next(
+                item for item in payload["external_commitments"] if item["external_item_id"] == "task-1"
+            )
+            self.assertEqual("candidate_complete", open_commitment["projection_lane"])
             self.assertEqual(0, payload["chat_context_trailing"]["available_days"])
             self.assertFalse(payload["chat_context_trailing"]["has_baseline"])
 
@@ -237,6 +257,9 @@ class TestDashboardBuild(unittest.TestCase):
             write_dashboard_outputs(payload, json_path=json_out, html_path=html_out)
             self.assertTrue(json_out.exists())
             self.assertTrue(html_out.exists())
+            html_text = html_out.read_text(encoding="utf-8")
+            self.assertIn("Commitment Feed", html_text)
+            self.assertIn("Task Completion Candidates", html_text)
 
             loaded = json.loads(json_out.read_text(encoding="utf-8"))
             self.assertEqual(date, loaded["date"])

@@ -21,12 +21,22 @@ def main():
     prov.add_argument("--ledger")
     prov.add_argument("--drift")
 
+    commitments = sub.add_parser("commitments", help="Commitment feed from dashboard payload")
+    commitments.add_argument("--dashboard", required=True)
+
+    candidates = sub.add_parser("completion-candidates", help="Completion candidates from dashboard payload")
+    candidates.add_argument("--dashboard", required=True)
+
     args = parser.parse_args()
 
     if args.cmd == "activity-events":
         payload = query.list_activity_events(args.ledger, base_dir=args.base)
     elif args.cmd == "carryover":
         payload = query.carryover_summary(args.state, base_dir=args.base)
+    elif args.cmd == "commitments":
+        payload = query.commitment_feed(args.dashboard, base_dir=args.base)
+    elif args.cmd == "completion-candidates":
+        payload = query.completion_candidates(args.dashboard, base_dir=args.base)
     else:
         payload = query.provenance(
             args.state,
