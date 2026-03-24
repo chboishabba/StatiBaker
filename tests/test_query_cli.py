@@ -116,11 +116,13 @@ class TestQuerySurface(unittest.TestCase):
             obligations = query.todo_obligations(repo)
             candidates = query.todo_candidates(repo)
             alignment = query.todo_alignment(repo)
+            obligation = query.todo_obligation(repo, obligations["obligations"][0]["obligation_id"])
 
         self.assertEqual("todo_graph_v1", graph["version"])
         self.assertEqual(1, len(obligations["obligations"]))
         self.assertEqual(1, len(candidates["candidates"]))
         self.assertEqual("todo_alignment_v1", alignment["project"]["version"])
+        self.assertEqual("todo_obligation_v1", obligation["obligation"]["version"])
 
 
 if __name__ == "__main__":

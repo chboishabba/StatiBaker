@@ -130,6 +130,15 @@ def todo_obligations(repo_root, todo_paths=None, base_dir=None):
     return {"obligations": payload.get("obligations", [])}
 
 
+def todo_obligation(repo_root, obligation_id, todo_paths=None, base_dir=None):
+    payload = todo_graph(repo_root, todo_paths=todo_paths, base_dir=base_dir)
+    for item in payload.get("evaluations", []):
+        obligation = item.get("obligation") if isinstance(item.get("obligation"), dict) else {}
+        if str(obligation.get("obligation_id") or "") == str(obligation_id):
+            return item
+    return None
+
+
 def todo_candidates(repo_root, todo_paths=None, base_dir=None):
     payload = todo_graph(repo_root, todo_paths=todo_paths, base_dir=base_dir)
     return {"candidates": payload.get("completion_candidates", [])}

@@ -48,6 +48,11 @@ def main():
     todo_obligations.add_argument("--repo-root", required=True)
     todo_obligations.add_argument("--todo", action="append")
 
+    todo_obligation = sub.add_parser("todo-obligation", help="Inspect one repo TODO obligation")
+    todo_obligation.add_argument("--repo-root", required=True)
+    todo_obligation.add_argument("--obligation-id", required=True)
+    todo_obligation.add_argument("--todo", action="append")
+
     todo_candidates = sub.add_parser("todo-candidates", help="Repo TODO completion candidates")
     todo_candidates.add_argument("--repo-root", required=True)
     todo_candidates.add_argument("--todo", action="append")
@@ -86,6 +91,13 @@ def main():
         payload = query.todo_graph(args.repo_root, todo_paths=args.todo, base_dir=args.base)
     elif args.cmd == "todo-obligations":
         payload = query.todo_obligations(args.repo_root, todo_paths=args.todo, base_dir=args.base)
+    elif args.cmd == "todo-obligation":
+        payload = query.todo_obligation(
+            args.repo_root,
+            args.obligation_id,
+            todo_paths=args.todo,
+            base_dir=args.base,
+        )
     elif args.cmd == "todo-candidates":
         payload = query.todo_candidates(args.repo_root, todo_paths=args.todo, base_dir=args.base)
     elif args.cmd == "todo-alignment":

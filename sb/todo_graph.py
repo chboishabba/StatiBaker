@@ -67,7 +67,13 @@ def discover_todo_files(repo_root: str | Path) -> list[Path]:
         for name in filenames:
             if name in SOURCE_FILES:
                 results.append(Path(dirpath) / name)
-    return sorted(results)
+        current = Path(dirpath)
+        if current.name == "todo" and current.parent.name == "logs":
+            for name in filenames:
+                if name.lower().endswith(".md"):
+                    results.append(current / name)
+    deduped = {path.resolve(): path.resolve() for path in results}
+    return sorted(deduped.values())
 
 
 def _source_kind(path: Path) -> str:
@@ -129,6 +135,7 @@ def parse_todo_file(path: str | Path, *, repo_root: str | Path) -> list[dict[str
 
     return [
         {
+            "version": "todo_obligation_v1",
             "obligation_id": item.obligation_id,
             "source_path": item.source_path,
             "line_no": item.line_no,
@@ -137,6 +144,10 @@ def parse_todo_file(path: str | Path, *, repo_root: str | Path) -> list[dict[str
             "state": item.state,
             "indent": item.indent,
             "source_kind": item.source_kind,
+            "provenance": {
+                "source_file": rel,
+                "context_refs": [{"kind": "section_heading", "text": heading} for heading in item.section_path],
+            },
         }
         for item in items
     ]
@@ -293,7 +304,15 @@ def derive_predicates(obligation: dict[str, Any]) -> list[dict[str, Any]]:
 
     if not predicates:
         predicates.append({"predicate_kind": "needs_human_review", "target": None, "required": True})
-    return predicates
+    return [
+        {
+            "version": "todo_predicate_v1",
+            "predicate_kind": str(item.get("predicate_kind") or ""),
+            "target": item.get("target"),
+            "required": bool(item.get("required")),
+        }
+        for item in predicates
+    ]
 
 
 def evaluate_obligation(obligation: dict[str, Any], *, repo_root: str | Path) -> dict[str, Any]:
@@ -396,6 +415,7 @@ def evaluate_obligation(obligation: dict[str, Any], *, repo_root: str | Path) ->
     candidate = None
     if classification in {"likely_complete", "partially_satisfied"}:
         candidate = {
+            "signal": "todo_completion_candidate",
             "candidate_id": _hash(str(obligation.get("obligation_id") or ""), classification),
             "version": "todo_completion_candidate_v1",
             "obligation_id": obligation.get("obligation_id"),
@@ -417,10 +437,17 @@ def evaluate_obligation(obligation: dict[str, Any], *, repo_root: str | Path) ->
     return {
         "obligation": dict(obligation),
         "predicates": evaluated,
-        "evidence_links": evidence_links[:20],
+        "evidence_links": [
+            {
+                "version": "todo_evidence_link_v1",
+                **item,
+            }
+            for item in evidence_links[:20]
+        ],
         "classification": classification,
         "reason_codes": reason_codes,
         "candidate": candidate,
+        "template_family": _template_family(str(obligation.get("text") or "")),
     }
 
 
@@ -510,8 +537,21 @@ def _alignment_for_evaluations(evaluations: list[dict[str, Any]]) -> dict[str, A
         "focus_score": focus_score,
         "efficiency_score": efficiency_score,
         "evidence_score": evidence_score,
-        "penalty_counts": dict(sorted(penalty_counts.items())),
-        "support_counts": dict(sorted(support_counts.items())),
+        "penalty_counts": {
+            "unmet_required_predicates": penalty_counts.get("unmet_required_predicates", 0),
+            "contradicted_obligations": penalty_counts.get("contradicted_obligations", 0),
+            "stale_open_items": penalty_counts.get("stale_open_items", 0),
+            "repeated_retry_loops": penalty_counts.get("repeated_retry_loops", 0),
+            "blocked_by_missing_evidence": penalty_counts.get("blocked_by_missing_evidence", 0),
+            "needs_human_review": penalty_counts.get("needs_human_review", 0),
+        },
+        "support_counts": {
+            "supported_completions": support_counts.get("supported_completions", 0),
+            "justified_rejections": support_counts.get("justified_rejections", 0),
+            "fully_satisfied_predicates": support_counts.get("fully_satisfied_predicates", 0),
+            "superseded_obligations": support_counts.get("superseded_obligations", 0),
+            "partially_satisfied": support_counts.get("partially_satisfied", 0),
+        },
         "obligation_counts": {
             "total": len(obligations),
             "open": len(open_items),
@@ -531,6 +571,8 @@ def analyze_repo_todos(repo_root: str | Path, *, todo_paths: Iterable[str | Path
 
     evaluations = [evaluate_obligation(item, repo_root=root) for item in obligations]
     candidates = [item["candidate"] for item in evaluations if isinstance(item.get("candidate"), dict)]
+    flattened_predicates = [predicate for item in evaluations for predicate in item.get("predicates", []) if isinstance(predicate, dict)]
+    flattened_evidence = [evidence for item in evaluations for evidence in item.get("evidence_links", []) if isinstance(evidence, dict)]
 
     by_file: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for item in evaluations:
@@ -547,6 +589,8 @@ def analyze_repo_todos(repo_root: str | Path, *, todo_paths: Iterable[str | Path
         "repo_root": str(root),
         "todo_files": [str(path.relative_to(root)) if path.is_relative_to(root) else str(path) for path in selected],
         "obligations": obligations,
+        "todo_predicates": flattened_predicates,
+        "todo_evidence_links": flattened_evidence,
         "evaluations": evaluations,
         "completion_candidates": candidates,
         "alignment": {
