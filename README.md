@@ -1,308 +1,212 @@
 # StatiBaker
-## Just old-fashioned organisation — with modern failure modes taken seriously.
-**LLMs are like ogres; they like onions**
 
-We don’t tell you what to do, who to be, or how to optimise.
-We don’t infer preferences, goals, or intent.
-We don’t act on your behalf.
+StatiBaker is a daily state compiler.
 
-**We help you remember what actually happened — so you can decide.**
+It is built to reconstruct what actually happened across tools, logs, and
+activity traces without pretending to be an assistant, planner, or life coach.
 
-StatiBaker is a **daily state distillation engine**.
-It compiles human and machine state into a single, coherent brief with traceability
-back to raw logs and actions.
+In plain language:
 
-StatiBaker is also a **context prosthesis** for ADHD support: a digital corkboard
-that reassembles itself after context collapse so you can recover what happened,
-what stalled, and what is still active.
+- it compiles state
+- it preserves gaps and contradictions
+- it produces traceable summaries and machine-readable outputs
+- it helps recover continuity after interruption or context collapse
 
-This is **not** a chatbot.
-It is **not** a planner.
-It is **not** an assistant.
+## What StatiBaker Does
 
-**It is a state compiler.**
-
----
-
-## Core idea
-
-StatiBaker ingests everything you generate or operate, then emits structured state views:
-
-- **What happened**: observed events, ordered, with gaps preserved
-- **What matters today**: active intersections, not priorities
-- **What is unresolved**: open loops, blockers, carryovers
-- **What agents should do next**: pending or blocked machine actions (not recommendations)
-
-No judgement.
-No optimisation.
-No motivational framing.
-
----
-<img width="926" height="1280" alt="image" src="https://github.com/user-attachments/assets/2e76f49d-4bf1-4cde-bfbd-fbe66919cf04" />
-<img width="1287" height="946" alt="image" src="https://github.com/user-attachments/assets/94086272-c641-459d-afbb-7a9ff469b421" />
-<img width="1310" height="843" alt="image" src="https://github.com/user-attachments/assets/f6879eef-aa7c-4a93-827f-4c25a7b72cc7" />
-<img width="1002" height="807" alt="image" src="https://github.com/user-attachments/assets/acf88ca8-4d62-45b0-87a4-154b5057e7c0" />
-
-## Current module features (what exists today)
-
-### Monorepo Python imports
-- From the ITIR-suite repo root, `import sb` and `python -m sb...` are supported via the lightweight shim package at `sb/__init__.py`.
-- This avoids requiring installation/packaging just to run modules locally.
-
-- **Run pipeline (append-only logs -> compiled state)**
-  - A reference run script that collects inputs into a per-day run dir and writes outputs: `scripts/run_day.sh`
-  - Pluggable adapters for common streams (git, filesystem meta, Prometheus, osquery, input/window focus, browser usage, notes meta, social/meta stubs, etc.): `adapters/`
-- **Daily bake outputs**
-  - Machine-readable state and supporting artifacts (runs under `runs_local/<YYYY-MM-DD>/outputs/` by default): `sb/`
-  - Drift counters written as observational JSON: `sb/drift.py` (see `DRIFT_SIGNALS.md`)
-- **Dashboards + web surfaces (current HTML, future Svelte)**
-  - Dashboard builder that persists **canonically to SQLite** for daily/weekly/lifetime views: `scripts/build_dashboard.py`, `sb/dashboard.py`
-    - Legacy JSON/HTML exports remain available for regression/debug, but are not the canonical store.
-    - Default private runs root is `runs_local/` via `SB_RUNS_ROOT`; do not
-      treat `runs/dashboard.sqlite` as a checked-in personal-data sample.
-  - HTML renderer functions (embedded CSS + client-side JS for filtering/palette controls):
-    `sb/dashboard.py` (`render_dashboard_html`, `render_weekly_dashboard_html`, `render_lifetime_dashboard_html`)
-  - Web iteration map (UI contracts + safe edit zones): `docs/web_module_map.md`
-  - Documented migration target for decomposing the monolithic renderer (SvelteKit + Tailwind): `docs/svelte_migration_sprint.md`
-  - Minimal metrics HTTP server (`/metrics`, Prometheus text format): `sb/metrics_server.py`, `scripts/serve_metrics.py`
-- **Portable bundles**
-  - Bundle spec + build/verify scripts for sharing state snapshots with traceability: `BUNDLE_SPEC.md`, `sb/bundle.py`, `scripts/bundle_export.py`, `scripts/verify_bundle.py`
-- **Query surface**
-  - Read-only query module over compiled artifacts/state: `sb/query.py` (see `QUERY_SURFACE.md`)
-
----
-
-## Inputs (state surface)
-
-If it produces state, it can be baked.
-
-### Human streams
-
-- Journal entries
-- TODOs / task ledgers (e.g., Vikunja)
-- External commitments / task systems (e.g., Google Tasks)
-- Notes and drafts
-- Calendar events
-- Questions-in-progress
-- Sleep, activity, and capacity signals
-
-### System and agent streams
-
-- Agent logs and run states
-- Tool outputs
-- Git commits, diffs, CI results
-- Automation outcomes
-- Input activity (keyboard/mouse counts, focus/app metadata)
-- System event logs (journald / Windows Event Log / macOS Unified Log)
-- Antivirus/endpoint status summaries
-- Browser usage metadata (domain-level, duration only)
-- Cloud audit feeds (Google Drive, MS365)
-- Notes app metadata (Obsidian, Evernote)
-- Voice-capture list metadata (e.g., Google Keep list items / Google Home-originated
-  "add to my to do list" flows)
-- NotebookLM lifecycle metadata (context/notebook/source/artifact) with
-  optional display snippets for local UX
-- Media consumption metadata (YouTube/Spotify/VLC/Last.fm)
-- Social feed metadata (Bluesky and other socials; hashes only)
-
-### Environment and constraints
-
-- Smart home status and alerts (e.g., HAOS)
-- Deadlines and time locks
-- External dependencies
-- Environmental conditions affecting capacity
-
-**All inputs are append-only.**
-Nothing is rewritten. Nothing is inferred.
-
----
-
-## Outputs (the daily bake)
-
-### Human-readable daily brief (SITREP / morning)
-
-A compact reconstruction of state:
+StatiBaker ingests append-only signals and emits bounded state views such as:
 
 - what changed
 - what carried over
-- what is blocked
-- where attention last went
+- what is unresolved
+- what actions or machine states are pending
 
-Every line can be traced back to raw events.
+It treats those outputs as read-only reconstruction, not as a replacement for
+the source systems that generated them.
 
-### Machine-readable state (JSON)
+## What You Can Do With It Today
 
-A strict, schema’d representation of:
+### 1. Compile a daily state view from real traces
 
-- active items
-- unresolved loops
-- blockers
-- eligible actions
+Current inputs can include:
 
-This is what agents and automation query.
-It is **read-only** and **non-authoritative**.
+- git and filesystem activity
+- process and system metadata
+- browser/app usage metadata
+- notes/task metadata
+- machine and agent logs
 
-External commitments remain authoritative in their source systems. SB may
-project them, correlate them with evidence, and emit completion candidates, but
-it does not become the task board of record.
+Current outputs include:
 
-### Retrospective summary (evening)
+- human-readable daily brief material
+- machine-readable state artifacts
+- drift counters
+- dashboard/database artifacts
+- portable bundles for later inspection
 
-A fold over the day that:
+### 2. Preserve reality instead of smoothing it away
 
-- preserves gaps
-- marks uncertainty
-- records collapse without judgement
+StatiBaker is designed so that:
 
-### Drift counters (read-only)
+- append-only history stays append-only
+- contradictions remain visible
+- compression is explicit rather than hidden
+- replay remains deterministic
 
-Written to `<runs-root>/<date>/outputs/drift.json` as observational counters only. Default runs root is `runs_local/` (override with `SB_RUNS_ROOT`).
-See `DRIFT_SIGNALS.md`.
+That is the practical difference between "state compiler" and "assistant."
 
----
+### 3. Provide a read-only state surface for other tools
 
-## Epistemic rules (non-negotiable)
+StatiBaker sits beside the rest of the suite as a context/state layer.
 
-- **Declared state is authoritative** (tasks, notes, logs, commits).
-- **Observed state is evidentiary** (screens, sensors, passive signals).
-- **Derived artifacts are provisional** (OCR, transcripts, transforms).
-- **Derived artifacts never become state without an explicit act.**
+That means it can feed later review or orchestration without claiming semantic
+or legal authority over the underlying content.
 
-For OCR and screen capture guardrails, see `SAFETY_OCR.md`.
+## Proven Abilities
 
----
+The current repo already contains:
 
-## Key artifacts
+- a run pipeline that collects inputs and writes per-day outputs
+- dashboard builders that persist canonical state to SQLite
+- read-only query surfaces over compiled artifacts
+- portable export/verify bundle paths
+- explicit drift counters and failure-mode docs
 
-- `BRIEF_TEMPLATE.md` (human brief and retrospective format)
-- `STATE_SCHEMA.json` (machine-readable state contract)
-- `SAMPLE_STATE.json` (synthetic example)
-- `INGESTION_FORMATS.md` (append-only event formats)
-- `docs/social_audit_redaction.md` (social feed redaction rules)
-- `docs/social_stub_collectors.md` (per-platform stub inputs)
-- `docs/notebooklm_connector.md` (NotebookLM connector setup + ingest flow)
-- `docs/google_commitment_connectors.md` (Google Tasks + Google Keep/list commitment connectors)
-- `docs/daemon_web_control_plane.md` (cross-platform daemon + web-managed control plane spec)
-- `docs/media_connectors.md` (media connector mappings + churn heuristic)
-- `docs/inaturalist_connector.md` (iNaturalist meta-only biodiversity connector + trend phases)
-- `docs/mood_self_report.md` (explicit mood self-report lane; non-inferential)
-- `docs/pet_wearables_stub.md` (pet wearables/smart collar meta-only stub)
-- `docs/maps_timeline_stub.md` (Google/Apple maps timeline meta-only stub)
-- `docs/collectors_index.md` (collector/adapters index)
-- `docs/INDEX.md` (doc index)
-- `docs/observed_signals.md` (meta-only signal catalog)
-- `docs/activity_dashboard.md` (read-only process-lens dashboard contract)
-- `docs/api_costing_model.md` (context usage + indicative API costing model)
-- `docs/chat_flow_lane_mode.md` (planned true lane chart mode for chat flow)
-- `DESIGN.md` (architecture notes and invariants)
-- `CONTEXT.md` (context-layering and divergence notes)
-- `COMPACTIFIED_CONTEXT.md` (portable project summary)
-- `OCR_ADAPTER_CONTRACT.md` (design-only OCR boundary)
-- `ANDROID_STATUS_CONTRACT.md` (design-only mobile status boundary)
-- `QUERY_SURFACE.md` (read-only query surface spec)
-- `ITIR_INGEST_CONTRACT.md` (read-only ITIR ingest boundary)
-- `DRIFT_SIGNALS.md` (read-only drift counters)
-- `FAILURE_MODES.md` (boundary lock + red-team catalog)
-- `TIME_HYGIENE.md` (time-decay policy)
-- `BUNDLE_SPEC.md` (portable bundle layout)
-- `LOSS_PROFILES.md` (explicit compression loss profiles)
-- `AGENT_CONTAINMENT.md` (read-only agent boundaries)
-- `docs/multimodal_system_doctrine.md` (multi-modal doctrine and epistemic modes)
-- `docs/openclaw_integration.md` (agent execution envelope + truth substrate)
-- `docs/tool_interop_observer_contract.md` (read-only interop with orchestration tools)
-- `docs/user_stories.md` (lawyer/psychologist boundary test narratives)
-- `docs/panopticon_refusal.md` (refusal of coercive memory / surveillance defaults)
-- `docs/red_team.md` (red-team scenarios and considerations)
-- `TODO.md` (plan and open questions)
-- `ADRs/README.md` (architecture decision record index)
+What that means in practice:
 
----
+- the project already has real append-only state compilation paths
+- it already produces inspectable outputs, not just design notes
+- the repo is opinionated about boundaries: no silent rewriting, no fake
+  certainty, no hidden "AI knows best" layer
 
-## Design principles (anti-enshittification)
+## Quick Start
 
-These are **enforced constraints**, not aspirations.
-They reflect the failure modes documented in `ITIR - anti-enshit.pdf`.
+StatiBaker is usually worked on inside the top-level `ITIR-suite` workspace.
 
-1. **User utility over extractive optimisation**
-2. **Transparent, traceable compression**
-3. **Append-only state, no memory rewriting**
-4. **Verification remains human and local**
-5. **Exit is cheap**
+From the repo root:
 
----
+```bash
+./env_init.sh
+source .venv/bin/activate
+```
 
-## Non-goals
+Then use the current project scripts from the `StatiBaker` directory.
 
-StatiBaker explicitly does **not** aim to be:
+Common entry points:
 
-- A generic conversational assistant
-- A planner or task optimiser
-- A goal-setting or motivation tool
-- An AI that “knows you”
-- A system that rewrites history into cleaner stories
+```bash
+cd StatiBaker
+python scripts/build_dashboard.py --help
+python scripts/serve_metrics.py --help
+python scripts/bundle_export.py --help
+python scripts/verify_bundle.py --help
+```
 
-If you want advice or recommendations, those belong in **separate, optional layers**.
+If you want the canonical dashboard/state path, start by reading:
 
----
+- [docs/activity_dashboard.md](docs/activity_dashboard.md)
+- [QUERY_SURFACE.md](QUERY_SURFACE.md)
+- [BUNDLE_SPEC.md](BUNDLE_SPEC.md)
 
-## Relationship to ITIR
+## Common Workflows
 
-- **StatiBaker** handles time and state
-- **ITIR** handles meaning and interpretation
-- **TIRC** handles disagreement and plural readings
-- **SL** handles normative structure and constraints
+### Daily bake / state compilation
 
-Boundary clarification:
-- StatiBaker is a personal state compiler feeding TiRC/ITIR and adjacent suite
-  surfaces.
-- SB may use or extend SL-owned lexer/compression outputs where shared
-  canonical text handling is needed.
-- That reuse does not transfer semantic or legal authority into SB.
-- Legal-looking canonical IDs or fixtures reaching SB are opaque upstream
-  payloads to preserve, not content for SB to interpret.
+Use the run pipeline when you want to collect inputs into a per-day run
+directory and produce compiled state outputs.
 
-StatiBaker never interprets content.
-ITIR never manages lived context.
-They integrate via **context envelopes**, not shared logic.
+Relevant surface:
 
-SB ingests **references only** (IDs/URIs) from TIRC/SL/ITIR and compiles
-temporal deltas (carryover/new/resolved). It does not read or summarize
-artifact content.
-Agentic systems should query SB via a read-only interface (CLI for now) before
-acting.
+- `scripts/run_day.sh`
 
-## Observability sources
-- Prometheus is the primary numeric source (includes Graphite exporter metrics).
-- Grafana is a UI lens, not a data source.
-- InfluxDB (Home Assistant) is optional and only via curated summaries.
+### Dashboard and state inspection
 
-## Core differentiation (questions)
-- **StatiBaker:** Where am I and what happened? (lived time, state reconstruction)
-- **SensibLaw:** What does this mean? (normative reasoning)
-- **TIRC:** How else can this be interpreted? (contested narratives, evidentiary integrity)
+Use the dashboard builders when you want a human-readable lens over compiled
+state while still keeping SQLite as the canonical backing store.
 
-## SB-only invariants (context prosthesis)
-- No agency: SB never initiates actions, messages, or nudges.
-- Append-only reality: gaps and contradictions are preserved as first-class objects.
-- Explicit compression: summaries declare loss profiles and remain expandable.
-- Deterministic replay: the same event log yields the same bake.
+Relevant surfaces:
 
----
+- `scripts/build_dashboard.py`
+- `sb/dashboard.py`
+- [docs/activity_dashboard.md](docs/activity_dashboard.md)
 
-## Current status
+### Portable bundle export and verification
 
-**Implementation exists, but remains pre-1.0 and contract-first.**
-Core pipeline pieces (ingest/adapters, bake outputs, dashboards, bundles, and tests) are present, but interfaces and payload contracts are still being hardened and should be treated as unstable until explicitly frozen in docs/ADRs.
+Use bundle export when you want to preserve a snapshot with traceability.
 
-The goal at this stage is to:
+Relevant surfaces:
 
-- lock invariants
-- prevent architectural drift
-- make future enshittification structurally difficult
+- `scripts/bundle_export.py`
+- `scripts/verify_bundle.py`
+- [BUNDLE_SPEC.md](BUNDLE_SPEC.md)
 
----
+## Core Rules
 
-## The point, stated plainly
+These are the project’s important non-negotiables.
 
-> **StatiBaker is not here to make life easier.
-> It is here to make reality harder to lose.**
+- no agency: StatiBaker does not initiate actions or messages
+- append-only reality: history is preserved rather than rewritten
+- explicit compression: summaries should declare loss rather than hide it
+- deterministic replay: the same event log should yield the same bake
+
+## Relationship To The Rest Of The Suite
+
+StatiBaker handles time and state.
+
+It sits beside:
+
+- `tircorder-JOBBIE`, which handles capture
+- `SensibLaw`, which handles deterministic normative/provenance review
+- broader ITIR orchestration surfaces, which coordinate work across projects
+
+Boundary summary:
+
+- StatiBaker may preserve upstream identifiers and artifacts
+- it does not take over semantic or legal interpretation
+- it is a read-only state layer, not the source of truth for external systems
+
+## Where To Find Things
+
+### Start here
+
+- collectors/adapters index:
+  [docs/collectors_index.md](docs/collectors_index.md)
+- observed signals:
+  [docs/observed_signals.md](docs/observed_signals.md)
+- activity dashboard:
+  [docs/activity_dashboard.md](docs/activity_dashboard.md)
+- query surface:
+  [QUERY_SURFACE.md](QUERY_SURFACE.md)
+
+### Boundaries and invariants
+
+- agent containment:
+  [AGENT_CONTAINMENT.md](AGENT_CONTAINMENT.md)
+- failure modes:
+  [FAILURE_MODES.md](FAILURE_MODES.md)
+- drift counters:
+  [DRIFT_SIGNALS.md](DRIFT_SIGNALS.md)
+- time hygiene:
+  [TIME_HYGIENE.md](TIME_HYGIENE.md)
+
+### Export and bundle docs
+
+- bundle format:
+  [BUNDLE_SPEC.md](BUNDLE_SPEC.md)
+- loss profiles:
+  [LOSS_PROFILES.md](LOSS_PROFILES.md)
+- ITIR ingest boundary:
+  [ITIR_INGEST_CONTRACT.md](ITIR_INGEST_CONTRACT.md)
+
+## What StatiBaker Is Not
+
+StatiBaker is not:
+
+- a chatbot
+- a planner
+- a motivation tool
+- a system that silently rewrites reality into a cleaner story
+
+Its job is narrower and more defensible:
+
+to make state harder to lose.
