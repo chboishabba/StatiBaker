@@ -52,6 +52,9 @@ Allowed ingress from orchestration tools:
 - bounded observer-class `casey-git-clone` operation/build telemetry when it
   stays append-only and reference-heavy (workspace/tree/build ids, receipt
   hashes, explicit collapse/build refs, not mutable candidate graphs)
+- bounded Corkysoft reviewed-event overlays when they stay reference-heavy and
+  preserve Corkysoft authority labels rather than importing mutable removals
+  workflow state into SB
 
 Forbidden ingress:
 - generated semantic summaries as authoritative truth
@@ -91,6 +94,12 @@ Dev/runtime observers (GitHub, Vercel, Netlify, Docker tooling, Slack, Teams, Zo
 - Overlap: execution and collaboration telemetry.
 - Boundary: action/event observers, not semantic authority.
 - Verdict: first-class observer inputs.
+
+Operational systems of decision (for example Corkysoft):
+- Overlap: reviewed operational summaries and read-only query surfaces.
+- Boundary: producer remains authoritative; SB stores only reviewed overlays or
+  query receipts, not mutable workflow state.
+- Verdict: supported when the seam is explicit and authority-safe.
 
 AI productivity/summarization tools:
 - Overlap: presentation/rendering of derived outputs.

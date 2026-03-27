@@ -340,6 +340,37 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
           created_at TEXT,
           PRIMARY KEY (annotation_id, ref_order)
         );
+
+        CREATE TABLE IF NOT EXISTS sb_corkysoft_review_events (
+          annotation_id TEXT PRIMARY KEY REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          event_id TEXT NOT NULL,
+          event_family TEXT NOT NULL,
+          event_time TEXT NOT NULL,
+          source_system TEXT NOT NULL,
+          actor_ref TEXT NOT NULL,
+          authority_class TEXT NOT NULL,
+          correlation_key TEXT NOT NULL,
+          summary TEXT NOT NULL,
+          payload_json TEXT NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_corkysoft_object_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          ref_key TEXT,
+          ref_value TEXT,
+          payload_json TEXT NOT NULL,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
+
+        CREATE TABLE IF NOT EXISTS sb_corkysoft_provenance_refs (
+          annotation_id TEXT NOT NULL REFERENCES sb_itir_overlays(annotation_id) ON DELETE CASCADE,
+          ref_order INTEGER NOT NULL,
+          ref_kind TEXT,
+          ref_uri TEXT,
+          payload_json TEXT NOT NULL,
+          PRIMARY KEY (annotation_id, ref_order)
+        );
         """
     )
 
@@ -1051,6 +1082,9 @@ def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]])
             conn.execute("DELETE FROM sb_casey_workspace_refs WHERE annotation_id = ?", (annotation_id,))
             conn.execute("DELETE FROM sb_casey_operation_refs WHERE annotation_id = ?", (annotation_id,))
             conn.execute("DELETE FROM sb_casey_build_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_corkysoft_object_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_corkysoft_provenance_refs WHERE annotation_id = ?", (annotation_id,))
+            conn.execute("DELETE FROM sb_corkysoft_review_events WHERE annotation_id = ?", (annotation_id,))
             conn.execute(
                 """
                 INSERT OR REPLACE INTO sb_itir_overlays(
@@ -1234,6 +1268,68 @@ def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]])
                         str(payload.get("created_at") or "") if payload.get("created_at") is not None else None,
                     ),
                 )
+
+            if str(record.get("observer_kind") or "") == "corkysoft_review_event_v1":
+                conn.execute(
+                    """
+                    INSERT OR REPLACE INTO sb_corkysoft_review_events(
+                      annotation_id, event_id, event_family, event_time, source_system,
+                      actor_ref, authority_class, correlation_key, summary, payload_json
+                    ) VALUES (?,?,?,?,?,?,?,?,?,?)
+                    """,
+                    (
+                        annotation_id,
+                        str(record.get("event_id") or ""),
+                        str(record.get("event_family") or ""),
+                        str(record.get("event_time") or ""),
+                        str(record.get("source_system") or ""),
+                        str(record.get("actor_ref") or ""),
+                        str(record.get("authority_class") or ""),
+                        str(record.get("correlation_key") or ""),
+                        str(record.get("summary") or ""),
+                        json.dumps(record.get("payload", {}), sort_keys=True),
+                    ),
+                )
+                object_refs = record.get("object_refs") if isinstance(record.get("object_refs"), list) else []
+                for ref_order, payload in enumerate(object_refs):
+                    if not isinstance(payload, dict):
+                        continue
+                    ref_key = None
+                    ref_value = None
+                    if payload:
+                        ref_key, ref_value = next(iter(payload.items()))
+                    conn.execute(
+                        """
+                        INSERT INTO sb_corkysoft_object_refs(
+                          annotation_id, ref_order, ref_key, ref_value, payload_json
+                        ) VALUES (?,?,?,?,?)
+                        """,
+                        (
+                            annotation_id,
+                            ref_order,
+                            str(ref_key) if ref_key is not None else None,
+                            str(ref_value) if ref_value is not None else None,
+                            json.dumps(payload, sort_keys=True),
+                        ),
+                    )
+                provenance_refs = record.get("provenance_refs") if isinstance(record.get("provenance_refs"), list) else []
+                for ref_order, payload in enumerate(provenance_refs):
+                    if not isinstance(payload, dict):
+                        continue
+                    conn.execute(
+                        """
+                        INSERT INTO sb_corkysoft_provenance_refs(
+                          annotation_id, ref_order, ref_kind, ref_uri, payload_json
+                        ) VALUES (?,?,?,?,?)
+                        """,
+                        (
+                            annotation_id,
+                            ref_order,
+                            str(payload.get("ref_kind") or "") if payload.get("ref_kind") is not None else None,
+                            str(payload.get("ref_uri") or "") if payload.get("ref_uri") is not None else None,
+                            json.dumps(payload, sort_keys=True),
+                        ),
+                    )
         conn.commit()
 
 
@@ -1339,6 +1435,30 @@ def load_itir_overlay_records(*, db_path: Path) -> list[dict[str, Any]]:
                 ).fetchall()
             ]
 
+            corkysoft_event = conn.execute(
+                """
+                SELECT event_id, event_family, event_time, source_system, actor_ref,
+                       authority_class, correlation_key, summary, payload_json
+                FROM sb_corkysoft_review_events
+                WHERE annotation_id = ?
+                """,
+                (annotation_id,),
+            ).fetchone()
+            object_refs = [
+                json.loads(str(item["payload_json"]))
+                for item in conn.execute(
+                    "SELECT payload_json FROM sb_corkysoft_object_refs WHERE annotation_id = ? ORDER BY ref_order",
+                    (annotation_id,),
+                ).fetchall()
+            ]
+            provenance_refs = [
+                json.loads(str(item["payload_json"]))
+                for item in conn.execute(
+                    "SELECT payload_json FROM sb_corkysoft_provenance_refs WHERE annotation_id = ? ORDER BY ref_order",
+                    (annotation_id,),
+                ).fetchall()
+            ]
+
             out.append(
                 {
                     "activity_event_id": str(row["activity_event_id"]),
@@ -1360,6 +1480,17 @@ def load_itir_overlay_records(*, db_path: Path) -> list[dict[str, Any]]:
                     "build_refs": build_refs,
                     "mission_refs": mission_refs,
                     "evidence_refs": evidence_refs,
+                    "event_id": str(corkysoft_event["event_id"]) if corkysoft_event is not None else None,
+                    "event_family": str(corkysoft_event["event_family"]) if corkysoft_event is not None else None,
+                    "event_time": str(corkysoft_event["event_time"]) if corkysoft_event is not None else None,
+                    "source_system": str(corkysoft_event["source_system"]) if corkysoft_event is not None else None,
+                    "actor_ref": str(corkysoft_event["actor_ref"]) if corkysoft_event is not None else None,
+                    "authority_class": str(corkysoft_event["authority_class"]) if corkysoft_event is not None else None,
+                    "correlation_key": str(corkysoft_event["correlation_key"]) if corkysoft_event is not None else None,
+                    "summary": str(corkysoft_event["summary"]) if corkysoft_event is not None else None,
+                    "payload": json.loads(str(corkysoft_event["payload_json"])) if corkysoft_event is not None else {},
+                    "object_refs": object_refs,
+                    "provenance_refs": provenance_refs,
                     "note": str(row["note"] or ""),
                 }
             )

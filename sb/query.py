@@ -67,6 +67,14 @@ def completion_candidates(dashboard_path, base_dir=None):
     }
 
 
+def corkysoft_review_feed(dashboard_path, base_dir=None):
+    payload = _read_json(dashboard_path, base_dir=base_dir)
+    return {
+        "summary": payload.get("corkysoft_review_summary", {}),
+        "items": payload.get("corkysoft_review_events", []),
+    }
+
+
 def codex_trace_dashboard(dashboard_path, base_dir=None):
     payload = _read_json(dashboard_path, base_dir=base_dir)
     return facts_from_dashboard_payload(payload)

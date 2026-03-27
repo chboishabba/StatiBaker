@@ -27,6 +27,9 @@ def main():
     candidates = sub.add_parser("completion-candidates", help="Completion candidates from dashboard payload")
     candidates.add_argument("--dashboard", required=True)
 
+    corkysoft_reviews = sub.add_parser("corkysoft-reviews", help="Corkysoft reviewed-event feed from dashboard payload")
+    corkysoft_reviews.add_argument("--dashboard", required=True)
+
     codex_dashboard = sub.add_parser("codex-trace-dashboard", help="Codex trace facts from dashboard payload")
     codex_dashboard.add_argument("--dashboard", required=True)
 
@@ -71,6 +74,8 @@ def main():
         payload = query.commitment_feed(args.dashboard, base_dir=args.base)
     elif args.cmd == "completion-candidates":
         payload = query.completion_candidates(args.dashboard, base_dir=args.base)
+    elif args.cmd == "corkysoft-reviews":
+        payload = query.corkysoft_review_feed(args.dashboard, base_dir=args.base)
     elif args.cmd == "codex-trace-dashboard":
         payload = query.codex_trace_dashboard(args.dashboard, base_dir=args.base)
     elif args.cmd == "codex-trace-archive":

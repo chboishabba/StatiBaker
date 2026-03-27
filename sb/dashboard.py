@@ -3920,8 +3920,10 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
                 overlay_join_by_annotation[ann] = item
 
     observer_overlay_rows = ""
+    corkysoft_review_rows = ""
     if isinstance(itir_overlay_records, list):
         overlay_rows: list[str] = []
+        corkysoft_rows: list[str] = []
         for rec in itir_overlay_records:
             if not isinstance(rec, dict):
                 continue
@@ -3971,7 +3973,28 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
                 + f"<td>{join_text}</td>"
                 + "</tr>"
             )
+            if kind == "corkysoft_review_event_v1":
+                family = str(rec.get("event_family") or "").strip()
+                authority_class = str(rec.get("authority_class") or "").strip()
+                summary_text = str(rec.get("summary") or rec.get("note") or "").strip()
+                object_refs = rec.get("object_refs") if isinstance(rec.get("object_refs"), list) else []
+                object_text = ", ".join(
+                    f"{next(iter(item.keys()))}={next(iter(item.values()))}"
+                    for item in object_refs[:4]
+                    if isinstance(item, dict) and item
+                ) or "-"
+                corkysoft_rows.append(
+                    "<tr>"
+                    + f"<td><code>{escape(family)}</code></td>"
+                    + f"<td><code title='{escape(ann)}'>{escape(_short_id(ann, 12))}</code></td>"
+                    + f"<td>{escape(status)}</td>"
+                    + f"<td><code>{escape(authority_class or conf)}</code></td>"
+                    + f"<td>{escape(summary_text)}</td>"
+                    + f"<td><code>{escape(object_text)}</code></td>"
+                    + "</tr>"
+                )
         observer_overlay_rows = "".join(overlay_rows)
+        corkysoft_review_rows = "".join(corkysoft_rows)
 
     thread_rows = []
     for thread in threads:
@@ -4283,6 +4306,14 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     chat_switch_rate_pct = _safe_float(summary.get("chat_switch_rate")) * 100.0
     top_thread_share_pct = _safe_float(summary.get("top_thread_share")) * 100.0
     context_switch_rate_pct = _safe_float(summary.get("context_switch_rate")) * 100.0
+    corkysoft_review_total = _safe_int(summary.get("itir_overlays_corkysoft_review_event_v1"))
+    corkysoft_review_family_counts = payload.get("corkysoft_review_summary", {}).get("by_family", {})
+    if isinstance(corkysoft_review_family_counts, dict):
+        corkysoft_review_family_text = ", ".join(
+            f"{key}={_safe_int(value)}" for key, value in sorted(corkysoft_review_family_counts.items())
+        ) or "none"
+    else:
+        corkysoft_review_family_text = "none"
 
     trailing_available_days = _safe_int(trailing.get("available_days"))
     trailing_has_baseline = bool(trailing.get("has_baseline")) and trailing_available_days > 0
@@ -4632,6 +4663,17 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
             </tr>
           </thead>
           <tbody>{observer_overlay_rows if observer_overlay_rows else "<tr><td colspan='6'>No overlays.</td></tr>"}</tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel" data-role="Corkysoft">
+      <h2>Corkysoft Review Feed</h2>
+      <p><small>Reviewed Corkysoft planner/diary/reconciliation events preserved as observer-class overlays. Corkysoft remains authoritative for removals workflow state.</small></p>
+      <p>total=<code>{corkysoft_review_total}</code>, families=<code>{escape(corkysoft_review_family_text)}</code></p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Family</th><th>Annotation</th><th>Status</th><th>Authority</th><th>Summary</th><th>Object refs</th></tr></thead>
+          <tbody>{corkysoft_review_rows if corkysoft_review_rows else "<tr><td colspan='6'>No Corkysoft reviewed events.</td></tr>"}</tbody>
         </table>
       </div>
     </section>
@@ -5489,6 +5531,34 @@ def build_dashboard(
             kind = str(rec.get("observer_kind") or "").strip() or "unknown"
             overlay_kind_counts[kind] = overlay_kind_counts.get(kind, 0) + 1
 
+    corkysoft_review_events: list[dict[str, Any]] = []
+    corkysoft_review_by_family: dict[str, int] = {}
+    corkysoft_review_by_status: dict[str, int] = {}
+    if isinstance(itir_overlay_records, list):
+        for rec in itir_overlay_records:
+            if not isinstance(rec, dict):
+                continue
+            if str(rec.get("observer_kind") or "").strip() != "corkysoft_review_event_v1":
+                continue
+            family = str(rec.get("event_family") or "unknown").strip() or "unknown"
+            status_text = str(rec.get("status") or "unknown").strip() or "unknown"
+            corkysoft_review_by_family[family] = corkysoft_review_by_family.get(family, 0) + 1
+            corkysoft_review_by_status[status_text] = corkysoft_review_by_status.get(status_text, 0) + 1
+            corkysoft_review_events.append(
+                {
+                    "annotation_id": rec.get("annotation_id"),
+                    "event_id": rec.get("event_id"),
+                    "event_family": family,
+                    "event_time": rec.get("event_time"),
+                    "status": rec.get("status"),
+                    "authority_class": rec.get("authority_class"),
+                    "summary": rec.get("summary") or rec.get("note"),
+                    "object_refs": rec.get("object_refs") if isinstance(rec.get("object_refs"), list) else [],
+                    "provenance_refs": rec.get("provenance_refs") if isinstance(rec.get("provenance_refs"), list) else [],
+                    "evidence_refs": rec.get("evidence_refs") if isinstance(rec.get("evidence_refs"), list) else [],
+                }
+            )
+
     summary = {
         "chat_messages": len(chat_events),
         "chat_threads": len(thread_activity),
@@ -5496,10 +5566,17 @@ def build_dashboard(
         "itir_overlays_fuzzymodo_selector_v1": overlay_kind_counts.get("fuzzymodo_selector_v1", 0),
         "itir_overlays_casey_workspace_v1": overlay_kind_counts.get("casey_workspace_v1", 0),
         "itir_overlays_itir_mission_graph_v1": overlay_kind_counts.get("itir_mission_graph_v1", 0),
+        "itir_overlays_corkysoft_review_event_v1": overlay_kind_counts.get("corkysoft_review_event_v1", 0),
         "itir_overlays_other": sum(
             count
             for kind, count in overlay_kind_counts.items()
-            if kind not in ("fuzzymodo_selector_v1", "casey_workspace_v1", "itir_mission_graph_v1")
+            if kind
+            not in (
+                "fuzzymodo_selector_v1",
+                "casey_workspace_v1",
+                "itir_mission_graph_v1",
+                "corkysoft_review_event_v1",
+            )
         ),
         "chat_active_hours": _safe_int(chat_flow.get("active_hours")),
         "messages_per_hour_active": _safe_float(chat_flow.get("messages_per_hour_active")),
@@ -5614,6 +5691,12 @@ def build_dashboard(
         "artifact_links": artifacts,
         "itir_overlay_records": itir_overlay_records,
         "itir_overlay_joins": itir_overlay_joins,
+        "corkysoft_review_events": corkysoft_review_events,
+        "corkysoft_review_summary": {
+            "total": len(corkysoft_review_events),
+            "by_family": corkysoft_review_by_family,
+            "by_status": corkysoft_review_by_status,
+        },
         "timeline": [event.to_payload() for event in all_events],
         "warnings": warnings,
     }

@@ -29,10 +29,11 @@ def validate_overlay(record):
         errors.append("missing sb_state_id or state_date")
 
     forbidden = FORBIDDEN_FIELDS.intersection(record.keys())
+    kind = record.get("observer_kind")
+    if kind == "corkysoft_review_event_v1":
+        forbidden = {field for field in forbidden if field != "summary"}
     if forbidden:
         errors.append(f"forbidden fields present: {sorted(forbidden)}")
-
-    kind = record.get("observer_kind")
 
     if kind == "itir_mission_graph_v1":
         if "mission_refs" not in record:
@@ -183,6 +184,37 @@ def validate_overlay(record):
                 continue
             if not str(graph_ref.get("graph_id") or "").strip():
                 errors.append(f"jmd runtime graph_refs[{i}].graph_id required")
+
+    if kind == "corkysoft_review_event_v1":
+        required = (
+            "event_id",
+            "event_family",
+            "event_time",
+            "source_system",
+            "actor_ref",
+            "authority_class",
+            "correlation_key",
+            "summary",
+            "object_refs",
+            "provenance_refs",
+            "evidence_refs",
+            "payload",
+        )
+        for field in required:
+            if field not in record:
+                errors.append(f"corkysoft review overlay missing {field}")
+        if "object_refs" in record and not isinstance(record.get("object_refs"), list):
+            errors.append("corkysoft review overlay object_refs must be a list")
+        if "provenance_refs" in record and not isinstance(record.get("provenance_refs"), list):
+            errors.append("corkysoft review overlay provenance_refs must be a list")
+        if "evidence_refs" in record and not isinstance(record.get("evidence_refs"), list):
+            errors.append("corkysoft review overlay evidence_refs must be a list")
+        if "payload" in record and not isinstance(record.get("payload"), dict):
+            errors.append("corkysoft review overlay payload must be a dict")
+        for forbidden in ("activity_events", "state", "threads", "events", "shipments", "jobs"):
+            if forbidden in record:
+                errors.append("corkysoft review overlays must stay reference-heavy and may not inject mutable workflow state")
+                break
 
     return errors
 

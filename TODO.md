@@ -214,6 +214,17 @@
   - [x] persist accepted ITIR mission observer overlays into DB-backed SB
     tables (`sb_itir_overlays`, `sb_itir_mission_refs`,
     `sb_itir_evidence_refs`) instead of leaving the lane validation-only
+- Corkysoft adapter seam
+  - [x] add read-only `sb.corkysoft_mcp` bridge client for local Corkysoft MCP
+    v1 tools
+  - [x] add `corkysoft_review_event_v1` reviewed-event ingest/persistence path
+    for authority-safe planner/reconciliation overlays
+  - [x] add one end-to-end fixture using a real or seeded Corkysoft DB/tool
+    result plus a reviewed-event export in the same integration test
+  - [x] add a practical SB-side consumer CLI (`scripts/corkysoft_consume.py`)
+    for read-only MCP calls and reviewed-event ingest
+  - [x] expose Corkysoft reviewed events in dashboard/query read-models rather
+    than leaving them storage-only
 - [x] Start the fused mission-lens bridge from the SB side by rendering
   ITIR-owned mission/planning artifacts against canonical dashboard DB payloads
   rather than inventing a separate spend surface.

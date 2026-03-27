@@ -7,6 +7,7 @@ Expose SB state for agents without granting mutation rights.
 - List `activity_events`.
 - Fetch daily carryover summary.
 - Retrieve provenance for a given state artifact.
+- Retrieve Corkysoft reviewed-event overlays from a dashboard payload.
 
 ## Rules
 - Read-only access only.
@@ -21,6 +22,7 @@ Expose SB state for agents without granting mutation rights.
 ## CLI entrypoint
 - `scripts/query_state.py`
   - Optional `--base` constrains reads to a run directory.
+  - Includes Corkysoft review-feed reads from dashboard payloads.
 
 ## Output constraints
 - `activity_events` are immutable once emitted.

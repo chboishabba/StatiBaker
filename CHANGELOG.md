@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-03-27
+- Added an explicit Corkysoft -> StatiBaker seam on the SB side:
+  - `sb.corkysoft_mcp` provides a read-only local bridge client for Corkysoft
+    MCP v1 tools.
+  - `sb.corkysoft_ingest` validates and persists reviewed Corkysoft downstream
+    events as `corkysoft_review_event_v1` overlays.
+- Extended `sb.dashboard_store_sqlite` and `sb.itir_ingest` so Corkysoft
+  reviewed-event overlays retain family metadata, object refs, provenance refs,
+  evidence refs, and compact payloads without weakening existing SB authority
+  boundaries.
+- Added `scripts/corkysoft_consume.py` as a practical SB-side consumer workflow
+  for read-only Corkysoft MCP calls and reviewed-event ingest.
+- Extended dashboard/query read-models so Corkysoft reviewed events are visible
+  in dashboard payloads/HTML and queryable through `scripts/query_state.py
+  corkysoft-reviews`.
+- Added targeted regression coverage for the new MCP client, reviewed-event
+  ingest/persistence path, dashboard exposure, and seeded end-to-end Corkysoft
+  integration flow.
+
 ## 2026-03-24
 - Added Google commitment ingest as a new SB observer lane:
   - `adapters/google_tasks.py` normalizes Google Tasks rows into

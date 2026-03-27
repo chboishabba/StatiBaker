@@ -14,6 +14,10 @@
   `docs/planning/casey_git_clone_statiBaker_interface_20260309.md`.
 - Casey receipt/reference semantics are further narrowed in
   `docs/planning/casey_statiBaker_receipt_schema_20260319.md`.
+- May consume Corkysoft through two bounded seams:
+  - read-only MCP queries over Corkysoft-owned operational read models
+  - reviewed-event overlays under `observer_kind = corkysoft_review_event_v1`
+    for authority-safe downstream planner/reconciliation summaries
 - Publishes distilled daily state for human and machine consumers.
 
 ## Interaction Model
@@ -47,6 +51,13 @@
   - allowed only as observer events or reference-heavy overlays
   - workspace/candidate/build authority remains in Casey
   - SB may store operation/build refs but not mutable candidate graphs
+- `corkysoft`-specific rule:
+  - MCP queries remain read-only and producer-owned by Corkysoft
+  - reviewed-event overlays may preserve `planning_snapshot`,
+    `reconciliation_exception`, and related reviewed operational families by
+    reference and compact payload only
+  - SB must not mutate removals workflow state or infer stronger authority than
+    Corkysoft declares
 
 ### Channel B: Reduction Pipeline
 - Input: reduction policies and time-window boundaries.
@@ -73,6 +84,8 @@
     decision artifact refs, and reason codes by reference only
   - future `casey_workspace_v1` overlays may attach workspace refs, operation
     receipts, and build refs by reference only
+  - Corkysoft reviewed-event overlays may attach reviewed planner/diary/
+    reconciliation state under `corkysoft_review_event_v1`
 - Constraint:
   - overlays cannot rewrite SB history
   - overlays cannot inject raw thread/event dumps

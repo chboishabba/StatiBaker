@@ -29,6 +29,9 @@ The dashboard integrates:
 - media consumption metadata (`logs/media/<date>.jsonl`)
   - watch/listen seconds, completion ratio, churn events/rate
 - generated SB summaries (`daily_brief.md`, `retrospective.md`, `state.json`, `drift.json`)
+- ITIR observer overlays persisted in `dashboard.sqlite`
+  - including Corkysoft reviewed-event overlays under
+    `observer_kind = corkysoft_review_event_v1`
 
 ## Data sources (default)
 
@@ -44,6 +47,7 @@ The dashboard integrates:
 - `chat_exports/*.json` (chat fallback)
 - `__CONTEXT/convo_ids.md` (thread scope)
 - `__CONTEXT/last_sync/*` (process-context links)
+- `SB_RUNS_ROOT/dashboard.sqlite` observer overlay tables
 
 ## Outputs
 
@@ -77,6 +81,11 @@ Timeline filters are optional and client-side:
 - source class (sqlite/chat exports/resolver/logs/activity/outputs)
 - chat role (user/assistant/tool/etc)
 - free-text search over rendered timeline details
+
+Observer overlays section:
+- dashboard output includes a compact overlay table for persisted observer lanes
+- Corkysoft reviewed events are additionally exposed as a dedicated read-model
+  slice with family, authority class, status, summary, and object refs
 
 Untitled chat threads are automatically labeled from first user-message preview
 and tagged with an origin class (for example `codex-ingest` when sqlite
@@ -130,6 +139,18 @@ Context/cost estimate section:
 
 ```bash
 python scripts/build_dashboard.py --date 2026-02-08
+```
+
+Consume Corkysoft from the SB side:
+
+```bash
+python scripts/corkysoft_consume.py mcp-tool \
+  --tool corkysoft.profitability_summary \
+  --corkysoft-db /abs/path/corkysoft.db
+
+python scripts/corkysoft_consume.py ingest-review-events \
+  --input /abs/path/corkysoft_review_events.json \
+  --dashboard-db /abs/path/dashboard.sqlite
 ```
 
 Debug mode (chat full-scan for the day, ignoring `convo_ids` scope):

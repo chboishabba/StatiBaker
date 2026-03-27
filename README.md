@@ -43,6 +43,8 @@ Current outputs include:
 - drift counters
 - dashboard/database artifacts
 - portable bundles for later inspection
+- bounded external reviewed-state overlays such as Corkysoft planner /
+  reconciliation review events
 
 ### 2. Preserve reality instead of smoothing it away
 
@@ -129,6 +131,7 @@ Relevant surfaces:
 - `scripts/build_dashboard.py`
 - `sb/dashboard.py`
 - [docs/activity_dashboard.md](docs/activity_dashboard.md)
+- `scripts/corkysoft_consume.py`
 
 ### Portable bundle export and verification
 
@@ -164,6 +167,8 @@ Boundary summary:
 - StatiBaker may preserve upstream identifiers and artifacts
 - it does not take over semantic or legal interpretation
 - it is a read-only state layer, not the source of truth for external systems
+- Corkysoft remains authoritative for removals workflow state even when SB
+  stores reviewed Corkysoft overlays or reads Corkysoft MCP summaries
 
 ## Where To Find Things
 
