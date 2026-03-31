@@ -199,6 +199,14 @@ This lane is intended for:
 - bounded note/conversation review
 - source-local text reuse
 
+Repo-local operation helper:
+- `../scripts/notebooklm_clarify.py`
+- use this when the suite needs a minimal in-repo NotebookLM ask/clarify path
+  for structured `category:text` prompts
+- do not confuse it with this connector:
+  - the connector is capture/observer infrastructure
+  - the clarify helper is operation ingress
+
 It is still not, by itself:
 - sessionized NotebookLM usage
 - waterfall/timeline accounting

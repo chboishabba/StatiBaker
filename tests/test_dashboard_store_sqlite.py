@@ -209,3 +209,68 @@ def test_dashboard_store_matches_existing_json_fixture(tmp_path: Path) -> None:
             )
             continue
         assert loaded.get(k) == payload.get(k)
+
+
+def test_build_timeline_ribbon_payload_orders_by_ts() -> None:
+    from sb.dashboard_store_sqlite import build_timeline_ribbon_payload
+
+    dailies = [
+        {
+            "date": "2026-02-08",
+            "timeline": [
+                {"ts": "2026-02-08T10:00:00Z", "kind": "chat", "detail": "later", "hour": 10},
+                {"ts": "2026-02-08T08:00:00Z", "kind": "chat", "detail": "early", "hour": 8},
+            ],
+        },
+        {
+            "date": "2026-02-09",
+            "timeline": [
+                {"ts": "2026-02-09T09:00:00Z", "kind": "chat", "detail": "next-day", "hour": 9},
+            ],
+        },
+    ]
+    payload = build_timeline_ribbon_payload(dailies=dailies, start="2026-02-08", end="2026-02-09")
+
+    assert payload["date"] == "2026-02-09"
+    assert payload["period_start"] == "2026-02-08"
+    assert payload["period_end"] == "2026-02-09"
+    assert payload["days"] == 2
+    timeline = payload.get("timeline") or []
+    assert [row["detail"] for row in timeline] == ["early", "later", "next-day"]
+
+
+def test_load_timeline_ribbon_rows_for_range_prefers_all_scope(tmp_path: Path) -> None:
+    from sb.dashboard_store_sqlite import DashboardKey, load_timeline_ribbon_rows_for_range, upsert_dashboard_payload
+
+    db_path = tmp_path / "dashboard.sqlite"
+    upsert_dashboard_payload(
+        db_path=db_path,
+        key=DashboardKey(date="2026-02-08", view="daily", scope="scoped", window_days=0),
+        payload={
+            "date": "2026-02-08",
+            "timeline": [{"ts": "2026-02-08T08:00:00Z", "hour": 8, "kind": "chat", "detail": "scoped"}],
+        },
+    )
+    upsert_dashboard_payload(
+        db_path=db_path,
+        key=DashboardKey(date="2026-02-08", view="daily", scope="all", window_days=0),
+        payload={
+            "date": "2026-02-08",
+            "timeline": [{"ts": "2026-02-08T09:00:00Z", "hour": 9, "kind": "chat", "detail": "all"}],
+        },
+    )
+
+    rows = load_timeline_ribbon_rows_for_range(
+        db_path=db_path,
+        start="2026-02-08",
+        end="2026-02-08",
+        prefer_all=True,
+    )
+
+    assert len(rows) == 1
+    assert rows[0]["scope"] == "all"
+    payload = rows[0]["payload"]
+    assert isinstance(payload, dict)
+    timeline = payload.get("timeline") if isinstance(payload, dict) else None
+    assert isinstance(timeline, list)
+    assert timeline[0]["detail"] == "all"

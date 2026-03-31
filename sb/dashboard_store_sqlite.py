@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import sqlite3
 from dataclasses import dataclass
+from datetime import date as Date, timedelta
 from pathlib import Path
 from typing import Any, Iterable, Iterator, Literal
 
@@ -775,6 +776,77 @@ def _row_to_value(vt: str, vi: int | None, vf: float | None, vs: str | None) -> 
     if vt == "float":
         return float(vf or 0.0)
     return vs
+
+
+def _is_date_text(value: str) -> bool:
+    if len(value) != 10:
+        return False
+    if value[4] != "-" or value[7] != "-":
+        return False
+    try:
+        Date(int(value[0:4]), int(value[5:7]), int(value[8:10]))
+    except ValueError:
+        return False
+    return True
+
+
+def date_range_inclusive(*, start: str, end: str) -> list[str]:
+    if not _is_date_text(start) or not _is_date_text(end):
+        return []
+    if start > end:
+        start, end = end, start
+    sy, sm, sd = (int(x) for x in start.split("-"))
+    ey, em, ed = (int(x) for x in end.split("-"))
+    cur = Date(sy, sm, sd)
+    end_date = Date(ey, em, ed)
+    out: list[str] = []
+    while cur <= end_date:
+        out.append(cur.isoformat())
+        cur = cur + timedelta(days=1)
+    return out
+
+
+def build_timeline_ribbon_payload(*, dailies: list[dict[str, Any]], start: str, end: str) -> dict[str, Any]:
+    timeline: list[dict[str, Any]] = []
+    for payload in dailies:
+        events = payload.get("timeline")
+        if not isinstance(events, list):
+            continue
+        for event in events:
+            if isinstance(event, dict):
+                timeline.append(event)
+    timeline.sort(key=lambda event: str(event.get("ts") or ""))
+    return {
+        "date": end,
+        "period_start": start,
+        "period_end": end,
+        "days": len(dailies),
+        "timeline": timeline,
+    }
+
+
+def load_timeline_ribbon_rows_for_range(
+    *,
+    db_path: Path,
+    start: str,
+    end: str,
+    prefer_all: bool = True,
+    scope: DashboardScope | None = None,
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for d in date_range_inclusive(start=start, end=end):
+        if prefer_all:
+            best = load_best_daily_payload_for_date(db_path=db_path, date=d)
+            if best is None:
+                continue
+            payload, resolved_scope = best
+            rows.append({"date": d, "scope": resolved_scope, "payload": payload})
+            continue
+        key = DashboardKey(date=d, view="daily", scope=(scope or "scoped"), window_days=0)
+        payload = load_dashboard_payload(db_path=db_path, key=key)
+        if payload is not None:
+            rows.append({"date": d, "scope": key.scope, "payload": payload})
+    return rows
 
 
 def list_dates_with_dashboards(*, db_path: Path, view: DashboardView = "daily") -> list[str]:
