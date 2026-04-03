@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from sb.bundle import write_manifest
+from sb.suite_normalized_artifact import write_compiled_state_normalized_artifact
 
 
 DEFAULT_FILES = [
@@ -13,6 +14,10 @@ DEFAULT_FILES = [
     "sessionizer_runtime_ms.txt",
     "daily_brief.md",
     "retrospective.md",
+]
+
+GENERATED_FILES = [
+    "suite_normalized_artifact.json",
 ]
 
 
@@ -38,7 +43,14 @@ def main():
     if missing:
         raise SystemExit(f"missing files: {', '.join(missing)}")
 
-    write_manifest(out_dir, DEFAULT_FILES, sb_version=args.sb_version)
+    state = json.loads((out_dir / "state.json").read_text(encoding="utf-8"))
+    write_compiled_state_normalized_artifact(
+        out_dir / "suite_normalized_artifact.json",
+        state,
+        artifact_ref="state.json",
+    )
+
+    write_manifest(out_dir, DEFAULT_FILES + GENERATED_FILES, sb_version=args.sb_version)
 
 
 if __name__ == "__main__":

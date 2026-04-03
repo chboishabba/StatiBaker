@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-04-02
+- Added `sb.suite_normalized_artifact` and updated `scripts/bundle_export.py`
+  so bundle exports now emit `suite_normalized_artifact.json` as the first
+  real `StatiBaker` adopter of the root
+  `itir.normalized.artifact.v1` contract.
+- Updated `BUNDLE_SPEC.md` and `README.md` to document the new normalized
+  compiled-state wrapper.
+- Added focused regression coverage in
+  `tests/test_suite_normalized_artifact.py` to validate both the helper and
+  bundle-export path against the root schema.
+
 ## 2026-03-27
 - Added an explicit Corkysoft -> StatiBaker seam on the SB side:
   - `sb.corkysoft_mcp` provides a read-only local bridge client for Corkysoft

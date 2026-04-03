@@ -40,6 +40,7 @@ Current outputs include:
 
 - human-readable daily brief material
 - machine-readable state artifacts
+- suite-normalized compiled-state artifact wrappers for portable handoff
 - drift counters
 - dashboard/database artifacts
 - portable bundles for later inspection
@@ -142,6 +143,12 @@ Relevant surfaces:
 - `scripts/bundle_export.py`
 - `scripts/verify_bundle.py`
 - [BUNDLE_SPEC.md](BUNDLE_SPEC.md)
+
+Bundle exports now also emit `suite_normalized_artifact.json` as the
+suite-level normalized wrapper for the compiled `state.json` surface. That
+keeps `StatiBaker` in its own lane: it still owns compiled state, but it can
+now hand that state to root-suite consumers without inventing a second
+reducer in another repo.
 
 ## Core Rules
 
