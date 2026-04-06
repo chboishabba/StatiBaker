@@ -26,8 +26,8 @@ if str(SENSIBLAW_SRC) not in sys.path:
     sys.path.insert(0, str(SENSIBLAW_SRC))
 
 from sensiblaw.interfaces.shared_reducer import (  # noqa: E402
-    collect_canonical_lexeme_occurrences,
-    get_canonical_tokenizer_profile,
+    collect_canonical_lexeme_refs,
+    get_canonical_tokenizer_profile_receipt,
 )
 
 
@@ -63,10 +63,10 @@ def test_canonical_id_preservation_allows_shared_sl_ids_without_mutation() -> No
         },
         "state_date": "2026-03-07",
         "canonical_event_id": "ev:plaintiff_s157:review:1",
-        "canonical_lexeme_ids": [
-            "case:2003_hca_2",
-            "sec:75",
-            "para:v",
+        "canonical_lexeme_refs": [
+            {"occurrence_id": "occ:1", "kind": "case_ref", "span_start": 0, "span_end": 4},
+            {"occurrence_id": "occ:2", "kind": "section_ref", "span_start": 5, "span_end": 7},
+            {"occurrence_id": "occ:3", "kind": "paragraph_ref", "span_start": 8, "span_end": 9},
         ],
     }
     original = deepcopy(record)
@@ -76,9 +76,8 @@ def test_canonical_id_preservation_allows_shared_sl_ids_without_mutation() -> No
 
 def test_shared_reducer_adapter_can_supply_opaque_sl_origin_ids_to_sb() -> None:
     text = "Civil Liability Act 2002 (NSW) s 5B applies here."
-    occurrences = collect_canonical_lexeme_occurrences(text)
-    canonical_ids = [occ.norm_text for occ in occurrences if occ.kind.endswith("_ref")]
-    assert canonical_ids
+    canonical_refs = [ref for ref in collect_canonical_lexeme_refs(text) if str(ref["kind"]).endswith("_ref")]
+    assert canonical_refs
 
     record = {
         "activity_event_id": "ae:civil_liability_act:review:1",
@@ -87,11 +86,11 @@ def test_shared_reducer_adapter_can_supply_opaque_sl_origin_ids_to_sb() -> None:
             "source": "SensibLaw",
             "fixture": "Civil Liability Act 2002 (NSW) s 5B",
             "fixture_role": "sl_shared_reducer_input_only",
-            "tokenizer_profile": get_canonical_tokenizer_profile(),
+            "tokenizer_profile_receipt": get_canonical_tokenizer_profile_receipt(),
         },
         "state_date": "2026-03-15",
         "canonical_event_id": "ev:civil_liability_act:review:1",
-        "canonical_lexeme_ids": canonical_ids,
+        "canonical_lexeme_refs": canonical_refs,
     }
     original = deepcopy(record)
     assert validate_overlay(record) == []

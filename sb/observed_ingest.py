@@ -16,8 +16,8 @@ try:
         sys.path.insert(0, str(_SENSIBLAW_SRC))
         
     from sensiblaw.interfaces.shared_reducer import (
-        collect_canonical_lexeme_occurrences,
-        get_canonical_tokenizer_profile,
+        collect_canonical_lexeme_refs,
+        get_canonical_tokenizer_profile_receipt,
     )
     HAS_REDUCER = True
 except ImportError:
@@ -93,12 +93,9 @@ def iter_observed_events(log_root: Path) -> Iterable[Dict[str, object]]:
                 }
                 
                 if HAS_REDUCER and summary:
-                    # Provide an adapter surface generating canonical refs via SL
-                    record_payload["canonical_lexeme_ids"] = [
-                        occ.norm_text 
-                        for occ in collect_canonical_lexeme_occurrences(summary)
-                    ]
-                    record_payload["tokenizer_profile"] = get_canonical_tokenizer_profile()
+                    # Preserve only bounded reducer refs from SL, not normalized text.
+                    record_payload["canonical_lexeme_refs"] = collect_canonical_lexeme_refs(summary)
+                    record_payload["tokenizer_profile_receipt"] = get_canonical_tokenizer_profile_receipt()
 
                 yield record_payload
 

@@ -1,5 +1,5 @@
 import sys
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 from pathlib import Path
 import pytest
 
@@ -23,22 +23,26 @@ def test_observed_ingest_with_sensiblaw_reducer(tmp_path):
     log_file.write_text('{"ts":"2026-03-19T20:00:00Z","signal":"test_signal","event":"click"}\n')
     
     # Mock the SensibLaw reducer output
-    mock_occ = MagicMock()
-    mock_occ.norm_text = "canonical_ref_1"
+    mock_ref = {
+        "occurrence_id": "occ_1",
+        "kind": "case_ref",
+        "span_start": 0,
+        "span_end": 11,
+    }
     
     # Patch the state in sb.observed_ingest
     with patch("sb.observed_ingest.HAS_REDUCER", True), \
-         patch("sb.observed_ingest.collect_canonical_lexeme_occurrences", return_value=[mock_occ]), \
-         patch("sb.observed_ingest.get_canonical_tokenizer_profile", return_value={"profile": "test"}):
+         patch("sb.observed_ingest.collect_canonical_lexeme_refs", return_value=[mock_ref]), \
+         patch("sb.observed_ingest.get_canonical_tokenizer_profile_receipt", return_value={"profile_id": "test"}):
         
         events = list(iter_observed_events(log_dir))
         
         assert len(events) == 1
         event = events[0]
         assert event["source"] == "observed"
-        assert "canonical_lexeme_ids" in event
-        assert event["canonical_lexeme_ids"] == ["canonical_ref_1"]
-        assert event["tokenizer_profile"] == {"profile": "test"}
+        assert "canonical_lexeme_refs" in event
+        assert event["canonical_lexeme_refs"] == [mock_ref]
+        assert event["tokenizer_profile_receipt"] == {"profile_id": "test"}
 
 def test_observed_ingest_without_sensiblaw_reducer(tmp_path):
     """
@@ -54,5 +58,5 @@ def test_observed_ingest_without_sensiblaw_reducer(tmp_path):
         
         assert len(events) == 1
         event = events[0]
-        assert "canonical_lexeme_ids" not in event
-        assert "tokenizer_profile" not in event
+        assert "canonical_lexeme_refs" not in event
+        assert "tokenizer_profile_receipt" not in event
