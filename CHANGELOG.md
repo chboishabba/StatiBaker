@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased
+- Added `scripts/run_worldmonitor_bridge.py` to execute the bounded
+  WorldMonitor roundtrip: SL import, SB-safe export, SB run-day ingestion, and
+  final SensibLaw worldmonitor summary and chronology readouts.
+
+## 2026-04-06
+- Added a bounded WorldMonitor bridge on the SB side:
+  - `adapters/worldmonitor_capture.py` normalizes ITIR worldmonitor capture rows
+    into meta-only `worldmonitor_capture` observed signals.
+  - `scripts/export_worldmonitor_observed.py` exports those rows to JSONL under
+    `logs/worldmonitor/YYYY-MM-DD.jsonl`, which `run_day.sh` already ingests.
+- Extended `sb.observed_ingest` so the new WorldMonitor lane preserves hashed
+  capture identifiers, source-kind metadata, and other safe structural fields.
+- Added regression coverage for the WorldMonitor adapter and the end-to-end
+  export + SB observed-ingest bridge.
+- Documented the new external observed-signal lane in
+  `docs/observed_signals.md` and `OBSERVED_SIGNALS.md`.
+
 ## 2026-04-02
 - Added `sb.suite_normalized_artifact` and updated `scripts/bundle_export.py`
   so bundle exports now emit `suite_normalized_artifact.json` as the first

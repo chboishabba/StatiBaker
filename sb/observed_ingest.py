@@ -32,6 +32,13 @@ ALLOWED_EVENT_FIELDS = {
     "browser",
     "engine",
     "status",
+    "source_kind",
+    "capture_id_hash",
+    "source_file_hash",
+    "source_row_id_hash",
+    "import_run_id_hash",
+    "captured_date",
+    "row_label_hash",
 }
 
 
@@ -41,7 +48,7 @@ def _hash_id(seed: str) -> str:
 
 def _safe_summary(record: Dict[str, object]) -> str:
     parts = []
-    for key in ("signal", "event", "event_type", "platform", "browser"):
+    for key in ("signal", "event", "event_type", "platform", "source_kind", "browser", "status"):
         value = record.get(key)
         if value:
             parts.append(f"{key}={value}")

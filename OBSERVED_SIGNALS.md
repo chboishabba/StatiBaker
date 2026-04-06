@@ -178,6 +178,21 @@ Notes:
 - Curated queries only; avoid raw logs and free text.
 - Treat as facts snapshots, not event streams.
 
+### 15) WorldMonitor captures
+Path: `logs/worldmonitor/YYYY-MM-DD.jsonl`
+
+Example:
+```json
+{"ts":"2026-03-08T10:00:00Z","signal":"worldmonitor_capture","event":"source_observed","event_type":"source_observed","platform":"worldmonitor","source_kind":"cities","capture_id_hash":"sha256:...","source_file_hash":"sha256:...","source_row_id_hash":"sha256:...","provenance":{"source":"worldmonitor_capture_bridge","collected_at":"2026-03-08T10:00:00Z"}}
+```
+
+Notes:
+- Metadata only; no raw source paths, titles, or text payloads.
+- SB uses this lane as an external observed signal stream, not as semantic
+  authority.
+- WorldMonitor data should be bridged from ITIR/SL capture rows into this lane
+  before SB `run_day.sh` reads it.
+
 #### osquery priorities (default order)
 1. Uptime
 2. System info (OS version/build)
@@ -191,7 +206,7 @@ Notes:
 - `file_events` / audit-style tables unless aggressively filtered
 - Any table that includes raw command lines, file paths, or user names without hashing
 
-### 15) Metrics summaries (observability)
+### 16) Metrics summaries (observability)
 Path: `logs/metrics/YYYY-MM-DD.jsonl`
 
 Example:

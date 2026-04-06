@@ -1,0 +1,51 @@
+{
+  "activity_events": [
+    {
+      "confidence": 0.6,
+      "derived_from": [
+        "snap-001",
+        "snap-002"
+      ],
+      "id": "act-000001",
+      "key_text": [],
+      "policy_flags": [
+        "capture_allowed"
+      ],
+      "primary_app": "firefox.desktop",
+      "snapshot_ids": [
+        "snap-001",
+        "snap-002"
+      ],
+      "t_end": "2026-02-03T11:01:30Z",
+      "t_start": "2026-02-03T11:00:00Z",
+      "thumb_snapshot_id": "snap-002",
+      "title": "openrecall - github"
+    },
+    {
+      "confidence": 0.6,
+      "derived_from": [
+        "snap-003",
+        "snap-004"
+      ],
+      "id": "act-000002",
+      "key_text": [],
+      "policy_flags": [
+        "capture_allowed"
+      ],
+      "primary_app": "org.gnome.Terminal",
+      "snapshot_ids": [
+        "snap-003",
+        "snap-004"
+      ],
+      "t_end": "2026-02-03T11:11:10Z",
+      "t_start": "2026-02-03T11:10:00Z",
+      "thumb_snapshot_id": "snap-004",
+      "title": "bash - session"
+    }
+  ],
+  "provenance": {
+    "algorithm": "sb.sessionize.v0",
+    "input_hash": "1ea516cc18574a038835883611b27017ceb77a45d686f54429046715e2c6c675",
+    "policy_receipt": ""
+  }
+}

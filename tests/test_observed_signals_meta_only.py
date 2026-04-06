@@ -23,6 +23,7 @@ from adapters import (
     notebooklm_meta,
     notes_meta,
     pet_wearable_stub,
+    worldmonitor_capture,
     spotify_history_stub,
     window_focus,
     youtube_watch_stub,
@@ -98,6 +99,30 @@ def test_notes_meta_hashes_ids():
     assert normalized["signal"] == "notes_meta"
     assert normalized["note_id_hash"].startswith("sha256:")
     assert normalized["vault_id_hash"].startswith("sha256:")
+
+
+def test_worldmonitor_capture_normalizes_hashes_and_provenance():
+    record = {
+        "ts": "2026-03-08T10:00:00Z",
+        "capturedAt": "2026-03-08T10:00:00Z",
+        "captureId": "wm:abc123",
+        "importRunId": "wm-run-001",
+        "sourceFile": "/tmp/worldmonitor/sample.json",
+        "sourceRowId": "city:0001",
+        "sourceKind": "cities",
+        "rowLabel": "cities:0",
+        "event_type": "source_observed",
+        "status": "imported",
+    }
+    normalized = worldmonitor_capture.normalize_record(record, "worldmonitor_capture_bridge")
+    assert normalized["signal"] == "worldmonitor_capture"
+    assert normalized["event"] == "source_observed"
+    assert normalized["capture_id_hash"].startswith("sha256:")
+    assert normalized["source_file_hash"].startswith("sha256:")
+    assert normalized["source_row_id_hash"].startswith("sha256:")
+    assert normalized["import_run_id_hash"].startswith("sha256:")
+    assert normalized["row_label_hash"].startswith("sha256:")
+    assert normalized["provenance"]["source"] == "worldmonitor_capture_bridge"
 
 
 def test_notebooklm_meta_hashes_ids():

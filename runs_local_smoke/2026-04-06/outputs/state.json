@@ -1,0 +1,96 @@
+{
+  "agent_actions": [],
+  "agent_permissions": {
+    "autonomous_runs": false,
+    "write_actions": false
+  },
+  "alerts": [],
+  "blocked_tasks": [],
+  "carryover_age_days": {},
+  "carryover_new_threads": [],
+  "carryover_resolved_threads": [],
+  "carryover_threads": [],
+  "carryover_window_counts": [
+    {
+      "count": 0,
+      "window_days": 7
+    },
+    {
+      "count": 0,
+      "window_days": 14
+    },
+    {
+      "count": 0,
+      "window_days": 30
+    }
+  ],
+  "compression": {
+    "loss_profiles": []
+  },
+  "constraints": [],
+  "date": "2026-04-06",
+  "day_state": "active",
+  "events": [
+    {
+      "id": "git-386a88b",
+      "source": "git",
+      "text": "commit 386a88b (ITIR-suite)",
+      "ts": "2026-04-06T19:08:38+10:00",
+      "type": "commit"
+    },
+    {
+      "id": "git-c45bcbd",
+      "source": "git",
+      "text": "commit c45bcbd (ITIR-suite)",
+      "ts": "2026-04-06T20:59:17+10:00",
+      "type": "commit"
+    },
+    {
+      "id": "git-391e5c3",
+      "source": "git",
+      "text": "commit 391e5c3 (ITIR-suite)",
+      "ts": "2026-04-06T21:57:19+10:00",
+      "type": "commit"
+    }
+  ],
+  "fold_policy": {
+    "loss_profile": {
+      "declaration_mode": "explicit",
+      "declared_losses": [
+        {
+          "field": "carryover_window_counts",
+          "kind": "windowed_aggregation",
+          "reason_code": "window_bucket_projection"
+        },
+        {
+          "field": "carryover_resolved_threads",
+          "kind": "resolved_thread_elision",
+          "reason_code": "current_state_focus"
+        }
+      ],
+      "profile_id": "sb.fold.loss_profile.v1"
+    },
+    "mechanical_should_flags": {
+      "flag_carryover_saturation": true,
+      "preserve_carryover_continuity": true
+    },
+    "policy_receipt": {
+      "applied_on": "2026-04-06",
+      "policy_id": "sb.fold.minimal.v1",
+      "receipt_id": ""
+    }
+  },
+  "human_energy": "medium",
+  "labels": [],
+  "open_questions": [],
+  "priorities": [
+    "Review git activity",
+    "Update SB outputs"
+  ],
+  "sources": [
+    {
+      "kind": "git",
+      "uri": "/home/c/Documents/code/ITIR-suite/StatiBaker/runs_local_smoke/2026-04-06/logs/git/2026-04-06.jsonl"
+    }
+  ]
+}

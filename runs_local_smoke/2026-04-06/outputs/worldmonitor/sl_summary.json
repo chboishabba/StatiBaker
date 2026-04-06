@@ -1,0 +1,69 @@
+{
+  "itirDbPath": "/home/c/Documents/code/ITIR-suite/.cache_local/itir.sqlite",
+  "ok": true,
+  "summary": {
+    "captureCount": 178,
+    "countsByDate": [
+      {
+        "captureCount": 177,
+        "capturedDate": "2026-01-09"
+      },
+      {
+        "captureCount": 1,
+        "capturedDate": "2024-01-22"
+      }
+    ],
+    "countsByFile": [
+      {
+        "captureCount": 136,
+        "sourceFile": "/home/c/Documents/code/worldmonitor/data/gamma-irradiators.json"
+      },
+      {
+        "captureCount": 41,
+        "sourceFile": "/home/c/Documents/code/worldmonitor/data/gamma-irradiators-raw.json"
+      },
+      {
+        "captureCount": 1,
+        "sourceFile": "/home/c/Documents/code/worldmonitor/data/telegram-channels.json"
+      }
+    ],
+    "countsBySourceKind": [
+      {
+        "captureCount": 136,
+        "sourceKind": "facility"
+      },
+      {
+        "captureCount": 10,
+        "sourceKind": "cities"
+      },
+      {
+        "captureCount": 10,
+        "sourceKind": "countries"
+      },
+      {
+        "captureCount": 10,
+        "sourceKind": "organizations"
+      },
+      {
+        "captureCount": 10,
+        "sourceKind": "realValues"
+      },
+      {
+        "captureCount": 2,
+        "sourceKind": "metadata"
+      }
+    ],
+    "filters": {
+      "date": null,
+      "importRunId": "worldmonitor-local-smoke-v1",
+      "sourceKind": null
+    },
+    "firstCapturedAt": "2024-01-22T08:13:20+10:00",
+    "labelCoverage": {
+      "coveragePercent": 100.0,
+      "withText": 178,
+      "withoutText": 0
+    },
+    "lastCapturedAt": "2026-01-09T10:02:15+10:00"
+  }
+}

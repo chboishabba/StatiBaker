@@ -72,6 +72,15 @@ Cloud connectors are read-only audit feeds.
 - Allowed fields: `vault_id_hash`, `notebook_id_hash`
 - NotebookLM connector emits into this same signal with `app: notebooklm`.
 
+### WorldMonitor capture bridge
+- Signal: `worldmonitor_capture`
+- Required fields: `ts`, `signal`, `event_type`, `capture_id_hash`, `source_kind`, `provenance`
+- Allowed fields: `import_run_id_hash`, `source_file_hash`, `source_row_id_hash`,
+  `captured_date`, `row_label_hash`, `status`
+- Constraint: metadata only; no raw source paths, titles, or text payloads.
+- Use this stream when exporting WorldMonitor captures from ITIR/SL into SB
+  logs under `logs/worldmonitor/YYYY-MM-DD.jsonl`.
+
 ### Social feeds (Bluesky, Twitter/X, Mastodon, Reddit, FB Messenger, Telegram, WhatsApp)
 - Signal: `social_feed`
 - Required fields: `ts`, `platform`, `event_type`, `post_id_hash`, `provenance`
@@ -183,6 +192,33 @@ For context-field overlays, either:
 - pass a medication tracker raw JSONL as positional arg 23
   (`MEDICATION_TRACKER_INPUT`) and `run_day.sh` will normalize it via
   `adapters/medication_tracker_stub.py` and append it into `logs/context/<date>.jsonl`.
+
+For WorldMonitor captures, run
+`scripts/export_worldmonitor_observed.py --itir-db-path ... --output ...`
+and place the output under `logs/worldmonitor/<date>.jsonl`. `run_day.sh`
+already picks up JSONL files anywhere under `logs/`.
+
+For the full bounded bridge, use
+`scripts/run_worldmonitor_bridge.py --date ...` to:
+1. import WorldMonitor into ITIR via SensibLaw,
+2. export the SB-safe `worldmonitor_capture` JSONL,
+3. run `run_day.sh`, and
+4. emit SensibLaw worldmonitor summary and chronology readouts beside the run.
+
+If `--source-path` is omitted, the bridge defaults to the sibling
+`../worldmonitor/data` tree. Optional helper flags:
+
+- `--bootstrap-worldmonitor` to run `npm install` in the sibling repo first
+- `--smoke-worldmonitor-dev` to verify the local WorldMonitor app boots before ingest
+
+If the WorldMonitor data tree is unchanged and the importer de-duplicates to
+zero new captures, the bridge reuses the latest populated import run for that
+same resolved source path so the SL summary/chronology and SB export remain
+useful on repeated local runs.
+
+The bridge exports the whole effective import run by default. Only pass
+`--captured-date YYYY-MM-DD` when you intentionally want the SB JSONL to be
+restricted to one WorldMonitor source date.
 
 ## Social stub collectors
 See `docs/social_stub_collectors.md` for per-platform stub inputs.

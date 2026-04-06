@@ -1,0 +1,3220 @@
+{
+  "chronology": {
+    "chronology": [
+      {
+        "capture_id": "worldmonitor:b172fe579f22bd31",
+        "captured_date": "2024-01-22",
+        "event_id": "worldmonitor:b172fe579f22bd31",
+        "event_type": "worldmonitor_capture",
+        "object_text": "metadata",
+        "order": 1,
+        "primary_actor": "metadata",
+        "row_label": "metadata",
+        "source_event_ids": [
+          "worldmonitor:b172fe579f22bd31"
+        ],
+        "source_kind": "metadata",
+        "source_row_id": "metadata",
+        "source_timestamp": 1705875200,
+        "status": "captured",
+        "time_start": "2024-01-22T08:13:20+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:9c10fbc1b1428676",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:9c10fbc1b1428676",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-001",
+        "order": 2,
+        "primary_actor": "facility",
+        "row_label": "gi-001",
+        "source_event_ids": [
+          "worldmonitor:9c10fbc1b1428676"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-001",
+        "source_timestamp": 1767916800,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:00+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:c21dabb209285f1c",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:c21dabb209285f1c",
+        "event_type": "worldmonitor_capture",
+        "object_text": "metadata",
+        "order": 3,
+        "primary_actor": "metadata",
+        "row_label": "metadata",
+        "source_event_ids": [
+          "worldmonitor:c21dabb209285f1c"
+        ],
+        "source_kind": "metadata",
+        "source_row_id": "metadata",
+        "source_timestamp": 1767916800,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:00+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:0a7168fcbcd9e55f",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:0a7168fcbcd9e55f",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-002",
+        "order": 4,
+        "primary_actor": "facility",
+        "row_label": "gi-002",
+        "source_event_ids": [
+          "worldmonitor:0a7168fcbcd9e55f"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-002",
+        "source_timestamp": 1767916801,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:01+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5bc8415f2015b5da",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5bc8415f2015b5da",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:0",
+        "order": 5,
+        "primary_actor": "countries",
+        "row_label": "countries:0",
+        "source_event_ids": [
+          "worldmonitor:5bc8415f2015b5da"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0000",
+        "source_timestamp": 1767916801,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:01+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5f7928633c28241f",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5f7928633c28241f",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:0",
+        "order": 6,
+        "primary_actor": "realValues",
+        "row_label": "realValues:0",
+        "source_event_ids": [
+          "worldmonitor:5f7928633c28241f"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0000",
+        "source_timestamp": 1767916801,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:01+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7ae3255d9559d850",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7ae3255d9559d850",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:0",
+        "order": 7,
+        "primary_actor": "organizations",
+        "row_label": "organizations:0",
+        "source_event_ids": [
+          "worldmonitor:7ae3255d9559d850"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0000",
+        "source_timestamp": 1767916801,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:01+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:f4462a0d2be11952",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:f4462a0d2be11952",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:0",
+        "order": 8,
+        "primary_actor": "cities",
+        "row_label": "cities:0",
+        "source_event_ids": [
+          "worldmonitor:f4462a0d2be11952"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0000",
+        "source_timestamp": 1767916801,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:01+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:1ae60c1e8471c44a",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:1ae60c1e8471c44a",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-003",
+        "order": 9,
+        "primary_actor": "facility",
+        "row_label": "gi-003",
+        "source_event_ids": [
+          "worldmonitor:1ae60c1e8471c44a"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-003",
+        "source_timestamp": 1767916802,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:02+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:23e06f51f00bfe9e",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:23e06f51f00bfe9e",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:1",
+        "order": 10,
+        "primary_actor": "cities",
+        "row_label": "cities:1",
+        "source_event_ids": [
+          "worldmonitor:23e06f51f00bfe9e"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0001",
+        "source_timestamp": 1767916802,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:02+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:d12bc56df0901136",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:d12bc56df0901136",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:1",
+        "order": 11,
+        "primary_actor": "realValues",
+        "row_label": "realValues:1",
+        "source_event_ids": [
+          "worldmonitor:d12bc56df0901136"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0001",
+        "source_timestamp": 1767916802,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:02+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:d86a90dfcbddc1b3",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:d86a90dfcbddc1b3",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:1",
+        "order": 12,
+        "primary_actor": "countries",
+        "row_label": "countries:1",
+        "source_event_ids": [
+          "worldmonitor:d86a90dfcbddc1b3"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0001",
+        "source_timestamp": 1767916802,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:02+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:e509f00cd8941bea",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:e509f00cd8941bea",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:1",
+        "order": 13,
+        "primary_actor": "organizations",
+        "row_label": "organizations:1",
+        "source_event_ids": [
+          "worldmonitor:e509f00cd8941bea"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0001",
+        "source_timestamp": 1767916802,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:02+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:3f23b26867c6acfe",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:3f23b26867c6acfe",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-004",
+        "order": 14,
+        "primary_actor": "facility",
+        "row_label": "gi-004",
+        "source_event_ids": [
+          "worldmonitor:3f23b26867c6acfe"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-004",
+        "source_timestamp": 1767916803,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:03+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5cdee62d05469e27",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5cdee62d05469e27",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:2",
+        "order": 15,
+        "primary_actor": "organizations",
+        "row_label": "organizations:2",
+        "source_event_ids": [
+          "worldmonitor:5cdee62d05469e27"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0002",
+        "source_timestamp": 1767916803,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:03+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:af22725290727ce5",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:af22725290727ce5",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:2",
+        "order": 16,
+        "primary_actor": "countries",
+        "row_label": "countries:2",
+        "source_event_ids": [
+          "worldmonitor:af22725290727ce5"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0002",
+        "source_timestamp": 1767916803,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:03+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:ccc12468cf396ffc",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:ccc12468cf396ffc",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:2",
+        "order": 17,
+        "primary_actor": "realValues",
+        "row_label": "realValues:2",
+        "source_event_ids": [
+          "worldmonitor:ccc12468cf396ffc"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0002",
+        "source_timestamp": 1767916803,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:03+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:d6f3cb8e125a68cf",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:d6f3cb8e125a68cf",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:2",
+        "order": 18,
+        "primary_actor": "cities",
+        "row_label": "cities:2",
+        "source_event_ids": [
+          "worldmonitor:d6f3cb8e125a68cf"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0002",
+        "source_timestamp": 1767916803,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:03+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:49b8c8bfd7b62eb8",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:49b8c8bfd7b62eb8",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-005",
+        "order": 19,
+        "primary_actor": "facility",
+        "row_label": "gi-005",
+        "source_event_ids": [
+          "worldmonitor:49b8c8bfd7b62eb8"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-005",
+        "source_timestamp": 1767916804,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:04+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:6dafc569ebd4ab4c",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:6dafc569ebd4ab4c",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:3",
+        "order": 20,
+        "primary_actor": "organizations",
+        "row_label": "organizations:3",
+        "source_event_ids": [
+          "worldmonitor:6dafc569ebd4ab4c"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0003",
+        "source_timestamp": 1767916804,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:04+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7c5d6c5dcbb80732",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7c5d6c5dcbb80732",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:3",
+        "order": 21,
+        "primary_actor": "cities",
+        "row_label": "cities:3",
+        "source_event_ids": [
+          "worldmonitor:7c5d6c5dcbb80732"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0003",
+        "source_timestamp": 1767916804,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:04+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:c5da1d38a1317552",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:c5da1d38a1317552",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:3",
+        "order": 22,
+        "primary_actor": "countries",
+        "row_label": "countries:3",
+        "source_event_ids": [
+          "worldmonitor:c5da1d38a1317552"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0003",
+        "source_timestamp": 1767916804,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:04+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:f50e77482dc52f45",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:f50e77482dc52f45",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:3",
+        "order": 23,
+        "primary_actor": "realValues",
+        "row_label": "realValues:3",
+        "source_event_ids": [
+          "worldmonitor:f50e77482dc52f45"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0003",
+        "source_timestamp": 1767916804,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:04+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:006ea35c7d6601dd",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:006ea35c7d6601dd",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-006",
+        "order": 24,
+        "primary_actor": "facility",
+        "row_label": "gi-006",
+        "source_event_ids": [
+          "worldmonitor:006ea35c7d6601dd"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-006",
+        "source_timestamp": 1767916805,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:05+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:53bc8f7d7bb092b7",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:53bc8f7d7bb092b7",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:4",
+        "order": 25,
+        "primary_actor": "cities",
+        "row_label": "cities:4",
+        "source_event_ids": [
+          "worldmonitor:53bc8f7d7bb092b7"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0004",
+        "source_timestamp": 1767916805,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:05+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:95f998cf0e1cf07d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:95f998cf0e1cf07d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:4",
+        "order": 26,
+        "primary_actor": "countries",
+        "row_label": "countries:4",
+        "source_event_ids": [
+          "worldmonitor:95f998cf0e1cf07d"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0004",
+        "source_timestamp": 1767916805,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:05+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:aa87cc87be94867c",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:aa87cc87be94867c",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:4",
+        "order": 27,
+        "primary_actor": "realValues",
+        "row_label": "realValues:4",
+        "source_event_ids": [
+          "worldmonitor:aa87cc87be94867c"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0004",
+        "source_timestamp": 1767916805,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:05+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:c3b6458582d95058",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:c3b6458582d95058",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:4",
+        "order": 28,
+        "primary_actor": "organizations",
+        "row_label": "organizations:4",
+        "source_event_ids": [
+          "worldmonitor:c3b6458582d95058"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0004",
+        "source_timestamp": 1767916805,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:05+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:04ac9dd6c29544d8",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:04ac9dd6c29544d8",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:5",
+        "order": 29,
+        "primary_actor": "organizations",
+        "row_label": "organizations:5",
+        "source_event_ids": [
+          "worldmonitor:04ac9dd6c29544d8"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0005",
+        "source_timestamp": 1767916806,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:06+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:09b4358dcc597258",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:09b4358dcc597258",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:5",
+        "order": 30,
+        "primary_actor": "countries",
+        "row_label": "countries:5",
+        "source_event_ids": [
+          "worldmonitor:09b4358dcc597258"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0005",
+        "source_timestamp": 1767916806,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:06+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:0a83f23ae7df4a15",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:0a83f23ae7df4a15",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-007",
+        "order": 31,
+        "primary_actor": "facility",
+        "row_label": "gi-007",
+        "source_event_ids": [
+          "worldmonitor:0a83f23ae7df4a15"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-007",
+        "source_timestamp": 1767916806,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:06+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:515439f5df2df5f6",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:515439f5df2df5f6",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:5",
+        "order": 32,
+        "primary_actor": "realValues",
+        "row_label": "realValues:5",
+        "source_event_ids": [
+          "worldmonitor:515439f5df2df5f6"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0005",
+        "source_timestamp": 1767916806,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:06+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:535336a43c67a701",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:535336a43c67a701",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:5",
+        "order": 33,
+        "primary_actor": "cities",
+        "row_label": "cities:5",
+        "source_event_ids": [
+          "worldmonitor:535336a43c67a701"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0005",
+        "source_timestamp": 1767916806,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:06+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:68f5e081844571af",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:68f5e081844571af",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-008",
+        "order": 34,
+        "primary_actor": "facility",
+        "row_label": "gi-008",
+        "source_event_ids": [
+          "worldmonitor:68f5e081844571af"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-008",
+        "source_timestamp": 1767916807,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:07+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7f64a0e26e1995a4",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7f64a0e26e1995a4",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:6",
+        "order": 35,
+        "primary_actor": "realValues",
+        "row_label": "realValues:6",
+        "source_event_ids": [
+          "worldmonitor:7f64a0e26e1995a4"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0006",
+        "source_timestamp": 1767916807,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:07+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:8cb4465b0c087722",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:8cb4465b0c087722",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:6",
+        "order": 36,
+        "primary_actor": "organizations",
+        "row_label": "organizations:6",
+        "source_event_ids": [
+          "worldmonitor:8cb4465b0c087722"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0006",
+        "source_timestamp": 1767916807,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:07+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:985b32a4d7c6d9bc",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:985b32a4d7c6d9bc",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:6",
+        "order": 37,
+        "primary_actor": "cities",
+        "row_label": "cities:6",
+        "source_event_ids": [
+          "worldmonitor:985b32a4d7c6d9bc"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0006",
+        "source_timestamp": 1767916807,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:07+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b94fe5f409b46eeb",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b94fe5f409b46eeb",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:6",
+        "order": 38,
+        "primary_actor": "countries",
+        "row_label": "countries:6",
+        "source_event_ids": [
+          "worldmonitor:b94fe5f409b46eeb"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0006",
+        "source_timestamp": 1767916807,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:07+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:2beb6578108740a1",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:2beb6578108740a1",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:7",
+        "order": 39,
+        "primary_actor": "cities",
+        "row_label": "cities:7",
+        "source_event_ids": [
+          "worldmonitor:2beb6578108740a1"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0007",
+        "source_timestamp": 1767916808,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:08+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5d936142cd7ff6de",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5d936142cd7ff6de",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:7",
+        "order": 40,
+        "primary_actor": "realValues",
+        "row_label": "realValues:7",
+        "source_event_ids": [
+          "worldmonitor:5d936142cd7ff6de"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0007",
+        "source_timestamp": 1767916808,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:08+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:6b501c804d5a8e2f",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:6b501c804d5a8e2f",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:7",
+        "order": 41,
+        "primary_actor": "organizations",
+        "row_label": "organizations:7",
+        "source_event_ids": [
+          "worldmonitor:6b501c804d5a8e2f"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0007",
+        "source_timestamp": 1767916808,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:08+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:dcea6fe437d607f4",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:dcea6fe437d607f4",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:7",
+        "order": 42,
+        "primary_actor": "countries",
+        "row_label": "countries:7",
+        "source_event_ids": [
+          "worldmonitor:dcea6fe437d607f4"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0007",
+        "source_timestamp": 1767916808,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:08+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:f0cff8e35b00d373",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:f0cff8e35b00d373",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-009",
+        "order": 43,
+        "primary_actor": "facility",
+        "row_label": "gi-009",
+        "source_event_ids": [
+          "worldmonitor:f0cff8e35b00d373"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-009",
+        "source_timestamp": 1767916808,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:08+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:104d8aa5fd46dc46",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:104d8aa5fd46dc46",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:8",
+        "order": 44,
+        "primary_actor": "countries",
+        "row_label": "countries:8",
+        "source_event_ids": [
+          "worldmonitor:104d8aa5fd46dc46"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0008",
+        "source_timestamp": 1767916809,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:09+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:1bf9d267a9c3a389",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:1bf9d267a9c3a389",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:8",
+        "order": 45,
+        "primary_actor": "realValues",
+        "row_label": "realValues:8",
+        "source_event_ids": [
+          "worldmonitor:1bf9d267a9c3a389"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0008",
+        "source_timestamp": 1767916809,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:09+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:8eedb7782f906977",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:8eedb7782f906977",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:8",
+        "order": 46,
+        "primary_actor": "cities",
+        "row_label": "cities:8",
+        "source_event_ids": [
+          "worldmonitor:8eedb7782f906977"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0008",
+        "source_timestamp": 1767916809,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:09+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:bdecbed1035fdae0",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:bdecbed1035fdae0",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:8",
+        "order": 47,
+        "primary_actor": "organizations",
+        "row_label": "organizations:8",
+        "source_event_ids": [
+          "worldmonitor:bdecbed1035fdae0"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0008",
+        "source_timestamp": 1767916809,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:09+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:d8d7f6baf9041997",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:d8d7f6baf9041997",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-010",
+        "order": 48,
+        "primary_actor": "facility",
+        "row_label": "gi-010",
+        "source_event_ids": [
+          "worldmonitor:d8d7f6baf9041997"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-010",
+        "source_timestamp": 1767916809,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:09+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:181fe318f7743414",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:181fe318f7743414",
+        "event_type": "worldmonitor_capture",
+        "object_text": "realValues:9",
+        "order": 49,
+        "primary_actor": "realValues",
+        "row_label": "realValues:9",
+        "source_event_ids": [
+          "worldmonitor:181fe318f7743414"
+        ],
+        "source_kind": "realValues",
+        "source_row_id": "realValues:0009",
+        "source_timestamp": 1767916810,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:10+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:3779ccc79ed761ed",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:3779ccc79ed761ed",
+        "event_type": "worldmonitor_capture",
+        "object_text": "countries:9",
+        "order": 50,
+        "primary_actor": "countries",
+        "row_label": "countries:9",
+        "source_event_ids": [
+          "worldmonitor:3779ccc79ed761ed"
+        ],
+        "source_kind": "countries",
+        "source_row_id": "countries:0009",
+        "source_timestamp": 1767916810,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:10+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:6293c5514d618d01",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:6293c5514d618d01",
+        "event_type": "worldmonitor_capture",
+        "object_text": "organizations:9",
+        "order": 51,
+        "primary_actor": "organizations",
+        "row_label": "organizations:9",
+        "source_event_ids": [
+          "worldmonitor:6293c5514d618d01"
+        ],
+        "source_kind": "organizations",
+        "source_row_id": "organizations:0009",
+        "source_timestamp": 1767916810,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:10+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:9419eebd97f8c203",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:9419eebd97f8c203",
+        "event_type": "worldmonitor_capture",
+        "object_text": "cities:9",
+        "order": 52,
+        "primary_actor": "cities",
+        "row_label": "cities:9",
+        "source_event_ids": [
+          "worldmonitor:9419eebd97f8c203"
+        ],
+        "source_kind": "cities",
+        "source_row_id": "cities:0009",
+        "source_timestamp": 1767916810,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:10+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:aadcb19157365eda",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:aadcb19157365eda",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-011",
+        "order": 53,
+        "primary_actor": "facility",
+        "row_label": "gi-011",
+        "source_event_ids": [
+          "worldmonitor:aadcb19157365eda"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-011",
+        "source_timestamp": 1767916810,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:10+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:a33dccc6f2e218f6",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:a33dccc6f2e218f6",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-012",
+        "order": 54,
+        "primary_actor": "facility",
+        "row_label": "gi-012",
+        "source_event_ids": [
+          "worldmonitor:a33dccc6f2e218f6"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-012",
+        "source_timestamp": 1767916811,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:11+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:a42db268a0fc4b40",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:a42db268a0fc4b40",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-013",
+        "order": 55,
+        "primary_actor": "facility",
+        "row_label": "gi-013",
+        "source_event_ids": [
+          "worldmonitor:a42db268a0fc4b40"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-013",
+        "source_timestamp": 1767916812,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:12+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:d8f6862c504aeb46",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:d8f6862c504aeb46",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-014",
+        "order": 56,
+        "primary_actor": "facility",
+        "row_label": "gi-014",
+        "source_event_ids": [
+          "worldmonitor:d8f6862c504aeb46"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-014",
+        "source_timestamp": 1767916813,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:13+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:a46429b34557022b",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:a46429b34557022b",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-015",
+        "order": 57,
+        "primary_actor": "facility",
+        "row_label": "gi-015",
+        "source_event_ids": [
+          "worldmonitor:a46429b34557022b"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-015",
+        "source_timestamp": 1767916814,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:14+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:13409594eb792e33",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:13409594eb792e33",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-016",
+        "order": 58,
+        "primary_actor": "facility",
+        "row_label": "gi-016",
+        "source_event_ids": [
+          "worldmonitor:13409594eb792e33"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-016",
+        "source_timestamp": 1767916815,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:15+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:872162d635906686",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:872162d635906686",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-017",
+        "order": 59,
+        "primary_actor": "facility",
+        "row_label": "gi-017",
+        "source_event_ids": [
+          "worldmonitor:872162d635906686"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-017",
+        "source_timestamp": 1767916816,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:16+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:0fb198d882b01adb",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:0fb198d882b01adb",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-018",
+        "order": 60,
+        "primary_actor": "facility",
+        "row_label": "gi-018",
+        "source_event_ids": [
+          "worldmonitor:0fb198d882b01adb"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-018",
+        "source_timestamp": 1767916817,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:17+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:a219e842b4ec1eb5",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:a219e842b4ec1eb5",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-019",
+        "order": 61,
+        "primary_actor": "facility",
+        "row_label": "gi-019",
+        "source_event_ids": [
+          "worldmonitor:a219e842b4ec1eb5"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-019",
+        "source_timestamp": 1767916818,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:18+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:d2d9733c481f18c4",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:d2d9733c481f18c4",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-020",
+        "order": 62,
+        "primary_actor": "facility",
+        "row_label": "gi-020",
+        "source_event_ids": [
+          "worldmonitor:d2d9733c481f18c4"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-020",
+        "source_timestamp": 1767916819,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:19+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7acd9eedf4a1f389",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7acd9eedf4a1f389",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-021",
+        "order": 63,
+        "primary_actor": "facility",
+        "row_label": "gi-021",
+        "source_event_ids": [
+          "worldmonitor:7acd9eedf4a1f389"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-021",
+        "source_timestamp": 1767916820,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:20+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b77465e8f2bfebe7",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b77465e8f2bfebe7",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-022",
+        "order": 64,
+        "primary_actor": "facility",
+        "row_label": "gi-022",
+        "source_event_ids": [
+          "worldmonitor:b77465e8f2bfebe7"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-022",
+        "source_timestamp": 1767916821,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:21+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:9f2161d153fe4fb1",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:9f2161d153fe4fb1",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-023",
+        "order": 65,
+        "primary_actor": "facility",
+        "row_label": "gi-023",
+        "source_event_ids": [
+          "worldmonitor:9f2161d153fe4fb1"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-023",
+        "source_timestamp": 1767916822,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:22+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:9f9d41acc0707754",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:9f9d41acc0707754",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-024",
+        "order": 66,
+        "primary_actor": "facility",
+        "row_label": "gi-024",
+        "source_event_ids": [
+          "worldmonitor:9f9d41acc0707754"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-024",
+        "source_timestamp": 1767916823,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:23+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:63957d69ef89d9b3",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:63957d69ef89d9b3",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-025",
+        "order": 67,
+        "primary_actor": "facility",
+        "row_label": "gi-025",
+        "source_event_ids": [
+          "worldmonitor:63957d69ef89d9b3"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-025",
+        "source_timestamp": 1767916824,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:24+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:257f7ada97e63ff1",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:257f7ada97e63ff1",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-026",
+        "order": 68,
+        "primary_actor": "facility",
+        "row_label": "gi-026",
+        "source_event_ids": [
+          "worldmonitor:257f7ada97e63ff1"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-026",
+        "source_timestamp": 1767916825,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:25+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:96a400da1603774e",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:96a400da1603774e",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-027",
+        "order": 69,
+        "primary_actor": "facility",
+        "row_label": "gi-027",
+        "source_event_ids": [
+          "worldmonitor:96a400da1603774e"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-027",
+        "source_timestamp": 1767916826,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:26+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:075d7bc774e3666d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:075d7bc774e3666d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-028",
+        "order": 70,
+        "primary_actor": "facility",
+        "row_label": "gi-028",
+        "source_event_ids": [
+          "worldmonitor:075d7bc774e3666d"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-028",
+        "source_timestamp": 1767916827,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:27+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:1a7c29d18cff7403",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:1a7c29d18cff7403",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-029",
+        "order": 71,
+        "primary_actor": "facility",
+        "row_label": "gi-029",
+        "source_event_ids": [
+          "worldmonitor:1a7c29d18cff7403"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-029",
+        "source_timestamp": 1767916828,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:28+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:59ae0b0a558b571d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:59ae0b0a558b571d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-030",
+        "order": 72,
+        "primary_actor": "facility",
+        "row_label": "gi-030",
+        "source_event_ids": [
+          "worldmonitor:59ae0b0a558b571d"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-030",
+        "source_timestamp": 1767916829,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:29+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:1e6ea89a1648101d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:1e6ea89a1648101d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-031",
+        "order": 73,
+        "primary_actor": "facility",
+        "row_label": "gi-031",
+        "source_event_ids": [
+          "worldmonitor:1e6ea89a1648101d"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-031",
+        "source_timestamp": 1767916830,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:30+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:31410358bc73c406",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:31410358bc73c406",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-032",
+        "order": 74,
+        "primary_actor": "facility",
+        "row_label": "gi-032",
+        "source_event_ids": [
+          "worldmonitor:31410358bc73c406"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-032",
+        "source_timestamp": 1767916831,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:31+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:10d5baadc0a54aef",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:10d5baadc0a54aef",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-033",
+        "order": 75,
+        "primary_actor": "facility",
+        "row_label": "gi-033",
+        "source_event_ids": [
+          "worldmonitor:10d5baadc0a54aef"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-033",
+        "source_timestamp": 1767916832,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:32+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:a55a58b5e2456af6",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:a55a58b5e2456af6",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-034",
+        "order": 76,
+        "primary_actor": "facility",
+        "row_label": "gi-034",
+        "source_event_ids": [
+          "worldmonitor:a55a58b5e2456af6"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-034",
+        "source_timestamp": 1767916833,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:33+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:38faa24ebc2e8052",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:38faa24ebc2e8052",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-035",
+        "order": 77,
+        "primary_actor": "facility",
+        "row_label": "gi-035",
+        "source_event_ids": [
+          "worldmonitor:38faa24ebc2e8052"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-035",
+        "source_timestamp": 1767916834,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:34+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b9f2e05aa5d90a2d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b9f2e05aa5d90a2d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-036",
+        "order": 78,
+        "primary_actor": "facility",
+        "row_label": "gi-036",
+        "source_event_ids": [
+          "worldmonitor:b9f2e05aa5d90a2d"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-036",
+        "source_timestamp": 1767916835,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:35+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:59804872698d556b",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:59804872698d556b",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-037",
+        "order": 79,
+        "primary_actor": "facility",
+        "row_label": "gi-037",
+        "source_event_ids": [
+          "worldmonitor:59804872698d556b"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-037",
+        "source_timestamp": 1767916836,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:36+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:d2b38fa0f12fc49e",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:d2b38fa0f12fc49e",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-038",
+        "order": 80,
+        "primary_actor": "facility",
+        "row_label": "gi-038",
+        "source_event_ids": [
+          "worldmonitor:d2b38fa0f12fc49e"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-038",
+        "source_timestamp": 1767916837,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:37+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7e710df2c75a0ce1",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7e710df2c75a0ce1",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-039",
+        "order": 81,
+        "primary_actor": "facility",
+        "row_label": "gi-039",
+        "source_event_ids": [
+          "worldmonitor:7e710df2c75a0ce1"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-039",
+        "source_timestamp": 1767916838,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:38+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:3320f2cb8d4d7234",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:3320f2cb8d4d7234",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-040",
+        "order": 82,
+        "primary_actor": "facility",
+        "row_label": "gi-040",
+        "source_event_ids": [
+          "worldmonitor:3320f2cb8d4d7234"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-040",
+        "source_timestamp": 1767916839,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:39+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:a28515d4ae76b903",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:a28515d4ae76b903",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-041",
+        "order": 83,
+        "primary_actor": "facility",
+        "row_label": "gi-041",
+        "source_event_ids": [
+          "worldmonitor:a28515d4ae76b903"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-041",
+        "source_timestamp": 1767916840,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:40+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:623e33159b08cf94",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:623e33159b08cf94",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-042",
+        "order": 84,
+        "primary_actor": "facility",
+        "row_label": "gi-042",
+        "source_event_ids": [
+          "worldmonitor:623e33159b08cf94"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-042",
+        "source_timestamp": 1767916841,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:41+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:fc591fda9dfad2ec",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:fc591fda9dfad2ec",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-043",
+        "order": 85,
+        "primary_actor": "facility",
+        "row_label": "gi-043",
+        "source_event_ids": [
+          "worldmonitor:fc591fda9dfad2ec"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-043",
+        "source_timestamp": 1767916842,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:42+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:996142b2cfbc68fb",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:996142b2cfbc68fb",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-044",
+        "order": 86,
+        "primary_actor": "facility",
+        "row_label": "gi-044",
+        "source_event_ids": [
+          "worldmonitor:996142b2cfbc68fb"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-044",
+        "source_timestamp": 1767916843,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:43+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:a5796a408a8d8a4c",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:a5796a408a8d8a4c",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-045",
+        "order": 87,
+        "primary_actor": "facility",
+        "row_label": "gi-045",
+        "source_event_ids": [
+          "worldmonitor:a5796a408a8d8a4c"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-045",
+        "source_timestamp": 1767916844,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:44+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7a88e9a0bc2e9506",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7a88e9a0bc2e9506",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-046",
+        "order": 88,
+        "primary_actor": "facility",
+        "row_label": "gi-046",
+        "source_event_ids": [
+          "worldmonitor:7a88e9a0bc2e9506"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-046",
+        "source_timestamp": 1767916845,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:45+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:e59770c8eddd6e4c",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:e59770c8eddd6e4c",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-047",
+        "order": 89,
+        "primary_actor": "facility",
+        "row_label": "gi-047",
+        "source_event_ids": [
+          "worldmonitor:e59770c8eddd6e4c"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-047",
+        "source_timestamp": 1767916846,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:46+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b138f54586048efa",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b138f54586048efa",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-048",
+        "order": 90,
+        "primary_actor": "facility",
+        "row_label": "gi-048",
+        "source_event_ids": [
+          "worldmonitor:b138f54586048efa"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-048",
+        "source_timestamp": 1767916847,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:47+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:cea1e8efc0327909",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:cea1e8efc0327909",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-049",
+        "order": 91,
+        "primary_actor": "facility",
+        "row_label": "gi-049",
+        "source_event_ids": [
+          "worldmonitor:cea1e8efc0327909"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-049",
+        "source_timestamp": 1767916848,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:48+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:02fd2547fd42325e",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:02fd2547fd42325e",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-050",
+        "order": 92,
+        "primary_actor": "facility",
+        "row_label": "gi-050",
+        "source_event_ids": [
+          "worldmonitor:02fd2547fd42325e"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-050",
+        "source_timestamp": 1767916849,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:49+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:e43c49b19ec22abc",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:e43c49b19ec22abc",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-051",
+        "order": 93,
+        "primary_actor": "facility",
+        "row_label": "gi-051",
+        "source_event_ids": [
+          "worldmonitor:e43c49b19ec22abc"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-051",
+        "source_timestamp": 1767916850,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:50+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b1e51caae6772d61",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b1e51caae6772d61",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-052",
+        "order": 94,
+        "primary_actor": "facility",
+        "row_label": "gi-052",
+        "source_event_ids": [
+          "worldmonitor:b1e51caae6772d61"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-052",
+        "source_timestamp": 1767916851,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:51+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:08e6c212cd8d44d6",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:08e6c212cd8d44d6",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-053",
+        "order": 95,
+        "primary_actor": "facility",
+        "row_label": "gi-053",
+        "source_event_ids": [
+          "worldmonitor:08e6c212cd8d44d6"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-053",
+        "source_timestamp": 1767916852,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:52+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b9c6465583fc598d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b9c6465583fc598d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-054",
+        "order": 96,
+        "primary_actor": "facility",
+        "row_label": "gi-054",
+        "source_event_ids": [
+          "worldmonitor:b9c6465583fc598d"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-054",
+        "source_timestamp": 1767916853,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:53+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7d65f11e45108cf4",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7d65f11e45108cf4",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-055",
+        "order": 97,
+        "primary_actor": "facility",
+        "row_label": "gi-055",
+        "source_event_ids": [
+          "worldmonitor:7d65f11e45108cf4"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-055",
+        "source_timestamp": 1767916854,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:54+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:a4b5546478aebc9f",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:a4b5546478aebc9f",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-056",
+        "order": 98,
+        "primary_actor": "facility",
+        "row_label": "gi-056",
+        "source_event_ids": [
+          "worldmonitor:a4b5546478aebc9f"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-056",
+        "source_timestamp": 1767916855,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:55+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:775993df7d885a5f",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:775993df7d885a5f",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-057",
+        "order": 99,
+        "primary_actor": "facility",
+        "row_label": "gi-057",
+        "source_event_ids": [
+          "worldmonitor:775993df7d885a5f"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-057",
+        "source_timestamp": 1767916856,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:56+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:09910c61e1754066",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:09910c61e1754066",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-058",
+        "order": 100,
+        "primary_actor": "facility",
+        "row_label": "gi-058",
+        "source_event_ids": [
+          "worldmonitor:09910c61e1754066"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-058",
+        "source_timestamp": 1767916857,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:57+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:fb842fcdc35f04a8",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:fb842fcdc35f04a8",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-059",
+        "order": 101,
+        "primary_actor": "facility",
+        "row_label": "gi-059",
+        "source_event_ids": [
+          "worldmonitor:fb842fcdc35f04a8"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-059",
+        "source_timestamp": 1767916858,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:58+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:14d45ff618ad7f4e",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:14d45ff618ad7f4e",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-060",
+        "order": 102,
+        "primary_actor": "facility",
+        "row_label": "gi-060",
+        "source_event_ids": [
+          "worldmonitor:14d45ff618ad7f4e"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-060",
+        "source_timestamp": 1767916859,
+        "status": "captured",
+        "time_start": "2026-01-09T10:00:59+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:126ed716048cc27e",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:126ed716048cc27e",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-061",
+        "order": 103,
+        "primary_actor": "facility",
+        "row_label": "gi-061",
+        "source_event_ids": [
+          "worldmonitor:126ed716048cc27e"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-061",
+        "source_timestamp": 1767916860,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:00+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:22b5c671bcecff4f",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:22b5c671bcecff4f",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-062",
+        "order": 104,
+        "primary_actor": "facility",
+        "row_label": "gi-062",
+        "source_event_ids": [
+          "worldmonitor:22b5c671bcecff4f"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-062",
+        "source_timestamp": 1767916861,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:01+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:c8fd47909d857efb",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:c8fd47909d857efb",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-063",
+        "order": 105,
+        "primary_actor": "facility",
+        "row_label": "gi-063",
+        "source_event_ids": [
+          "worldmonitor:c8fd47909d857efb"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-063",
+        "source_timestamp": 1767916862,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:02+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5876a36de288867a",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5876a36de288867a",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-064",
+        "order": 106,
+        "primary_actor": "facility",
+        "row_label": "gi-064",
+        "source_event_ids": [
+          "worldmonitor:5876a36de288867a"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-064",
+        "source_timestamp": 1767916863,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:03+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:c4b5bf8a1398e245",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:c4b5bf8a1398e245",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-065",
+        "order": 107,
+        "primary_actor": "facility",
+        "row_label": "gi-065",
+        "source_event_ids": [
+          "worldmonitor:c4b5bf8a1398e245"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-065",
+        "source_timestamp": 1767916864,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:04+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5bf8f68020dc2cce",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5bf8f68020dc2cce",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-066",
+        "order": 108,
+        "primary_actor": "facility",
+        "row_label": "gi-066",
+        "source_event_ids": [
+          "worldmonitor:5bf8f68020dc2cce"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-066",
+        "source_timestamp": 1767916865,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:05+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:823440041b5b1f41",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:823440041b5b1f41",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-067",
+        "order": 109,
+        "primary_actor": "facility",
+        "row_label": "gi-067",
+        "source_event_ids": [
+          "worldmonitor:823440041b5b1f41"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-067",
+        "source_timestamp": 1767916866,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:06+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:186451d81ce5861c",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:186451d81ce5861c",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-068",
+        "order": 110,
+        "primary_actor": "facility",
+        "row_label": "gi-068",
+        "source_event_ids": [
+          "worldmonitor:186451d81ce5861c"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-068",
+        "source_timestamp": 1767916867,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:07+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:cfbee756986fad35",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:cfbee756986fad35",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-069",
+        "order": 111,
+        "primary_actor": "facility",
+        "row_label": "gi-069",
+        "source_event_ids": [
+          "worldmonitor:cfbee756986fad35"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-069",
+        "source_timestamp": 1767916868,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:08+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:938478ec78f41764",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:938478ec78f41764",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-070",
+        "order": 112,
+        "primary_actor": "facility",
+        "row_label": "gi-070",
+        "source_event_ids": [
+          "worldmonitor:938478ec78f41764"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-070",
+        "source_timestamp": 1767916869,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:09+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:45aff5054979aab9",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:45aff5054979aab9",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-071",
+        "order": 113,
+        "primary_actor": "facility",
+        "row_label": "gi-071",
+        "source_event_ids": [
+          "worldmonitor:45aff5054979aab9"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-071",
+        "source_timestamp": 1767916870,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:10+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:ef1300d2fa22f690",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:ef1300d2fa22f690",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-072",
+        "order": 114,
+        "primary_actor": "facility",
+        "row_label": "gi-072",
+        "source_event_ids": [
+          "worldmonitor:ef1300d2fa22f690"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-072",
+        "source_timestamp": 1767916871,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:11+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:560abde8184a87f6",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:560abde8184a87f6",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-073",
+        "order": 115,
+        "primary_actor": "facility",
+        "row_label": "gi-073",
+        "source_event_ids": [
+          "worldmonitor:560abde8184a87f6"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-073",
+        "source_timestamp": 1767916872,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:12+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:4a3dfa70d21829b5",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:4a3dfa70d21829b5",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-074",
+        "order": 116,
+        "primary_actor": "facility",
+        "row_label": "gi-074",
+        "source_event_ids": [
+          "worldmonitor:4a3dfa70d21829b5"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-074",
+        "source_timestamp": 1767916873,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:13+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:528a5cc8df7b694a",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:528a5cc8df7b694a",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-075",
+        "order": 117,
+        "primary_actor": "facility",
+        "row_label": "gi-075",
+        "source_event_ids": [
+          "worldmonitor:528a5cc8df7b694a"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-075",
+        "source_timestamp": 1767916874,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:14+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7b57a5b829625c8a",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7b57a5b829625c8a",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-076",
+        "order": 118,
+        "primary_actor": "facility",
+        "row_label": "gi-076",
+        "source_event_ids": [
+          "worldmonitor:7b57a5b829625c8a"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-076",
+        "source_timestamp": 1767916875,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:15+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:ea2c0584b55d32c1",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:ea2c0584b55d32c1",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-077",
+        "order": 119,
+        "primary_actor": "facility",
+        "row_label": "gi-077",
+        "source_event_ids": [
+          "worldmonitor:ea2c0584b55d32c1"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-077",
+        "source_timestamp": 1767916876,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:16+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:150a2cb2b1693204",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:150a2cb2b1693204",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-078",
+        "order": 120,
+        "primary_actor": "facility",
+        "row_label": "gi-078",
+        "source_event_ids": [
+          "worldmonitor:150a2cb2b1693204"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-078",
+        "source_timestamp": 1767916877,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:17+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:f4c15673bd34311b",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:f4c15673bd34311b",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-079",
+        "order": 121,
+        "primary_actor": "facility",
+        "row_label": "gi-079",
+        "source_event_ids": [
+          "worldmonitor:f4c15673bd34311b"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-079",
+        "source_timestamp": 1767916878,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:18+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:95faf2b5f5f8a6e9",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:95faf2b5f5f8a6e9",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-080",
+        "order": 122,
+        "primary_actor": "facility",
+        "row_label": "gi-080",
+        "source_event_ids": [
+          "worldmonitor:95faf2b5f5f8a6e9"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-080",
+        "source_timestamp": 1767916879,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:19+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:16165e49003b5cd0",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:16165e49003b5cd0",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-081",
+        "order": 123,
+        "primary_actor": "facility",
+        "row_label": "gi-081",
+        "source_event_ids": [
+          "worldmonitor:16165e49003b5cd0"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-081",
+        "source_timestamp": 1767916880,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:20+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:428dcf7818335513",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:428dcf7818335513",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-082",
+        "order": 124,
+        "primary_actor": "facility",
+        "row_label": "gi-082",
+        "source_event_ids": [
+          "worldmonitor:428dcf7818335513"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-082",
+        "source_timestamp": 1767916881,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:21+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:3b3dc195a01dedff",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:3b3dc195a01dedff",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-083",
+        "order": 125,
+        "primary_actor": "facility",
+        "row_label": "gi-083",
+        "source_event_ids": [
+          "worldmonitor:3b3dc195a01dedff"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-083",
+        "source_timestamp": 1767916882,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:22+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5d92fd8c21489425",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5d92fd8c21489425",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-084",
+        "order": 126,
+        "primary_actor": "facility",
+        "row_label": "gi-084",
+        "source_event_ids": [
+          "worldmonitor:5d92fd8c21489425"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-084",
+        "source_timestamp": 1767916883,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:23+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:884f497748eb4351",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:884f497748eb4351",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-085",
+        "order": 127,
+        "primary_actor": "facility",
+        "row_label": "gi-085",
+        "source_event_ids": [
+          "worldmonitor:884f497748eb4351"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-085",
+        "source_timestamp": 1767916884,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:24+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:96afa1e894fda8da",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:96afa1e894fda8da",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-086",
+        "order": 128,
+        "primary_actor": "facility",
+        "row_label": "gi-086",
+        "source_event_ids": [
+          "worldmonitor:96afa1e894fda8da"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-086",
+        "source_timestamp": 1767916885,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:25+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:9bcc0d5d59ae7389",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:9bcc0d5d59ae7389",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-087",
+        "order": 129,
+        "primary_actor": "facility",
+        "row_label": "gi-087",
+        "source_event_ids": [
+          "worldmonitor:9bcc0d5d59ae7389"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-087",
+        "source_timestamp": 1767916886,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:26+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:e5cfcbd35b5e502c",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:e5cfcbd35b5e502c",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-088",
+        "order": 130,
+        "primary_actor": "facility",
+        "row_label": "gi-088",
+        "source_event_ids": [
+          "worldmonitor:e5cfcbd35b5e502c"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-088",
+        "source_timestamp": 1767916887,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:27+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:ace699b9a3866870",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:ace699b9a3866870",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-089",
+        "order": 131,
+        "primary_actor": "facility",
+        "row_label": "gi-089",
+        "source_event_ids": [
+          "worldmonitor:ace699b9a3866870"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-089",
+        "source_timestamp": 1767916888,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:28+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:2e5c99d2cc5a5827",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:2e5c99d2cc5a5827",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-090",
+        "order": 132,
+        "primary_actor": "facility",
+        "row_label": "gi-090",
+        "source_event_ids": [
+          "worldmonitor:2e5c99d2cc5a5827"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-090",
+        "source_timestamp": 1767916889,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:29+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:80a7a9534fd6bb37",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:80a7a9534fd6bb37",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-091",
+        "order": 133,
+        "primary_actor": "facility",
+        "row_label": "gi-091",
+        "source_event_ids": [
+          "worldmonitor:80a7a9534fd6bb37"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-091",
+        "source_timestamp": 1767916890,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:30+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:e1cd451076e37fbc",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:e1cd451076e37fbc",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-092",
+        "order": 134,
+        "primary_actor": "facility",
+        "row_label": "gi-092",
+        "source_event_ids": [
+          "worldmonitor:e1cd451076e37fbc"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-092",
+        "source_timestamp": 1767916891,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:31+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:e729802dda28857e",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:e729802dda28857e",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-093",
+        "order": 135,
+        "primary_actor": "facility",
+        "row_label": "gi-093",
+        "source_event_ids": [
+          "worldmonitor:e729802dda28857e"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-093",
+        "source_timestamp": 1767916892,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:32+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:07250ac448a02dee",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:07250ac448a02dee",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-094",
+        "order": 136,
+        "primary_actor": "facility",
+        "row_label": "gi-094",
+        "source_event_ids": [
+          "worldmonitor:07250ac448a02dee"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-094",
+        "source_timestamp": 1767916893,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:33+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:593a032725d55718",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:593a032725d55718",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-095",
+        "order": 137,
+        "primary_actor": "facility",
+        "row_label": "gi-095",
+        "source_event_ids": [
+          "worldmonitor:593a032725d55718"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-095",
+        "source_timestamp": 1767916894,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:34+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:c551a2bdb616bf3d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:c551a2bdb616bf3d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-096",
+        "order": 138,
+        "primary_actor": "facility",
+        "row_label": "gi-096",
+        "source_event_ids": [
+          "worldmonitor:c551a2bdb616bf3d"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-096",
+        "source_timestamp": 1767916895,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:35+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:739544a46024a0d8",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:739544a46024a0d8",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-097",
+        "order": 139,
+        "primary_actor": "facility",
+        "row_label": "gi-097",
+        "source_event_ids": [
+          "worldmonitor:739544a46024a0d8"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-097",
+        "source_timestamp": 1767916896,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:36+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b7084188932516d6",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b7084188932516d6",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-098",
+        "order": 140,
+        "primary_actor": "facility",
+        "row_label": "gi-098",
+        "source_event_ids": [
+          "worldmonitor:b7084188932516d6"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-098",
+        "source_timestamp": 1767916897,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:37+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:3f2d74d50494deb7",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:3f2d74d50494deb7",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-099",
+        "order": 141,
+        "primary_actor": "facility",
+        "row_label": "gi-099",
+        "source_event_ids": [
+          "worldmonitor:3f2d74d50494deb7"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-099",
+        "source_timestamp": 1767916898,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:38+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:ba4059a9c9eadc5f",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:ba4059a9c9eadc5f",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-100",
+        "order": 142,
+        "primary_actor": "facility",
+        "row_label": "gi-100",
+        "source_event_ids": [
+          "worldmonitor:ba4059a9c9eadc5f"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-100",
+        "source_timestamp": 1767916899,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:39+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:57aca66e48f727ca",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:57aca66e48f727ca",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-101",
+        "order": 143,
+        "primary_actor": "facility",
+        "row_label": "gi-101",
+        "source_event_ids": [
+          "worldmonitor:57aca66e48f727ca"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-101",
+        "source_timestamp": 1767916900,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:40+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:0e3d28faf69eca2d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:0e3d28faf69eca2d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-102",
+        "order": 144,
+        "primary_actor": "facility",
+        "row_label": "gi-102",
+        "source_event_ids": [
+          "worldmonitor:0e3d28faf69eca2d"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-102",
+        "source_timestamp": 1767916901,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:41+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:e073da100216479a",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:e073da100216479a",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-103",
+        "order": 145,
+        "primary_actor": "facility",
+        "row_label": "gi-103",
+        "source_event_ids": [
+          "worldmonitor:e073da100216479a"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-103",
+        "source_timestamp": 1767916902,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:42+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:8f118ea1291e1005",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:8f118ea1291e1005",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-104",
+        "order": 146,
+        "primary_actor": "facility",
+        "row_label": "gi-104",
+        "source_event_ids": [
+          "worldmonitor:8f118ea1291e1005"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-104",
+        "source_timestamp": 1767916903,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:43+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:202207e7153e8178",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:202207e7153e8178",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-105",
+        "order": 147,
+        "primary_actor": "facility",
+        "row_label": "gi-105",
+        "source_event_ids": [
+          "worldmonitor:202207e7153e8178"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-105",
+        "source_timestamp": 1767916904,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:44+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:3e4040887b78538a",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:3e4040887b78538a",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-106",
+        "order": 148,
+        "primary_actor": "facility",
+        "row_label": "gi-106",
+        "source_event_ids": [
+          "worldmonitor:3e4040887b78538a"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-106",
+        "source_timestamp": 1767916905,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:45+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:ad8580a77e0d3230",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:ad8580a77e0d3230",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-107",
+        "order": 149,
+        "primary_actor": "facility",
+        "row_label": "gi-107",
+        "source_event_ids": [
+          "worldmonitor:ad8580a77e0d3230"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-107",
+        "source_timestamp": 1767916906,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:46+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:736c6355a52edf59",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:736c6355a52edf59",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-108",
+        "order": 150,
+        "primary_actor": "facility",
+        "row_label": "gi-108",
+        "source_event_ids": [
+          "worldmonitor:736c6355a52edf59"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-108",
+        "source_timestamp": 1767916907,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:47+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:3cf1baac0810c9ae",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:3cf1baac0810c9ae",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-109",
+        "order": 151,
+        "primary_actor": "facility",
+        "row_label": "gi-109",
+        "source_event_ids": [
+          "worldmonitor:3cf1baac0810c9ae"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-109",
+        "source_timestamp": 1767916908,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:48+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:62a52ab2843c11fe",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:62a52ab2843c11fe",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-110",
+        "order": 152,
+        "primary_actor": "facility",
+        "row_label": "gi-110",
+        "source_event_ids": [
+          "worldmonitor:62a52ab2843c11fe"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-110",
+        "source_timestamp": 1767916909,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:49+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:6d4f9673530da29e",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:6d4f9673530da29e",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-111",
+        "order": 153,
+        "primary_actor": "facility",
+        "row_label": "gi-111",
+        "source_event_ids": [
+          "worldmonitor:6d4f9673530da29e"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-111",
+        "source_timestamp": 1767916910,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:50+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:488b164f77b4b8cc",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:488b164f77b4b8cc",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-112",
+        "order": 154,
+        "primary_actor": "facility",
+        "row_label": "gi-112",
+        "source_event_ids": [
+          "worldmonitor:488b164f77b4b8cc"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-112",
+        "source_timestamp": 1767916911,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:51+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:84905f4d08722d22",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:84905f4d08722d22",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-113",
+        "order": 155,
+        "primary_actor": "facility",
+        "row_label": "gi-113",
+        "source_event_ids": [
+          "worldmonitor:84905f4d08722d22"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-113",
+        "source_timestamp": 1767916912,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:52+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b182c041c0f33ee1",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b182c041c0f33ee1",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-114",
+        "order": 156,
+        "primary_actor": "facility",
+        "row_label": "gi-114",
+        "source_event_ids": [
+          "worldmonitor:b182c041c0f33ee1"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-114",
+        "source_timestamp": 1767916913,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:53+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:171cd9386a178964",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:171cd9386a178964",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-115",
+        "order": 157,
+        "primary_actor": "facility",
+        "row_label": "gi-115",
+        "source_event_ids": [
+          "worldmonitor:171cd9386a178964"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-115",
+        "source_timestamp": 1767916914,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:54+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:26c2cb9db211ffe4",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:26c2cb9db211ffe4",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-116",
+        "order": 158,
+        "primary_actor": "facility",
+        "row_label": "gi-116",
+        "source_event_ids": [
+          "worldmonitor:26c2cb9db211ffe4"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-116",
+        "source_timestamp": 1767916915,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:55+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:fcdbda62ba3b112f",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:fcdbda62ba3b112f",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-117",
+        "order": 159,
+        "primary_actor": "facility",
+        "row_label": "gi-117",
+        "source_event_ids": [
+          "worldmonitor:fcdbda62ba3b112f"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-117",
+        "source_timestamp": 1767916916,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:56+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:531b481a083b4601",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:531b481a083b4601",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-118",
+        "order": 160,
+        "primary_actor": "facility",
+        "row_label": "gi-118",
+        "source_event_ids": [
+          "worldmonitor:531b481a083b4601"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-118",
+        "source_timestamp": 1767916917,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:57+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:6de54c707258e22d",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:6de54c707258e22d",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-119",
+        "order": 161,
+        "primary_actor": "facility",
+        "row_label": "gi-119",
+        "source_event_ids": [
+          "worldmonitor:6de54c707258e22d"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-119",
+        "source_timestamp": 1767916918,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:58+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:88ee8e22004b2b15",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:88ee8e22004b2b15",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-120",
+        "order": 162,
+        "primary_actor": "facility",
+        "row_label": "gi-120",
+        "source_event_ids": [
+          "worldmonitor:88ee8e22004b2b15"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-120",
+        "source_timestamp": 1767916919,
+        "status": "captured",
+        "time_start": "2026-01-09T10:01:59+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:140abec7d8189a77",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:140abec7d8189a77",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-121",
+        "order": 163,
+        "primary_actor": "facility",
+        "row_label": "gi-121",
+        "source_event_ids": [
+          "worldmonitor:140abec7d8189a77"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-121",
+        "source_timestamp": 1767916920,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:00+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:80b491e3e7aa08e7",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:80b491e3e7aa08e7",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-122",
+        "order": 164,
+        "primary_actor": "facility",
+        "row_label": "gi-122",
+        "source_event_ids": [
+          "worldmonitor:80b491e3e7aa08e7"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-122",
+        "source_timestamp": 1767916921,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:01+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:7eba35b71c87d4fd",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:7eba35b71c87d4fd",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-123",
+        "order": 165,
+        "primary_actor": "facility",
+        "row_label": "gi-123",
+        "source_event_ids": [
+          "worldmonitor:7eba35b71c87d4fd"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-123",
+        "source_timestamp": 1767916922,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:02+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:4097a40a37508367",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:4097a40a37508367",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-124",
+        "order": 166,
+        "primary_actor": "facility",
+        "row_label": "gi-124",
+        "source_event_ids": [
+          "worldmonitor:4097a40a37508367"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-124",
+        "source_timestamp": 1767916923,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:03+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:551449d1085cd3e4",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:551449d1085cd3e4",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-125",
+        "order": 167,
+        "primary_actor": "facility",
+        "row_label": "gi-125",
+        "source_event_ids": [
+          "worldmonitor:551449d1085cd3e4"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-125",
+        "source_timestamp": 1767916924,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:04+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:b42644e19661f830",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:b42644e19661f830",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-126",
+        "order": 168,
+        "primary_actor": "facility",
+        "row_label": "gi-126",
+        "source_event_ids": [
+          "worldmonitor:b42644e19661f830"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-126",
+        "source_timestamp": 1767916925,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:05+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:c6676ce367f25543",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:c6676ce367f25543",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-127",
+        "order": 169,
+        "primary_actor": "facility",
+        "row_label": "gi-127",
+        "source_event_ids": [
+          "worldmonitor:c6676ce367f25543"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-127",
+        "source_timestamp": 1767916926,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:06+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5a304a3a54b02af3",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5a304a3a54b02af3",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-128",
+        "order": 170,
+        "primary_actor": "facility",
+        "row_label": "gi-128",
+        "source_event_ids": [
+          "worldmonitor:5a304a3a54b02af3"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-128",
+        "source_timestamp": 1767916927,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:07+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:222d14b2262ffea3",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:222d14b2262ffea3",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-129",
+        "order": 171,
+        "primary_actor": "facility",
+        "row_label": "gi-129",
+        "source_event_ids": [
+          "worldmonitor:222d14b2262ffea3"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-129",
+        "source_timestamp": 1767916928,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:08+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:31b886ba25f61042",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:31b886ba25f61042",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-130",
+        "order": 172,
+        "primary_actor": "facility",
+        "row_label": "gi-130",
+        "source_event_ids": [
+          "worldmonitor:31b886ba25f61042"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-130",
+        "source_timestamp": 1767916929,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:09+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:4dae18bd71b94428",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:4dae18bd71b94428",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-131",
+        "order": 173,
+        "primary_actor": "facility",
+        "row_label": "gi-131",
+        "source_event_ids": [
+          "worldmonitor:4dae18bd71b94428"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-131",
+        "source_timestamp": 1767916930,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:10+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:914fdd67b8d6ba08",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:914fdd67b8d6ba08",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-132",
+        "order": 174,
+        "primary_actor": "facility",
+        "row_label": "gi-132",
+        "source_event_ids": [
+          "worldmonitor:914fdd67b8d6ba08"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-132",
+        "source_timestamp": 1767916931,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:11+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:bdb797a26821c678",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:bdb797a26821c678",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-133",
+        "order": 175,
+        "primary_actor": "facility",
+        "row_label": "gi-133",
+        "source_event_ids": [
+          "worldmonitor:bdb797a26821c678"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-133",
+        "source_timestamp": 1767916932,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:12+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:32165b7864a7d4c8",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:32165b7864a7d4c8",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-134",
+        "order": 176,
+        "primary_actor": "facility",
+        "row_label": "gi-134",
+        "source_event_ids": [
+          "worldmonitor:32165b7864a7d4c8"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-134",
+        "source_timestamp": 1767916933,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:13+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:28be93baded1de30",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:28be93baded1de30",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-135",
+        "order": 177,
+        "primary_actor": "facility",
+        "row_label": "gi-135",
+        "source_event_ids": [
+          "worldmonitor:28be93baded1de30"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-135",
+        "source_timestamp": 1767916934,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:14+10:00"
+      },
+      {
+        "capture_id": "worldmonitor:5e708de8fe46e535",
+        "captured_date": "2026-01-09",
+        "event_id": "worldmonitor:5e708de8fe46e535",
+        "event_type": "worldmonitor_capture",
+        "object_text": "gi-136",
+        "order": 178,
+        "primary_actor": "facility",
+        "row_label": "gi-136",
+        "source_event_ids": [
+          "worldmonitor:5e708de8fe46e535"
+        ],
+        "source_kind": "facility",
+        "source_row_id": "gi-136",
+        "source_timestamp": 1767916935,
+        "status": "captured",
+        "time_start": "2026-01-09T10:02:15+10:00"
+      }
+    ],
+    "chronologyCount": 178,
+    "filters": {
+      "date": null,
+      "importRunId": "worldmonitor-local-smoke-v1",
+      "sourceKind": null
+    },
+    "firstCapturedAt": "2024-01-22T08:13:20+10:00",
+    "lastCapturedAt": "2026-01-09T10:02:15+10:00"
+  },
+  "itirDbPath": "/home/c/Documents/code/ITIR-suite/.cache_local/itir.sqlite",
+  "ok": true
+}
