@@ -1146,20 +1146,9 @@ def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]])
             annotation_id = str(record.get("annotation_id") or "")
             if not annotation_id:
                 continue
-            conn.execute("DELETE FROM sb_itir_mission_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_itir_evidence_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_fuzzymodo_selector_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_fuzzymodo_reason_codes WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_fuzzymodo_artifact_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_casey_workspace_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_casey_operation_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_casey_build_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_corkysoft_object_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_corkysoft_provenance_refs WHERE annotation_id = ?", (annotation_id,))
-            conn.execute("DELETE FROM sb_corkysoft_review_events WHERE annotation_id = ?", (annotation_id,))
             conn.execute(
                 """
-                INSERT OR REPLACE INTO sb_itir_overlays(
+                INSERT INTO sb_itir_overlays(
                   annotation_id, activity_event_id, sb_state_id, state_date,
                   observer_kind, status, confidence, provenance_json, note
                 ) VALUES (?,?,?,?,?,?,?,?,?)
@@ -1344,7 +1333,7 @@ def upsert_itir_overlay_records(*, db_path: Path, records: list[dict[str, Any]])
             if str(record.get("observer_kind") or "") == "corkysoft_review_event_v1":
                 conn.execute(
                     """
-                    INSERT OR REPLACE INTO sb_corkysoft_review_events(
+                    INSERT INTO sb_corkysoft_review_events(
                       annotation_id, event_id, event_family, event_time, source_system,
                       actor_ref, authority_class, correlation_key, summary, payload_json
                     ) VALUES (?,?,?,?,?,?,?,?,?,?)
