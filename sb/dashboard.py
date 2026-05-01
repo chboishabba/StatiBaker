@@ -2094,6 +2094,54 @@ def _load_calendar_events(path: Path) -> tuple[list[TimelineEvent], int]:
     return events, len(events)
 
 
+def _load_openrecall_events(path: Path) -> tuple[list[TimelineEvent], int, int]:
+    events: list[TimelineEvent] = []
+    device_ids: set[str] = set()
+    for row in _load_jsonl(path):
+        dt = _parse_ts(row.get("ts") or row.get("timestamp"))
+        if dt is None:
+            continue
+        app = str(row.get("app") or "").strip()
+        title = str(row.get("window_title") or "").strip()
+        preview = _preview_text(row.get("ocr_preview"), max_chars=160)
+        device_id = str(row.get("device_id") or "").strip()
+        session_id = str(row.get("session_id") or "").strip()
+        activity_kind = str(row.get("activity_kind") or "screen_activity").strip() or "screen_activity"
+        if device_id:
+            device_ids.add(device_id)
+        detail = f"openrecall kind={activity_kind}"
+        if app:
+            detail += f" app={app}"
+        if device_id:
+            detail += f" device={device_id}"
+        if session_id:
+            detail += f" session={session_id}"
+        if title:
+            detail += f" title={title}"
+        events.append(
+            TimelineEvent(
+                dt=dt,
+                kind="openrecall",
+                detail=detail,
+                source_path=str(path),
+                meta={
+                    "entry_id": _safe_int(row.get("entry_id")),
+                    "app": app,
+                    "window_title": title,
+                    "preview": preview,
+                    "device_id": device_id,
+                    "session_id": session_id,
+                    "activity_kind": activity_kind,
+                    "deep_link": str(row.get("deep_link") or ""),
+                    "source_ref": str(row.get("source_ref") or ""),
+                    "screenshot_present": bool(row.get("screenshot_present")),
+                    "capture_count": _safe_int(row.get("capture_count")),
+                },
+            )
+        )
+    return events, len(events), len(device_ids)
+
+
 def _load_activity_events(path: Path) -> tuple[list[TimelineEvent], int]:
     if not path.exists():
         return [], 0
@@ -4429,6 +4477,24 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
                     detail_display += f" · {thread_origin}"
                 if preview:
                     detail_display += f" · {preview}"
+            elif kind_value == "openrecall":
+                app_value = _collapse_ws(meta.get("app"))
+                device_value = _collapse_ws(meta.get("device_id"))
+                session_value = _collapse_ws(meta.get("session_id"))
+                preview = _collapse_ws(meta.get("preview"))
+                activity_kind = _collapse_ws(meta.get("activity_kind")) or "screen_activity"
+                title_value = _collapse_ws(meta.get("window_title"))
+                detail_display = f"{activity_kind}"
+                if app_value:
+                    detail_display += f" · {app_value}"
+                if device_value:
+                    detail_display += f" · device {device_value}"
+                if session_value:
+                    detail_display += f" · session {session_value}"
+                if title_value:
+                    detail_display += f" · {title_value}"
+                if preview:
+                    detail_display += f" · {preview}"
 
         search_blob = _collapse_ws(
             " ".join(
@@ -4443,6 +4509,15 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
                 ]
             )
         ).lower()
+        source_cell = (
+            f"<span class='src-badge src-{escape(source_kind)}' title='{escape(source_path)}'>{escape(source_label)}</span>"
+        )
+        if kind_value == "openrecall" and isinstance(meta, dict):
+            deep_link = str(meta.get("deep_link") or "").strip()
+            if deep_link:
+                source_cell += (
+                    f" <a href='{escape(deep_link)}' target='_blank' rel='noopener noreferrer'>open</a>"
+                )
         timeline_rows.append(
             "<tr "
             f"data-kind='{escape(kind_value)}' "
@@ -4454,7 +4529,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
             f"<td>{escape(kind_value)}</td>"
             f"<td>{_render_foldable_text(detail_display, limit=190)}</td>"
             f"<td><code>{escape(chars)}</code></td>"
-            f"<td><span class='src-badge src-{escape(source_kind)}' title='{escape(source_path)}'>{escape(source_label)}</span></td>"
+            f"<td>{source_cell}</td>"
             "</tr>"
         )
 
@@ -5334,6 +5409,9 @@ def build_dashboard(
     pr_events, pr_count, pr_detail_counts = _load_pr_events(logs_dir / "pr" / f"{date_text}.jsonl")
     calendar_events, calendar_count = _load_calendar_events(logs_dir / "calendar" / f"{date_text}.jsonl")
     activity_events, activity_count = _load_activity_events(outputs_dir / "activity_ledger.json")
+    openrecall_events, openrecall_count, openrecall_device_count = _load_openrecall_events(
+        logs_dir / "openrecall" / f"{date_text}.jsonl"
+    )
     commitment_events, external_commitments, external_commitment_summary = _load_external_commitments(
         logs_dir / "commitments" / f"{date_text}.jsonl"
     )
@@ -5379,6 +5457,7 @@ def build_dashboard(
         + pr_events
         + calendar_events
         + activity_events
+        + openrecall_events
         + commitment_events
         + task_candidate_events
         + media_events
@@ -5400,6 +5479,7 @@ def build_dashboard(
         "pr": _empty_bins(),
         "media": _empty_bins(),
         "calendar": _empty_bins(),
+        "openrecall": _empty_bins(),
     }
     for event in all_events:
         if event.kind == "chat":
@@ -5422,6 +5502,8 @@ def build_dashboard(
             _increment_bin(freq["media"], event.dt)
         elif event.kind == "calendar":
             _increment_bin(freq["calendar"], event.dt)
+        elif event.kind == "openrecall":
+            _increment_bin(freq["openrecall"], event.dt)
     for idx in range(24):
         freq["shell"][idx] += _safe_int(agent_shell_hour_bins[idx] if idx < len(agent_shell_hour_bins) else 0)
         freq["input"][idx] += _safe_int(
@@ -5647,6 +5729,8 @@ def build_dashboard(
         "pr_commented": pr_detail_counts.get("pr_commented", 0),
         "pr_merged": pr_detail_counts.get("pr_merged", 0),
         "calendar_events": calendar_count,
+        "openrecall_events": openrecall_count,
+        "openrecall_devices": openrecall_device_count,
         "external_commitments_total": _safe_int(external_commitment_summary.get("items_total")),
         "external_commitments_open": _safe_int(external_commitment_summary.get("open_items")),
         "external_commitments_completed": _safe_int(external_commitment_summary.get("completed_items")),

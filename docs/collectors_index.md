@@ -1,7 +1,8 @@
 # Collectors Index
 
 This index lists all supported collectors/adapters and their expected inputs.
-All collectors are **meta-only** and must not emit content.
+Collectors are metadata-first by default. Only explicitly documented personal
+observer lanes may emit bounded preview text.
 
 ## Core system collectors
 - `adapters/gitlog.py` (git commits)
@@ -24,6 +25,7 @@ All collectors are **meta-only** and must not emit content.
 - `adapters/browser_usage.py` (domain hash + duration)
 - `adapters/notes_meta.py` (Obsidian/Evernote metadata)
 - `adapters/notebooklm_meta.py` (NotebookLM notebook/source metadata snapshots)
+- `adapters/openrecall_activity.py` (OpenRecall `recall.db` -> bounded activity-indicator rows + deep links)
 - `adapters/google_tasks.py` (Google Tasks -> external_commitment normalization)
 - `adapters/google_keep_lists.py` (Google Keep/list items -> external_commitment normalization)
 - `scripts/capture_notebooklm_meta.py` (NotebookLM CLI snapshot collector)

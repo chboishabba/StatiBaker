@@ -27,6 +27,10 @@ CONTEXT_FIELD_APPEND_INPUT="${22:-}"
 MEDICATION_TRACKER_INPUT="${23:-}"
 GOOGLE_TASKS_INPUT="${24:-}"
 GOOGLE_KEEP_LISTS_INPUT="${25:-}"
+OPENRECALL_DB_PATH="${26:-}"
+OPENRECALL_BASE_URL="${27:-}"
+OPENRECALL_DEVICE_ID="${28:-}"
+OPENRECALL_SESSION_ID="${29:-}"
 
 RUNS_ROOT="${SB_RUNS_ROOT:-$ROOT_DIR/runs_local}"
 
@@ -97,6 +101,10 @@ fi
 if [[ -n "$GOOGLE_KEEP_LISTS_INPUT" && ! -f "$GOOGLE_KEEP_LISTS_INPUT" ]]; then
   echo "warn: GOOGLE_KEEP_LISTS_INPUT not found: $GOOGLE_KEEP_LISTS_INPUT" >&2
   GOOGLE_KEEP_LISTS_INPUT=""
+fi
+if [[ -n "$OPENRECALL_DB_PATH" && ! -f "$OPENRECALL_DB_PATH" ]]; then
+  echo "warn: OPENRECALL_DB_PATH not found: $OPENRECALL_DB_PATH" >&2
+  OPENRECALL_DB_PATH=""
 fi
 
 RUN_DIR="$RUNS_ROOT/$DATE"
@@ -265,6 +273,28 @@ if [[ -n "$GOOGLE_TASKS_INPUT" || -n "$GOOGLE_KEEP_LISTS_INPUT" ]]; then
     cat "$KEEP_TMP_PATH" >>"$COMMITMENT_LOG_PATH"
     rm -f "$KEEP_TMP_PATH"
   fi
+fi
+
+if [[ -n "$OPENRECALL_DB_PATH" ]]; then
+  OPENRECALL_LOG_DIR="$RUN_DIR/logs/openrecall"
+  OPENRECALL_LOG_PATH="$OPENRECALL_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$OPENRECALL_LOG_DIR"
+  OPENRECALL_CMD=(
+    python "$ROOT_DIR/adapters/openrecall_activity.py"
+    --db-path "$OPENRECALL_DB_PATH"
+    --date "$DATE"
+    --output "$OPENRECALL_LOG_PATH"
+  )
+  if [[ -n "$OPENRECALL_BASE_URL" ]]; then
+    OPENRECALL_CMD+=(--base-url "$OPENRECALL_BASE_URL")
+  fi
+  if [[ -n "$OPENRECALL_DEVICE_ID" ]]; then
+    OPENRECALL_CMD+=(--device-id "$OPENRECALL_DEVICE_ID")
+  fi
+  if [[ -n "$OPENRECALL_SESSION_ID" ]]; then
+    OPENRECALL_CMD+=(--session-id "$OPENRECALL_SESSION_ID")
+  fi
+  "${OPENRECALL_CMD[@]}"
 fi
 
 if [[ -n "$WINDOWS_EVENT_INPUT" ]]; then

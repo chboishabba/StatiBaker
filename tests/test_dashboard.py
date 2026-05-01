@@ -50,6 +50,7 @@ class TestDashboardBuild(unittest.TestCase):
             (run_logs / "git_branch").mkdir(parents=True, exist_ok=True)
             (run_logs / "pr").mkdir(parents=True, exist_ok=True)
             (run_logs / "media").mkdir(parents=True, exist_ok=True)
+            (run_logs / "openrecall").mkdir(parents=True, exist_ok=True)
             (run_logs / "commitments").mkdir(parents=True, exist_ok=True)
             (run_logs / "context").mkdir(parents=True, exist_ok=True)
             (context_root / "last_sync").mkdir(parents=True, exist_ok=True)
@@ -96,6 +97,12 @@ class TestDashboardBuild(unittest.TestCase):
                 (
                     '{"ts":"2026-02-08T06:05:00Z","signal":"media_consumption","platform":"youtube","event_type":"playback_observed","item_id_hash":"sha256:item1","consumed_seconds":20,"content_duration_seconds":120,"completion_ratio":0.167}\n'
                     '{"ts":"2026-02-08T06:10:00Z","signal":"media_consumption","platform":"spotify","event_type":"playback_observed","item_id_hash":"sha256:item2","consumed_seconds":120,"content_duration_seconds":120,"completion_ratio":1.0}\n'
+                ),
+                encoding="utf-8",
+            )
+            (run_logs / "openrecall" / f"{date}.jsonl").write_text(
+                (
+                    '{"ts":"2026-02-08T06:06:00Z","signal":"openrecall_activity","captured_date":"2026-02-08","timestamp":1770530760,"entry_id":7,"app":"firefox","window_title":"GitHub pull request","ocr_preview":"Reviewing OpenRecall adapter wiring","activity_kind":"research_activity","screenshot_present":true,"capture_count":1,"source_ref":"openrecall.entry:7","deep_link":"http://127.0.0.1:8082/entry/7","device_id":"workstation-a","session_id":"session-1","provenance":{"source":"openrecall_activity","collected_at":"2026-02-08T06:06:00Z"}}\n'
                 ),
                 encoding="utf-8",
             )
@@ -219,6 +226,8 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(5, payload["summary"]["input_mouse_total"])
             self.assertEqual(1, payload["summary"]["window_focus_events"])
             self.assertEqual(1, payload["summary"]["activity_events"])
+            self.assertEqual(1, payload["summary"]["openrecall_events"])
+            self.assertEqual(1, payload["summary"]["openrecall_devices"])
             self.assertEqual(1, payload["summary"]["git_commits"])
             self.assertEqual(1, payload["summary"]["git_branch_events"])
             self.assertEqual(3, payload["summary"]["pr_events"])
@@ -235,6 +244,7 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(1, payload["frequency_by_hour"]["git_branch"][6])
             self.assertEqual(3, payload["frequency_by_hour"]["pr"][6])
             self.assertEqual(2, payload["frequency_by_hour"]["media"][6])
+            self.assertEqual(1, payload["frequency_by_hour"]["openrecall"][6])
             self.assertEqual(2, payload["chat_flow"]["message_count"])
             self.assertEqual(1, payload["chat_flow"]["thread_count"])
             self.assertEqual(0, payload["chat_flow"]["switch_count"])
@@ -258,6 +268,8 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertTrue(json_out.exists())
             self.assertTrue(html_out.exists())
             html_text = html_out.read_text(encoding="utf-8")
+            self.assertIn("http://127.0.0.1:8082/entry/7", html_text)
+            self.assertIn("research_activity", html_text)
             self.assertIn("Commitment Feed", html_text)
             self.assertIn("Task Completion Candidates", html_text)
 

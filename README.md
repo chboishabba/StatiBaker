@@ -33,6 +33,7 @@ Current inputs can include:
 - git and filesystem activity
 - process and system metadata
 - browser/app usage metadata
+- OpenRecall activity indicators with deep links back to native OpenRecall entry views
 - notes/task metadata
 - machine and agent logs
 
@@ -132,6 +133,7 @@ Relevant surfaces:
 - `scripts/build_dashboard.py`
 - `sb/dashboard.py`
 - [docs/activity_dashboard.md](docs/activity_dashboard.md)
+- [docs/openrecall_connector.md](docs/openrecall_connector.md)
 - `scripts/corkysoft_consume.py`
 
 ### Portable bundle export and verification
@@ -174,6 +176,8 @@ Boundary summary:
 - StatiBaker may preserve upstream identifiers and artifacts
 - it does not take over semantic or legal interpretation
 - it is a read-only state layer, not the source of truth for external systems
+- it may consume bounded OpenRecall previews for personal timeline stitching,
+  but OpenRecall remains the native browser/search/replay surface
 - Corkysoft remains authoritative for removals workflow state even when SB
   stores reviewed Corkysoft overlays or reads Corkysoft MCP summaries
 

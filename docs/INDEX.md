@@ -34,6 +34,7 @@
 - `docs/svelte_migration_sprint.md`
 - `docs/sb_ui_migration_sprint_0.md`
 - `docs/notebooklm_connector.md`
+- `docs/openrecall_connector.md`
 - `docs/daemon_web_control_plane.md`
 - `docs/media_connectors.md`
 - `docs/inaturalist_connector.md`

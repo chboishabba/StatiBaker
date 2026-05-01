@@ -1,6 +1,19 @@
 # Changelog
 
 ## Unreleased
+- Added a bounded OpenRecall -> StatiBaker personal timeline seam:
+  - `adapters/openrecall_activity.py` reads local `recall.db` rows and emits
+    preview-sized `openrecall_activity` observer records with stable deep links
+    back to OpenRecall entry views.
+  - `scripts/run_day.sh` now accepts arg 26 (`OPENRECALL_DB_PATH`), arg 27
+    (`OPENRECALL_BASE_URL`), arg 28 (`OPENRECALL_DEVICE_ID`), and arg 29
+    (`OPENRECALL_SESSION_ID`) for direct day-scoped OpenRecall stitching.
+  - `sb.dashboard` now surfaces OpenRecall rows as timeline events and daily
+    summary/frequency counts without copying screenshot bytes or full OCR bodies
+    into SB payloads.
+  - Added `docs/openrecall_connector.md` plus companion updates across
+    observer/dashboard docs to clarify the personal-use exception and
+    anti-panopticon boundary.
 - Added `scripts/run_worldmonitor_bridge.py` to execute the bounded
   WorldMonitor roundtrip: SL import, SB-safe export, SB run-day ingestion, and
   final SensibLaw worldmonitor summary and chronology readouts.

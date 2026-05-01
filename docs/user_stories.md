@@ -35,6 +35,16 @@ At home:
 
 ## Additional roles (stress tests)
 
+### Personal multi-machine memory
+- One user moves between multiple self-managed machines during the day.
+- OpenRecall captures local history on each machine and remains the native
+  browser/search surface for those captures.
+- StatiBaker stitches bounded OpenRecall indicators onto one daily timeline so
+  the user can see cross-device transitions and open the original capture in
+  OpenRecall when more detail is needed.
+- Forbidden: turning that convenience lane into a hidden institutional
+  surveillance default or collapsing device provenance into one opaque story.
+
 ### Banker
 - Model runs recorded as envelopes with toolchain/version metadata.
 - Private risk concerns remain hypotheses.

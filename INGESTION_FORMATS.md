@@ -267,6 +267,37 @@ NotebookLM events are normalized into the same `notes_meta` signal with
   "provenance": {"source": "notebooklm_meta", "collected_at": "2026-02-08T10:00:00Z"}
 }
 
+## OpenRecall activity indicators (machine)
+Path: `logs/openrecall/YYYY-MM-DD.jsonl`
+
+Each line (JSON):
+{
+  "ts": 1770530760,
+  "signal": "openrecall_activity",
+  "captured_date": "2026-02-08",
+  "timestamp": 1770530760,
+  "entry_id": 7,
+  "app": "firefox",
+  "window_title": "GitHub pull request",
+  "ocr_preview": "Reviewing OpenRecall adapter wiring",
+  "activity_kind": "research_activity",
+  "screenshot_present": true,
+  "capture_count": 1,
+  "source_ref": "openrecall.entry:7",
+  "deep_link": "http://127.0.0.1:8082/entry/7",
+  "device_id": "workstation-a",
+  "session_id": "alice-home-2026-02-08",
+  "provenance": {"source": "openrecall_activity", "collected_at": "2026-02-08T06:06:00Z"}
+}
+
+This lane is intentionally narrow:
+- read-only
+- non-authoritative
+- preview-sized only
+
+It is meant for personal timeline stitching and drill-down links, not for
+copying screenshots or full OCR corpora into SB.
+
 Optional NotebookLM event types and fields:
 - `event: artifact_observed`
   - `artifact_id_hash`

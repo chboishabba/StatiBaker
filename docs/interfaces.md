@@ -18,6 +18,9 @@
   - read-only MCP queries over Corkysoft-owned operational read models
   - reviewed-event overlays under `observer_kind = corkysoft_review_event_v1`
     for authority-safe downstream planner/reconciliation summaries
+- May consume a bounded read-only OpenRecall personal-timeline seam directly
+  from local `recall.db` rows when the purpose is activity stitching and
+  deep-linking back to OpenRecall-owned entry views.
 - Publishes distilled daily state for human and machine consumers.
 
 ## Interaction Model
@@ -58,6 +61,13 @@
     reference and compact payload only
   - SB must not mutate removals workflow state or infer stronger authority than
     Corkysoft declares
+- `openrecall`-specific rule:
+  - allowed only as a read-only personal-convenience observer lane
+  - bounded preview fields and stable deep links are allowed
+  - full screenshots, full OCR bodies, embeddings, and remote vision payloads
+    stay producer-owned by OpenRecall
+  - direct OpenRecall reads must not become the default institutional or
+    cross-user memory authority surface
 
 ### Channel B: Reduction Pipeline
 - Input: reduction policies and time-window boundaries.

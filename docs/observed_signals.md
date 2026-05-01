@@ -1,10 +1,14 @@
 # Observed Signals (Meta-Only)
 
 StatiBaker ingests **observed signals** as append-only JSONL. These signals are
-structural metadata only and must not include content.
+metadata-first by default. Most lanes are strictly structural metadata only;
+some explicitly documented personal/local observer lanes may carry bounded
+display-safe previews.
 
 Core rules:
 - Meta only: no free text, no document bodies, no message content.
+- Exception: only explicitly documented bounded-preview lanes may carry short
+  local-user-facing previews.
 - Hashes are allowed to reference content stored elsewhere.
 - Provenance is required on every record.
 - Absence is explicit (use `missing_*` fields, never implicit).
@@ -150,6 +154,26 @@ Cloud connectors are read-only audit feeds.
   - numeric/categorical metadata: `duration_minutes`, `travel_mode_code`, `confidence_code`, `start_ts`, `end_ts`
 - Constraint: no raw coordinates, addresses, place names, or free-text notes.
 
+### OpenRecall activity (personal observer lane)
+- Signal: `openrecall_activity`
+- Required fields: `ts`, `captured_date`, `entry_id`, `activity_kind`, `provenance`
+- Allowed fields:
+  - `timestamp`
+  - `device_id`
+  - `session_id`
+  - `app`
+  - `window_title`
+  - bounded `ocr_preview`
+  - `screenshot_present`
+  - `capture_count`
+  - `source_ref`
+  - `deep_link`
+- Constraint:
+  - this is a narrow personal-convenience exception to the broader meta-only posture
+  - it is read-only and non-authoritative
+  - screenshot bytes, full OCR bodies, embeddings, and remote vision payloads stay outside SB
+  - do not use this lane for cross-user or institutional default memory fusion
+
 ## Platform notes
 - Linux: journald + collectors emit normalized records.
 - macOS/Windows: stub adapters emit normalized records from external exports.
@@ -175,7 +199,11 @@ Example using pre-exported JSONL files (no live collection):
   "" \
   /tmp/media_consumption.jsonl \
   /tmp/context_fields.jsonl \
-  /tmp/medication_raw.jsonl
+  /tmp/medication_raw.jsonl \
+  /tmp/openrecall/recall.db \
+  http://127.0.0.1:8082 \
+  workstation-a \
+  alice-home-2026-02-06
 ```
 
 All inputs are optional; missing files are skipped with warnings.
@@ -192,6 +220,11 @@ For context-field overlays, either:
 - pass a medication tracker raw JSONL as positional arg 23
   (`MEDICATION_TRACKER_INPUT`) and `run_day.sh` will normalize it via
   `adapters/medication_tracker_stub.py` and append it into `logs/context/<date>.jsonl`.
+For OpenRecall activity stitching, pass:
+- positional arg 26: `OPENRECALL_DB_PATH`
+- positional arg 27: `OPENRECALL_BASE_URL`
+- positional arg 28: `OPENRECALL_DEVICE_ID`
+- positional arg 29: `OPENRECALL_SESSION_ID`
 
 For WorldMonitor captures, run
 `scripts/export_worldmonitor_observed.py --itir-db-path ... --output ...`
