@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 import argparse
 import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from sb import query
 
@@ -26,6 +32,30 @@ def main():
 
     candidates = sub.add_parser("completion-candidates", help="Completion candidates from dashboard payload")
     candidates.add_argument("--dashboard", required=True)
+
+    runsheet = sub.add_parser("runsheet-progress", help="Runsheet progress from dashboard payload")
+    runsheet.add_argument("--dashboard", required=True)
+
+    kanboard_sync = sub.add_parser(
+        "kanboard-sync-report",
+        help="Read the latest Kanboard sync report artifact (or a specific report path)",
+    )
+    kanboard_sync.add_argument("--report", help="Specific Kanboard sync report JSON path")
+    kanboard_sync.add_argument("--runs-root", help="Runs root to scan for latest report (default: StatiBaker/runs)")
+
+    kanboard_manager_wave = sub.add_parser(
+        "kanboard-manager-wave",
+        help="Summarize Kanboard manager status/heartbeat reconciliation candidates",
+    )
+    kanboard_manager_wave.add_argument(
+        "--status-root",
+        help="Directory containing status/heartbeat manager JSON files (default: repo root)",
+    )
+    kanboard_manager_wave.add_argument(
+        "--stabilization-status",
+        default="status.statibaker-kanboard-stabilization-manager.json",
+        help="Stabilization status filename used as the closeout anchor",
+    )
 
     corkysoft_reviews = sub.add_parser("corkysoft-reviews", help="Corkysoft reviewed-event feed from dashboard payload")
     corkysoft_reviews.add_argument("--dashboard", required=True)
@@ -64,6 +94,9 @@ def main():
     todo_alignment.add_argument("--repo-root", required=True)
     todo_alignment.add_argument("--todo", action="append")
 
+    runsheet = sub.add_parser("runsheet", help="Project canonical local runsheet rows/progress from runner state")
+    runsheet.add_argument("--state", required=True)
+
     args = parser.parse_args()
 
     if args.cmd == "activity-events":
@@ -74,6 +107,23 @@ def main():
         payload = query.commitment_feed(args.dashboard, base_dir=args.base)
     elif args.cmd == "completion-candidates":
         payload = query.completion_candidates(args.dashboard, base_dir=args.base)
+    elif args.cmd == "runsheet-progress":
+        payload = query.runsheet_progress(args.dashboard, base_dir=args.base)
+    elif args.cmd == "kanboard-sync-report":
+        if args.report:
+            payload = query.kanboard_sync_report(args.report, base_dir=args.base)
+        else:
+            default_runs_root = ROOT / "runs"
+            payload = query.latest_kanboard_sync_report(
+                args.runs_root or str(default_runs_root),
+                base_dir=args.base,
+            )
+    elif args.cmd == "kanboard-manager-wave":
+        payload = query.kanboard_manager_wave_status(
+            args.status_root or str(ROOT.parent),
+            stabilization_status_name=args.stabilization_status,
+            base_dir=args.base,
+        )
     elif args.cmd == "corkysoft-reviews":
         payload = query.corkysoft_review_feed(args.dashboard, base_dir=args.base)
     elif args.cmd == "codex-trace-dashboard":
@@ -107,6 +157,8 @@ def main():
         payload = query.todo_candidates(args.repo_root, todo_paths=args.todo, base_dir=args.base)
     elif args.cmd == "todo-alignment":
         payload = query.todo_alignment(args.repo_root, todo_paths=args.todo, base_dir=args.base)
+    elif args.cmd == "runsheet":
+        payload = query.runsheet_projection(args.state, base_dir=args.base)
     else:
         payload = query.provenance(
             args.state,

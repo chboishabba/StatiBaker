@@ -1,6 +1,19 @@
 # Changelog
 
 ## Unreleased
+- Added local runsheet/progress projection surfaces for orchestration status:
+  - `sb.dashboard` now reads local `status*.json` runsheet rows and computes a
+    read-only top-level progress view (`done/non-skipped`) with runner
+    heartbeat metadata.
+  - Daily dashboard payload/HTML now expose this lane via
+    `runsheet_progress_summary`, `runsheet_progress_rows`, and a
+    `Local Runsheet Progress` panel.
+  - `sb.dashboard_store_sqlite` now round-trips those runsheet projection
+    fields through the canonical DB-backed query path.
+  - Query surfaces now include runsheet projection reads via
+    `sb.query.runsheet_progress` and `scripts/query_state.py runsheet-progress`.
+  - Codex trace dashboard facts now include runsheet-progress outcomes when the
+    projection is present in dashboard payloads.
 - Added a bounded OpenRecall -> StatiBaker personal timeline seam:
   - `adapters/openrecall_activity.py` reads local `recall.db` rows and emits
     preview-sized `openrecall_activity` observer records with stable deep links

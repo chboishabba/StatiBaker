@@ -79,6 +79,8 @@ def test_dashboard_store_round_trip_minimal(tmp_path: Path) -> None:
         "summary": {"nested": {"a": 1, "b": [True, None, "x"]}},
         "tool_use_summary": {"families": [{"name": "git", "count": 2}]},
         "notes_meta_summary": {"lifecycle": {"notebook": {"created": 1}}},
+        "runsheet_progress_summary": {"runners_total": 1, "top_level_completed": 1, "top_level_total": 2},
+        "runsheet_progress_rows": [{"runner_id": "runner-1", "progress": {"completed": 1, "total": 2}}],
     }
 
     upsert_dashboard_payload(db_path=db_path, key=key, payload=payload)
@@ -104,6 +106,8 @@ def test_dashboard_store_round_trip_minimal(tmp_path: Path) -> None:
         "summary",
         "tool_use_summary",
         "notes_meta_summary",
+        "runsheet_progress_summary",
+        "runsheet_progress_rows",
     ):
         if k == "chat_flow":
             loaded_chat = loaded.get("chat_flow") or {}
@@ -131,7 +135,7 @@ def test_dashboard_store_round_trip_minimal(tmp_path: Path) -> None:
             continue
         if k == "chat_threads" and loaded.get(k) is None and payload.get(k) == []:
             continue
-        if k in {"tool_use_summary", "notes_meta_summary"}:
+        if k in {"tool_use_summary", "notes_meta_summary", "runsheet_progress_summary", "runsheet_progress_rows"}:
             assert _normalize_optional_summary(loaded.get(k) or {}) == _normalize_optional_summary(
                 payload.get(k) or {}
             )
@@ -176,6 +180,8 @@ def test_dashboard_store_matches_existing_json_fixture(tmp_path: Path) -> None:
         "summary",
         "tool_use_summary",
         "notes_meta_summary",
+        "runsheet_progress_summary",
+        "runsheet_progress_rows",
     ):
         if k == "chat_flow":
             loaded_chat = loaded.get("chat_flow") or {}
@@ -203,7 +209,7 @@ def test_dashboard_store_matches_existing_json_fixture(tmp_path: Path) -> None:
             continue
         if k == "chat_threads" and loaded.get(k) is None and payload.get(k) == []:
             continue
-        if k in {"tool_use_summary", "notes_meta_summary"}:
+        if k in {"tool_use_summary", "notes_meta_summary", "runsheet_progress_summary", "runsheet_progress_rows"}:
             assert _normalize_optional_summary(loaded.get(k) or {}) == _normalize_optional_summary(
                 payload.get(k) or {}
             )

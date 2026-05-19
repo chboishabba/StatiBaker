@@ -102,6 +102,8 @@ def _build_trace_facts(
     tool_summary: Mapping[str, Any] | None = None,
     completion_candidates: list[dict[str, Any]] | None = None,
     external_commitments: list[dict[str, Any]] | None = None,
+    runsheet_progress_summary: Mapping[str, Any] | None = None,
+    runsheet_progress_rows: list[dict[str, Any]] | None = None,
     warnings: list[str] | None = None,
     evidence_refs: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
@@ -155,6 +157,12 @@ def _build_trace_facts(
         dict(item) for item in (completion_candidates or []) if isinstance(item, Mapping)
     ]
     external_commitments = [dict(item) for item in (external_commitments or []) if isinstance(item, Mapping)]
+    runsheet_progress_summary = (
+        dict(runsheet_progress_summary)
+        if isinstance(runsheet_progress_summary, Mapping)
+        else {}
+    )
+    runsheet_progress_rows = [dict(item) for item in (runsheet_progress_rows or []) if isinstance(item, Mapping)]
     warnings = [str(item) for item in (warnings or []) if str(item).strip()]
     evidence_refs = [dict(item) for item in (evidence_refs or []) if isinstance(item, Mapping)]
 
@@ -221,6 +229,11 @@ def _build_trace_facts(
         "completed_commitments": completed_commitments,
         "unresolved_blockers": [{"warning": warning} for warning in warnings],
     }
+    if runsheet_progress_summary or runsheet_progress_rows:
+        outcomes["runsheet_progress"] = {
+            "summary": runsheet_progress_summary,
+            "rows": runsheet_progress_rows,
+        }
     artifacts = {
         "source_ids": source_ids,
         "snippet_refs": [],
@@ -339,6 +352,16 @@ def facts_from_dashboard_payload(payload: Mapping[str, Any]) -> dict[str, Any]:
         tool_summary=payload.get("tool_use_summary") if isinstance(payload.get("tool_use_summary"), Mapping) else {},
         completion_candidates=payload.get("task_completion_candidates") if isinstance(payload.get("task_completion_candidates"), list) else [],
         external_commitments=payload.get("external_commitments") if isinstance(payload.get("external_commitments"), list) else [],
+        runsheet_progress_summary=(
+            payload.get("runsheet_progress_summary")
+            if isinstance(payload.get("runsheet_progress_summary"), Mapping)
+            else {}
+        ),
+        runsheet_progress_rows=(
+            payload.get("runsheet_progress_rows")
+            if isinstance(payload.get("runsheet_progress_rows"), list)
+            else []
+        ),
         warnings=payload.get("warnings") if isinstance(payload.get("warnings"), list) else [],
         evidence_refs=evidence_refs,
     )

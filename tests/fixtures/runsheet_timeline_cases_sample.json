@@ -1,0 +1,19 @@
+{
+  "timeline_cases": [
+    {
+      "id": "timeline-001",
+      "title": "Compile canonical local bridge rows",
+      "status": "todo"
+    },
+    {
+      "id": "timeline-002",
+      "title": "Validate malformed-status guard",
+      "status": "in_progress"
+    },
+    {
+      "id": "timeline-003",
+      "title": "Report duplicate-id and nesting failures",
+      "status": "blocked"
+    }
+  ]
+}

@@ -20,6 +20,8 @@
 ## Integration
 - `docs/openclaw_integration.md`
 - `docs/tool_interop_observer_contract.md`
+- `docs/kanboard_runsheet_roadmap.md`
+- `docs/kanboard_local_discovery.md`
 - `ITIR_INGEST_CONTRACT.md`
 - `OCR_ADAPTER_CONTRACT.md`
 - `ANDROID_STATUS_CONTRACT.md`

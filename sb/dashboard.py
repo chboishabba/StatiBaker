@@ -243,6 +243,121 @@ def _empty_external_commitment_summary() -> dict[str, Any]:
     }
 
 
+def _empty_runsheet_progress_summary() -> dict[str, Any]:
+    return {
+        "runners_total": 0,
+        "items_total": 0,
+        "items_todo": 0,
+        "items_in_progress": 0,
+        "items_blocked": 0,
+        "items_done": 0,
+        "items_skipped": 0,
+        "top_level_completed": 0,
+        "top_level_total": 0,
+    }
+
+
+def _normalize_runsheet_status(value: object) -> str:
+    text = str(value or "").strip().lower()
+    if text in {"todo", "in_progress", "blocked", "done", "skipped"}:
+        return text
+    return "todo"
+
+
+def _runner_id_from_status_path(path: Path) -> str:
+    name = path.name
+    if name.startswith("status.") and name.endswith(".json"):
+        return name[len("status.") : -len(".json")]
+    return path.stem
+
+
+def _load_runsheet_progress_projection(repo_root: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    summary = _empty_runsheet_progress_summary()
+    rows: list[dict[str, Any]] = []
+    status_paths = sorted(repo_root.glob("status*.json"))
+
+    for status_path in status_paths:
+        try:
+            raw = json.loads(status_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if not isinstance(raw, dict):
+            continue
+        runsheet = raw.get("runsheet")
+        items = runsheet.get("items") if isinstance(runsheet, dict) else None
+        if not isinstance(items, list):
+            continue
+
+        runner_id = str(raw.get("orchestrator_id") or "").strip() or _runner_id_from_status_path(status_path)
+        heartbeat_path = repo_root / f"heartbeat.{runner_id}.json"
+        heartbeat_payload: dict[str, Any] = {}
+        if heartbeat_path.exists():
+            try:
+                loaded_heartbeat = json.loads(heartbeat_path.read_text(encoding="utf-8"))
+                if isinstance(loaded_heartbeat, dict):
+                    heartbeat_payload = loaded_heartbeat
+            except (OSError, json.JSONDecodeError):
+                heartbeat_payload = {}
+
+        item_rows: list[dict[str, Any]] = []
+        item_counts = {"todo": 0, "in_progress": 0, "blocked": 0, "done": 0, "skipped": 0}
+        top_level_total = 0
+        top_level_completed = 0
+        current_milestone = None
+
+        for idx, item in enumerate(items):
+            if not isinstance(item, dict):
+                continue
+            status = _normalize_runsheet_status(item.get("status"))
+            item_id = str(item.get("id") or "").strip() or f"{runner_id}:{idx + 1}"
+            title = str(item.get("title") or "").strip() or item_id
+            item_counts[status] = item_counts.get(status, 0) + 1
+            if status != "skipped":
+                top_level_total += 1
+                if status == "done":
+                    top_level_completed += 1
+            if current_milestone is None and status in {"in_progress", "blocked"}:
+                current_milestone = title
+
+            item_rows.append(
+                {
+                    "id": item_id,
+                    "title": title,
+                    "status": status,
+                }
+            )
+
+        summary["runners_total"] += 1
+        summary["items_total"] += len(item_rows)
+        for key in ("todo", "in_progress", "blocked", "done", "skipped"):
+            summary[f"items_{key}"] += _safe_int(item_counts.get(key))
+        summary["top_level_completed"] += top_level_completed
+        summary["top_level_total"] += top_level_total
+
+        rows.append(
+            {
+                "runner_id": runner_id,
+                "status_path": str(status_path),
+                "heartbeat_path": str(heartbeat_path) if heartbeat_path.exists() else None,
+                "phase": str(raw.get("phase") or heartbeat_payload.get("phase") or ""),
+                "active_checklist": str(raw.get("active_checklist") or ""),
+                "milestones_remaining": _safe_int(raw.get("milestones_remaining")),
+                "progress": {"completed": top_level_completed, "total": top_level_total},
+                "current_milestone": current_milestone,
+                "item_counts": item_counts,
+                "items": item_rows,
+                "heartbeat": {
+                    "last_heartbeat": str(heartbeat_payload.get("last_heartbeat") or ""),
+                    "state": heartbeat_payload.get("state"),
+                    "current_step": str(heartbeat_payload.get("current_step") or ""),
+                    "blocker": heartbeat_payload.get("blocker"),
+                },
+            }
+        )
+
+    return summary, rows
+
+
 def _iso_utc(ts: datetime) -> str:
     return ts.astimezone(UTC).isoformat().replace("+00:00", "Z")
 
@@ -3751,6 +3866,12 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     task_completion_candidates = payload.get("task_completion_candidates")
     if not isinstance(task_completion_candidates, list):
         task_completion_candidates = []
+    runsheet_progress_summary = payload.get("runsheet_progress_summary")
+    if not isinstance(runsheet_progress_summary, dict):
+        runsheet_progress_summary = _empty_runsheet_progress_summary()
+    runsheet_progress_rows = payload.get("runsheet_progress_rows")
+    if not isinstance(runsheet_progress_rows, list):
+        runsheet_progress_rows = []
     notes_meta_summary = payload.get("notes_meta_summary")
     if not isinstance(notes_meta_summary, dict):
         notes_meta_summary = _empty_notes_meta_summary()
@@ -3785,6 +3906,19 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     )
     commitment_candidates = _safe_int(
         summary.get("task_completion_candidates_proposed", len(task_completion_candidates))
+    )
+    runsheet_runners_total = _safe_int(summary.get("runsheet_runners_total", runsheet_progress_summary.get("runners_total")))
+    runsheet_top_level_completed = _safe_int(
+        summary.get("runsheet_top_level_completed", runsheet_progress_summary.get("top_level_completed"))
+    )
+    runsheet_top_level_total = _safe_int(
+        summary.get("runsheet_top_level_total", runsheet_progress_summary.get("top_level_total"))
+    )
+    runsheet_items_in_progress = _safe_int(
+        summary.get("runsheet_items_in_progress", runsheet_progress_summary.get("items_in_progress"))
+    )
+    runsheet_items_blocked = _safe_int(
+        summary.get("runsheet_items_blocked", runsheet_progress_summary.get("items_blocked"))
     )
     media_events_total = _safe_int(summary.get("media_events", media_summary.get("events")))
     media_items_total = _safe_int(summary.get("media_items_observed", media_summary.get("items_observed")))
@@ -3902,6 +4036,39 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
             f"<td>{escape(reason_codes)}</td>"
             f"<td>{escape(evidence_text)}</td>"
             f"<td><code>{escape(str(item.get('generator') or ''))}</code></td>"
+            "</tr>"
+        )
+    runsheet_rows: list[str] = []
+    for runner in runsheet_progress_rows:
+        if not isinstance(runner, dict):
+            continue
+        runner_id = str(runner.get("runner_id") or "")
+        phase_text = str(runner.get("phase") or "")
+        progress = runner.get("progress") if isinstance(runner.get("progress"), dict) else {}
+        item_counts = runner.get("item_counts") if isinstance(runner.get("item_counts"), dict) else {}
+        heartbeat = runner.get("heartbeat") if isinstance(runner.get("heartbeat"), dict) else {}
+        current_milestone = str(runner.get("current_milestone") or "")
+        if not current_milestone:
+            current_milestone = str(runner.get("active_checklist") or "")
+        status_counts_text = (
+            f"todo={_safe_int(item_counts.get('todo'))}, "
+            f"in_progress={_safe_int(item_counts.get('in_progress'))}, "
+            f"blocked={_safe_int(item_counts.get('blocked'))}, "
+            f"done={_safe_int(item_counts.get('done'))}, "
+            f"skipped={_safe_int(item_counts.get('skipped'))}"
+        )
+        progress_text = f"{_safe_int(progress.get('completed'))}/{_safe_int(progress.get('total'))}"
+        heartbeat_text = str(heartbeat.get("last_heartbeat") or "")
+        if not heartbeat_text:
+            heartbeat_text = "-"
+        runsheet_rows.append(
+            "<tr>"
+            f"<td><code>{escape(runner_id)}</code></td>"
+            f"<td><code>{escape(phase_text or '-')}</code></td>"
+            f"<td><code>{escape(progress_text)}</code></td>"
+            f"<td>{escape(status_counts_text)}</td>"
+            f"<td>{escape(current_milestone or '-')}</td>"
+            f"<td><code>{escape(heartbeat_text)}</code></td>"
             "</tr>"
         )
     commitment_source_counts = (
@@ -4703,6 +4870,8 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         <div class="metric">Media completion/churn<b>{media_completion_ratio * 100.0:.1f}% / {media_churn_rate * 100.0:.1f}%</b><small>completion by watched/content and churn by low-complete early switches</small></div>
         <div class="metric">External commitments<b>{commitments_total}</b><small>open={commitments_open}, completed={commitments_completed}, archived={commitments_archived}</small></div>
         <div class="metric">Task completion candidates<b>{commitment_candidates}</b><small>proposed only; no external mutation in SB</small></div>
+        <div class="metric">Runsheet runners<b>{runsheet_runners_total}</b><small>local status.<id>.json with runsheet.items</small></div>
+        <div class="metric">Runsheet progress<b>{runsheet_top_level_completed}/{runsheet_top_level_total}</b><small>in_progress={runsheet_items_in_progress}, blocked={runsheet_items_blocked}</small></div>
         <div class="metric">iNaturalist insects<b>{inat_insects_today}</b><small>{escape(inat_phase)} · {escape(inat_expectation)} · {inat_available_days}/{inat_window_days}d window</small></div>
         <div class="metric">Mood reports<b>{mood_reports_today}</b><small>{escape(mood_latest_code)} {escape(mood_latest_ts)}</small></div>
         <div class="metric">Chat-media overlap<b>{chat_media_overlap_hours}h ({chat_media_overlap_rate_pct:.1f}%)</b><small>hour buckets where chat and media co-occur</small></div>
@@ -4778,6 +4947,17 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         <table>
           <thead><tr><th>Candidate</th><th>Target</th><th>Status</th><th>Reason Codes</th><th>Evidence</th><th>Generator</th></tr></thead>
           <tbody>{"".join(candidate_rows) if candidate_rows else "<tr><td colspan='6'>No completion candidates for this date.</td></tr>"}</tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel" data-role="StatiBaker">
+      <h2>Local Runsheet Progress</h2>
+      <p><small>Read-only projection from local runner status files. Top-level progress uses done/non-skipped counts.</small></p>
+      <p>runners=<code>{runsheet_runners_total}</code>, progress=<code>{runsheet_top_level_completed}/{runsheet_top_level_total}</code></p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Runner</th><th>Phase</th><th>Done/Total</th><th>Status counts</th><th>Current milestone</th><th>Last heartbeat</th></tr></thead>
+          <tbody>{"".join(runsheet_rows) if runsheet_rows else "<tr><td colspan='6'>No local runsheet rows.</td></tr>"}</tbody>
         </table>
       </div>
     </section>
@@ -5412,6 +5592,7 @@ def build_dashboard(
     openrecall_events, openrecall_count, openrecall_device_count = _load_openrecall_events(
         logs_dir / "openrecall" / f"{date_text}.jsonl"
     )
+    runsheet_progress_summary, runsheet_progress_rows = _load_runsheet_progress_projection(repo_root)
     commitment_events, external_commitments, external_commitment_summary = _load_external_commitments(
         logs_dir / "commitments" / f"{date_text}.jsonl"
     )
@@ -5736,6 +5917,15 @@ def build_dashboard(
         "external_commitments_completed": _safe_int(external_commitment_summary.get("completed_items")),
         "external_commitments_archived": _safe_int(external_commitment_summary.get("archived_items")),
         "task_completion_candidates_proposed": _safe_int(task_candidate_summary.get("proposed")),
+        "runsheet_runners_total": _safe_int(runsheet_progress_summary.get("runners_total")),
+        "runsheet_items_total": _safe_int(runsheet_progress_summary.get("items_total")),
+        "runsheet_items_todo": _safe_int(runsheet_progress_summary.get("items_todo")),
+        "runsheet_items_in_progress": _safe_int(runsheet_progress_summary.get("items_in_progress")),
+        "runsheet_items_blocked": _safe_int(runsheet_progress_summary.get("items_blocked")),
+        "runsheet_items_done": _safe_int(runsheet_progress_summary.get("items_done")),
+        "runsheet_items_skipped": _safe_int(runsheet_progress_summary.get("items_skipped")),
+        "runsheet_top_level_completed": _safe_int(runsheet_progress_summary.get("top_level_completed")),
+        "runsheet_top_level_total": _safe_int(runsheet_progress_summary.get("top_level_total")),
         "timeline_events": len(all_events),
     }
     trailing_chat_context = _build_trailing_chat_context(
@@ -5764,6 +5954,8 @@ def build_dashboard(
         "external_commitment_summary": external_commitment_summary,
         "external_commitments": external_commitments,
         "task_completion_candidates": task_completion_candidates,
+        "runsheet_progress_summary": runsheet_progress_summary,
+        "runsheet_progress_rows": runsheet_progress_rows,
         "context_field_counts": {
             "total_rows": len(context_rows),
             "inaturalist_events": _safe_int(inat_day.get("events")),

@@ -147,6 +147,34 @@ class TestDashboardBuild(unittest.TestCase):
             (sb_root / "COMPACTIFIED_CONTEXT.md").write_text("# compact\n", encoding="utf-8")
             (context_root / "CONTEXT.md").write_text("# ctx\n", encoding="utf-8")
             (context_root / "COMPACTIFIED_CONTEXT.md").write_text("# ctx compact\n", encoding="utf-8")
+            (repo_root / "status.statibaker-test-manager.json").write_text(
+                json.dumps(
+                    {
+                        "orchestrator_id": "statibaker-test-manager",
+                        "phase": "implementation",
+                        "active_checklist": "Finish test lane",
+                        "runsheet": {
+                            "items": [
+                                {"id": "inspect", "title": "Inspect lane", "status": "done"},
+                                {"id": "implement", "title": "Implement lane", "status": "in_progress"},
+                                {"id": "report", "title": "Report lane", "status": "todo"},
+                            ]
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (repo_root / "heartbeat.statibaker-test-manager.json").write_text(
+                json.dumps(
+                    {
+                        "last_heartbeat": "2026-02-08T06:11:00Z",
+                        "phase": "implementing",
+                        "current_step": "running tests",
+                        "state": 2,
+                    }
+                ),
+                encoding="utf-8",
+            )
 
             resolver_payload = {
                 "web_recent_turns_meta": {
@@ -238,6 +266,12 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertEqual(1, payload["summary"]["external_commitments_open"])
             self.assertEqual(1, payload["summary"]["external_commitments_completed"])
             self.assertEqual(1, payload["summary"]["task_completion_candidates_proposed"])
+            self.assertEqual(1, payload["summary"]["runsheet_runners_total"])
+            self.assertEqual(1, payload["summary"]["runsheet_items_done"])
+            self.assertEqual(1, payload["summary"]["runsheet_items_in_progress"])
+            self.assertEqual(1, payload["summary"]["runsheet_items_todo"])
+            self.assertEqual(1, payload["summary"]["runsheet_top_level_completed"])
+            self.assertEqual(3, payload["summary"]["runsheet_top_level_total"])
             self.assertEqual(2, payload["frequency_by_hour"]["chat"][6])
             self.assertEqual(1, payload["frequency_by_hour"]["git"][6])
             self.assertEqual(1, payload["frequency_by_hour"]["activity"][6])
@@ -272,6 +306,8 @@ class TestDashboardBuild(unittest.TestCase):
             self.assertIn("research_activity", html_text)
             self.assertIn("Commitment Feed", html_text)
             self.assertIn("Task Completion Candidates", html_text)
+            self.assertIn("Local Runsheet Progress", html_text)
+            self.assertIn("1/3", html_text)
 
             loaded = json.loads(json_out.read_text(encoding="utf-8"))
             self.assertEqual(date, loaded["date"])

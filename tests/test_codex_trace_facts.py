@@ -36,6 +36,8 @@ def test_dashboard_trace_facts_include_commitments_and_candidates() -> None:
             {"external_item_id": "task-1", "status": "needs_action"},
             {"external_item_id": "task-2", "status": "completed"},
         ],
+        "runsheet_progress_summary": {"runners_total": 1, "top_level_completed": 2, "top_level_total": 3},
+        "runsheet_progress_rows": [{"runner_id": "runner-1", "progress": {"completed": 2, "total": 3}}],
         "chat_threads": [{"thread_id": "thread-1"}],
         "artifact_links": [{"label": "ledger", "path": "/tmp/out.json"}],
     }
@@ -49,6 +51,7 @@ def test_dashboard_trace_facts_include_commitments_and_candidates() -> None:
     assert facts["outcomes"]["completion_candidates"][0]["candidate_id"] == "cand-1"
     assert facts["outcomes"]["open_commitments"][0]["external_item_id"] == "task-1"
     assert facts["outcomes"]["completed_commitments"][0]["external_item_id"] == "task-2"
+    assert facts["outcomes"]["runsheet_progress"]["summary"]["top_level_completed"] == 2
 
 
 def test_chat_archive_and_raw_logs_share_core_digest(tmp_path: Path) -> None:

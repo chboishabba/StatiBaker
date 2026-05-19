@@ -8,6 +8,9 @@ Expose SB state for agents without granting mutation rights.
 - Fetch daily carryover summary.
 - Retrieve provenance for a given state artifact.
 - Retrieve Corkysoft reviewed-event overlays from a dashboard payload.
+- Retrieve local runsheet/progress projection from a dashboard payload.
+- Retrieve Kanboard manager-wave reconciliation candidates from status/heartbeat
+  artifacts.
 
 ## Rules
 - Read-only access only.
@@ -23,6 +26,8 @@ Expose SB state for agents without granting mutation rights.
 - `scripts/query_state.py`
   - Optional `--base` constrains reads to a run directory.
   - Includes Corkysoft review-feed reads from dashboard payloads.
+  - Includes local runsheet-progress reads from dashboard payloads.
+  - Includes `kanboard-manager-wave` for status reconciliation inspection.
 
 ## Output constraints
 - `activity_events` are immutable once emitted.

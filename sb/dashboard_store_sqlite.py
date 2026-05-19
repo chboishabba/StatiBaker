@@ -233,7 +233,7 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
           view TEXT NOT NULL,
           scope TEXT NOT NULL,
           window_days INTEGER NOT NULL,
-          section TEXT NOT NULL, -- summary|tool_use_summary|notes_meta_summary
+          section TEXT NOT NULL, -- summary|tool_use_summary|notes_meta_summary|runsheet_progress_summary|runsheet_progress_rows
           path TEXT NOT NULL,
           value_type TEXT NOT NULL,
           value_int INTEGER,
@@ -750,7 +750,13 @@ def _upsert_dashboard_payload_conn(
                     (key.date, key.view, key.scope, key.window_days, i, field, p, vt, vi, vf, vs),
                 )
 
-    for section in ("summary", "tool_use_summary", "notes_meta_summary"):
+    for section in (
+        "summary",
+        "tool_use_summary",
+        "notes_meta_summary",
+        "runsheet_progress_summary",
+        "runsheet_progress_rows",
+    ):
         obj = payload.get(section)
         if not isinstance(obj, (dict, list)):
             continue
@@ -1122,7 +1128,13 @@ def _load_dashboard_payload_conn(*, conn: sqlite3.Connection, key: DashboardKey)
             threads_out.append(t)
         payload["chat_threads"] = threads_out
 
-    for section in ("summary", "tool_use_summary", "notes_meta_summary"):
+    for section in (
+        "summary",
+        "tool_use_summary",
+        "notes_meta_summary",
+        "runsheet_progress_summary",
+        "runsheet_progress_rows",
+    ):
         kv = conn.execute(
             """
             SELECT path, value_type, value_int, value_float, value_text
