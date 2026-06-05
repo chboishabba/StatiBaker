@@ -33,6 +33,9 @@ The dashboard integrates:
 - ITIR observer overlays persisted in `dashboard.sqlite`
   - including Corkysoft reviewed-event overlays under
     `observer_kind = corkysoft_review_event_v1`
+- chat/source join refs for cases where chat messages fold over terminal logs,
+  Codex traces, notes, transcripts, OCR, or document sources; see
+  `docs/chat_log_fold_contract.md`
 
 ## Data sources (default)
 
@@ -97,6 +100,12 @@ Observer overlays section:
 Untitled chat threads are automatically labeled from first user-message preview
 and tagged with an origin class (for example `codex-ingest` when sqlite
 `source_id` starts with `codex_`).
+
+Chat/source joins are provenance aids, not new content stores. A joined terminal
+paste may be rendered more readably by downstream HTML/PDF exporters, but the
+dashboard should continue to surface the canonical chat row plus refs to the
+producer-owned source record rather than copying source bodies into dashboard
+state.
 
 Timeline strip palette controls are client-side and include:
 - `Viridis` (default)

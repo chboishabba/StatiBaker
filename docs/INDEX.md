@@ -29,6 +29,7 @@
 ## Observed Signals
 - `docs/observed_signals.md`
 - `docs/activity_dashboard.md`
+- `docs/chat_log_fold_contract.md`
 - `docs/dashboard_implementation_notes.md`
 - `docs/api_costing_model.md`
 - `docs/chat_flow_lane_mode.md`

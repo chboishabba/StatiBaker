@@ -21,6 +21,11 @@
 - May consume a bounded read-only OpenRecall personal-timeline seam directly
   from local `recall.db` rows when the purpose is activity stitching and
   deep-linking back to OpenRecall-owned entry views.
+- May consume chat/source join refs under
+  `docs/chat_log_fold_contract.md`, where chat messages are treated as
+  conversation events that may fold over terminal logs, Codex traces, notes,
+  transcripts, OCR, or document sources without duplicating those sources as SB
+  canonical state.
 - Publishes distilled daily state for human and machine consumers.
 
 ## Interaction Model
@@ -100,3 +105,18 @@
   - overlays cannot rewrite SB history
   - overlays cannot inject raw thread/event dumps
   - overlays cannot import external policy as SB authority
+
+### Channel F: Chat/Source Join Refs
+- Input: reference-heavy joins between a canonical chat message span and a
+  producer-owned source event such as a Codex TUI log, CLI metadata event, user
+  note, transcript, OCR record, or document source.
+- Intended use:
+  - preserve provenance for pasted or folded material inside chat messages
+  - let downstream renderers recover terminal/transcript/note formatting when
+    evidence is strong
+  - support audit without storing the same source text twice
+- Constraint:
+  - joins carry refs, spans, hashes, confidence, and render hints only
+  - joins do not mutate canonical chat text
+  - joins do not promote source excerpts into SB authority
+  - display repair remains a renderer behavior, not a source rewrite

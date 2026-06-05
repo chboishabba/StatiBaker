@@ -52,6 +52,7 @@ WEEKLY_SUMMARY_KEYS = (
     "input_mouse_total",
     "window_focus_events",
     "activity_events",
+    "browser_assist_events",
     "git_commits",
     "git_branch_events",
     "pr_events",
@@ -2257,6 +2258,69 @@ def _load_openrecall_events(path: Path) -> tuple[list[TimelineEvent], int, int]:
     return events, len(events), len(device_ids)
 
 
+def _load_browser_assist_events(path: Path) -> tuple[list[TimelineEvent], int]:
+    events: list[TimelineEvent] = []
+    for row in _load_jsonl(path):
+        dt = _parse_ts(row.get("ts") or row.get("started_at"))
+        if dt is None:
+            continue
+        task_label = _preview_text(row.get("task_label"), max_chars=120)
+        browser = str(row.get("browser") or "").strip()
+        mode = str(row.get("mode") or "observe").strip() or "observe"
+        storage_mode = str(row.get("storage_mode") or "preview_plus_hashes").strip()
+        preview = _preview_text(row.get("text_preview"), max_chars=160)
+        openrecall_refs = [str(item) for item in (row.get("openrecall_entry_refs") or [])]
+        snapshot_refs = [str(item) for item in (row.get("playwright_snapshot_refs") or [])]
+        transcript_refs = [str(item) for item in (row.get("transcript_refs") or [])]
+        structure_summary = row.get("structure_summary") if isinstance(row.get("structure_summary"), dict) else {}
+        task_identity_residual = str(row.get("task_identity_residual") or "").strip()
+        lifecycle_residual = str(row.get("lifecycle_residual") or "").strip()
+        kanban_projection_policy = str(row.get("kanban_projection_policy") or "observer_only").strip()
+        detail = f"browser_assist mode={mode}"
+        if browser:
+            detail += f" browser={browser}"
+        if task_label:
+            detail += f" task={task_label}"
+        if task_identity_residual or lifecycle_residual:
+            detail += (
+                f" residual task={task_identity_residual or 'none'}"
+                f" lifecycle={lifecycle_residual or 'none'}"
+            )
+        events.append(
+            TimelineEvent(
+                dt=dt,
+                kind="browser_assist",
+                detail=detail,
+                source_path=str(path),
+                meta={
+                    "session_id": str(row.get("session_id") or ""),
+                    "task_label": task_label,
+                    "browser": browser,
+                    "mode": mode,
+                    "storage_mode": storage_mode,
+                    "preview": preview,
+                    "openrecall_entry_refs": openrecall_refs,
+                    "playwright_snapshot_refs": snapshot_refs,
+                    "transcript_refs": transcript_refs,
+                    "structure_summary": {
+                        "heading_count": _safe_int(structure_summary.get("heading_count")),
+                        "link_count": _safe_int(structure_summary.get("link_count")),
+                        "form_control_count": _safe_int(structure_summary.get("form_control_count")),
+                        "image_count": _safe_int(structure_summary.get("image_count")),
+                        "landmark_count": _safe_int(structure_summary.get("landmark_count")),
+                        "heading_text_hash": str(structure_summary.get("heading_text_hash") or ""),
+                    },
+                    "task_identity_residual": task_identity_residual,
+                    "lifecycle_residual": lifecycle_residual,
+                    "kanban_projection_policy": kanban_projection_policy,
+                    "pnf_candidate_count": len(row.get("pnf_candidates") or []),
+                    "non_authoritative": bool(row.get("non_authoritative", True)),
+                },
+            )
+        )
+    return events, len(events)
+
+
 def _load_activity_events(path: Path) -> tuple[list[TimelineEvent], int]:
     if not path.exists():
         return [], 0
@@ -3307,6 +3371,7 @@ def _build_weekday_hour_heatmaps_from_daily_payloads(
         "activity",
         "media",
         "calendar",
+        "browser_assist",
     )
     lane_labels = {
         "chat": "Chat",
@@ -3319,6 +3384,7 @@ def _build_weekday_hour_heatmaps_from_daily_payloads(
         "activity": "Activity sessions",
         "media": "Media",
         "calendar": "Calendar",
+        "browser_assist": "Browser assist",
     }
     matrices = {name: _empty_weekday_hour_matrix() for name in lanes}
 
@@ -4662,6 +4728,23 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
                     detail_display += f" · {title_value}"
                 if preview:
                     detail_display += f" · {preview}"
+            elif kind_value == "browser_assist":
+                task_value = _collapse_ws(meta.get("task_label")) or "browser assist"
+                browser_value = _collapse_ws(meta.get("browser"))
+                mode_value = _collapse_ws(meta.get("mode")) or "observe"
+                preview = _collapse_ws(meta.get("preview"))
+                task_residual = _collapse_ws(meta.get("task_identity_residual"))
+                lifecycle_residual = _collapse_ws(meta.get("lifecycle_residual"))
+                detail_display = f"{mode_value} · {task_value}"
+                if browser_value:
+                    detail_display += f" · {browser_value}"
+                if task_residual or lifecycle_residual:
+                    detail_display += (
+                        f" · residual task={task_residual or 'none'}"
+                        f" lifecycle={lifecycle_residual or 'none'}"
+                    )
+                if preview:
+                    detail_display += f" · {preview}"
 
         search_blob = _collapse_ws(
             " ".join(
@@ -4733,6 +4816,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
       --window: #9d174d;
       --branch: #0f766e;
       --pr: #7c3aed;
+      --browser-assist: #be123c;
       --line: #d9e1d9;
     }}
     body {{ margin: 0; background: radial-gradient(circle at top left, #e7f2ea, var(--bg)); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", sans-serif; }}
@@ -4749,7 +4833,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
     .bars li {{ display: grid; grid-template-columns: 2.2rem 1fr 2rem; align-items: center; gap: 0.4rem; }}
     .bar-wrap {{ border: 1px solid var(--line); border-radius: 7px; overflow: hidden; height: 0.7rem; }}
     .bar {{ height: 100%; }}
-    .chat {{ background: var(--chat); }} .shell {{ background: var(--shell); }} .git {{ background: var(--git); }} .activity {{ background: var(--activity); }} .media {{ background: var(--media); }} .input {{ background: var(--input); }} .window {{ background: var(--window); }} .branch {{ background: var(--branch); }} .pr {{ background: var(--pr); }}
+    .chat {{ background: var(--chat); }} .shell {{ background: var(--shell); }} .git {{ background: var(--git); }} .activity {{ background: var(--activity); }} .media {{ background: var(--media); }} .input {{ background: var(--input); }} .window {{ background: var(--window); }} .branch {{ background: var(--branch); }} .pr {{ background: var(--pr); }} .browser_assist {{ background: var(--browser-assist); }}
     .table-scroll {{ max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }}
     .table-scroll table {{ width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }}
     th, td {{ border-bottom: 1px solid var(--line); text-align: left; padding: 0.35rem; vertical-align: top; }}
@@ -4881,6 +4965,7 @@ def render_dashboard_html(payload: dict[str, Any], html_path: Path) -> str:
         <div class="metric">Input events<b>{summary.get("input_events", 0)}</b></div>
         <div class="metric">Window focus events<b>{summary.get("window_focus_events", 0)}</b></div>
         <div class="metric">Activity events<b>{summary.get("activity_events", 0)}</b></div>
+        <div class="metric">Browser assist<b>{summary.get("browser_assist_events", 0)}</b><small>read-only observer rows</small></div>
         <div class="metric">Notes meta events<b>{notes_total_events}</b></div>
         <div class="metric">NotebookLM meta events<b>{notebooklm_events}</b><small>{escape(notes_app_counts_text)}</small></div>
         <div class="metric">Git branch events<b>{summary.get("git_branch_events", 0)}</b></div>
@@ -5592,6 +5677,9 @@ def build_dashboard(
     openrecall_events, openrecall_count, openrecall_device_count = _load_openrecall_events(
         logs_dir / "openrecall" / f"{date_text}.jsonl"
     )
+    browser_assist_events, browser_assist_count = _load_browser_assist_events(
+        logs_dir / "browser_assist" / f"{date_text}.jsonl"
+    )
     runsheet_progress_summary, runsheet_progress_rows = _load_runsheet_progress_projection(repo_root)
     commitment_events, external_commitments, external_commitment_summary = _load_external_commitments(
         logs_dir / "commitments" / f"{date_text}.jsonl"
@@ -5639,6 +5727,7 @@ def build_dashboard(
         + calendar_events
         + activity_events
         + openrecall_events
+        + browser_assist_events
         + commitment_events
         + task_candidate_events
         + media_events
@@ -5661,6 +5750,7 @@ def build_dashboard(
         "media": _empty_bins(),
         "calendar": _empty_bins(),
         "openrecall": _empty_bins(),
+        "browser_assist": _empty_bins(),
     }
     for event in all_events:
         if event.kind == "chat":
@@ -5685,6 +5775,8 @@ def build_dashboard(
             _increment_bin(freq["calendar"], event.dt)
         elif event.kind == "openrecall":
             _increment_bin(freq["openrecall"], event.dt)
+        elif event.kind == "browser_assist":
+            _increment_bin(freq["browser_assist"], event.dt)
     for idx in range(24):
         freq["shell"][idx] += _safe_int(agent_shell_hour_bins[idx] if idx < len(agent_shell_hour_bins) else 0)
         freq["input"][idx] += _safe_int(
@@ -5912,6 +6004,7 @@ def build_dashboard(
         "calendar_events": calendar_count,
         "openrecall_events": openrecall_count,
         "openrecall_devices": openrecall_device_count,
+        "browser_assist_events": browser_assist_count,
         "external_commitments_total": _safe_int(external_commitment_summary.get("items_total")),
         "external_commitments_open": _safe_int(external_commitment_summary.get("open_items")),
         "external_commitments_completed": _safe_int(external_commitment_summary.get("completed_items")),

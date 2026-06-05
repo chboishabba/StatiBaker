@@ -55,12 +55,17 @@ Allowed ingress from orchestration tools:
 - bounded Corkysoft reviewed-event overlays when they stay reference-heavy and
   preserve Corkysoft authority labels rather than importing mutable removals
   workflow state into SB
+- bounded Tree-sitter code-structure observations when they stay append-only,
+  provenance-backed, scan-scoped, and non-authoritative; syntax evidence may
+  support residual review but must not create or move cards
 
 Forbidden ingress:
 - generated semantic summaries as authoritative truth
 - hidden memory state
 - inferred goals/preferences
 - policy decisions about what should happen next
+- syntax-only parser observations as task completion, runtime truth, or
+  Kanban workflow authority
 
 ## Cloud posture
 - Cloud is an observer and execution substrate, not memory authority.

@@ -109,6 +109,7 @@ python scripts/verify_bundle.py --help
 If you want the canonical dashboard/state path, start by reading:
 
 - [docs/activity_dashboard.md](docs/activity_dashboard.md)
+- [docs/chat_log_fold_contract.md](docs/chat_log_fold_contract.md)
 - [QUERY_SURFACE.md](QUERY_SURFACE.md)
 - [BUNDLE_SPEC.md](BUNDLE_SPEC.md)
 
@@ -191,6 +192,8 @@ Boundary summary:
   [docs/observed_signals.md](docs/observed_signals.md)
 - activity dashboard:
   [docs/activity_dashboard.md](docs/activity_dashboard.md)
+- chat/source fold contract:
+  [docs/chat_log_fold_contract.md](docs/chat_log_fold_contract.md)
 - query surface:
   [QUERY_SURFACE.md](QUERY_SURFACE.md)
 

@@ -31,6 +31,7 @@ OPENRECALL_DB_PATH="${26:-}"
 OPENRECALL_BASE_URL="${27:-}"
 OPENRECALL_DEVICE_ID="${28:-}"
 OPENRECALL_SESSION_ID="${29:-}"
+BROWSER_ASSIST_INPUT="${30:-}"
 
 RUNS_ROOT="${SB_RUNS_ROOT:-$ROOT_DIR/runs_local}"
 
@@ -85,6 +86,10 @@ fi
 if [[ -n "$PR_EVENTS_INPUT" && ! -f "$PR_EVENTS_INPUT" ]]; then
   echo "warn: PR_EVENTS_INPUT not found: $PR_EVENTS_INPUT" >&2
   PR_EVENTS_INPUT=""
+fi
+if [[ -n "$BROWSER_ASSIST_INPUT" && ! -f "$BROWSER_ASSIST_INPUT" ]]; then
+  echo "warn: BROWSER_ASSIST_INPUT not found: $BROWSER_ASSIST_INPUT" >&2
+  BROWSER_ASSIST_INPUT=""
 fi
 if [[ -n "$CONTEXT_FIELD_APPEND_INPUT" && ! -f "$CONTEXT_FIELD_APPEND_INPUT" ]]; then
   echo "warn: CONTEXT_FIELD_APPEND_INPUT not found: $CONTEXT_FIELD_APPEND_INPUT" >&2
@@ -295,6 +300,13 @@ if [[ -n "$OPENRECALL_DB_PATH" ]]; then
     OPENRECALL_CMD+=(--session-id "$OPENRECALL_SESSION_ID")
   fi
   "${OPENRECALL_CMD[@]}"
+fi
+
+if [[ -n "$BROWSER_ASSIST_INPUT" ]]; then
+  BROWSER_ASSIST_LOG_DIR="$RUN_DIR/logs/browser_assist"
+  BROWSER_ASSIST_LOG_PATH="$BROWSER_ASSIST_LOG_DIR/$DATE.jsonl"
+  mkdir -p "$BROWSER_ASSIST_LOG_DIR"
+  python "$ROOT_DIR/adapters/browser_assist.py" --input "$BROWSER_ASSIST_INPUT" --output "$BROWSER_ASSIST_LOG_PATH"
 fi
 
 if [[ -n "$WINDOWS_EVENT_INPUT" ]]; then

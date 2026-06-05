@@ -31,6 +31,59 @@ def _chat_db_path(tmp: str | None, repo_root: Path | None) -> Path:
 
 
 class TestDashboardBuild(unittest.TestCase):
+    def test_build_dashboard_with_browser_assist_events(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            runs_root = repo_root / "StatiBaker" / "runs"
+            context_root = repo_root / "__CONTEXT"
+            date = "2026-06-04"
+            run_logs = runs_root / date / "logs"
+            (run_logs / "browser_assist").mkdir(parents=True, exist_ok=True)
+            context_root.mkdir(parents=True, exist_ok=True)
+            (context_root / "convo_ids.md").write_text(
+                "| id | title | tail_lines | notes |\n| --- | --- | --- | --- |\n",
+                encoding="utf-8",
+            )
+            (run_logs / "browser_assist" / f"{date}.jsonl").write_text(
+                (
+                    '{"ts":"2026-06-04T06:15:00Z","signal":"browser_assist_activity",'
+                    '"session_id":"browser-assist-1","task_label":"find discussed item",'
+                    '"mode":"observe","browser":"chrome","text_preview":"bounded page preview",'
+                    '"openrecall_entry_refs":["openrecall.entry:7"],'
+                    '"playwright_snapshot_refs":["snapshot-001.md"],'
+                    '"structure_summary":{"heading_count":2,"link_count":3,"form_control_count":1,'
+                    '"heading_text_hash":"sha256:headings"},'
+                    '"transcript_refs":["transcript:1"],'
+                    '"task_identity_residual":"partial","lifecycle_residual":"no_typed_meet",'
+                    '"kanban_projection_policy":"observer_only","storage_mode":"preview_plus_hashes",'
+                    '"non_authoritative":true,'
+                    '"provenance":{"source":"playwright_browser_assist","collected_at":"2026-06-04T06:15:00Z"}}\n'
+                ),
+                encoding="utf-8",
+            )
+
+            payload = build_dashboard(
+                date_text=date,
+                repo_root=repo_root,
+                runs_root=runs_root,
+                context_root=context_root,
+                convo_ids_path=context_root / "convo_ids.md",
+                chat_db_path=_chat_db_path(tmp, repo_root),
+                chat_exports_dir=repo_root / "chat_exports",
+                max_timeline_events=20,
+            )
+
+            self.assertEqual(1, payload["summary"]["browser_assist_events"])
+            self.assertEqual(1, payload["frequency_by_hour"]["browser_assist"][6])
+            events = [row for row in payload["timeline"] if row["kind"] == "browser_assist"]
+            self.assertEqual(1, len(events))
+            self.assertIn("find discussed item", events[0]["detail"])
+            self.assertIn("residual task=partial lifecycle=no_typed_meet", events[0]["detail"])
+            self.assertEqual("bounded page preview", events[0]["meta"]["preview"])
+            self.assertEqual("observer_only", events[0]["meta"]["kanban_projection_policy"])
+            self.assertEqual(2, events[0]["meta"]["structure_summary"]["heading_count"])
+            self.assertEqual("sha256:headings", events[0]["meta"]["structure_summary"]["heading_text_hash"])
+
     def test_build_dashboard_with_mixed_sources(self):
         with tempfile.TemporaryDirectory() as tmp:
             repo_root = Path(tmp)
