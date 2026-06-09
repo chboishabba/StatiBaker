@@ -229,3 +229,4 @@ StatiBaker is not:
 Its job is narrower and more defensible:
 
 to make state harder to lose.
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/chboishabba/StatiBaker)
