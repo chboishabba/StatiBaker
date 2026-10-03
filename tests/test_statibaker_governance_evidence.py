@@ -1,6 +1,15 @@
 from __future__ import annotations
 
-from src.statibaker_governance_evidence import build_governance_evidence_projection
+import importlib.util
+from pathlib import Path
+
+
+_MODULE_PATH = Path(__file__).resolve().parents[1] / "src" / "statibaker_governance_evidence.py"
+_SPEC = importlib.util.spec_from_file_location("statibaker_governance_evidence", _MODULE_PATH)
+assert _SPEC is not None and _SPEC.loader is not None
+_MODULE = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_MODULE)
+build_governance_evidence_projection = _MODULE.build_governance_evidence_projection
 
 
 def test_implemented_does_not_imply_validated() -> None:
