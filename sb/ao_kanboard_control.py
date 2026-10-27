@@ -424,7 +424,7 @@ def _lane_prompt(obligation: Mapping[str, Any], support: Mapping[str, Any]) -> s
             *scope_lines,
             "Do not collide with other lane supports.",
             "Do not edit dashi_digital_esd, *digital_esd*, or *ESD* surfaces.",
-            "Do not add postulates, allow-unsolved-metas, TERMINATING, or NO_POSITIVITY_CHECK.",
+            "Keep the Agda trust boundary closed. Add no trust escapes.",
             "Complete implementation and deterministic verification. Do not leave a skeleton or stub.",
         ]
     )
