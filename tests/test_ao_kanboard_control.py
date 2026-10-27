@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from sb.ao_kanboard_control import build_ao_control_runsheet
+from sb.ao_kanboard_control import build_ao_control_runsheet, compute_dynamic_lane_descent
 
 
 class TestAoKanboardControl(unittest.TestCase):
@@ -142,6 +142,45 @@ class TestAoKanboardControl(unittest.TestCase):
         self.assertIn("ao:stale", item["labels"])
         self.assertIn("ao:root-validation-stale", item["labels"])
         self.assertIn("ao:blocked-upstream", item["labels"])
+
+
+    def test_dynamic_lane_descent_selects_pairwise_independent_open_leaves(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "TODO.md").write_text(
+                "\n".join(
+                    [
+                        "# Work",
+                        "- [ ] Implement `src/a.py`",
+                        "- [ ] Implement `src/b.py`",
+                        "- [ ] Fix `src/a.py`",
+                        "- [ ] Parent work",
+                        "  - [ ] Implement `src/c.py` theorem: lemmaC",
+                        "- [ ] @blocker Implement `src/d.py`",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+
+            result = compute_dynamic_lane_descent(root)
+
+            self.assertEqual(3, result["lane_count"])
+            supports = [set(row["noTypedMeet"]["support_keys"]) for row in result["lanes"]]
+            for index, left in enumerate(supports):
+                for right in supports[index + 1 :]:
+                    self.assertTrue(left.isdisjoint(right))
+
+            claimed_files = {
+                value
+                for lane in result["lanes"]
+                for value in lane["typed_support"]["files"]
+            }
+            self.assertEqual({"src/a.py", "src/b.py", "src/c.py"}, claimed_files)
+            self.assertTrue(any(item["reason"] == "typed_meet_collision" for item in result["rejected"]))
+            self.assertTrue(any(item["reason"].startswith("not_auto_executable:blocked") for item in result["rejected"]))
+            claim_dir = root / ".autonomous-orchestrator" / "lane_claims"
+            self.assertEqual(3, len(list(claim_dir.glob("ao-fleet-conductor-leaf-*.json"))))
 
 
 if __name__ == "__main__":

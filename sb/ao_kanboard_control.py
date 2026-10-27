@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Mapping
+
+from .todo_graph import analyze_repo_todos
 
 AO_CONTROL_STATUS_COLUMNS: dict[str, str] = {
     "queued": "Queued",
@@ -316,5 +320,211 @@ def build_ao_control_runsheet(
         "summary": {
             "cards": len(items),
             "by_status": {status: sum(1 for item in items if item["status"] == status) for status in AO_CONTROL_STATUS_COLUMNS},
+        },
+    }
+
+
+DYNAMIC_LANE_SCHEMA_VERSION = "sb.ao_dynamic_lane_claim.v1"
+DYNAMIC_LANE_PARENT_ID = "ao-fleet-conductor-manager"
+_DYNAMIC_LEMMA_RE = re.compile(
+    r"\\b(?:lemma|theorem|symbol)\\s*[:=]?\\s*`?([A-Za-z][A-Za-z0-9_.-]*)`?",
+    re.IGNORECASE,
+)
+
+
+def _normalized_support(value: Any) -> str:
+    return _text(value).replace("\\\\", "/").strip()
+
+
+def _typed_support(evaluation: Mapping[str, Any]) -> dict[str, list[str]]:
+    files: set[str] = set()
+    symbols: set[str] = set()
+    lemmas: set[str] = set()
+    obligation = _as_dict(evaluation.get("obligation"))
+    text = _text(obligation.get("text"))
+
+    for predicate in _as_list(evaluation.get("predicates")):
+        row = _as_dict(predicate)
+        target = _normalized_support(row.get("target"))
+        if not target:
+            continue
+        kind = _text(row.get("predicate_kind"))
+        if kind.startswith("path_"):
+            files.add(target)
+        elif kind.startswith("symbol_"):
+            symbols.add(target)
+
+    for match in _DYNAMIC_LEMMA_RE.findall(text):
+        lemma = _normalized_support(match)
+        if lemma:
+            lemmas.add(lemma)
+
+    return {
+        "files": sorted(files),
+        "symbols": sorted(symbols),
+        "lemmas": sorted(lemmas),
+    }
+
+
+def _support_keys(support: Mapping[str, Any]) -> set[str]:
+    keys: set[str] = set()
+    for kind in ("files", "symbols", "lemmas"):
+        for value in _as_list(support.get(kind)):
+            normalized = _normalized_support(value)
+            if normalized:
+                keys.add(f"{kind}:{normalized}")
+    return keys
+
+
+def _leaf_obligation_ids(evaluations: list[Mapping[str, Any]]) -> set[str]:
+    by_source: dict[str, list[Mapping[str, Any]]] = {}
+    for evaluation in evaluations:
+        obligation = _as_dict(evaluation.get("obligation"))
+        source = _text(obligation.get("source_path"))
+        by_source.setdefault(source, []).append(evaluation)
+
+    leaves: set[str] = set()
+    for rows in by_source.values():
+        ordered = sorted(
+            rows,
+            key=lambda row: (
+                int(_as_dict(row.get("obligation")).get("line_no") or 0),
+                _text(_as_dict(row.get("obligation")).get("obligation_id")),
+            ),
+        )
+        for index, row in enumerate(ordered):
+            obligation = _as_dict(row.get("obligation"))
+            obligation_id = _text(obligation.get("obligation_id"))
+            if not obligation_id:
+                continue
+            indent = int(obligation.get("indent") or 0)
+            next_indent = None
+            if index + 1 < len(ordered):
+                next_indent = int(_as_dict(ordered[index + 1].get("obligation")).get("indent") or 0)
+            if next_indent is None or next_indent <= indent:
+                leaves.add(obligation_id)
+    return leaves
+
+
+def _lane_id(obligation_id: str) -> str:
+    digest = hashlib.sha256(obligation_id.encode("utf-8")).hexdigest()[:12]
+    return f"ao-fleet-conductor-leaf-{digest}"
+
+
+def _lane_prompt(obligation: Mapping[str, Any], support: Mapping[str, Any]) -> str:
+    scope_lines = []
+    for kind in ("files", "symbols", "lemmas"):
+        values = ", ".join(_as_list(support.get(kind))) or "-"
+        scope_lines.append(f"{kind}: {values}")
+    return "\n".join(
+        [
+            "Implement exactly one unblocked AO leaf obligation.",
+            f"Obligation: {_text(obligation.get('text'))}",
+            "Typed support:",
+            *scope_lines,
+            "Do not collide with other lane supports.",
+            "Do not edit dashi_digital_esd, *digital_esd*, or *ESD* surfaces.",
+            "Keep the Agda trust boundary closed. Add no trust escapes.",
+            "Complete implementation and deterministic verification. Do not leave a skeleton or stub.",
+        ]
+    )
+
+
+def compute_dynamic_lane_descent(repo_root: str | Path) -> dict[str, Any]:
+    """Create a deterministic maximal set of independent, executable AO leaf claims."""
+    root = Path(repo_root).expanduser().resolve()
+    graph = analyze_repo_todos(root)
+    evaluations = [
+        row for row in _as_list(graph.get("evaluations"))
+        if isinstance(row, Mapping)
+    ]
+    leaf_ids = _leaf_obligation_ids(evaluations)
+    selected: list[dict[str, Any]] = []
+    rejected: list[dict[str, Any]] = []
+    occupied: set[str] = set()
+
+    ordered = sorted(
+        evaluations,
+        key=lambda row: (
+            _text(_as_dict(row.get("obligation")).get("source_path")),
+            int(_as_dict(row.get("obligation")).get("line_no") or 0),
+            _text(_as_dict(row.get("obligation")).get("obligation_id")),
+        ),
+    )
+    for evaluation in ordered:
+        obligation = _as_dict(evaluation.get("obligation"))
+        obligation_id = _text(obligation.get("obligation_id"))
+        classification = _text(evaluation.get("classification"))
+        state = _text(obligation.get("state"))
+        if state != "open" or obligation_id not in leaf_ids:
+            continue
+        if classification not in {"stale", "partially_satisfied"}:
+            rejected.append(
+                {
+                    "obligation_id": obligation_id,
+                    "reason": f"not_auto_executable:{classification or 'unknown'}",
+                }
+            )
+            continue
+
+        support = _typed_support(evaluation)
+        keys = _support_keys(support)
+        if not keys:
+            rejected.append({"obligation_id": obligation_id, "reason": "no_typed_support"})
+            continue
+        meet = sorted(keys & occupied)
+        if meet:
+            rejected.append(
+                {
+                    "obligation_id": obligation_id,
+                    "reason": "typed_meet_collision",
+                    "typed_meet": meet,
+                }
+            )
+            continue
+
+        orchestrator_id = _lane_id(obligation_id)
+        lane = {
+            "version": DYNAMIC_LANE_SCHEMA_VERSION,
+            "orchestrator_id": orchestrator_id,
+            "lane": f"ao.fleet.dynamic.{orchestrator_id.rsplit('-', 1)[-1]}",
+            "lane_claim": _text(obligation.get("text")),
+            "parent_orchestrator_id": DYNAMIC_LANE_PARENT_ID,
+            "obligation_id": obligation_id,
+            "source_path": _text(obligation.get("source_path")),
+            "line_no": int(obligation.get("line_no") or 0),
+            "classification": classification,
+            "typed_support": support,
+            "noTypedMeet": {
+                "pairwise_independent": True,
+                "support_keys": sorted(keys),
+                "checked_against": [item["orchestrator_id"] for item in selected],
+            },
+            "prompt": _lane_prompt(obligation, support),
+            "status_file": str(root / ".autonomous-orchestrator" / f"status.{orchestrator_id}.json"),
+            "heartbeat_file": str(root / ".autonomous-orchestrator" / f"heartbeat.{orchestrator_id}.json"),
+        }
+        selected.append(lane)
+        occupied.update(keys)
+
+    claim_dir = root / ".autonomous-orchestrator" / "lane_claims"
+    claim_dir.mkdir(parents=True, exist_ok=True)
+    for lane in selected:
+        claim_path = claim_dir / f"{lane['orchestrator_id']}.json"
+        tmp_path = claim_path.with_suffix(".json.tmp")
+        tmp_path.write_text(json.dumps(lane, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        tmp_path.replace(claim_path)
+
+    return {
+        "schema_version": DYNAMIC_LANE_SCHEMA_VERSION,
+        "repo_root": str(root),
+        "parent_orchestrator_id": DYNAMIC_LANE_PARENT_ID,
+        "lane_count": len(selected),
+        "lanes": selected,
+        "rejected": rejected,
+        "invariant": {
+            "pairwise_noTypedMeet": True,
+            "auto_spawn_requires_concrete_typed_support": True,
+            "human_review_is_not_auto_spawned": True,
         },
     }
