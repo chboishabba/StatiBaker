@@ -86,11 +86,10 @@ def reduce_day(
     if complete_snapshot is not True:
         raise ValueError("partial snapshot cannot imply resolution")
     ids_atoms, ids_threads = _ids(atoms), _ids(threads)
-    if previous is None:
+    initial = previous is None
+    if initial:
         previous = TemporalState(as_of, {}, {}, {}, {})
-    if as_of <= previous.as_of and (
-        previous.atoms or previous.threads or previous.resolved_atoms or previous.resolved_threads
-    ):
+    if not initial and as_of <= previous.as_of:
         raise ValueError("daily fold must advance time")
     if as_of < previous.as_of:
         raise ValueError("time must not go backward")
