@@ -5,7 +5,7 @@ breaking the state pipeline.
 
 ## TL;DR Boundaries
 
-- Treat `<runs-root>/<date>/outputs/dashboard*.json` as your primary UI contract.
+- Treat `<runs-root>/dashboard.sqlite` as the default persisted dashboard contract. Legacy `dashboard*.json` and `dashboard*.html` are opt-in exports.
 - For UI-only changes, stay in renderer functions in `sb/dashboard.py`.
 - For metric logic changes, edit `build_*_dashboard` in `sb/dashboard.py` and tests.
 - For new signal lanes, add/normalize data in adapters and loaders first.
@@ -22,8 +22,9 @@ snapshots  -> sb.activity.sessionize -> outputs/activity_ledger.json
 
 logs + outputs + chat sources
   -> sb.dashboard.build_dashboard/build_weekly_dashboard/build_lifetime_dashboard
-  -> <runs-root>/<date>/outputs/dashboard*.json
-  -> <runs-root>/<date>/outputs/dashboard*.html
+  -> <runs-root>/dashboard.sqlite (default canonical store)
+  -> <runs-root>/<date>/outputs/dashboard*.json (--write-json only)
+  -> <runs-root>/<date>/outputs/dashboard*.html (--write-html only)
 ```
 
 Primary entrypoints:
@@ -36,7 +37,7 @@ Primary entrypoints:
 
 - `sb/dashboard.py`
   - Role: Loads chat/log/activity artifacts, computes summaries, builds payloads,
-    renders HTML for daily/weekly/lifetime dashboards, writes JSON/HTML outputs.
+    renders optional HTML for daily/weekly/lifetime dashboards, and writes canonical SQLite payloads with optional JSON/HTML exports.
   - Key functions:
     - `build_dashboard(...)`
     - `build_weekly_dashboard(...)`
@@ -85,6 +86,21 @@ Primary entrypoints:
 - `sb/itir_ingest.py`
   - Validates overlay records crossing into SB surfaces.
 
+## Module Boundary Contract
+
+| Owner | Reads | Writes | Must not own |
+| --- | --- | --- | --- |
+| `adapters/*`, `sb/observed_ingest.py` | Source observations | Normalized logs and event stubs | Dashboard markup, UI state |
+| `sb/activity/sessionize.py`, `sb/fold.py`, `sb/compress.py`, `sb/drift.py` | Observed logs and state | Deterministic activity/state outputs | Rendering and browser interaction |
+| `sb/dashboard.py` `build_*` | Logs, activity, context and chat | Dashboard payloads and aggregate metrics | Ingest source truth or user-facing interaction state |
+| `sb/dashboard.py` `render_*_html` | Built dashboard payloads | Optional legacy HTML | Silent changes to payload meaning, provenance or totals |
+| `scripts/build_dashboard.py` | CLI options, compiled payloads | SQLite by default, optional exports | Independent metric definitions |
+| `sb/query.py`, `sb/bundle.py`, `sb/metrics.py` | Persisted/compiled state | Query results, export bundles, telemetry | Dashboard display semantics |
+
+**Cross-boundary invariant:** renderers may format a declared field, but must not change its value or provenance. Metrics and ingestion must not depend on a browser or renderer. SQLite and optional JSON must retain the same payload semantics for the same compiled day. Browser settings must not mutate the underlying state ledger.
+
+**Compatibility:** preserve the existing `build_*`, `render_*_html` and dashboard CLI entrypoints until consumers migrate. Treat suggested file extraction as future refactoring, not a claim that those modules already exist.
+
 ## Web Iteration Surfaces
 
 ### Surface A: Styling/Markup only (low risk)
@@ -112,7 +128,7 @@ Typical chain:
 
 ## Data Contracts Web Team Should Rely On
 
-Daily dashboard payload keys (stable in practice):
+Daily dashboard payload keys (current field contract; validate consumers before changing):
 - `date`, `generated_at`, `chat_source`, `chat_scope_mode`
 - `summary`
 - `frequency_by_hour`
@@ -140,6 +156,7 @@ Before merging dashboard changes:
    `tests/test_compress_expand.py`, `tests/test_drift.py`.
 3. Rebuild at least one real day:
    - `python scripts/build_dashboard.py --date YYYY-MM-DD`
+   - For legacy renderer verification, request `--write-json --write-html` explicitly.
 4. Verify both:
    - DB-backed payload fields expected by UI still exist (canonical store: `SB_RUNS_ROOT/dashboard.sqlite`).
    - Optional legacy HTML export still loads with timeline filtering and waterfall controls (if you rely on it).
