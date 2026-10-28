@@ -38,6 +38,12 @@ class TemporalReductionTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 reduce_day(previous.state,as_of=d+timedelta(days=offset),atoms=[],threads=[])
 
+    def test_empty_day_replay_is_not_idempotently_mutated(self):
+        d=date(2026,10,25)
+        empty=reduce_day(None,as_of=d,atoms=[],threads=[])
+        with self.assertRaises(ValueError):
+            reduce_day(empty.state,as_of=d,atoms=[],threads=[])
+
     def test_order_and_determinism(self):
         d=date(2026,10,25)
         x=reduce_day(None,as_of=d,atoms=["b","a"],threads=["y","x"])
